@@ -70,5 +70,5 @@ jobs:
         uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
         with:
           token: ${{ secrets.GIST_TOKEN }}
-          gistURL: https://gist.githubusercontent.com/mharrah/Spdx3Badge
+          gistURL: https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91
           file: badge.svg
