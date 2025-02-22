@@ -7,7 +7,7 @@ namespace Spdx3.Tests.Model;
 
 public abstract class BaseElementTestClass
 {
-    protected readonly IList<Agent> NoAgents = new List<Agent>();
+    private readonly IList<Agent> _noAgents = new List<Agent>();
 
     protected readonly CreationInfo TestCreationInfo;
 
@@ -15,6 +15,6 @@ public abstract class BaseElementTestClass
 
     protected BaseElementTestClass()
     {
-        TestCreationInfo = new CreationInfo(TestIdFactory, NoAgents);
+        TestCreationInfo = new CreationInfo(TestIdFactory, _noAgents);
     }
 }

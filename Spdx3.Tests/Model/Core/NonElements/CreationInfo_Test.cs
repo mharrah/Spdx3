@@ -18,18 +18,20 @@ public class CreationInfoTest : BaseElementTestClass
     [Fact]
     public void CreationInfo_IsSerializableToJson()
     {
-        var creationInfo = new CreationInfo(TestIdFactory, new List<Agent>(), _predictableDateTimeOffset);
-        creationInfo.Comment = "Test Comment";
+        var creationInfo = new CreationInfo(TestIdFactory, new List<Agent>(), _predictableDateTimeOffset)
+        {
+            Comment = "Test Comment"
+        };
         var json = creationInfo.ToJson();
-        var expected = """
-                       {
-                         "specVersion": "3.0.1",
-                         "created": "2025-02-18T08:52:16+00:00",
-                         "comment": "Test Comment",
-                         "type": "CreationInfo",
-                         "spdxId": "urn:CreationInfo:testRef"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "specVersion": "3.0.1",
+                                  "created": "2025-02-18T08:52:16+00:00",
+                                  "comment": "Test Comment",
+                                  "type": "CreationInfo",
+                                  "spdxId": "urn:CreationInfo:testRef"
+                                }
+                                """;
         Assert.Equal(expected, json);
     }
 }
