@@ -1,0 +1,35 @@
+﻿using Spdx3.Model.Core.Elements;
+using Spdx3.Model.Core.NonElements;
+
+namespace Spdx3.Tests.Model.Core.NonElements;
+
+public class CreationInfoTest : BaseElementTestClass
+{
+    private DateTimeOffset _predictableDateTimeOffset = new DateTimeOffset(2025, 2, 18, 8, 52, 16, TimeSpan.Zero);
+
+    [Fact]
+    public void CreationInfo_ConstructorGeneratesId()
+    {
+        var creationInfo = new CreationInfo(TestIdFactory, new List<Agent>(), _predictableDateTimeOffset);
+        Assert.NotNull(creationInfo);
+        Assert.Equal("urn:CreationInfo:testRef", creationInfo.SpdxId.ToString());
+    }
+
+    [Fact]
+    public void CreationInfo_IsSerializableToJson()
+    {
+        var creationInfo = new CreationInfo(TestIdFactory, new List<Agent>(), _predictableDateTimeOffset);
+        creationInfo.Comment = "Test Comment";
+        var json = creationInfo.ToJson();
+        var expected = """
+                       {
+                         "specVersion": "3.0.1",
+                         "created": "2025-02-18T08:52:16+00:00",
+                         "comment": "Test Comment",
+                         "type": "CreationInfo",
+                         "spdxId": "urn:CreationInfo:testRef"
+                       }
+                       """;
+        Assert.Equal(expected, json);
+    }
+}
