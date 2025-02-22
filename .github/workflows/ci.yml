@@ -26,10 +26,10 @@ jobs:
         run: dotnet build -c Debug
 
       - name: Run tests
-        run: dotnet test -c Debug --no-build --no-restore --logger="trx;${{ GITHUB_WORKSPACE }}/TestResults/results.trx"
+        run: dotnet test -c Debug --no-build --no-restore --logger="trx;${{ github.workspace }}/TestResults/results.trx"
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: ${{ GITHUB_WORKSPACE }}/TestResults/*.trx
+          files: ${{ github.workspace }}/TestResults/*.trx
