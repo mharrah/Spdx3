@@ -9,9 +9,9 @@ public abstract class BaseElementTestClass
 {
     protected readonly IList<Agent> NoAgents = new List<Agent>();
 
-    protected readonly ISpdxIdFactory TestIdFactory = new TestSpdxIdFactory();
-
     protected readonly CreationInfo TestCreationInfo;
+
+    protected readonly ISpdxIdFactory TestIdFactory = new TestSpdxIdFactory();
 
     protected BaseElementTestClass()
     {

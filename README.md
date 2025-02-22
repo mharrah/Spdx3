@@ -1,5 +1,8 @@
 # Spdx3
-A NuGet library (.NET 8) for creating, reading, and writing [Software Bills of Materials](https://www.ntia.gov/page/software-bill-materials) files in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
+
+A NuGet library (.NET 8) for creating, reading, and
+writing [Software Bills of Materials](https://www.ntia.gov/page/software-bill-materials) files
+in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0.x-blue)]()
 [![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)]()

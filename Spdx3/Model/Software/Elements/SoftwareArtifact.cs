@@ -11,19 +11,17 @@ namespace Spdx3.Model.Software.Elements;
 public abstract class SoftwareArtifact(ISpdxIdFactory idFactory, string artifactType, CreationInfo creationInfo)
     : Artifact(idFactory, artifactType, creationInfo)
 {
+    [JsonPropertyName("copyrightText")]
+    public string? CopyrightText;
+
     [JsonPropertyName("additionalPurpose")]
-    public IList<SoftwarePurpose> AdditionalPurpose => _additionalPurpose;
+    public IList<SoftwarePurpose> AdditionalPurpose { get; } = new List<SoftwarePurpose>();
 
     [JsonPropertyName("contentIdentifier")]
     public IList<ContentIdentifier> ContentIdentifier { get; } = new List<ContentIdentifier>();
 
     [JsonPropertyName("primaryPurpose")]
-    public SoftwarePurpose? PrimaryPurpose { get; set;  }
-
-    [JsonPropertyName("copyrightText")]
-    public string? CopyrightText;
-
-    private readonly IList<SoftwarePurpose> _additionalPurpose = new List<SoftwarePurpose>();
+    public SoftwarePurpose? PrimaryPurpose { get; set; }
 
     [JsonPropertyName("attributionText")]
     public IList<string> AttributionText { get; } = new List<string>();

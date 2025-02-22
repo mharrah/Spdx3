@@ -3,9 +3,9 @@
 namespace Spdx3.Model.Core.Enums;
 
 /// <summary>
-/// Information about the relationship between two Elements.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/RelationshipType/
-/// </summary>  
+///     Information about the relationship between two Elements.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/RelationshipType/
+/// </summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum RelationshipType
 {

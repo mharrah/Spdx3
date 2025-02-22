@@ -7,11 +7,22 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
-/// A distinct article or unit within the digital domain.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Artifact/
+///     A distinct article or unit within the digital domain.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Artifact/
 /// </summary>
 public abstract class Artifact : Element
 {
+    [SetsRequiredMembers]
+    public Artifact(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Artifact", creationInfo)
+    {
+    }
+
+    [SetsRequiredMembers]
+    public Artifact(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(idFactory,
+        elementType, creationInfo)
+    {
+    }
+
     [JsonPropertyName("builtTime")]
     public DateTimeOffset? BuiltTime { get; set; }
 
@@ -32,14 +43,4 @@ public abstract class Artifact : Element
 
     [JsonPropertyName("validUntilTime")]
     public DateTimeOffset? ValidUntilTime { get; set; }
-
-    [SetsRequiredMembers]
-    public Artifact(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Artifact", creationInfo)
-    {
-    }
-
-    [SetsRequiredMembers]
-    public Artifact(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(idFactory, elementType, creationInfo)
-    {
-    }
 }

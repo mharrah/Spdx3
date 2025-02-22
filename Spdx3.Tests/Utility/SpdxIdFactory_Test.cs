@@ -5,7 +5,6 @@ namespace Spdx3.Tests.Utility;
 
 public class SpdxIdFactoryTest : BaseElementTestClass
 {
-
     [Fact]
     public void SpdxIdFactory_NewGeneratesId()
     {
@@ -23,5 +22,4 @@ public class SpdxIdFactoryTest : BaseElementTestClass
         var id2 = spdxIdFactory.New("test");
         Assert.NotEqual(id1, id2);
     }
-
 }

@@ -4,11 +4,18 @@ using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Utility;
 
-
 namespace Spdx3.Model.Core.Elements;
 
 public class Relationship : Element
 {
+    [SetsRequiredMembers]
+    public Relationship(ISpdxIdFactory idFactory, CreationInfo creationInfo, RelationshipType relationshipType,
+        Element fromElement, List<Element> toElements) : base(idFactory, "Relationship", creationInfo)
+    {
+        RelationshipType = relationshipType;
+        FromElementSpdxId = fromElement.SpdxId;
+        toElements.ForEach(e => ToElementSpdxId.Add(e.SpdxId));
+    }
 
     [JsonPropertyName("relationshipType")]
     public RelationshipType RelationshipType { get; set; }
@@ -27,13 +34,4 @@ public class Relationship : Element
 
     [JsonPropertyName("to")]
     public IList<string> ToElementSpdxId { get; } = new List<string>();
-
-
-    [SetsRequiredMembers]
-    public Relationship(ISpdxIdFactory idFactory, CreationInfo creationInfo, RelationshipType relationshipType, Element fromElement, List<Element> toElements) : base(idFactory, "Relationship", creationInfo)
-    {
-        RelationshipType = relationshipType;
-        FromElementSpdxId = fromElement.SpdxId;
-        toElements.ForEach(e => ToElementSpdxId.Add(e.SpdxId));
-    }
 }

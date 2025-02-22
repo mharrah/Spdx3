@@ -2,7 +2,7 @@
 using Spdx3.Model.Software.Enums;
 using Spdx3.Tests.Model;
 
-namespace Spdx3.Tests.SpxdModel.Software.Elements;
+namespace Spdx3.Tests.SpdxModel.Software.Elements;
 
 public class SoftwarePackageTest : BaseElementTestClass
 {
@@ -19,9 +19,8 @@ public class SoftwarePackageTest : BaseElementTestClass
     {
         var package = new SoftwarePackage(TestIdFactory, TestCreationInfo);
         Assert.NotNull(package);
-        Assert.Equal("urn:software_Package:testRef", package.SpdxId.ToString());
+        Assert.Equal("urn:software_Package:testRef", package.SpdxId);
     }
-
 
 
     [Fact]
@@ -34,20 +33,20 @@ public class SoftwarePackageTest : BaseElementTestClass
         package.DownloadLocation = "https://example.com/download";
         package.AdditionalPurpose.Add(SoftwarePurpose.other);
         var actualJson = package.ToJson();
-        string expected = """
-                          {
-                            "packageVersion": "1.2.3",
-                            "downloadLocation": "https://example.com/download",
-                            "additionalPurpose": [
-                              "other"
-                            ],
-                            "primaryPurpose": "application",
-                            "creationInfo": "urn:CreationInfo:testRef",
-                            "name": "Test Package",
-                            "type": "software_Package",
-                            "spdxId": "urn:software_Package:testRef"
-                          }
-                          """;
+        var expected = """
+                       {
+                         "packageVersion": "1.2.3",
+                         "downloadLocation": "https://example.com/download",
+                         "additionalPurpose": [
+                           "other"
+                         ],
+                         "primaryPurpose": "application",
+                         "creationInfo": "urn:CreationInfo:testRef",
+                         "name": "Test Package",
+                         "type": "software_Package",
+                         "spdxId": "urn:software_Package:testRef"
+                       }
+                       """;
         Assert.Equal(expected, actualJson);
     }
 }

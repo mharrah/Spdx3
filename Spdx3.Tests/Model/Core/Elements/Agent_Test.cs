@@ -17,7 +17,7 @@ public class AgentTest : BaseElementTestClass
     {
         var agent = new Agent(TestIdFactory, TestCreationInfo);
         Assert.NotNull(agent);
-        Assert.Equal("urn:Agent:testRef", agent.SpdxId.ToString());
+        Assert.Equal("urn:Agent:testRef", agent.SpdxId);
     }
 
 
@@ -41,5 +41,4 @@ public class AgentTest : BaseElementTestClass
                        """;
         Assert.Equal(expected, json);
     }
-
 }

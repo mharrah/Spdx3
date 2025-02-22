@@ -6,13 +6,14 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Core.NonElements;
 
 /// <summary>
-/// A reference to a resource identifier defined outside the scope of SPDX-3.0 content that uniquely identifies an Element.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalIdentifier/
+///     A reference to a resource identifier defined outside the scope of SPDX-3.0 content that uniquely identifies an
+///     Element.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalIdentifier/
 /// </summary>
 [method: SetsRequiredMembers]
-public class ExternalIdentifier(ISpdxIdFactory idFactory, ExternalIdentifierType identifierType, string identifier) : BaseSpdxClass(idFactory, "ExternalIdentifier")
+public class ExternalIdentifier(ISpdxIdFactory idFactory, ExternalIdentifierType identifierType, string identifier)
+    : BaseSpdxClass(idFactory, "ExternalIdentifier")
 {
-
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
 

@@ -6,14 +6,20 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
-/// These are SPDX elements that make up the Core profile.  
-/// Note that many classes in SPDX don't descend from this class, because they're technically not "elements".
-/// As a practical upshot of this, this class includes a number of properties that are on every element and which may not be on the Non-Element classes.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
-/// 
+///     These are SPDX elements that make up the Core profile.
+///     Note that many classes in SPDX don't descend from this class, because they're technically not "elements".
+///     As a practical upshot of this, this class includes a number of properties that are on every element and which may
+///     not be on the Non-Element classes.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    protected Element(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(idFactory,
+        elementType)
+    {
+        CreationInfoSpdxId = creationInfo.SpdxId;
+    }
 
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
@@ -40,11 +46,5 @@ public abstract class Element : BaseSpdxClass
     public string? Summary { get; set; }
 
     [JsonPropertyName("verifiedUsing")]
-    public string? VerifiedUsingSpxdId { get; set; }
-
-    [SetsRequiredMembers]
-    protected Element(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(idFactory, elementType)
-    {
-        CreationInfoSpdxId = creationInfo.SpdxId;
-    }
+    public string? VerifiedUsingSpdxId { get; set; }
 }

@@ -8,8 +8,9 @@ using Spdx3.Utility;
 namespace Spdx3.Model;
 
 /// <summary>
-/// This is a base class for like EVERYthing in an SPDX document, whether it's an "Element" or some other "Non-Element" class.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
+///     This is a base class for like EVERYthing in an SPDX document, whether it's an "Element" or some other "Non-Element"
+///     class.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
 public abstract class BaseSpdxClass
 {
@@ -22,15 +23,11 @@ public abstract class BaseSpdxClass
         }
     };
 
-    /// <summary>
-    /// A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected for SPDX files.
-    /// </summary>
-    /// <returns>A Json representation of this object</returns>
-    public string ToJson()
+    [SetsRequiredMembers]
+    protected BaseSpdxClass(ISpdxIdFactory idFactory, string classType)
     {
-        // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
-        // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer, and that's (clearly) not ok.
-        return JsonSerializer.Serialize<object>(this, Options);
+        Type = classType;
+        SpdxId = idFactory.New(Type);
     }
 
     [JsonPropertyName("type")]
@@ -39,10 +36,15 @@ public abstract class BaseSpdxClass
     [JsonPropertyName("spdxId")]
     public required string SpdxId { get; init; }
 
-    [SetsRequiredMembers]
-    protected BaseSpdxClass(ISpdxIdFactory idFactory, string classType)
+    /// <summary>
+    ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
+    ///     for SPDX files.
+    /// </summary>
+    /// <returns>A Json representation of this object</returns>
+    public string ToJson()
     {
-        Type = classType;
-        SpdxId = idFactory.New(Type);
+        // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
+        // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer, and that's (clearly) not ok.
+        return JsonSerializer.Serialize<object>(this, Options);
     }
 }

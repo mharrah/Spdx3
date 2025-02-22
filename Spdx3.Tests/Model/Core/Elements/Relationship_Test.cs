@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Spdx3.Model.Core.Elements;
+﻿using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Software.Elements;
 using Spdx3.Model.Software.Enums;
@@ -29,7 +24,7 @@ public class RelationshipTest : BaseElementTestClass
 
         // Act
         var relationship = new Relationship(TestIdFactory, TestCreationInfo, RelationshipType.dependsOn, baby, parents);
-            
+
         // Assert
         Assert.NotNull(relationship);
         Assert.Equal("Relationship", relationship.Type);
@@ -55,7 +50,7 @@ public class RelationshipTest : BaseElementTestClass
 
         // Assert
         Assert.NotNull(relationship);
-        Assert.Equal("urn:Relationship:testRef", relationship.SpdxId.ToString());
+        Assert.Equal("urn:Relationship:testRef", relationship.SpdxId);
     }
 
     [Fact]
@@ -126,7 +121,8 @@ public class RelationshipTest : BaseElementTestClass
         toProjects.Add(project3);
 
 
-        var relationship = new Relationship(TestIdFactory, TestCreationInfo, RelationshipType.dependsOn, solution, toProjects);
+        var relationship = new Relationship(TestIdFactory, TestCreationInfo, RelationshipType.dependsOn, solution,
+            toProjects);
         relationship.Comment = "Test Comment";
         relationship.Summary = "Test Summary";
         relationship.Description = "Test Description";

@@ -5,14 +5,14 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class CreationInfoTest : BaseElementTestClass
 {
-    private DateTimeOffset _predictableDateTimeOffset = new DateTimeOffset(2025, 2, 18, 8, 52, 16, TimeSpan.Zero);
+    private readonly DateTimeOffset _predictableDateTimeOffset = new(2025, 2, 18, 8, 52, 16, TimeSpan.Zero);
 
     [Fact]
     public void CreationInfo_ConstructorGeneratesId()
     {
         var creationInfo = new CreationInfo(TestIdFactory, new List<Agent>(), _predictableDateTimeOffset);
         Assert.NotNull(creationInfo);
-        Assert.Equal("urn:CreationInfo:testRef", creationInfo.SpdxId.ToString());
+        Assert.Equal("urn:CreationInfo:testRef", creationInfo.SpdxId);
     }
 
     [Fact]

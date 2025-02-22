@@ -5,13 +5,14 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
-/// A concrete subclass of Element used by Individuals in the Core profile (whatever *that* means)
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/IndividualElement/
+///     A concrete subclass of Element used by Individuals in the Core profile (whatever *that* means)
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/IndividualElement/
 /// </summary>
 public class IndividualElement : Element
 {
     [SetsRequiredMembers]
-    public IndividualElement(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "IndividualElement", creationInfo)
+    public IndividualElement(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "IndividualElement",
+        creationInfo)
     {
     }
 }
