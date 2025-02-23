@@ -22,7 +22,7 @@ public class CreationInfoTest
     }
     
     [Fact]
-    public void CreationInfo_FullyPopulated_SerializesAsJson()
+    public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
         var factory = new SpdxClassFactory();
@@ -57,7 +57,7 @@ public class CreationInfoTest
 
         
     [Fact]
-    public void CreationInfo_MinimallyPopulated_SerializesAsJson()
+    public void CreationInfo_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
         var factory = new SpdxClassFactory();

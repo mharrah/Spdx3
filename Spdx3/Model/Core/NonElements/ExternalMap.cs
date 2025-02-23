@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
@@ -10,4 +11,21 @@ namespace Spdx3.Model.Core.NonElements;
 
 public class ExternalMap() : BaseSpdxClass
 {
+    [JsonPropertyName("definingArtifact")]
+    public string? DefiningArtifactRef { get; set; }
+    
+    [JsonPropertyName("externalSpdxId")]
+    public string? ExternalSpdxId { get; set; }
+    
+    [JsonPropertyName("locationHint")]
+    public string? LocationHint { get; set; }
+    
+    [JsonPropertyName("verifiedUsing")]
+    public IList<string> VerifiedUsingRef { get; set; } = new List<string>();
+
+    public new void Validate()
+    {
+        base.Validate();
+        ValidateRequiredProperty(nameof(ExternalSpdxId));
+    }
 }

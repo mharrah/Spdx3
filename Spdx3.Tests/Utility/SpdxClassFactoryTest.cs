@@ -1,4 +1,6 @@
+using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.Elements;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Utility;
@@ -73,5 +75,21 @@ public class SpdxClassFactoryTest
         Assert.Contains(creationInfo2, factory.EverythingProduced);
         Assert.NotEqual(firstSpdxId, creationInfo2.SpdxId);
     }
+
+
+    [Fact]
+    public void SpdxClassFactory_Throws_WhenMakingElement_WithoutCreationInfo()
+    {
+        // Arrange
+        var factory = new SpdxClassFactory();
+
+        // Act
+        var exception = Record.Exception( () => factory.New<TestElement>());
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Parameter of type CreationInfo required when creating subclasses of Element", exception.Message);
+    }
+
     
 }

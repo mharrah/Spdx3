@@ -34,6 +34,11 @@ public class ExternalIdentifier : BaseSpdxClass
 
     [JsonPropertyName("issuingAuthority")]
     public string? IssuingAuthority { get; set; }
-    
-    
+
+    public new void Validate()
+    {
+        base.Validate();
+        ValidateRequiredProperty(nameof(Identifier));
+        ValidateRequiredProperty(nameof(ExternalIdentifierType));
+    }
 }

@@ -47,7 +47,7 @@ public class SpdxClassFactory
         var classType = typeof(T);
         if (classType.IsSubclassOf(typeof(Element)))
         {
-            throw new Spdx3Exception($"Parameter of type {nameof(CreationInfo)} required when creating subclasses of {nameof(Element)} ");
+            throw new Spdx3Exception($"Parameter of type {nameof(CreationInfo)} required when creating subclasses of {nameof(Element)}");
         }
         return NewItem<T>();    
     }
