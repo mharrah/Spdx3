@@ -3,8 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
-[method: SetsRequiredMembers]
-public class CreationInfo() : BaseSpdxClass
+public class CreationInfo : BaseSpdxClass
 {
     [JsonPropertyName("createdBy")]
     public IList<string> CreatedByAgentRefs { get; set; } = new List<string>();
@@ -13,7 +12,7 @@ public class CreationInfo() : BaseSpdxClass
     public string? Comment { get; set; }
 
     [JsonPropertyName("created")]
-    public DateTimeOffset Created { get; set; }
+    public DateTimeOffset? Created { get; set; }
 
     [JsonPropertyName("createdUsing")]
     public IList<string> CreatedUsingToolRefs { get; set; } = new List<string>();

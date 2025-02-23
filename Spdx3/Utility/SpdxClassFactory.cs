@@ -30,8 +30,29 @@ public class SpdxClassFactory
     
     public List<ISpdxClass> EverythingProduced { get; } = new List<ISpdxClass>();
 
+    public T New<T>(CreationInfo creationInfo) where T : Element
+    {
+        if (creationInfo == null)
+        {
+            throw new Spdx3Exception($"Element types require the CreationInfo parameter");
+        }
+
+        var result = NewItem<T>();
+        result.CreationInfoSpdxId = creationInfo.SpdxId;
+        return result;
+    }
 
     public T New<T>() where T : BaseSpdxClass
+    {
+        var classType = typeof(T);
+        if (classType.IsSubclassOf(typeof(Element)))
+        {
+            throw new Spdx3Exception($"Parameter of type {nameof(CreationInfo)} required when creating subclasses of {nameof(Element)} ");
+        }
+        return NewItem<T>();    
+    }
+
+    private T NewItem<T>() where T : BaseSpdxClass
     {
         var classType = typeof(T);
         if (classType.IsAbstract)

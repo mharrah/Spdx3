@@ -11,10 +11,10 @@ namespace Spdx3.Tests.Model.Core.Elements;
 /// </summary>
 public class BaseElementTest : BaseSpdxClassTest
 {
-    protected CreationInfo CreationInfo { get; }   
+    protected CreationInfo TestCreationInfo { get; }   
 
     protected BaseElementTest()
     {
-        this.CreationInfo = TestFactory.New<CreationInfo>();
+        this.TestCreationInfo = TestFactory.New<CreationInfo>();
     }
 }

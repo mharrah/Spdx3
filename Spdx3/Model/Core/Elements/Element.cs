@@ -1,28 +1,25 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Model.Core.Elements;
 
-
 public abstract class Element : BaseSpdxClass
 {
-    
     public Element()
     {
+        
     }
-    
+
     public Element(CreationInfo creationInfo)
     {
         CreationInfoSpdxId = creationInfo.SpdxId;
-        throw new NotImplementedException();
     }
 
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
-    
+
     [JsonPropertyName("creationInfo")]
-    public string CreationInfoSpdxId { get; set; }
+    public string? CreationInfoSpdxId { get; set; }
 
     [JsonPropertyName("description")]
     public string? Description { get; set; }
@@ -40,9 +37,12 @@ public abstract class Element : BaseSpdxClass
     public string? Summary { get; set; }
 
     /*
-    verifiedUsing	IntegrityMethod	0	*
+        verifiedUsing	IntegrityMethod	0	*
     */
-    
 
+    public new void Validate()
+    {
+        base.Validate();
+        ValidateRequiredProperty(nameof(CreationInfoSpdxId));
+    }
 }
-

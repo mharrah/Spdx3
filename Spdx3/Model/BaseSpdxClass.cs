@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+using Spdx3.Exceptions;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -42,6 +43,7 @@ public abstract class BaseSpdxClass : ISpdxClass
     /// <returns>A Json representation of this object</returns>
     public string ToJson()
     {
+        this.Validate();
         // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
         // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer,
         // and that's (clearly) not ok.
@@ -49,5 +51,25 @@ public abstract class BaseSpdxClass : ISpdxClass
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
         object o = (object)this;
         return JsonSerializer.Serialize<object>(o, Options);
+    }
+
+    public void Validate()
+    {
+        ValidateRequiredProperty(nameof(SpdxId));
+        ValidateRequiredProperty(nameof(Type));
+    }
+
+    protected void ValidateRequiredProperty(string propertyName)
+    {
+        var propVal = this.GetType().GetProperty(propertyName)?.GetValue(this);
+        if (propVal is null)
+        {
+            throw new Spdx3ValidationException(this, propertyName, "Field is required");
+        }
+
+        if (propVal is string && (propVal.ToString() == string.Empty))
+        {
+            throw new Spdx3ValidationException(this, propertyName, "Field is empty");
+        }
     }
 }

@@ -22,7 +22,7 @@ public class Relationship : Element
     public DateTimeOffset? EndTime { get; set; }
 
     [JsonPropertyName("from")]
-    public string FromElementSpdxId { get; set; }
+    public string? FromElementSpdxId { get; set; }
 
     [JsonPropertyName("to")]
     public IList<string> ToElementSpdxId { get; } = new List<string>();

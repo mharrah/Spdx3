@@ -9,5 +9,6 @@ namespace Spdx3.Tests.Model.Core.Elements;
 /// </summary>
 public class TestElement : Element
 {
+    
 }
 
