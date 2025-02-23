@@ -13,26 +13,26 @@ namespace Spdx3.Model.Core.Elements;
 
 public abstract class Artifact() : Element
 {
-
     [JsonPropertyName("builtTime")]
     public DateTimeOffset? BuiltTime { get; set; }
-
+    
     [JsonPropertyName("originatedBy")]
-    public IList<Agent> OriginatedBy { get; } = new List<Agent>();
-
+    public IList<string> OriginatedByAgentRef { get; set; } = new List<string>();
+    
     [JsonPropertyName("releaseTime")]
     public DateTimeOffset? ReleaseTime { get; set; }
-
+    
     [JsonPropertyName("standardName")]
-    public IList<string> StandardName { get; } = new List<string>();
-
+    public string? StandardName { get; set; }
+    
     [JsonPropertyName("suppliedBy")]
-    public Agent? SuppliedBy { get; set; }
-
+    public string? SuppliedByAgentRef { get; set; }
+    
     [JsonPropertyName("supportLevel")]
-    public IList<SupportType> SupportLevel { get; } = new List<SupportType>();
-
+    public IList<SupportType> SupportLevel { get; set; } = new List<SupportType>();
+    
     [JsonPropertyName("validUntilTime")]
     public DateTimeOffset? ValidUntilTime { get; set; }
+
 
 }

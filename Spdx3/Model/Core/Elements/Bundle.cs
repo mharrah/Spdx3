@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Utility;
 
@@ -11,5 +12,8 @@ namespace Spdx3.Model.Core.Elements;
 
 public class Bundle : ElementCollection
 {
+    [JsonPropertyName("context")]
+    public IList<string> Context { get; set; } = new List<string>();
+
     
 }

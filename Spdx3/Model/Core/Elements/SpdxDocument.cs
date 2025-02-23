@@ -15,4 +15,8 @@ public class SpdxDocument() : ElementCollection
 
     [JsonPropertyName("import")]
     public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
+    
+    // todo dataLicense
+    
+    // todo namespaceMap
 }

@@ -3,43 +3,49 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ElementCollectionTest : BaseElementTestClass
+public class BundleTest : BaseElementTestClass
 {
-    [Fact]
-    public void BrandNew_ElementCollection_SerializesProperly()
+        [Fact]
+    public void BrandNew_Bundle_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(this.TestCreationInfo);
+        var bundle = TestFactory.New<Bundle>(this.TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:402"
+                                  "type": "Bundle",
+                                  "spdxId": "urn:Bundle:402"
                                 }
                                 """;
         
         // Act
-        var json = elementCollection.ToJson();
+        var json = bundle.ToJson();
         
         // Assert
         Assert.Equal(expected, json);
     }
 
     [Fact]
-    public void FullyPopulated_ElementCollection_SerializesProperly()
+    public void FullyPopulated_Bundle_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(this.TestCreationInfo);
-        elementCollection.Comment = "TestComment";
-        elementCollection.Description = "TestDescription";
-        elementCollection.ElementRef.Add("testRef1");
-        elementCollection.ElementRef.Add("testRef2");
-        elementCollection.Name = "TestName";
-        elementCollection.RootElementRef.Add("testref");
-        elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
+        var bundle = TestFactory.New<Bundle>(this.TestCreationInfo);
+        bundle.Comment = "TestComment";
+        bundle.Context.Add("Some context");
+        bundle.Context.Add("More context");
+        bundle.Description = "TestDescription";
+        bundle.ElementRef.Add("testRef1");
+        bundle.ElementRef.Add("testRef2");
+        bundle.Name = "TestName";
+        bundle.RootElementRef.Add("testref");
+        bundle.ProfileConformance.Add(ProfileIdentifierType.security);
         
         const string expected = """
                                 {
+                                  "context": [
+                                    "Some context",
+                                    "More context"
+                                  ],
                                   "profileConformance": [
                                     "security"
                                   ],
@@ -54,15 +60,17 @@ public class ElementCollectionTest : BaseElementTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
-                                  "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:402"
+                                  "type": "Bundle",
+                                  "spdxId": "urn:Bundle:402"
                                 }
                                 """;
         
         // Act
-        var json = elementCollection.ToJson();
+        var json = bundle.ToJson();
         
         // Assert
         Assert.Equal(expected, json);
     }
+
+    
 }
