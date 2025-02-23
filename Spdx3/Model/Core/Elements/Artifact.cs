@@ -34,4 +34,5 @@ public abstract class Artifact() : Element
 
     [JsonPropertyName("validUntilTime")]
     public DateTimeOffset? ValidUntilTime { get; set; }
+
 }

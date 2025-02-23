@@ -21,8 +21,8 @@ public abstract class ElementCollection : Element
     ///     Yep, the spec says one to many root elements. Go figure.
     /// </summary>
     [JsonPropertyName("rootElement")]
-    public IList<Element> RootElement { get; } = new List<Element>();
+    public IList<string> RootElementRef { get; } = new List<string>();
 
     [JsonPropertyName("element")]
-    public IList<Element> Element { get; } = new List<Element>();
+    public IList<string> ElementRef { get; } = new List<string>();   
 }

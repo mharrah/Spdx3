@@ -71,5 +71,35 @@ public class ElementTest : BaseElementTestClass
         // Assert
         Assert.Equal(expected, json);
     }
+
+    [Fact]
+    public void TypeNew_Element_FailsValidation_Empty_SpdxId()
+    {
+        // Arrange
+        var element = TestFactory.New<TestElement>(this.TestCreationInfo);
+        element.SpdxId = string.Empty;
+        
+        // Act
+        var exception = Record.Exception(() => element.Validate());
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object TestElement, property SpdxId: Field is empty", exception.Message);
+    }
     
+    
+    [Fact]
+    public void TypeNew_Element_FailsValidation_Empty_Type()
+    {
+        // Arrange
+        var element = TestFactory.New<TestElement>(this.TestCreationInfo);
+        element.Type = string.Empty;
+        
+        // Act
+        var exception = Record.Exception(() => element.Validate());
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object TestElement, property Type: Field is empty", exception.Message);
+    }
 }
