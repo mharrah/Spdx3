@@ -14,5 +14,5 @@ in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
 [![GitHub License](https://img.shields.io/github/license/mharrah/Spdx3)]()
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mharrah/Spdx3/ci.yml)]()
-[![Github Actions Test Status](https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/cd49c6b261bc91582c29cf74b10c140e184c3707/badge.svg)]()
+[![Github Actions Test Status](https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/a6c9e3ce384b7f897f033824dc552603438438f9/badge.svg)]()
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/mharrah/Spdx3)]()
