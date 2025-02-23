@@ -12,12 +12,7 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class ElementCollection : Element
 {
-    [SetsRequiredMembers]
-    protected ElementCollection(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(
-        idFactory, elementType, creationInfo)
-    {
-    }
-
+    
     [JsonPropertyName("profileConformance")]
     public IList<ProfileIdentifierType> ProfileConformance { get; } = new List<ProfileIdentifierType>();
 

@@ -9,8 +9,4 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class ExternalMap : BaseSpdxClass
 {
-    [SetsRequiredMembers]
-    public ExternalMap(ISpdxIdFactory idFactory, string classType) : base(idFactory, classType)
-    {
-    }
 }

@@ -12,16 +12,6 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Artifact : Element
 {
-    [SetsRequiredMembers]
-    public Artifact(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Artifact", creationInfo)
-    {
-    }
-
-    [SetsRequiredMembers]
-    public Artifact(ISpdxIdFactory idFactory, string elementType, CreationInfo creationInfo) : base(idFactory,
-        elementType, creationInfo)
-    {
-    }
 
     [JsonPropertyName("builtTime")]
     public DateTimeOffset? BuiltTime { get; set; }

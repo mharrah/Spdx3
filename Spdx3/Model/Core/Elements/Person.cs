@@ -10,11 +10,4 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Person : Agent
 {
-    [SetsRequiredMembers]
-    public Person(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, creationInfo)
-    {
-        // Need to override the values created in the Agent class
-        Type = "Person";
-        SpdxId = idFactory.New(Type);
-    }
 }

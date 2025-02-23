@@ -10,8 +10,5 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Tool : Element
 {
-    [SetsRequiredMembers]
-    public Tool(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Tool", creationInfo)
-    {
-    }
+   
 }

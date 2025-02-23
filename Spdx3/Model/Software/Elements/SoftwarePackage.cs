@@ -6,8 +6,7 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Software.Elements;
 
 [method: SetsRequiredMembers]
-public class SoftwarePackage(ISpdxIdFactory idFactory, CreationInfo creationInfo)
-    : SoftwareArtifact(idFactory, "software_Package", creationInfo)
+public class SoftwarePackage: SoftwareArtifact
 {
     [JsonPropertyName("packageVersion")]
     public string? PackageVersion { get; set; }

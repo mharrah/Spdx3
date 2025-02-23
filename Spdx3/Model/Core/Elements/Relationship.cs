@@ -8,15 +8,7 @@ namespace Spdx3.Model.Core.Elements;
 
 public class Relationship : Element
 {
-    [SetsRequiredMembers]
-    public Relationship(ISpdxIdFactory idFactory, CreationInfo creationInfo, RelationshipType relationshipType,
-        Element fromElement, List<Element> toElements) : base(idFactory, "Relationship", creationInfo)
-    {
-        RelationshipType = relationshipType;
-        FromElementSpdxId = fromElement.SpdxId;
-        toElements.ForEach(e => ToElementSpdxId.Add(e.SpdxId));
-    }
-
+    
     [JsonPropertyName("relationshipType")]
     public RelationshipType RelationshipType { get; set; }
 

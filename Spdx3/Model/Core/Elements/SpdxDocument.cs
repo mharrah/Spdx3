@@ -11,11 +11,6 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class SpdxDocument : ElementCollection
 {
-    [SetsRequiredMembers]
-    protected SpdxDocument(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "SpdxDocument",
-        creationInfo)
-    {
-    }
 
     [JsonPropertyName("import")]
     public IList<ExternalMap> Import { get; } = new List<ExternalMap>();

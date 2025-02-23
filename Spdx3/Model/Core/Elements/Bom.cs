@@ -10,11 +10,5 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Bom : Bundle
 {
-    [SetsRequiredMembers]
-    protected Bom(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, creationInfo)
-    {
-        // Need to override the values created in the Bundle class
-        Type = "Bom";
-        SpdxId = idFactory.New(Type);
-    }
+    
 }

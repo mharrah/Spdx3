@@ -10,9 +10,5 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class IndividualElement : Element
 {
-    [SetsRequiredMembers]
-    public IndividualElement(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "IndividualElement",
-        creationInfo)
-    {
-    }
+
 }

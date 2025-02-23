@@ -9,14 +9,6 @@ namespace Spdx3.Model.Software.Elements;
 
 public class Sbom : Bom
 {
-    [SetsRequiredMembers]
-    public Sbom(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, creationInfo)
-    {
-        // Need to override the values created in the Bom class
-        Type = "Sbom";
-        SpdxId = idFactory.New(Type);
-    }
-
     [JsonPropertyName("sbomType")]
     public IList<SbomType> SbomType { get; } = new List<SbomType>();
 }

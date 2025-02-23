@@ -1,9 +1,8 @@
-using Spdx3.Tests.Model;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Utility;
 
-public class SpdxIdFactoryTest : BaseElementTestClass
+public class SpdxIdFactoryTest 
 {
     [Fact]
     public void SpdxIdFactory_NewGeneratesId()
@@ -12,6 +11,15 @@ public class SpdxIdFactoryTest : BaseElementTestClass
         var id = spdxIdFactory.New("test");
         Assert.NotNull(id);
         Assert.Matches("urn:test:[0-9a-f]{3}", id);
+    }
+
+    [Fact]
+    public void SpdxIdFactory_NewGeneratesAnother()
+    {
+        var spdxIdFactory = new SpdxIdFactory();
+        var id = spdxIdFactory.New("another");
+        Assert.NotNull(id);
+        Assert.Matches("urn:another:[0-9a-f]{3}", id);
     }
 
     [Fact]

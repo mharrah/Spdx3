@@ -10,8 +10,4 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Agent : Element
 {
-    [SetsRequiredMembers]
-    public Agent(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Agent", creationInfo)
-    {
-    }
 }

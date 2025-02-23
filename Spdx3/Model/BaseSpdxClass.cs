@@ -12,8 +12,18 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseSpdxClass
+public abstract class BaseSpdxClass : ISpdxClass
 {
+    public SpdxClassFactory? CreatedByFactory { get; set; }
+    
+    public required string Type { get; set; }
+
+    public required string SpdxId { get; set; }
+
+    protected BaseSpdxClass()
+    {
+    }
+    
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
@@ -22,20 +32,7 @@ public abstract class BaseSpdxClass
             Modifiers = { IgnoreEmptyCollections.Modifier }
         }
     };
-
-    [SetsRequiredMembers]
-    protected BaseSpdxClass(ISpdxIdFactory idFactory, string classType)
-    {
-        Type = classType;
-        SpdxId = idFactory.New(Type);
-    }
-
-    [JsonPropertyName("type")]
-    public required string Type { get; init; }
-
-    [JsonPropertyName("spdxId")]
-    public required string SpdxId { get; init; }
-
+    
     /// <summary>
     ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
     ///     for SPDX files.
@@ -45,6 +42,6 @@ public abstract class BaseSpdxClass
     {
         // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
         // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer, and that's (clearly) not ok.
-        return JsonSerializer.Serialize<object>(this, Options);
+        return JsonSerializer.Serialize<object>(Convert.ChangeType(this, typeof(object)), Options);
     }
 }

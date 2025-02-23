@@ -10,11 +10,5 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class SoftwareAgent : Agent
 {
-    [SetsRequiredMembers]
-    public SoftwareAgent(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, creationInfo)
-    {
-        // Need to override the values created in the Agent class
-        Type = "SoftwareAgent";
-        SpdxId = idFactory.New(Type);
-    }
+    
 }

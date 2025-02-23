@@ -10,8 +10,5 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Bundle : ElementCollection
 {
-    [SetsRequiredMembers]
-    protected Bundle(ISpdxIdFactory idFactory, CreationInfo creationInfo) : base(idFactory, "Bundle", creationInfo)
-    {
-    }
+    
 }
