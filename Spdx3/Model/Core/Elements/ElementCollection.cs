@@ -10,6 +10,7 @@ namespace Spdx3.Model.Core.Elements;
 ///     A collection of Elements, not necessarily with unifying context.  An intermediate (abstract/base) class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ElementCollection/
 /// </summary>
+
 public abstract class ElementCollection : Element
 {
     

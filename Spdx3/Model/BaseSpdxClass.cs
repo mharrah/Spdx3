@@ -14,16 +14,18 @@ namespace Spdx3.Model;
 /// </summary>
 public abstract class BaseSpdxClass : ISpdxClass
 {
+    [JsonIgnore]
     public SpdxClassFactory? CreatedByFactory { get; set; }
     
-    public required string Type { get; set; }
+    [JsonPropertyName("type")]
+    public string Type { get; set; } = string.Empty;
 
-    public required string SpdxId { get; set; }
+    [JsonPropertyName("spdxId")]
+    public string SpdxId { get; set; } = string.Empty;
 
-    protected BaseSpdxClass()
-    {
-    }
-    
+    /// <summary>
+    /// Serialization options
+    /// </summary>
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
@@ -41,7 +43,11 @@ public abstract class BaseSpdxClass : ISpdxClass
     public string ToJson()
     {
         // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
-        // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer, and that's (clearly) not ok.
-        return JsonSerializer.Serialize<object>(Convert.ChangeType(this, typeof(object)), Options);
+        // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer,
+        // and that's (clearly) not ok.
+        
+        // ReSharper disable once SuggestVarOrType_BuiltInTypes
+        object o = (object)this;
+        return JsonSerializer.Serialize<object>(o, Options);
     }
 }

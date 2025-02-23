@@ -9,7 +9,8 @@ namespace Spdx3.Model.Core.Elements;
 ///     A collection of SPDX Elements that could potentially be serialized.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/SpdxDocument/
 /// </summary>
-public class SpdxDocument : ElementCollection
+
+public class SpdxDocument() : ElementCollection
 {
 
     [JsonPropertyName("import")]

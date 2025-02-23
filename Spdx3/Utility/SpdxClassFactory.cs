@@ -8,24 +8,32 @@ namespace Spdx3.Utility;
 
 public class SpdxClassFactory
 {
+    /// <summary>
+    /// Default no-arg constructor.
+    /// </summary>
+    public SpdxClassFactory()
+    {
+    }
+
+    /// <summary>
+    /// Constructor that takes a creation date
+    /// </summary>
+    /// <param name="creationDate">The date to stomp on everything this factory creates</param>
+    public SpdxClassFactory(DateTimeOffset creationDate)
+    {
+        CreationDate = creationDate;
+    }
+
     private SpdxIdFactory IdFactory { get; set; } = new();
     
     public DateTimeOffset CreationDate { get; set; } = DateTimeOffset.Now;
+    
+    public List<ISpdxClass> EverythingProduced { get; } = new List<ISpdxClass>();
 
-    public ISpdxClass NewClass(System.Type classType)
+
+    public T New<T>() where T : BaseSpdxClass
     {
-        var nameOfInterface = typeof(ISpdxClass).FullName;
-        if (null == nameOfInterface)
-        {   
-            throw new Spdx3Exception($"The Type for interface ISpdxClass could not be determined from reflection");
-        }
-
-        var interfaceType = classType.GetInterface(nameOfInterface);
-        if (null == interfaceType)
-        {
-            throw new Spdx3Exception($"The classType value of '{classType.Name}' does not implement ISpdxClass");
-        }
-
+        var classType = typeof(T);
         if (classType.IsAbstract)
         {
             throw new Spdx3Exception("The classType value of '" + classType.Name + "' is abstract and cannot be instantiated");
@@ -37,7 +45,7 @@ public class SpdxClassFactory
             throw new Spdx3Exception($"An instance of of '{classType.Name}' could not be created");
         }
 
-        var result = (BaseSpdxClass)Convert.ChangeType(c, classType);
+        var result = (T)Convert.ChangeType(c, classType);
         result.Type = classType.Name;
         result.SpdxId = IdFactory.New(result.Type);
         result.CreatedByFactory = this;
@@ -51,35 +59,8 @@ public class SpdxClassFactory
             info.Created = this.CreationDate;
         }
         
+        EverythingProduced.Add(result);
         return result;
     }
-
-    public Element NewElement(System.Type elementType, CreationInfo creationInfo)
-    {
-        if (!elementType.IsSubclassOf(typeof(Element)))
-        {
-            throw new Spdx3Exception($"The type {elementType.Name} is not a subclass of Element");
-        }
-
-        if (elementType.IsAbstract)
-        {
-            throw new Spdx3Exception("The classType value of '" + elementType.Name + "' is abstract and cannot be instantiated");
-        }
-        
-        var c = Activator.CreateInstance(elementType);
-        if (c == null)
-        {
-            throw new Spdx3Exception($"An instance of of '{elementType.Name}' could not be created");
-        }
-
-        var result = (Element)Convert.ChangeType(c, elementType);
-        result.Type = elementType.Name;
-        result.SpdxId = IdFactory.New(result.Type);
-        result.CreatedByFactory = this;
-        result.CreationInfoSpdxId = creationInfo.SpdxId;
-        
-        return result;
-    }   
-
 
 }

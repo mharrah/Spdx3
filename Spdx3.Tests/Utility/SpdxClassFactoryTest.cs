@@ -17,7 +17,7 @@ public class SpdxClassFactoryTest
         const string firstSpdxIdNumber = "3f5";
         
         // Act
-        var creationInfo = factory.NewClass(typeof(CreationInfo));
+        var creationInfo = factory.New<CreationInfo>();
         
         // Assert
         Assert.NotNull(creationInfo);
@@ -35,12 +35,18 @@ public class SpdxClassFactoryTest
         const string firstSpdxId = "urn:CreationInfo:3f5";
         
         // Act
-        var creationInfo1 = factory1.NewClass(typeof(CreationInfo));
-        var creationInfo2 = factory2.NewClass(typeof(CreationInfo));
+        var creationInfo1 = factory1.New<CreationInfo>();
+        var creationInfo2 = factory2.New<CreationInfo>();
         
         // Assert
         Assert.Equal(creationInfo1.SpdxId, creationInfo2.SpdxId);
-        Assert.Equal(firstSpdxId, creationInfo2.SpdxId);
+        
+        Assert.Single(factory1.EverythingProduced);
+        Assert.Contains(creationInfo1, factory1.EverythingProduced);
+        Assert.Equal(firstSpdxId, creationInfo1.SpdxId);
+
+        Assert.Single(factory2.EverythingProduced);
+        Assert.Contains(creationInfo2, factory2.EverythingProduced);
         Assert.Equal(firstSpdxId, creationInfo2.SpdxId);
     }
     
@@ -53,12 +59,18 @@ public class SpdxClassFactoryTest
         const string firstSpdxId = "urn:CreationInfo:3f5";
         
         // Act
-        var creationInfo1 = factory.NewClass(typeof(CreationInfo));
-        var creationInfo2 = factory.NewClass(typeof(CreationInfo));
+        var creationInfo1 = factory.New<CreationInfo>();
+        var creationInfo2 = factory.New<CreationInfo>();
         
         // Assert
         Assert.NotEqual(creationInfo1.SpdxId, creationInfo2.SpdxId);
+        
+        Assert.Equal(2, factory.EverythingProduced.Count);
+        
+        Assert.Contains(creationInfo1, factory.EverythingProduced);
         Assert.Equal(firstSpdxId, creationInfo1.SpdxId);
+        
+        Assert.Contains(creationInfo2, factory.EverythingProduced);
         Assert.NotEqual(firstSpdxId, creationInfo2.SpdxId);
     }
     

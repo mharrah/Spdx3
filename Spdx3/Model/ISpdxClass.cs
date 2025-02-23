@@ -6,10 +6,8 @@ namespace Spdx3.Model;
 
 public interface ISpdxClass
 {
-    [JsonPropertyName("type")]
     public string Type { get; internal set; }
 
-    [JsonPropertyName("spdxId")]
     public string SpdxId { get; internal set; }
     
     

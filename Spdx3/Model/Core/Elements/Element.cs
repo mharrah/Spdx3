@@ -4,13 +4,25 @@ using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Model.Core.Elements;
 
+
 public abstract class Element : BaseSpdxClass
 {
+    
+    public Element()
+    {
+    }
+    
+    public Element(CreationInfo creationInfo)
+    {
+        CreationInfoSpdxId = creationInfo.SpdxId;
+        throw new NotImplementedException();
+    }
+
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
     
     [JsonPropertyName("creationInfo")]
-    public required string CreationInfoSpdxId { get; set; }
+    public string CreationInfoSpdxId { get; set; }
 
     [JsonPropertyName("description")]
     public string? Description { get; set; }

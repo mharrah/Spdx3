@@ -7,8 +7,9 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Elements;
 
-[method: SetsRequiredMembers]
-public abstract class SoftwareArtifact : Artifact
+
+
+public abstract class SoftwareArtifact() : Artifact
 {
     [JsonPropertyName("copyrightText")]
     public string? CopyrightText;

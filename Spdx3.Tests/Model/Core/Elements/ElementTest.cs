@@ -9,7 +9,7 @@ public class ElementTest : BaseElementTest
     public void BrandNew_Element_HasRequiredFields()
     {
         // Arrange
-        var element = Factory.NewElement(typeof(TestElement), this.CreationInfo);
+        var element = TestFactory.New<TestElement>();
         
         // Assert
         Assert.Equal("TestElement", element.Type);
