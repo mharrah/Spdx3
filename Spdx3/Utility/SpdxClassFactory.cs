@@ -1,7 +1,7 @@
-using System.Reflection;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Elements;
+using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Utility;
@@ -30,11 +30,23 @@ public class SpdxClassFactory
     
     public List<ISpdxClass> EverythingProduced { get; } = new List<ISpdxClass>();
 
+    public T New<T>(CreationInfo creationInfo, AnnotationType annotationType, Element subject) where T : Annotation
+    {
+        var result = NewItem<T>();
+        result.CreationInfoSpdxId = creationInfo.SpdxId;
+        result.AnnotationType = annotationType;
+        result.SubjectRef = subject.SpdxId;
+        return result;
+    }
+
     public T New<T>(CreationInfo creationInfo) where T : Element
     {
-        if (creationInfo == null)
+        var classType = typeof(T);
+        if (classType == typeof(Annotation) || classType.IsSubclassOf(typeof(Annotation)))
         {
-            throw new Spdx3Exception($"Element types require the CreationInfo parameter");
+            throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, "+
+                                     $"{nameof(AnnotationType)}, and {nameof(Element)} are required "+
+                                     $"when creating instances of {nameof(Annotation)} or its subclasses");
         }
 
         var result = NewItem<T>();
@@ -45,7 +57,7 @@ public class SpdxClassFactory
     public T New<T>() where T : BaseSpdxClass
     {
         var classType = typeof(T);
-        if (classType.IsSubclassOf(typeof(Element)))
+        if (classType == typeof(Element) || classType.IsSubclassOf(typeof(Element)))
         {
             throw new Spdx3Exception($"Parameter of type {nameof(CreationInfo)} required when creating subclasses of {nameof(Element)}");
         }
