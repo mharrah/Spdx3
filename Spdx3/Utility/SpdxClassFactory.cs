@@ -3,6 +3,7 @@ using Spdx3.Model;
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.Elements;
 
 namespace Spdx3.Utility;
 
@@ -29,7 +30,18 @@ public class SpdxClassFactory
     public DateTimeOffset CreationDate { get; set; } = DateTimeOffset.Now;
     
     public List<ISpdxClass> EverythingProduced { get; } = new List<ISpdxClass>();
+    
+    public T New<T>(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element>to) where T : Relationship
+    {
+        var result = NewItem<T>();
+        result.CreationInfoSpdxId = creationInfo.SpdxId;
+        result.RelationshipType = relationshipType;
+        result.FromRef = from.SpdxId;
+        to.ForEach(t => result.ToRef.Add(t.SpdxId));
+        return result;
+    }
 
+    
     public T New<T>(CreationInfo creationInfo, AnnotationType annotationType, Element subject) where T : Annotation
     {
         var result = NewItem<T>();
@@ -42,11 +54,19 @@ public class SpdxClassFactory
     public T New<T>(CreationInfo creationInfo) where T : Element
     {
         var classType = typeof(T);
+        // If the caller wants an Annotation, they need to use the other method
         if (classType == typeof(Annotation) || classType.IsSubclassOf(typeof(Annotation)))
         {
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, "+
                                      $"{nameof(AnnotationType)}, and {nameof(Element)} are required "+
                                      $"when creating instances of {nameof(Annotation)} or its subclasses");
+        }
+        // If the caller wants an Relationship, they need to use the other method
+        if (classType == typeof(Relationship) || classType.IsSubclassOf(typeof(Relationship)))
+        {
+            throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, {nameof(RelationshipType)}, "+
+                                     $"{nameof(Element)}, and List<{nameof(Element)}> are required "+
+                                     $"when creating instances of {nameof(Relationship)} or its subclasses");
         }
 
         var result = NewItem<T>();

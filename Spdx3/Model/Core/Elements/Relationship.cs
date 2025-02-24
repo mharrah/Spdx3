@@ -1,29 +1,38 @@
-﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using Spdx3.Exceptions;
+using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
-using Spdx3.Model.Core.NonElements;
-using Spdx3.Utility;
 
-namespace Spdx3.Model.Core.Elements;
+namespace Spdx3.Tests.Model.Core.Elements;
 
 public class Relationship : Element
 {
-    
-    [JsonPropertyName("relationshipType")]
-    public RelationshipType RelationshipType { get; set; }
+    [JsonPropertyName("from")]
+    public string? FromRef { get; set; }
 
+    [JsonPropertyName("to")]
+    public IList<string> ToRef { get; set; } = new List<string>();
+
+    [JsonPropertyName("relationshipType")]
+    public RelationshipType? RelationshipType { get; set; }
+    
     [JsonPropertyName("completeness")]
     public RelationshipCompleteness? Completeness { get; set; }
-
+    
     [JsonPropertyName("startTime")]
     public DateTimeOffset? StartTime { get; set; }
-
+    
     [JsonPropertyName("endTime")]
     public DateTimeOffset? EndTime { get; set; }
 
-    [JsonPropertyName("from")]
-    public string? FromElementSpdxId { get; set; }
-
-    [JsonPropertyName("to")]
-    public IList<string> ToElementSpdxId { get; } = new List<string>();
+    public new void Validate()
+    {
+        base.Validate();
+        ValidateRequiredProperty(nameof(FromRef));
+        if (ToRef.Count == 0)
+        {
+            throw new Spdx3ValidationException(this, nameof(ToRef), "Cannot be empty");
+        }
+        ValidateRequiredProperty(nameof(RelationshipType));
+    }
 }

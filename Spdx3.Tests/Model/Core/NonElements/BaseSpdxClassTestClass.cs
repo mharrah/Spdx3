@@ -8,7 +8,7 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 /// </summary>
 public class BaseSpdxClassTestClass
 {
-    private static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
+    protected static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
 
     protected BaseSpdxClassTestClass()
     {
