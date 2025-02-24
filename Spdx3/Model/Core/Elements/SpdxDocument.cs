@@ -17,7 +17,7 @@ public class SpdxDocument() : ElementCollection
     public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
     
     [JsonPropertyName("dataLicense")]
-    public string? DataLicense { get; set; }
+    public string? DataLicenseRef { get; set; }
 
     [JsonPropertyName("namespaceMap")]
     public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();

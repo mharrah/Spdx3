@@ -3,6 +3,10 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Model.Core.Elements;
 
+/// <summary>
+/// An assertion made in relation to one or more elements.
+/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Annotation/
+/// </summary>
 public class Annotation : Element
 {
     [JsonPropertyName("subject")]

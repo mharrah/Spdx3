@@ -5,6 +5,10 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
+/// <summary>
+/// Describes a relationship between one or more elements.
+/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
+/// </summary>
 public class Relationship : Element
 {
     [JsonPropertyName("from")]

@@ -6,7 +6,7 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class ExternalMapTest : BaseSpdxClassTestClass
 {
-       [Fact]
+    [Fact]
     public void ExternalMap_Basics()
     {
         // Arrange

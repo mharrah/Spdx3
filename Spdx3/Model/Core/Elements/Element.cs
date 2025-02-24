@@ -3,6 +3,10 @@ using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Model.Core.Elements;
 
+/// <summary>
+/// Base domain class from which all other SPDX-3.0 domain classes derive
+/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Element/
+/// </summary>
 public abstract class Element : BaseSpdxClass
 {
     public Element()

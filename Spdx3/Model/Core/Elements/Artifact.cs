@@ -10,7 +10,6 @@ namespace Spdx3.Model.Core.Elements;
 ///     A distinct article or unit within the digital domain.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Artifact/
 /// </summary>
-
 public abstract class Artifact() : Element
 {
     [JsonPropertyName("builtTime")]
