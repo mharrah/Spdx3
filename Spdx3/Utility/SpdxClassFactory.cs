@@ -54,11 +54,13 @@ public class SpdxClassFactory
     public T New<T>(CreationInfo creationInfo) where T : Element
     {
         var classType = typeof(T);
+
         // If the caller wants an Annotation, they need to use the other method
         if (classType == typeof(Annotation) || classType.IsSubclassOf(typeof(Annotation)))
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, " +
                                      $"{nameof(AnnotationType)}, and {nameof(Element)} are required " +
                                      $"when creating instances of {nameof(Annotation)} or its subclasses");
+
         // If the caller wants a Relationship, they need to use the other method
         if (classType == typeof(Relationship) || classType.IsSubclassOf(typeof(Relationship)))
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, {nameof(RelationshipType)}, " +
