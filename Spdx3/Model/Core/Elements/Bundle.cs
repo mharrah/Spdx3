@@ -9,5 +9,5 @@ namespace Spdx3.Model.Core.Elements;
 public class Bundle : ElementCollection
 {
     [JsonPropertyName("context")]
-    public IList<string> Context { get; set; } = new List<string>();
+    public IList<string> Context { get; } = new List<string>();
 }

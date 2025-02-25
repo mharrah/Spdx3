@@ -28,7 +28,7 @@ public class SpdxClassFactory
 
     public DateTimeOffset CreationDate { get; set; } = DateTimeOffset.Now;
 
-    public List<BaseSpdxClass> EverythingProduced { get; } = new();
+    public List<BaseSpdxClass> EverythingProduced { get; } = [];
 
     public T New<T>(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to)
         where T : Relationship

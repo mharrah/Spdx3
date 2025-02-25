@@ -53,7 +53,7 @@ public abstract class BaseSpdxClass
         return JsonSerializer.Serialize<object>(o, Options);
     }
 
-    public void Validate()
+    protected void Validate()
     {
         ValidateRequiredProperty(nameof(SpdxId));
         ValidateRequiredProperty(nameof(Type));

@@ -16,7 +16,7 @@ public class PackageVerificationCode : IntegrityMethod
     public string? HashValue { get; set; }
 
     [JsonPropertyName("packageVerificationCodeExcludedFile")]
-    public IList<string> PackageVerificationCodeExcludedFile { get; set; } = new List<string>();
+    public IList<string> PackageVerificationCodeExcludedFile { get; } = new List<string>();
 
     public new void Validate()
     {

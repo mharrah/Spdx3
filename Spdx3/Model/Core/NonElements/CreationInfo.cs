@@ -9,7 +9,7 @@ namespace Spdx3.Model.Core.NonElements;
 public class CreationInfo : BaseSpdxClass
 {
     [JsonPropertyName("createdBy")]
-    public IList<string> CreatedByAgentRefs { get; set; } = new List<string>();
+    public IList<string> CreatedByAgentRefs { get;  } = new List<string>();
 
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
@@ -18,7 +18,7 @@ public class CreationInfo : BaseSpdxClass
     public DateTimeOffset? Created { get; set; }
 
     [JsonPropertyName("createdUsing")]
-    public IList<string> CreatedUsingToolRefs { get; set; } = new List<string>();
+    public IList<string> CreatedUsingToolRefs { get; } = new List<string>();
 
     /*
     createdBy	Agent	1	*

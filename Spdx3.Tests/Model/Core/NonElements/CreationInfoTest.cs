@@ -25,8 +25,10 @@ public class CreationInfoTest
     public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var factory = new SpdxClassFactory();
-        factory.CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero);
+        var factory = new SpdxClassFactory
+        {
+            CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero)
+        };
 
         // Act
         var creationInfo = factory.New<CreationInfo>();
@@ -60,8 +62,10 @@ public class CreationInfoTest
     public void CreationInfo_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var factory = new SpdxClassFactory();
-        factory.CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero);
+        var factory = new SpdxClassFactory
+        {
+            CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero)
+        };
 
         // Act
         var creationInfo = factory.New<CreationInfo>();

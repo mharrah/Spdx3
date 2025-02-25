@@ -18,7 +18,7 @@ public class ExternalMap : BaseSpdxClass
     public string? LocationHint { get; set; }
 
     [JsonPropertyName("verifiedUsing")]
-    public IList<string> VerifiedUsingRef { get; set; } = new List<string>();
+    public IList<string> VerifiedUsingRef { get; } = new List<string>();
 
     public new void Validate()
     {

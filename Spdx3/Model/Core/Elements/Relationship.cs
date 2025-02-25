@@ -14,7 +14,7 @@ public class Relationship : Element
     public string? FromRef { get; set; }
 
     [JsonPropertyName("to")]
-    public IList<string> ToRef { get; set; } = new List<string>();
+    public IList<string> ToRef { get; init; } = new List<string>();
 
     [JsonPropertyName("relationshipType")]
     public RelationshipType? RelationshipType { get; set; }
