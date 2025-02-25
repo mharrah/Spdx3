@@ -10,31 +10,31 @@ public class CreationInfoTest
     {
         // Arrange
         var factory = new SpdxClassFactory();
-        
+
         // Act
         var creationInfo = factory.New<CreationInfo>();
-        
+
         // Assert
         Assert.NotNull(creationInfo);
         Assert.IsType<CreationInfo>(creationInfo);
         Assert.Equal("CreationInfo", creationInfo.Type);
         Assert.Equal("urn:CreationInfo:3f5", creationInfo.SpdxId);
     }
-    
+
     [Fact]
     public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
         var factory = new SpdxClassFactory();
         factory.CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero);
-        
+
         // Act
         var creationInfo = factory.New<CreationInfo>();
         creationInfo.Comment = "Test comment";
         creationInfo.CreatedByAgentRefs.Add("testref");
         creationInfo.CreatedUsingToolRefs.Add("testref");
-        
-        
+
+
         // Assert
         var expected = """
                        {
@@ -55,14 +55,14 @@ public class CreationInfoTest
         Assert.Equal(expected, json);
     }
 
-        
+
     [Fact]
     public void CreationInfo_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
         var factory = new SpdxClassFactory();
         factory.CreationDate = new DateTimeOffset(2025, 02, 23, 1, 23, 45, 0, TimeSpan.Zero);
-        
+
         // Act
         var creationInfo = factory.New<CreationInfo>();
 
@@ -78,5 +78,4 @@ public class CreationInfoTest
         var json = creationInfo.ToJson();
         Assert.Equal(expected, json);
     }
-
 }

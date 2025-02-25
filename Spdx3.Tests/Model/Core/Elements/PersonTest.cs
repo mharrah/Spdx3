@@ -8,7 +8,7 @@ public class PersonTest : BaseElementTestClass
     public void BrandNew_Person_SerializesProperly()
     {
         // Arrange
-        var pPerson = TestFactory.New<Person>(this.TestCreationInfo);
+        var pPerson = TestFactory.New<Person>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -16,10 +16,10 @@ public class PersonTest : BaseElementTestClass
                                   "spdxId": "urn:Person:402"
                                 }
                                 """;
-        
+
         // Act
         var json = pPerson.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -28,11 +28,11 @@ public class PersonTest : BaseElementTestClass
     public void FullyPopulated_Person_SerializesProperly()
     {
         // Arrange
-        var person = TestFactory.New<Person>(this.TestCreationInfo);
+        var person = TestFactory.New<Person>(TestCreationInfo);
         person.Comment = "TestComment";
         person.Description = "TestDescription";
         person.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -43,10 +43,10 @@ public class PersonTest : BaseElementTestClass
                                   "spdxId": "urn:Person:402"
                                 }
                                 """;
-        
+
         // Act
         var json = person.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

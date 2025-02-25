@@ -10,7 +10,7 @@ public class NamespaceMap : BaseSpdxClass
 {
     [JsonPropertyName("prefix")]
     public string? Prefix { get; set; }
-    
+
     [JsonPropertyName("namespace")]
     public string? Namespace { get; set; }
 

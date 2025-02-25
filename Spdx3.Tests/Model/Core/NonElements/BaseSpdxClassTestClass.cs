@@ -16,5 +16,4 @@ public class BaseSpdxClassTestClass
     }
 
     protected SpdxClassFactory TestFactory { get; } = new();
-    
 }

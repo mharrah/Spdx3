@@ -4,16 +4,16 @@ using Spdx3.Utility;
 namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class NamespaceMapTest : BaseSpdxClassTestClass
-{ 
+{
     [Fact]
     public void NamespaceMap_Basics()
     {
         // Arrange
         var factory = new SpdxClassFactory();
-        
+
         // Act
         var namespaceMap = factory.New<NamespaceMap>();
-        
+
         // Assert
         Assert.NotNull(namespaceMap);
         Assert.IsType<NamespaceMap>(namespaceMap);
@@ -36,25 +36,26 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
                          "spdxId": "urn:NamespaceMap:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = namespaceMap.ToJson();        
-        
+        var json = namespaceMap.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
-    
+
     [Fact]
     public void NamespaceMap_FailsValidation_WhenMissing_Prefix()
     {
         // Arrange
         var namespaceMap = TestFactory.New<NamespaceMap>();
-        namespaceMap.Prefix = null;;
+        namespaceMap.Prefix = null;
+        ;
         namespaceMap.Namespace = "TestNamespace";
 
         //  Act
         var exception = Record.Exception(() => namespaceMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object NamespaceMap, property Prefix: Field is required", exception.Message);
@@ -70,7 +71,7 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => namespaceMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object NamespaceMap, property Prefix: Field is empty", exception.Message);
@@ -86,7 +87,7 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => namespaceMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object NamespaceMap, property Namespace: Field is required", exception.Message);
@@ -102,12 +103,9 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => namespaceMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object NamespaceMap, property Namespace: Field is empty", exception.Message);
     }
-
-    
-
 }

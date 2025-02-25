@@ -16,10 +16,10 @@ public class ExternalIdentifierTypeTest
     {
         // Arrange
         const ExternalIdentifierType enumVal = ExternalIdentifierType.securityOther;
-        
+
         // Act
         var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
-        
+
         // Assert
         Assert.Equal("\"securityOther\"", json);
     }
@@ -42,14 +42,14 @@ public class ExternalIdentifierTypeTest
             ExternalIdentifierType.swid,
             ExternalIdentifierType.urlScheme
         };
-        
+
         // Act
-        var json = JsonSerializer.Serialize<object>((object) enumArray);
+        var json = JsonSerializer.Serialize<object>((object)enumArray);
 
         const string expected = """
                                 ["cpe22","cpe23","cve","email","gitoid","other","packageUrl","securityOther","swhid","swid","urlScheme"]
                                 """;
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

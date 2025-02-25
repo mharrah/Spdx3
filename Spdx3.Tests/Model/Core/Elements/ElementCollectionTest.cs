@@ -9,7 +9,7 @@ public class ElementCollectionTest : BaseElementTestClass
     public void BrandNew_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(this.TestCreationInfo);
+        var elementCollection = TestFactory.New<TestElementCollection>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -17,10 +17,10 @@ public class ElementCollectionTest : BaseElementTestClass
                                   "spdxId": "urn:TestElementCollection:402"
                                 }
                                 """;
-        
+
         // Act
         var json = elementCollection.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -29,7 +29,7 @@ public class ElementCollectionTest : BaseElementTestClass
     public void FullyPopulated_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(this.TestCreationInfo);
+        var elementCollection = TestFactory.New<TestElementCollection>(TestCreationInfo);
         elementCollection.Comment = "TestComment";
         elementCollection.Description = "TestDescription";
         elementCollection.ElementRef.Add("testRef1");
@@ -37,7 +37,7 @@ public class ElementCollectionTest : BaseElementTestClass
         elementCollection.Name = "TestName";
         elementCollection.RootElementRef.Add("testref");
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
-        
+
         const string expected = """
                                 {
                                   "profileConformance": [
@@ -58,10 +58,10 @@ public class ElementCollectionTest : BaseElementTestClass
                                   "spdxId": "urn:TestElementCollection:402"
                                 }
                                 """;
-        
+
         // Act
         var json = elementCollection.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

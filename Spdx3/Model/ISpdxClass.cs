@@ -9,7 +9,7 @@ public interface ISpdxClass
     public string Type { get; internal set; }
 
     public string SpdxId { get; internal set; }
-    
+
     /// <summary>Returns the object as a JSON string, with the sort of formatting that's typical/expected for SPDX files.</summary>
     /// <returns>A Json representation of this object</returns>
     public string ToJson();
@@ -23,5 +23,4 @@ public interface ISpdxClass
     /// In subclasses, override this method, and do validations, throwing Spdx3ValidationExceptions for problems
     /// </summary>
     public void Validate();
-  
 }

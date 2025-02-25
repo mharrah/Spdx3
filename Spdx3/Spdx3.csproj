@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Model\Software\Elements\" />
+        <Folder Include="Model\Software\Elements\"/>
     </ItemGroup>
 
 </Project>

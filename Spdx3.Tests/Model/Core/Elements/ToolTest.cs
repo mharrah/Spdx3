@@ -8,7 +8,7 @@ public class ToolTest : BaseElementTestClass
     public void BrandNew_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = TestFactory.New<Tool>(this.TestCreationInfo);
+        var tool = TestFactory.New<Tool>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -16,10 +16,10 @@ public class ToolTest : BaseElementTestClass
                                   "spdxId": "urn:Tool:402"
                                 }
                                 """;
-        
+
         // Act
         var json = tool.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -28,11 +28,11 @@ public class ToolTest : BaseElementTestClass
     public void FullyPopulated_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = TestFactory.New<Tool>(this.TestCreationInfo);
+        var tool = TestFactory.New<Tool>(TestCreationInfo);
         tool.Comment = "TestComment";
         tool.Description = "TestDescription";
         tool.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -43,10 +43,10 @@ public class ToolTest : BaseElementTestClass
                                   "spdxId": "urn:Tool:402"
                                 }
                                 """;
-        
+
         // Act
         var json = tool.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

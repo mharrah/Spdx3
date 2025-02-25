@@ -8,7 +8,7 @@ public class OrganizationTest : BaseElementTestClass
     public void BrandNew_Organization_SerializesProperly()
     {
         // Arrange
-        var org = TestFactory.New<Organization>(this.TestCreationInfo);
+        var org = TestFactory.New<Organization>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -16,10 +16,10 @@ public class OrganizationTest : BaseElementTestClass
                                   "spdxId": "urn:Organization:402"
                                 }
                                 """;
-        
+
         // Act
         var json = org.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -28,11 +28,11 @@ public class OrganizationTest : BaseElementTestClass
     public void FullyPopulated_Organization_SerializesProperly()
     {
         // Arrange
-        var org = TestFactory.New<Organization>(this.TestCreationInfo);
+        var org = TestFactory.New<Organization>(TestCreationInfo);
         org.Comment = "TestComment";
         org.Description = "TestDescription";
         org.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -43,10 +43,10 @@ public class OrganizationTest : BaseElementTestClass
                                   "spdxId": "urn:Organization:402"
                                 }
                                 """;
-        
+
         // Act
         var json = org.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

@@ -5,9 +5,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Elements;
 
-
-
-public class SoftwarePackage(): SoftwareArtifact
+public class SoftwarePackage() : SoftwareArtifact
 {
     [JsonPropertyName("packageVersion")]
     public string? PackageVersion { get; set; }

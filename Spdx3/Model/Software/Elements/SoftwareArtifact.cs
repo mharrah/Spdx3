@@ -7,8 +7,6 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Elements;
 
-
-
 public abstract class SoftwareArtifact() : Artifact
 {
     [JsonPropertyName("copyrightText")]

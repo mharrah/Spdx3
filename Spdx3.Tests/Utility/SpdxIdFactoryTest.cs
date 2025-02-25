@@ -2,7 +2,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Utility;
 
-public class SpdxIdFactoryTest 
+public class SpdxIdFactoryTest
 {
     [Fact]
     public void SpdxIdFactory_NewGeneratesId()

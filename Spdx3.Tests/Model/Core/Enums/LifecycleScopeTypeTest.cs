@@ -5,7 +5,6 @@ namespace Spdx3.Tests.Model.Core.Enums;
 
 public class LifecycleScopeTypeTest
 {
-    
     [Fact]
     public void LifecycleScopeType_HasCorrect_Count()
     {
@@ -17,10 +16,10 @@ public class LifecycleScopeTypeTest
     {
         // Arrange
         const LifecycleScopeType enumVal = LifecycleScopeType.development;
-        
+
         // Act
         var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
-        
+
         // Assert
         Assert.Equal("\"development\"", json);
     }
@@ -31,21 +30,21 @@ public class LifecycleScopeTypeTest
         // Arrange
         var enumArray = new[]
         {
-                LifecycleScopeType.build,
-                LifecycleScopeType.design,
-                LifecycleScopeType.development,
-                LifecycleScopeType.other,
-                LifecycleScopeType.runtime,
-                LifecycleScopeType.test
+            LifecycleScopeType.build,
+            LifecycleScopeType.design,
+            LifecycleScopeType.development,
+            LifecycleScopeType.other,
+            LifecycleScopeType.runtime,
+            LifecycleScopeType.test
         };
-        
+
         // Act
-        var json = JsonSerializer.Serialize<object>((object) enumArray);
+        var json = JsonSerializer.Serialize<object>((object)enumArray);
 
         const string expected = """
                                 ["build","design","development","other","runtime","test"]
                                 """;
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

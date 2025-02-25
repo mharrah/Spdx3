@@ -16,10 +16,10 @@ public class AnnotationTypeTest
     {
         // Arrange
         const AnnotationType enumVal = AnnotationType.review;
-        
+
         // Act
         var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
-        
+
         // Assert
         Assert.Equal("\"review\"", json);
     }
@@ -33,14 +33,14 @@ public class AnnotationTypeTest
             AnnotationType.other,
             AnnotationType.review
         };
-        
+
         // Act
-        var json = JsonSerializer.Serialize<object>((object) enumArray);
+        var json = JsonSerializer.Serialize<object>((object)enumArray);
 
         const string expected = """
                                 ["other","review"]
                                 """;
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

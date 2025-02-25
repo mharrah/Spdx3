@@ -5,11 +5,11 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class BundleTest : BaseElementTestClass
 {
-        [Fact]
+    [Fact]
     public void BrandNew_Bundle_SerializesProperly()
     {
         // Arrange
-        var bundle = TestFactory.New<Bundle>(this.TestCreationInfo);
+        var bundle = TestFactory.New<Bundle>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -17,10 +17,10 @@ public class BundleTest : BaseElementTestClass
                                   "spdxId": "urn:Bundle:402"
                                 }
                                 """;
-        
+
         // Act
         var json = bundle.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -29,7 +29,7 @@ public class BundleTest : BaseElementTestClass
     public void FullyPopulated_Bundle_SerializesProperly()
     {
         // Arrange
-        var bundle = TestFactory.New<Bundle>(this.TestCreationInfo);
+        var bundle = TestFactory.New<Bundle>(TestCreationInfo);
         bundle.Comment = "TestComment";
         bundle.Context.Add("Some context");
         bundle.Context.Add("More context");
@@ -39,7 +39,7 @@ public class BundleTest : BaseElementTestClass
         bundle.Name = "TestName";
         bundle.RootElementRef.Add("testref");
         bundle.ProfileConformance.Add(ProfileIdentifierType.security);
-        
+
         const string expected = """
                                 {
                                   "context": [
@@ -64,13 +64,11 @@ public class BundleTest : BaseElementTestClass
                                   "spdxId": "urn:Bundle:402"
                                 }
                                 """;
-        
+
         // Act
         var json = bundle.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
-
-    
 }

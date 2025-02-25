@@ -19,13 +19,13 @@ public class Relationship : Element
 
     [JsonPropertyName("relationshipType")]
     public RelationshipType? RelationshipType { get; set; }
-    
+
     [JsonPropertyName("completeness")]
     public RelationshipCompleteness? Completeness { get; set; }
-    
+
     [JsonPropertyName("startTime")]
     public DateTimeOffset? StartTime { get; set; }
-    
+
     [JsonPropertyName("endTime")]
     public DateTimeOffset? EndTime { get; set; }
 
@@ -33,10 +33,7 @@ public class Relationship : Element
     {
         base.Validate();
         ValidateRequiredProperty(nameof(FromRef));
-        if (ToRef.Count == 0)
-        {
-            throw new Spdx3ValidationException(this, nameof(ToRef), "Cannot be empty");
-        }
+        if (ToRef.Count == 0) throw new Spdx3ValidationException(this, nameof(ToRef), "Cannot be empty");
         ValidateRequiredProperty(nameof(RelationshipType));
     }
 }

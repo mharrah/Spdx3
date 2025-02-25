@@ -8,7 +8,7 @@ public class IndividualElementTest : BaseElementTestClass
     public void BrandNew_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = TestFactory.New<IndividualElement>(this.TestCreationInfo);
+        var individualElement = TestFactory.New<IndividualElement>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -16,10 +16,10 @@ public class IndividualElementTest : BaseElementTestClass
                                   "spdxId": "urn:IndividualElement:402"
                                 }
                                 """;
-        
+
         // Act
         var json = individualElement.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -28,11 +28,11 @@ public class IndividualElementTest : BaseElementTestClass
     public void FullyPopulated_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = TestFactory.New<IndividualElement>(this.TestCreationInfo);
+        var individualElement = TestFactory.New<IndividualElement>(TestCreationInfo);
         individualElement.Comment = "TestComment";
         individualElement.Description = "TestDescription";
         individualElement.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -43,10 +43,10 @@ public class IndividualElementTest : BaseElementTestClass
                                   "spdxId": "urn:IndividualElement:402"
                                 }
                                 """;
-        
+
         // Act
         var json = individualElement.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

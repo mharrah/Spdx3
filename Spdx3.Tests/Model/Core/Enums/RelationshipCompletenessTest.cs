@@ -16,10 +16,10 @@ public class RelationshipCompletenessTest
     {
         // Arrange
         const RelationshipCompleteness enumVal = RelationshipCompleteness.noAssertion;
-        
+
         // Act
         var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
-        
+
         // Assert
         Assert.Equal("\"noAssertion\"", json);
     }
@@ -32,16 +32,16 @@ public class RelationshipCompletenessTest
         {
             RelationshipCompleteness.complete,
             RelationshipCompleteness.incomplete,
-            RelationshipCompleteness.noAssertion    
+            RelationshipCompleteness.noAssertion
         };
-        
+
         // Act
-        var json = JsonSerializer.Serialize<object>((object) enumArray);
+        var json = JsonSerializer.Serialize<object>((object)enumArray);
 
         const string expected = """
                                 ["complete","incomplete","noAssertion"]
                                 """;
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

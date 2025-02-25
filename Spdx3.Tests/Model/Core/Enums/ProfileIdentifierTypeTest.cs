@@ -16,10 +16,10 @@ public class ProfileIdentifierTypeTest
     {
         // Arrange
         const ProfileIdentifierType enumVal = ProfileIdentifierType.extension;
-        
+
         // Act
         var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
-        
+
         // Assert
         Assert.Equal("\"extension\"", json);
     }
@@ -28,7 +28,8 @@ public class ProfileIdentifierTypeTest
     public void ProfileIdentifierType_Array_SerializesAsStrings()
     {
         // Arrange
-        var enumArray = new[] {
+        var enumArray = new[]
+        {
             ProfileIdentifierType.ai,
             ProfileIdentifierType.build,
             ProfileIdentifierType.core,
@@ -40,15 +41,15 @@ public class ProfileIdentifierTypeTest
             ProfileIdentifierType.simpleLicensing,
             ProfileIdentifierType.software
         };
-        
+
         // Act
-        var json = JsonSerializer.Serialize<object>((object) enumArray);
-        
+        var json = JsonSerializer.Serialize<object>((object)enumArray);
+
         // Assert
         const string expected = """
                                 ["ai","build","core","dataset","expandedLicensing","extension","lite","security","simpleLicensing","software"]
                                 """;
-                       
+
         Assert.Equal(expected, json);
     }
 }

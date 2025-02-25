@@ -11,10 +11,10 @@ public class ExternalMapTest : BaseSpdxClassTestClass
     {
         // Arrange
         var factory = new SpdxClassFactory();
-        
+
         // Act
         var externalMap = factory.New<ExternalMap>();
-        
+
         // Assert
         Assert.NotNull(externalMap);
         Assert.IsType<ExternalMap>(externalMap);
@@ -27,17 +27,17 @@ public class ExternalMapTest : BaseSpdxClassTestClass
     {
         // Arrange
         var externalMap = TestFactory.New<ExternalMap>();
-        
+
         var expected = """
                        {
                          "type": "ExternalMap",
                          "spdxId": "urn:ExternalMap:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = externalMap.ToJson();        
-        
+        var json = externalMap.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -51,7 +51,7 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         externalMap.LocationHint = "Test Location Hint";
         externalMap.VerifiedUsingRef.Add("testref");
         externalMap.DefiningArtifactRef = "testref";
-        
+
         var expected = """
                        {
                          "definingArtifact": "testref",
@@ -64,10 +64,10 @@ public class ExternalMapTest : BaseSpdxClassTestClass
                          "spdxId": "urn:ExternalMap:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = externalMap.ToJson();        
-        
+        var json = externalMap.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -84,7 +84,7 @@ public class ExternalMapTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => externalMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object ExternalMap, property ExternalSpdxId: Field is required", exception.Message);
@@ -102,12 +102,9 @@ public class ExternalMapTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => externalMap.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object ExternalMap, property ExternalSpdxId: Field is empty", exception.Message);
     }
-
-    
- 
 }

@@ -11,7 +11,7 @@ public class RelationshipTest : BaseElementTestClass
         // Arrange
         var from = TestFactory.New<TestElement>(TestCreationInfo);
         var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(this.TestCreationInfo, RelationshipType.describes,
+        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
@@ -25,10 +25,10 @@ public class RelationshipTest : BaseElementTestClass
                                   "spdxId": "urn:Relationship:41c"
                                 }
                                 """;
-        
+
         // Act
         var json = relationship.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -39,7 +39,7 @@ public class RelationshipTest : BaseElementTestClass
         // Arrange
         var from = TestFactory.New<TestElement>(TestCreationInfo);
         var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(this.TestCreationInfo, RelationshipType.describes,
+        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
             from, [to]);
         relationship.Comment = "TestComment";
         relationship.Description = "TestDescription";
@@ -47,7 +47,7 @@ public class RelationshipTest : BaseElementTestClass
         relationship.Completeness = RelationshipCompleteness.complete;
         relationship.StartTime = PredictableDateTime;
         relationship.EndTime = PredictableDateTime;
-        
+
         const string expected = """
                                 {
                                   "from": "urn:TestElement:402",
@@ -66,12 +66,11 @@ public class RelationshipTest : BaseElementTestClass
                                   "spdxId": "urn:Relationship:41c"
                                 }
                                 """;
-        
+
         // Act
         var json = relationship.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
-
 }

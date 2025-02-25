@@ -4,16 +4,16 @@ using Spdx3.Utility;
 namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class DictionaryEntryTest : BaseSpdxClassTestClass
-{ 
+{
     [Fact]
     public void DictionaryEntry_Basics()
     {
         // Arrange
         var factory = new SpdxClassFactory();
-        
+
         // Act
         var dictionaryEntry = factory.New<DictionaryEntry>();
-        
+
         // Assert
         Assert.NotNull(dictionaryEntry);
         Assert.IsType<DictionaryEntry>(dictionaryEntry);
@@ -36,25 +36,26 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
                          "spdxId": "urn:DictionaryEntry:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = dictionaryEntry.ToJson();        
-        
+        var json = dictionaryEntry.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
-    
+
     [Fact]
     public void DictionaryEntry_FailsValidation_WhenMissing_Key()
     {
         // Arrange
         var dictionaryEntry = TestFactory.New<DictionaryEntry>();
-        dictionaryEntry.Key = null;;
+        dictionaryEntry.Key = null;
+        ;
         dictionaryEntry.Value = "TestValue";
 
         //  Act
         var exception = Record.Exception(() => dictionaryEntry.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object DictionaryEntry, property Key: Field is required", exception.Message);
@@ -70,7 +71,7 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => dictionaryEntry.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object DictionaryEntry, property Key: Field is empty", exception.Message);
@@ -82,11 +83,11 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
         // Arrange
         var dictionaryEntry = TestFactory.New<DictionaryEntry>();
         dictionaryEntry.Key = "TestKey";
-        dictionaryEntry.Value = null;  // Null values are allowed!
+        dictionaryEntry.Value = null; // Null values are allowed!
 
         //  Act
         var exception = Record.Exception(() => dictionaryEntry.Validate());
-        
+
         // Assert
         Assert.Null(exception);
     }
@@ -97,15 +98,12 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
         // Arrange
         var dictionaryEntry = TestFactory.New<DictionaryEntry>();
         dictionaryEntry.Key = "TestKey";
-        dictionaryEntry.Value = "";  // Empty strings are ok!
+        dictionaryEntry.Value = ""; // Empty strings are ok!
 
         //  Act
         var exception = Record.Exception(() => dictionaryEntry.Validate());
-        
+
         // Assert
         Assert.Null(exception);
     }
-
-    
-
 }

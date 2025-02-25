@@ -11,7 +11,6 @@ public abstract class Element : BaseSpdxClass
 {
     public Element()
     {
-        
     }
 
     public Element(CreationInfo creationInfo)

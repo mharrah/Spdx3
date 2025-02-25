@@ -5,11 +5,11 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class BomTest : BaseElementTestClass
 {
-        [Fact]
+    [Fact]
     public void BrandNew_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = TestFactory.New<Bom>(this.TestCreationInfo);
+        var bom = TestFactory.New<Bom>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -17,10 +17,10 @@ public class BomTest : BaseElementTestClass
                                   "spdxId": "urn:Bom:402"
                                 }
                                 """;
-        
+
         // Act
         var json = bom.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -29,7 +29,7 @@ public class BomTest : BaseElementTestClass
     public void FullyPopulated_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = TestFactory.New<Bom>(this.TestCreationInfo);
+        var bom = TestFactory.New<Bom>(TestCreationInfo);
         bom.Comment = "TestComment";
         bom.Context.Add("Some context");
         bom.Context.Add("More context");
@@ -39,7 +39,7 @@ public class BomTest : BaseElementTestClass
         bom.Name = "TestName";
         bom.RootElementRef.Add("testref");
         bom.ProfileConformance.Add(ProfileIdentifierType.security);
-        
+
         const string expected = """
                                 {
                                   "context": [
@@ -64,13 +64,11 @@ public class BomTest : BaseElementTestClass
                                   "spdxId": "urn:Bom:402"
                                 }
                                 """;
-        
+
         // Act
         var json = bom.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
-
-    
 }

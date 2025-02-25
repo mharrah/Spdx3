@@ -8,18 +8,17 @@ namespace Spdx3.Model.Core.NonElements;
 ///     A map of Element identifiers that are used within an SpdxDocument but defined external to that SpdxDocument.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalMap/
 /// </summary>
-
 public class ExternalMap() : BaseSpdxClass
 {
     [JsonPropertyName("definingArtifact")]
     public string? DefiningArtifactRef { get; set; }
-    
+
     [JsonPropertyName("externalSpdxId")]
     public string? ExternalSpdxId { get; set; }
-    
+
     [JsonPropertyName("locationHint")]
     public string? LocationHint { get; set; }
-    
+
     [JsonPropertyName("verifiedUsing")]
     public IList<string> VerifiedUsingRef { get; set; } = new List<string>();
 

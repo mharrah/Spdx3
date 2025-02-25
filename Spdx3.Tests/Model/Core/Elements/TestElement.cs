@@ -10,4 +10,3 @@ namespace Spdx3.Tests.Model.Core.Elements;
 public class TestElement : Element
 {
 }
-

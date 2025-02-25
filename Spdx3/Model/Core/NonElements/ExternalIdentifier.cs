@@ -15,6 +15,7 @@ public class ExternalIdentifier : BaseSpdxClass
     public ExternalIdentifier()
     {
     }
+
     public ExternalIdentifier(ExternalIdentifierType externalIdentifierType)
     {
         ExternalIdentifierType = externalIdentifierType;

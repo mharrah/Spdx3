@@ -9,7 +9,7 @@ public class AnyLicenseInfoTest : BaseElementTestClass
     public void BrandNew_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(this.TestCreationInfo);
+        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -17,10 +17,10 @@ public class AnyLicenseInfoTest : BaseElementTestClass
                                   "spdxId": "urn:TestAnyLicenseInfo:402"
                                 }
                                 """;
-        
+
         // Act
         var json = anyLicenseInfo.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -29,11 +29,11 @@ public class AnyLicenseInfoTest : BaseElementTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(this.TestCreationInfo);
+        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(TestCreationInfo);
         anyLicenseInfo.Comment = "TestComment";
         anyLicenseInfo.Description = "TestDescription";
         anyLicenseInfo.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -44,12 +44,11 @@ public class AnyLicenseInfoTest : BaseElementTestClass
                                   "spdxId": "urn:TestAnyLicenseInfo:402"
                                 }
                                 """;
-        
+
         // Act
         var json = anyLicenseInfo.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
-    
 }

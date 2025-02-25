@@ -11,13 +11,13 @@ public class Annotation : Element
 {
     [JsonPropertyName("subject")]
     public string? SubjectRef { get; set; }
-    
+
     [JsonPropertyName("annotationType")]
     public AnnotationType? AnnotationType { get; set; }
-    
+
     [JsonPropertyName("statement")]
     public string? Statement { get; set; }
-        
+
     [JsonPropertyName("mediaType")]
     public string? MediaType { get; set; }
 

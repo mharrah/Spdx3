@@ -17,7 +17,7 @@ public abstract class BaseSpdxClass : ISpdxClass
 {
     [JsonIgnore]
     public SpdxClassFactory? CreatedByFactory { get; set; }
-    
+
     [JsonPropertyName("type")]
     public string Type { get; set; } = string.Empty;
 
@@ -35,7 +35,7 @@ public abstract class BaseSpdxClass : ISpdxClass
             Modifiers = { IgnoreEmptyCollections.Modifier }
         }
     };
-    
+
     /// <summary>
     ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
     ///     for SPDX files.
@@ -43,11 +43,11 @@ public abstract class BaseSpdxClass : ISpdxClass
     /// <returns>A Json representation of this object</returns>
     public string ToJson()
     {
-        this.Validate();
+        Validate();
         // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
         // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer,
         // and that's (clearly) not ok.
-        
+
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
         object o = (object)this;
         return JsonSerializer.Serialize<object>(o, Options);
@@ -61,15 +61,10 @@ public abstract class BaseSpdxClass : ISpdxClass
 
     protected void ValidateRequiredProperty(string propertyName)
     {
-        var propVal = this.GetType().GetProperty(propertyName)?.GetValue(this);
-        if (propVal is null)
-        {
-            throw new Spdx3ValidationException(this, propertyName, "Field is required");
-        }
+        var propVal = GetType().GetProperty(propertyName)?.GetValue(this);
+        if (propVal is null) throw new Spdx3ValidationException(this, propertyName, "Field is required");
 
-        if (propVal is string && (propVal.ToString() == string.Empty))
-        {
+        if (propVal is string && propVal.ToString() == string.Empty)
             throw new Spdx3ValidationException(this, propertyName, "Field is empty");
-        }
     }
 }

@@ -10,7 +10,6 @@ namespace Spdx3.Utility;
 /// </summary>
 public class SpdxIdFactory
 {
-
     // start at 1000 so the generated numbers are at least 3 characters long and will usually look like hex numbers when rendered
     private int _idCounter = 1000;
 

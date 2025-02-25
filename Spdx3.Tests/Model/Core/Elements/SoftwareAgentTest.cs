@@ -8,7 +8,7 @@ public class SoftwareAgentTest : BaseElementTestClass
     public void BrandNew_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<SoftwareAgent>(this.TestCreationInfo);
+        var agent = TestFactory.New<SoftwareAgent>(TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -16,10 +16,10 @@ public class SoftwareAgentTest : BaseElementTestClass
                                   "spdxId": "urn:SoftwareAgent:402"
                                 }
                                 """;
-        
+
         // Act
         var json = agent.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -28,11 +28,11 @@ public class SoftwareAgentTest : BaseElementTestClass
     public void FullyPopulated_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<SoftwareAgent>(this.TestCreationInfo);
+        var agent = TestFactory.New<SoftwareAgent>(TestCreationInfo);
         agent.Comment = "TestComment";
         agent.Description = "TestDescription";
         agent.Name = "TestName";
-        
+
         const string expected = """
                                 {
                                   "comment": "TestComment",
@@ -43,10 +43,10 @@ public class SoftwareAgentTest : BaseElementTestClass
                                   "spdxId": "urn:SoftwareAgent:402"
                                 }
                                 """;
-        
+
         // Act
         var json = agent.ToJson();
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

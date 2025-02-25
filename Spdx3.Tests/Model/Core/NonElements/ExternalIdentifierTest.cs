@@ -12,10 +12,10 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
     {
         // Arrange
         var factory = new SpdxClassFactory();
-        
+
         // Act
         var externalIdentifier = factory.New<ExternalIdentifier>();
-        
+
         // Assert
         Assert.NotNull(externalIdentifier);
         Assert.IsType<ExternalIdentifier>(externalIdentifier);
@@ -28,17 +28,17 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
     {
         // Arrange
         var externalIdentifier = TestFactory.New<ExternalIdentifier>();
-        
+
         var expected = """
                        {
                          "type": "ExternalIdentifier",
                          "spdxId": "urn:ExternalIdentifier:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = externalIdentifier.ToJson();        
-        
+        var json = externalIdentifier.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -53,7 +53,7 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
         externalIdentifier.ExternalIdentifierType = ExternalIdentifierType.gitoid;
         externalIdentifier.IssuingAuthority = "testRef";
         externalIdentifier.Identifier = "TestIdentity";
-        
+
         var expected = """
                        {
                          "comment": "Test comment",
@@ -67,10 +67,10 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
                          "spdxId": "urn:ExternalIdentifier:3f5"
                        }
                        """;
-        
+
         // Act
-        var json = externalIdentifier.ToJson();        
-        
+        var json = externalIdentifier.ToJson();
+
         // Assert
         Assert.Equal(expected, json);
     }
@@ -88,7 +88,7 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object ExternalIdentifier, property Identifier: Field is required", exception.Message);
@@ -107,13 +107,13 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object ExternalIdentifier, property Identifier: Field is empty", exception.Message);
     }
 
-    
+
     [Fact]
     public void ExternalIdentifier_FailsValidation_WhenMissing_ExternalIdentifierType()
     {
@@ -127,10 +127,10 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object ExternalIdentifier, property ExternalIdentifierType: Field is required", exception.Message);
+        Assert.Equal("Object ExternalIdentifier, property ExternalIdentifierType: Field is required",
+            exception.Message);
     }
-
 }
