@@ -3,7 +3,6 @@ using Spdx3.Model;
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
-using Spdx3.Tests.Model.Core.Elements;
 
 namespace Spdx3.Utility;
 
@@ -60,7 +59,7 @@ public class SpdxClassFactory
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, " +
                                      $"{nameof(AnnotationType)}, and {nameof(Element)} are required " +
                                      $"when creating instances of {nameof(Annotation)} or its subclasses");
-        // If the caller wants an Relationship, they need to use the other method
+        // If the caller wants a Relationship, they need to use the other method
         if (classType == typeof(Relationship) || classType.IsSubclassOf(typeof(Relationship)))
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, {nameof(RelationshipType)}, " +
                                      $"{nameof(Element)}, and List<{nameof(Element)}> are required " +

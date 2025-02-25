@@ -27,13 +27,13 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
     {
         // Arrange
         var externalIdentifier = TestFactory.New<ExternalIdentifier>();
-
-        var expected = """
-                       {
-                         "type": "ExternalIdentifier",
-                         "spdxId": "urn:ExternalIdentifier:3f5"
-                       }
-                       """;
+        
+        const string expected = """
+                                {
+                                  "type": "ExternalIdentifier",
+                                  "spdxId": "urn:ExternalIdentifier:3f5"
+                                }
+                                """;
 
         // Act
         var json = externalIdentifier.ToJson();
@@ -53,19 +53,19 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
         externalIdentifier.IssuingAuthority = "testRef";
         externalIdentifier.Identifier = "TestIdentity";
 
-        var expected = """
-                       {
-                         "comment": "Test comment",
-                         "externalIdentifierType": "gitoid",
-                         "identifier": "TestIdentity",
-                         "identifierLocator": [
-                           "testref"
-                         ],
-                         "issuingAuthority": "testRef",
-                         "type": "ExternalIdentifier",
-                         "spdxId": "urn:ExternalIdentifier:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "comment": "Test comment",
+                                  "externalIdentifierType": "gitoid",
+                                  "identifier": "TestIdentity",
+                                  "identifierLocator": [
+                                    "testref"
+                                  ],
+                                  "issuingAuthority": "testRef",
+                                  "type": "ExternalIdentifier",
+                                  "spdxId": "urn:ExternalIdentifier:3f5"
+                                }
+                                """;
 
         // Act
         var json = externalIdentifier.ToJson();

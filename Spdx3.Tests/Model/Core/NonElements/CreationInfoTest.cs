@@ -36,21 +36,21 @@ public class CreationInfoTest
 
 
         // Assert
-        var expected = """
-                       {
-                         "createdBy": [
-                           "testref"
-                         ],
-                         "comment": "Test comment",
-                         "created": "2025-02-23T01:23:45+00:00",
-                         "createdUsing": [
-                           "testref"
-                         ],
-                         "specVersion": "3.0.1",
-                         "type": "CreationInfo",
-                         "spdxId": "urn:CreationInfo:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "createdBy": [
+                                    "testref"
+                                  ],
+                                  "comment": "Test comment",
+                                  "created": "2025-02-23T01:23:45+00:00",
+                                  "createdUsing": [
+                                    "testref"
+                                  ],
+                                  "specVersion": "3.0.1",
+                                  "type": "CreationInfo",
+                                  "spdxId": "urn:CreationInfo:3f5"
+                                }
+                                """;
         var json = creationInfo.ToJson();
         Assert.Equal(expected, json);
     }
@@ -67,14 +67,14 @@ public class CreationInfoTest
         var creationInfo = factory.New<CreationInfo>();
 
         // Assert - note that empty collections are not serialized at all
-        var expected = """
-                       {
-                         "created": "2025-02-23T01:23:45+00:00",
-                         "specVersion": "3.0.1",
-                         "type": "CreationInfo",
-                         "spdxId": "urn:CreationInfo:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "created": "2025-02-23T01:23:45+00:00",
+                                  "specVersion": "3.0.1",
+                                  "type": "CreationInfo",
+                                  "spdxId": "urn:CreationInfo:3f5"
+                                }
+                                """;
         var json = creationInfo.ToJson();
         Assert.Equal(expected, json);
     }

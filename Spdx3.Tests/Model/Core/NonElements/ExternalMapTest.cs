@@ -27,12 +27,12 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         // Arrange
         var externalMap = TestFactory.New<ExternalMap>();
 
-        var expected = """
-                       {
-                         "type": "ExternalMap",
-                         "spdxId": "urn:ExternalMap:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "type": "ExternalMap",
+                                  "spdxId": "urn:ExternalMap:3f5"
+                                }
+                                """;
 
         // Act
         var json = externalMap.ToJson();
@@ -51,18 +51,18 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         externalMap.VerifiedUsingRef.Add("testref");
         externalMap.DefiningArtifactRef = "testref";
 
-        var expected = """
-                       {
-                         "definingArtifact": "testref",
-                         "externalSpdxId": "testref",
-                         "locationHint": "Test Location Hint",
-                         "verifiedUsing": [
-                           "testref"
-                         ],
-                         "type": "ExternalMap",
-                         "spdxId": "urn:ExternalMap:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "definingArtifact": "testref",
+                                  "externalSpdxId": "testref",
+                                  "locationHint": "Test Location Hint",
+                                  "verifiedUsing": [
+                                    "testref"
+                                  ],
+                                  "type": "ExternalMap",
+                                  "spdxId": "urn:ExternalMap:3f5"
+                                }
+                                """;
 
         // Act
         var json = externalMap.ToJson();

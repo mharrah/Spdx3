@@ -5,6 +5,4 @@ namespace Spdx3.Tests.Model.Core.Elements;
 /// <summary>
 ///     Concrete implementation of ElementCollection (which is abstract) for testing purposes
 /// </summary>
-public class TestElementCollection : ElementCollection
-{
-}
+public class TestElementCollection : ElementCollection;

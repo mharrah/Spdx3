@@ -18,7 +18,7 @@ public class RelationshipCompletenessTest
         const RelationshipCompleteness enumVal = RelationshipCompleteness.noAssertion;
 
         // Act
-        var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
+        var json = JsonSerializer.Serialize(Convert.ChangeType(enumVal, typeof(object)));
 
         // Assert
         Assert.Equal("\"noAssertion\"", json);

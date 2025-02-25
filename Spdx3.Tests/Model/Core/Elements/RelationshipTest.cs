@@ -1,3 +1,4 @@
+using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Elements;

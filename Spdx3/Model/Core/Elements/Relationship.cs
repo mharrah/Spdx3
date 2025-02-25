@@ -1,9 +1,8 @@
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
-using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 
-namespace Spdx3.Tests.Model.Core.Elements;
+namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
 ///     Describes a relationship between one or more elements.

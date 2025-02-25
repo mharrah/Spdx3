@@ -28,14 +28,14 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
         var dictionaryEntry = TestFactory.New<DictionaryEntry>();
         dictionaryEntry.Key = "TestKey";
         dictionaryEntry.Value = "TestValue";
-        var expected = """
-                       {
-                         "key": "TestKey",
-                         "value": "TestValue",
-                         "type": "DictionaryEntry",
-                         "spdxId": "urn:DictionaryEntry:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "key": "TestKey",
+                                  "value": "TestValue",
+                                  "type": "DictionaryEntry",
+                                  "spdxId": "urn:DictionaryEntry:3f5"
+                                }
+                                """;
 
         // Act
         var json = dictionaryEntry.ToJson();
@@ -50,7 +50,6 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
         // Arrange
         var dictionaryEntry = TestFactory.New<DictionaryEntry>();
         dictionaryEntry.Key = null;
-        ;
         dictionaryEntry.Value = "TestValue";
 
         //  Act

@@ -25,14 +25,14 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
         var hash = TestFactory.New<PackageVerificationCode>();
         hash.Algorithm = HashAlgorithm.falcon;
         hash.HashValue = "TestHashValue";
-        var expected = """
-                       {
-                         "algorithm": "falcon",
-                         "hashValue": "TestHashValue",
-                         "type": "PackageVerificationCode",
-                         "spdxId": "urn:PackageVerificationCode:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "algorithm": "falcon",
+                                  "hashValue": "TestHashValue",
+                                  "type": "PackageVerificationCode",
+                                  "spdxId": "urn:PackageVerificationCode:3f5"
+                                }
+                                """;
 
         // Act
         var json = hash.ToJson();
@@ -50,18 +50,18 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
         hash.HashValue = "TestHashValue";
         hash.PackageVerificationCodeExcludedFile.Add("file1");
         hash.PackageVerificationCodeExcludedFile.Add("file2");
-        var expected = """
-                       {
-                         "algorithm": "falcon",
-                         "hashValue": "TestHashValue",
-                         "packageVerificationCodeExcludedFile": [
-                           "file1",
-                           "file2"
-                         ],
-                         "type": "PackageVerificationCode",
-                         "spdxId": "urn:PackageVerificationCode:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "algorithm": "falcon",
+                                  "hashValue": "TestHashValue",
+                                  "packageVerificationCodeExcludedFile": [
+                                    "file1",
+                                    "file2"
+                                  ],
+                                  "type": "PackageVerificationCode",
+                                  "spdxId": "urn:PackageVerificationCode:3f5"
+                                }
+                                """;
 
         // Act
         var json = hash.ToJson();

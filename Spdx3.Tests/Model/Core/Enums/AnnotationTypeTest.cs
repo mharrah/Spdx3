@@ -18,7 +18,7 @@ public class AnnotationTypeTest
         const AnnotationType enumVal = AnnotationType.review;
 
         // Act
-        var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
+        var json = JsonSerializer.Serialize(Convert.ChangeType(enumVal, typeof(object)));
 
         // Assert
         Assert.Equal("\"review\"", json);

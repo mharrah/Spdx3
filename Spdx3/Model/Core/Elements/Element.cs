@@ -9,11 +9,11 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
-    public Element()
+    protected Element()
     {
     }
 
-    public Element(CreationInfo creationInfo)
+    protected Element(CreationInfo creationInfo)
     {
         CreationInfoSpdxId = creationInfo.SpdxId;
     }

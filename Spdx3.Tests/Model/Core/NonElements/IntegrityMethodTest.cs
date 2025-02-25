@@ -21,12 +21,12 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
         // Arrange
         var integrityMethod = TestFactory.New<TestIntegrityMethod>();
 
-        var expected = """
-                       {
-                         "type": "TestIntegrityMethod",
-                         "spdxId": "urn:TestIntegrityMethod:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "type": "TestIntegrityMethod",
+                                  "spdxId": "urn:TestIntegrityMethod:3f5"
+                                }
+                                """;
 
         // Act
         var json = integrityMethod.ToJson();
@@ -42,13 +42,13 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
         var integrityMethod = TestFactory.New<TestIntegrityMethod>();
         integrityMethod.Comment = "Test comment";
 
-        var expected = """
-                       {
-                         "comment": "Test comment",
-                         "type": "TestIntegrityMethod",
-                         "spdxId": "urn:TestIntegrityMethod:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "comment": "Test comment",
+                                  "type": "TestIntegrityMethod",
+                                  "spdxId": "urn:TestIntegrityMethod:3f5"
+                                }
+                                """;
 
         // Act
         var json = integrityMethod.ToJson();

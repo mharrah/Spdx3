@@ -18,7 +18,7 @@ public class LifecycleScopeTypeTest
         const LifecycleScopeType enumVal = LifecycleScopeType.development;
 
         // Act
-        var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
+        var json = JsonSerializer.Serialize(Convert.ChangeType(enumVal, typeof(object)));
 
         // Assert
         Assert.Equal("\"development\"", json);

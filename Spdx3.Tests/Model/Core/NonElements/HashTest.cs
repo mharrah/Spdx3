@@ -25,14 +25,14 @@ public class HashTest : BaseSpdxClassTestClass
         var hash = TestFactory.New<Hash>();
         hash.Algorithm = HashAlgorithm.falcon;
         hash.HashValue = "TestHashValue";
-        var expected = """
-                       {
-                         "algorithm": "falcon",
-                         "hashValue": "TestHashValue",
-                         "type": "Hash",
-                         "spdxId": "urn:Hash:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "algorithm": "falcon",
+                                  "hashValue": "TestHashValue",
+                                  "type": "Hash",
+                                  "spdxId": "urn:Hash:3f5"
+                                }
+                                """;
 
         // Act
         var json = hash.ToJson();

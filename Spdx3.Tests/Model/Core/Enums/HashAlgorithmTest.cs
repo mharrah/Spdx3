@@ -18,7 +18,7 @@ public class HashAlgorithmTest
         const HashAlgorithm enumVal = HashAlgorithm.blake3;
 
         // Act
-        var json = JsonSerializer.Serialize<object>(Convert.ChangeType(enumVal, typeof(object)));
+        var json = JsonSerializer.Serialize(Convert.ChangeType(enumVal, typeof(object)));
 
         // Assert
         Assert.Equal("\"blake3\"", json);

@@ -28,14 +28,14 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
         var namespaceMap = TestFactory.New<NamespaceMap>();
         namespaceMap.Prefix = "TestPrefix";
         namespaceMap.Namespace = "TestNamespace";
-        var expected = """
-                       {
-                         "prefix": "TestPrefix",
-                         "namespace": "TestNamespace",
-                         "type": "NamespaceMap",
-                         "spdxId": "urn:NamespaceMap:3f5"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "prefix": "TestPrefix",
+                                  "namespace": "TestNamespace",
+                                  "type": "NamespaceMap",
+                                  "spdxId": "urn:NamespaceMap:3f5"
+                                }
+                                """;
 
         // Act
         var json = namespaceMap.ToJson();
@@ -50,7 +50,6 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
         // Arrange
         var namespaceMap = TestFactory.New<NamespaceMap>();
         namespaceMap.Prefix = null;
-        ;
         namespaceMap.Namespace = "TestNamespace";
 
         //  Act
