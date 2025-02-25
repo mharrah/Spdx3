@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
-using Spdx3.Model.Core.NonElements;
-using Spdx3.Utility;
+﻿using System.Text.Json.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 

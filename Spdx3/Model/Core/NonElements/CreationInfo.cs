@@ -1,11 +1,10 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
 /// <summary>
-/// Provides information about the creation of the Element.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/CreationInfo/
+///     Provides information about the creation of the Element.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/CreationInfo/
 /// </summary>
 public class CreationInfo : BaseSpdxClass
 {

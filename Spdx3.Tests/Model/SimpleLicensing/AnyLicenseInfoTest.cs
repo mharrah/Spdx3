@@ -1,4 +1,3 @@
-using Spdx3.Model.SimpleLicensing;
 using Spdx3.Tests.Model.Core.Elements;
 
 namespace Spdx3.Tests.Model.SimpleLicensing;

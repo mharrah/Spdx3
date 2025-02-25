@@ -5,7 +5,6 @@ using Spdx3.Tests.Model.Core.Elements;
 namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
-/// 
 /// </summary>
 public class LifecycleScopedRelationship : Relationship
 {

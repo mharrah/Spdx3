@@ -1,6 +1,5 @@
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
-using Spdx3.Tests.Model.Core.Elements;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;

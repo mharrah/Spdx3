@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using Spdx3.Exceptions;
@@ -13,19 +12,10 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseSpdxClass : ISpdxClass
+public abstract class BaseSpdxClass
 {
-    [JsonIgnore]
-    public SpdxClassFactory? CreatedByFactory { get; set; }
-
-    [JsonPropertyName("type")]
-    public string Type { get; set; } = string.Empty;
-
-    [JsonPropertyName("spdxId")]
-    public string SpdxId { get; set; } = string.Empty;
-
     /// <summary>
-    /// Serialization options
+    ///     Serialization options
     /// </summary>
     private static readonly JsonSerializerOptions Options = new()
     {
@@ -35,6 +25,15 @@ public abstract class BaseSpdxClass : ISpdxClass
             Modifiers = { IgnoreEmptyCollections.Modifier }
         }
     };
+
+    [JsonIgnore]
+    public SpdxClassFactory? CreatedByFactory { get; set; }
+
+    [JsonPropertyName("type")]
+    public string Type { get; set; } = string.Empty;
+
+    [JsonPropertyName("spdxId")]
+    public string SpdxId { get; set; } = string.Empty;
 
     /// <summary>
     ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
@@ -49,7 +48,8 @@ public abstract class BaseSpdxClass : ISpdxClass
         // and that's (clearly) not ok.
 
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
-        object o = (object)this;
+        object o = this;
+        // ReSharper disable once RedundantTypeArgumentsOfMethod
         return JsonSerializer.Serialize<object>(o, Options);
     }
 

@@ -1,5 +1,3 @@
-using Spdx3.Model;
-
 namespace Spdx3.Tests.Model.Core.Elements;
 
 public class ElementTest : BaseElementTestClass

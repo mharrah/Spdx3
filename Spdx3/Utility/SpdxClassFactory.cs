@@ -10,14 +10,14 @@ namespace Spdx3.Utility;
 public class SpdxClassFactory
 {
     /// <summary>
-    /// Default no-arg constructor.
+    ///     Default no-arg constructor.
     /// </summary>
     public SpdxClassFactory()
     {
     }
 
     /// <summary>
-    /// Constructor that takes a creation date
+    ///     Constructor that takes a creation date
     /// </summary>
     /// <param name="creationDate">The date to stomp on everything this factory creates</param>
     public SpdxClassFactory(DateTimeOffset creationDate)
@@ -25,11 +25,11 @@ public class SpdxClassFactory
         CreationDate = creationDate;
     }
 
-    private SpdxIdFactory IdFactory { get; set; } = new();
+    private SpdxIdFactory IdFactory { get; } = new();
 
     public DateTimeOffset CreationDate { get; set; } = DateTimeOffset.Now;
 
-    public List<ISpdxClass> EverythingProduced { get; } = new();
+    public List<BaseSpdxClass> EverythingProduced { get; } = new();
 
     public T New<T>(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to)
         where T : Relationship

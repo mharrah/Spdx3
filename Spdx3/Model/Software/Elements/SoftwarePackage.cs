@@ -1,11 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
-using Spdx3.Model.Core.NonElements;
-using Spdx3.Utility;
+﻿using System.Text.Json.Serialization;
 
 namespace Spdx3.Model.Software.Elements;
 
-public class SoftwarePackage() : SoftwareArtifact
+public class SoftwarePackage : SoftwareArtifact
 {
     [JsonPropertyName("packageVersion")]
     public string? PackageVersion { get; set; }

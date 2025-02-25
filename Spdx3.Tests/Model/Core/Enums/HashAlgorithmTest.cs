@@ -55,7 +55,7 @@ public class HashAlgorithmTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["adler32","blake2b256","blake2b384","blake2b512","blake3","crystalsDilithium","crystalsKyber","falcon","md2","md4","md5","md6","other","sha1","sha224","sha256","sha384","sha3_224","sha3_256","sha3_384","sha3_512","sha512"]

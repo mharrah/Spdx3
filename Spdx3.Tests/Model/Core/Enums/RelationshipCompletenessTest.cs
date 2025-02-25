@@ -36,7 +36,7 @@ public class RelationshipCompletenessTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["complete","incomplete","noAssertion"]

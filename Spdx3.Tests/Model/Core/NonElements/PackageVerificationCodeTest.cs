@@ -70,7 +70,7 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
         Assert.Equal(expected, json);
     }
 
-    
+
     [Fact]
     public void PackageVerificationCode_FailsValidation_WhenMissing_Algorithm()
     {
@@ -86,7 +86,7 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
         Assert.NotNull(exception);
         Assert.Equal("Object PackageVerificationCode, property Algorithm: Field is required", exception.Message);
     }
-    
+
     [Fact]
     public void PackageVerificationCode_FailsValidation_WhenMissing_HashValue()
     {

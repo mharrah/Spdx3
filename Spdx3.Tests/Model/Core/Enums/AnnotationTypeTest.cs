@@ -35,7 +35,7 @@ public class AnnotationTypeTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["other","review"]

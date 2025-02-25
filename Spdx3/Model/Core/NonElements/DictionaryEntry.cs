@@ -3,8 +3,8 @@ using System.Text.Json.Serialization;
 namespace Spdx3.Model.Core.NonElements;
 
 /// <summary>
-/// A key with an associated value.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/DictionaryEntry/
+///     A key with an associated value.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/DictionaryEntry/
 /// </summary>
 public class DictionaryEntry : BaseSpdxClass
 {

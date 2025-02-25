@@ -39,7 +39,7 @@ public class LifecycleScopeTypeTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["build","design","development","other","runtime","test"]

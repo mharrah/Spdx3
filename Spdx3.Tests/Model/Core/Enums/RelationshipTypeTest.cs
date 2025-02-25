@@ -92,7 +92,7 @@ public class RelationshipTypeTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["affects","amendedBy","ancestorOf","availableFrom","configures","contains","coordinatedBy","copiedTo","delegatedTo","dependsOn","descendantOf","describes","doesNotAffect","expandsTo","exploitCreatedBy","fixedBy","fixedIn","foundBy","generates","hasAddedFile","hasAssessmentFor","hasAssociatedVulnerability","hasConcludedLicense","hasDataFile","hasDeclaredLicense","hasDeletedFile","hasDependencyManifest","hasDistributionArtifact","hasDocumentation","hasDynamicLink","hasEvidence","hasExample","hasHost","hasInput","hasMetadata","hasOptionalComponent","hasOptionalDependency","hasOutput","hasPrerequisite","hasProvidedDependency","hasRequirement","hasSpecification","hasStaticLink","hasTest","hasTestCase","hasVariant","invokedBy","modifiedBy","other","packagedBy","patchedBy","publishedBy","reportedBy","republishedBy","serializedInArtifact","testedOn","trainedOn","underInvestigationFor","usesTool"]

@@ -1,6 +1,3 @@
-using System.Text.Json.Serialization;
-using Spdx3.Model.Core.Enums;
-
 namespace Spdx3.Tests.Model.Core.Elements;
 
 public class ArtifactTest : BaseElementTestClass

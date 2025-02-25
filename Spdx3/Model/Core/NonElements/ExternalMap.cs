@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
-using Spdx3.Utility;
+﻿using System.Text.Json.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -8,7 +6,7 @@ namespace Spdx3.Model.Core.NonElements;
 ///     A map of Element identifiers that are used within an SpdxDocument but defined external to that SpdxDocument.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalMap/
 /// </summary>
-public class ExternalMap() : BaseSpdxClass
+public class ExternalMap : BaseSpdxClass
 {
     [JsonPropertyName("definingArtifact")]
     public string? DefiningArtifactRef { get; set; }

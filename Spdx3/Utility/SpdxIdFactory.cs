@@ -1,6 +1,4 @@
-﻿using Spdx3.Model;
-
-namespace Spdx3.Utility;
+﻿namespace Spdx3.Utility;
 
 /// <summary>
 ///     Factory that generates an SPDX ID, which is a URN that uniquely identifies an SPDX element within the context of an

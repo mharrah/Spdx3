@@ -1,4 +1,3 @@
-using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Utility;
 

@@ -1,4 +1,3 @@
-using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Tests.Model.Core.Elements;
 using Spdx3.Utility;
@@ -6,8 +5,8 @@ using Spdx3.Utility;
 namespace Spdx3.Tests.Utility;
 
 /// <summary>
-/// Basic, direct test of the SpdxClassFactory.  Gets used (but not tested, per se) in nearly all the other tests,
-/// so not doing a lot here.
+///     Basic, direct test of the SpdxClassFactory.  Gets used (but not tested, per se) in nearly all the other tests,
+///     so not doing a lot here.
 /// </summary>
 public class SpdxClassFactoryTest
 {

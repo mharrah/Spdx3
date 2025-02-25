@@ -1,5 +1,3 @@
-using Spdx3.Model.Core.NonElements;
-
 namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class IntegrityMethodTest : BaseSpdxClassTestClass
@@ -8,7 +6,7 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
     public void IntegrityMethod_Basics()
     {
         // Act
-        TestIntegrityMethod integrityMethod = TestFactory.New<TestIntegrityMethod>();
+        var integrityMethod = TestFactory.New<TestIntegrityMethod>();
 
         // Assert
         Assert.NotNull(integrityMethod);
@@ -58,6 +56,4 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
         // Assert
         Assert.Equal(expected, json);
     }
-
-
 }

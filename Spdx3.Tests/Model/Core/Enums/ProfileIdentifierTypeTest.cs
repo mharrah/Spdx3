@@ -43,7 +43,7 @@ public class ProfileIdentifierTypeTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         // Assert
         const string expected = """

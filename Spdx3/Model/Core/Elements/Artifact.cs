@@ -1,8 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
-using Spdx3.Model.Core.NonElements;
-using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,7 +7,7 @@ namespace Spdx3.Model.Core.Elements;
 ///     A distinct article or unit within the digital domain.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Artifact/
 /// </summary>
-public abstract class Artifact() : Element
+public abstract class Artifact : Element
 {
     [JsonPropertyName("builtTime")]
     public DateTimeOffset? BuiltTime { get; set; }

@@ -44,7 +44,7 @@ public class ExternalIdentifierTypeTest
         };
 
         // Act
-        var json = JsonSerializer.Serialize<object>((object)enumArray);
+        var json = JsonSerializer.Serialize<object>(enumArray);
 
         const string expected = """
                                 ["cpe22","cpe23","cve","email","gitoid","other","packageUrl","securityOther","swhid","swid","urlScheme"]
