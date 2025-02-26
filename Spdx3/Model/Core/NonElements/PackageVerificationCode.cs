@@ -24,4 +24,8 @@ public class PackageVerificationCode : IntegrityMethod
         ValidateRequiredProperty(nameof(Algorithm));
         ValidateRequiredProperty(nameof(HashValue));
     }
+
+    internal PackageVerificationCode()
+    {
+    }
 }

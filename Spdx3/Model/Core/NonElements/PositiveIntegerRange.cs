@@ -41,4 +41,8 @@ public class PositiveIntegerRange : BaseSpdxClass
         ValidateRequiredProperty(nameof(BeginIntegerRange));
         ValidateRequiredProperty(nameof(EndIntegerRange));
     }
+
+    internal PositiveIntegerRange()
+    {
+    }
 }

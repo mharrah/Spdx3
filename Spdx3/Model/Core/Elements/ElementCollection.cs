@@ -20,4 +20,8 @@ public abstract class ElementCollection : Element
 
     [JsonPropertyName("element")]
     public IList<string> ElementRef { get; } = new List<string>();
+
+    protected internal ElementCollection()
+    {
+    }
 }

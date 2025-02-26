@@ -25,4 +25,9 @@ public class ExternalMap : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(ExternalSpdxId));
     }
+
+    internal ExternalMap()
+    {
+        
+    }
 }

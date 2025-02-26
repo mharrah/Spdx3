@@ -19,4 +19,9 @@ public class DictionaryEntry : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(Key));
     }
+
+    internal DictionaryEntry()
+    {
+        
+    }
 }

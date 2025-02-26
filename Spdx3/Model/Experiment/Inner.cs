@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
-using Spdx3.Model;
 
-namespace Spdx3.Tests.Model.Core.Experiment;
+namespace Spdx3.Model.Experiment;
 
 public class Inner : BaseSpdxClass
 {

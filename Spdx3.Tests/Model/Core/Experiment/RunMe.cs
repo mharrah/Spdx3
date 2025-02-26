@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
+using Spdx3.Model.Experiment;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 

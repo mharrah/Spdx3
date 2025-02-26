@@ -9,4 +9,9 @@ public class LifecycleScopedRelationship : Relationship
 {
     [JsonPropertyName("scope")]
     public LifecycleScopeType? Scope { get; set; }
+
+    internal LifecycleScopedRelationship()
+    {
+        
+    }
 }

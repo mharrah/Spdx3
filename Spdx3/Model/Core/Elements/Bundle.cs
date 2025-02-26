@@ -10,4 +10,9 @@ public class Bundle : ElementCollection
 {
     [JsonPropertyName("context")]
     public IList<string> Context { get; } = new List<string>();
+
+    internal Bundle()
+    {
+        
+    }
 }

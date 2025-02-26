@@ -10,4 +10,9 @@ public abstract class IntegrityMethod : BaseSpdxClass
 {
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
+
+    protected internal IntegrityMethod()
+    {
+        
+    }
 }

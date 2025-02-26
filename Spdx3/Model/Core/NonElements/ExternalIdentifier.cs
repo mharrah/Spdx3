@@ -10,11 +10,11 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class ExternalIdentifier : BaseSpdxClass
 {
-    public ExternalIdentifier()
+    internal ExternalIdentifier()
     {
     }
 
-    public ExternalIdentifier(ExternalIdentifierType externalIdentifierType)
+    internal ExternalIdentifier(ExternalIdentifierType externalIdentifierType)
     {
         ExternalIdentifierType = externalIdentifierType;
     }

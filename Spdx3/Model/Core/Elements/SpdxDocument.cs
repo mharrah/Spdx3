@@ -17,4 +17,9 @@ public class SpdxDocument : ElementCollection
 
     [JsonPropertyName("namespaceMap")]
     public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
+
+    internal SpdxDocument()
+    {
+        
+    }
 }

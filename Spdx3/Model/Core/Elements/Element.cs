@@ -9,10 +9,6 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
-    protected Element()
-    {
-    }
-
     protected Element(CreationInfo creationInfo)
     {
         CreationInfoSpdxId = creationInfo.SpdxId;
@@ -27,7 +23,7 @@ public abstract class Element : BaseSpdxClass
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    /*
+    /* TODO
        extension	/Extension/Extension	0	*
        externalIdentifier	ExternalIdentifier	0	*
        externalRef	ExternalRef	0	*
@@ -39,7 +35,7 @@ public abstract class Element : BaseSpdxClass
     [JsonPropertyName("summary")]
     public string? Summary { get; set; }
 
-    /*
+    /* TODO
         verifiedUsing	IntegrityMethod	0	*
     */
 
@@ -48,4 +44,10 @@ public abstract class Element : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(CreationInfoSpdxId));
     }
+    
+    protected internal Element()
+    {
+    }
+
+
 }

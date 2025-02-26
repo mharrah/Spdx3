@@ -21,4 +21,9 @@ public class Hash : IntegrityMethod
         ValidateRequiredProperty(nameof(Algorithm));
         ValidateRequiredProperty(nameof(HashValue));
     }
+
+    internal Hash()
+    {
+        
+    }
 }

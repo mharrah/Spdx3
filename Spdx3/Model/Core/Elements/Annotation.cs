@@ -27,4 +27,8 @@ public class Annotation : Element
         ValidateRequiredProperty(nameof(AnnotationType));
         ValidateRequiredProperty(nameof(SubjectRef));
     }
+
+    internal Annotation()
+    {
+    }
 }

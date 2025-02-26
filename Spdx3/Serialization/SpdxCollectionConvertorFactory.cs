@@ -2,28 +2,19 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Spdx3.Model;
-using Xunit.Sdk;
 
-namespace Spdx3.Tests.Model.Core.Experiment;
+namespace Spdx3.Serialization;
 
 public class SpdxCollectionConvertorFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {
-        if (!typeToConvert.IsGenericType)
-        {
-            return false;
-        }
+        if (!typeToConvert.IsGenericType) return false;
+        if (typeToConvert.GetGenericTypeDefinition() != typeof(IList<>)) return false;
 
-        if (typeToConvert.GetGenericTypeDefinition() != typeof(IList<>))
-        {
-            return false;
-        }
-        
         var listType = typeToConvert.GetGenericArguments()[0];
+        var canConvert = listType.IsSubclassOf(typeof(BaseSpdxClass));
 
-        var canConvert = (listType.Implements(typeof(ISpdxClass)));
-        
         return canConvert;
     }
 
@@ -31,11 +22,12 @@ public class SpdxCollectionConvertorFactory : JsonConverterFactory
     {
         var converterGenericType = typeof(SpdxCollectionConvertor<>);
 
-        Type[] typeArgs = { typeToConvert };
-        Type constructedType = converterGenericType.MakeGenericType(typeArgs);
-        
-        var converter  = Activator.CreateInstance(constructedType, BindingFlags.Instance | BindingFlags.Public, null, null, null);
-        
+        Type[] typeArgs = [typeToConvert];
+        var constructedType = converterGenericType.MakeGenericType(typeArgs);
+
+        var converter = Activator.CreateInstance(constructedType,
+            BindingFlags.Instance | BindingFlags.Public, null, null, null);
+
         return converter as JsonConverter;
     }
 
@@ -52,12 +44,9 @@ public class SpdxCollectionConvertorFactory : JsonConverterFactory
 
             // If the list is empty, don't write anything
             if ((value as dynamic).Count == 0) return;
-            
+
             writer.WriteStartArray();
-            foreach (var item in (value as dynamic))
-            {
-                writer.WriteStringValue(item.SpdxId);
-            }
+            foreach (var item in value as dynamic) writer.WriteStringValue(item.SpdxId);
             writer.WriteEndArray();
         }
     }

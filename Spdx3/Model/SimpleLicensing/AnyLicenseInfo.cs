@@ -9,4 +9,9 @@ namespace Spdx3.Model.SimpleLicensing;
 public abstract class AnyLicenseInfo : Element
 {
     // Abstract class, adds no properties or functionality
+
+    protected internal AnyLicenseInfo()
+    {
+        
+    }
 }

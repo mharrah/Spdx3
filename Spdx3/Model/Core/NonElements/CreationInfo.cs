@@ -20,11 +20,11 @@ public class CreationInfo : BaseSpdxClass
     [JsonPropertyName("createdUsing")]
     public IList<string> CreatedUsingToolRefs { get; } = new List<string>();
 
-    /*
-    createdBy	Agent	1	*
-    createdUsing	Tool	0	*
-    specVersion	SemVer	1	1
-    */
     [JsonPropertyName("specVersion")]
     public string SpecVersion { get; set; } = "3.0.1";
+
+    internal CreationInfo()
+    {
+    }
+    
 }

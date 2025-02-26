@@ -20,4 +20,8 @@ public class NamespaceMap : BaseSpdxClass
         ValidateRequiredProperty(nameof(Prefix));
         ValidateRequiredProperty(nameof(Namespace));
     }
+
+    internal NamespaceMap()
+    {
+    }
 }

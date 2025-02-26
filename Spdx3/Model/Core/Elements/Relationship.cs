@@ -35,4 +35,9 @@ public class Relationship : Element
         if (ToRef.Count == 0) throw new Spdx3ValidationException(this, nameof(ToRef), "Cannot be empty");
         ValidateRequiredProperty(nameof(RelationshipType));
     }
+
+    internal Relationship()
+    {
+        
+    }
 }
