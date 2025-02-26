@@ -24,7 +24,7 @@ public class RunMe
                 Modifiers = { IgnoreEmptyCollections.Modifier }
             }
         };
-        options.Converters.Add(new SpdxCollectionConvertorFactory());
+        options.Converters.Add(new SpdxCollectionConverterFactory());
 
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
         object o = outer;

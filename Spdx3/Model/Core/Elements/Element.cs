@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -9,11 +10,6 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
-    protected Element(CreationInfo creationInfo)
-    {
-        CreationInfoSpdxId = creationInfo.SpdxId;
-    }
-
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }
 
@@ -23,11 +19,17 @@ public abstract class Element : BaseSpdxClass
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    /* TODO
-       extension	/Extension/Extension	0	*
-       externalIdentifier	ExternalIdentifier	0	*
-       externalRef	ExternalRef	0	*
-    */
+    [JsonPropertyName("extension")]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
+    public IList<Extension.Extension> Extensions { get; set; } = new List<Extension.Extension>();
+
+    [JsonPropertyName("externalIdentifier")]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
+    public IList<ExternalIdentifier> ExternalIdentifiers { get; set; } = new List<ExternalIdentifier>();
+
+    [JsonPropertyName("externalRef")]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
+    public IList<ExternalRef> ExternalRefs { get; set; } = new List<ExternalRef>();
 
     [JsonPropertyName("name")]
     public string? Name { get; set; }
@@ -35,19 +37,23 @@ public abstract class Element : BaseSpdxClass
     [JsonPropertyName("summary")]
     public string? Summary { get; set; }
 
-    /* TODO
-        verifiedUsing	IntegrityMethod	0	*
-    */
+    [JsonPropertyName("verifiedUsing")]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
+    public IList<IntegrityMethod> VerifiedUsing { get; set; } = new List<IntegrityMethod>();
 
     public new void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(CreationInfoSpdxId));
+        ValidateRequiredProperty(nameof(Type));
     }
-    
+
     protected internal Element()
     {
     }
 
-
+    protected Element(CreationInfo creationInfo)
+    {
+        CreationInfoSpdxId = creationInfo.SpdxId;
+    }
 }

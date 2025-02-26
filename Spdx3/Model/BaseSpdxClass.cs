@@ -12,7 +12,7 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseSpdxClass : ISpdxClass
+public abstract class BaseSpdxClass
 {
     [JsonPropertyName("type")]
     public string Type { get; set; } = string.Empty;
@@ -29,8 +29,15 @@ public abstract class BaseSpdxClass : ISpdxClass
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
             Modifiers = { IgnoreEmptyCollections.Modifier }
-        }
+        },
+        MaxDepth = 2
     };
+
+    static BaseSpdxClass()
+    {
+        Options.Converters.Add(new SpdxCollectionConverterFactory());
+        Options.Converters.Add(new SpdxObjectConverterFactory());
+    }
 
     [JsonIgnore]
     public SpdxClassFactory? CreatedByFactory { get; set; }

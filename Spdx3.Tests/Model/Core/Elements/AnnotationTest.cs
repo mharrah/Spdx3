@@ -1,5 +1,8 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.NonElements;
+using Spdx3.Tests.Model.Extension;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -48,7 +51,11 @@ public class AnnotationTest : BaseElementTestClass
         var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:402",
+                                  "subject": {
+                                    "creationInfo": "urn:CreationInfo:3f5",
+                                    "type": "TestElement",
+                                    "spdxId": "urn:TestElement:402"
+                                  },
                                   "annotationType": "review",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Annotation",
@@ -71,26 +78,42 @@ public class AnnotationTest : BaseElementTestClass
         var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
         annotation.Comment = "TestComment";
         annotation.Description = "TestDescription";
+        annotation.Extensions.Add(TestFactory.New<TestExtension>());
+        annotation.ExternalIdentifiers.Add(TestFactory.New<ExternalIdentifier>());
+        annotation.ExternalRefs.Add(TestFactory.New<ExternalRef>());
         annotation.Name = "TestName";
         annotation.Statement = "TestStatement";
         annotation.MediaType = "TestMediaType";
         annotation.Summary = "TestSummary";
-        annotation.SubjectRef = "testSubjectRef";
+        annotation.Subject = TestFactory.New<TestElement>(TestCreationInfo);
         annotation.AnnotationType = AnnotationType.review;
+        annotation.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
 
         const string expected = """
                                 {
-                                  "subject": "testSubjectRef",
-                                  "annotationType": "review",
-                                  "statement": "TestStatement",
-                                  "mediaType": "TestMediaType",
-                                  "comment": "TestComment",
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "description": "TestDescription",
-                                  "name": "TestName",
-                                  "summary": "TestSummary",
-                                  "type": "Annotation",
-                                  "spdxId": "urn:Annotation:40f"
+                                  "Subject": "urn:TestElement:443",
+                                  "AnnotationType": "review",
+                                  "Statement": "TestStatement",
+                                  "MediaType": "TestMediaType",
+                                  "Comment": "TestComment",
+                                  "CreationInfoSpdxId": "urn:CreationInfo:3f5",
+                                  "Description": "TestDescription",
+                                  "Extensions": [
+                                    "urn:TestExtension:41c"
+                                  ],
+                                  "ExternalIdentifiers": [
+                                    "urn:ExternalIdentifier:429"
+                                  ],
+                                  "ExternalRefs": [
+                                    "urn:ExternalRef:436"
+                                  ],
+                                  "Name": "TestName",
+                                  "Summary": "TestSummary",
+                                  "VerifiedUsing": [
+                                    "urn:TestIntegrityMethod:450"
+                                  ],
+                                  "Type": "Annotation",
+                                  "SpdxId": "urn:Annotation:40f"
                                 }
                                 """;
 

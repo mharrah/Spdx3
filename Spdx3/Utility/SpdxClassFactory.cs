@@ -48,7 +48,7 @@ public class SpdxClassFactory
         var result = NewItem<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         result.AnnotationType = annotationType;
-        result.SubjectRef = subject.SpdxId;
+        result.Subject = subject;
         return result;
     }
 

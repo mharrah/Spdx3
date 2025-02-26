@@ -7,11 +7,11 @@ public class Outer : BaseSpdxClass
 {
  
     [JsonPropertyName("middles")]
-    [JsonConverter(typeof(SpdxCollectionConvertorFactory))]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
     public IList<Middle> Middles { get; } = new List<Middle>();
     
     [JsonPropertyName("empty")]
-    [JsonConverter(typeof(SpdxCollectionConvertorFactory))]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
     public IList<Inner> Empty { get;  } = new List<Inner>();
 
     [JsonPropertyName("comment")]

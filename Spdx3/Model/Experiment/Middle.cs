@@ -6,7 +6,7 @@ namespace Spdx3.Model.Experiment;
 public class Middle : BaseSpdxClass
 {
     [JsonPropertyName("inners")]
-    [JsonConverter(typeof(SpdxCollectionConvertorFactory))]
+    [JsonConverter(typeof(SpdxCollectionConverterFactory))]
     public IList<Inner> Inners { get; } = new List<Inner>();
     
     [JsonPropertyName("label")]

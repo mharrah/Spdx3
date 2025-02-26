@@ -5,7 +5,7 @@ using Spdx3.Model;
 
 namespace Spdx3.Serialization;
 
-public class SpdxCollectionConvertorFactory : JsonConverterFactory
+public class SpdxCollectionConverterFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {

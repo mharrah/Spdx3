@@ -10,7 +10,7 @@ namespace Spdx3.Model.Core.Elements;
 public class Annotation : Element
 {
     [JsonPropertyName("subject")]
-    public string? SubjectRef { get; set; }
+    public Element? Subject { get; set; }
 
     [JsonPropertyName("annotationType")]
     public AnnotationType? AnnotationType { get; set; }
@@ -25,7 +25,7 @@ public class Annotation : Element
     {
         base.Validate();
         ValidateRequiredProperty(nameof(AnnotationType));
-        ValidateRequiredProperty(nameof(SubjectRef));
+        ValidateRequiredProperty(nameof(Subject));
     }
 
     internal Annotation()
