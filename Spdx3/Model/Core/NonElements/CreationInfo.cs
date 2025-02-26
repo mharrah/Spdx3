@@ -9,7 +9,7 @@ namespace Spdx3.Model.Core.NonElements;
 public class CreationInfo : BaseSpdxClass
 {
     [JsonPropertyName("createdBy")]
-    public IList<string> CreatedByAgentRefs { get;  } = new List<string>();
+    public IList<string> CreatedByAgentRefs { get; } = new List<string>();
 
     [JsonPropertyName("comment")]
     public string? Comment { get; set; }

@@ -1,3 +1,4 @@
+using System.Reflection;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Elements;
@@ -88,7 +89,7 @@ public class SpdxClassFactory
             throw new Spdx3Exception("The classType value of '" + classType.Name +
                                      "' is abstract and cannot be instantiated");
 
-        var c = Activator.CreateInstance(classType);
+        var c = Activator.CreateInstance(classType, BindingFlags.Instance | BindingFlags.NonPublic, null, null, null);
         if (c == null) throw new Spdx3Exception($"An instance of of '{classType.Name}' could not be created");
 
         var result = (T)Convert.ChangeType(c, classType);

@@ -12,8 +12,14 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseSpdxClass
+public abstract class BaseSpdxClass : ISpdxClass
 {
+    [JsonPropertyName("type")]
+    public string Type { get; set; } = string.Empty;
+
+    [JsonPropertyName("spdxId")]
+    public string SpdxId { get; set; } = string.Empty;
+
     /// <summary>
     ///     Serialization options
     /// </summary>
@@ -28,12 +34,6 @@ public abstract class BaseSpdxClass
 
     [JsonIgnore]
     public SpdxClassFactory? CreatedByFactory { get; set; }
-
-    [JsonPropertyName("type")]
-    public string Type { get; set; } = string.Empty;
-
-    [JsonPropertyName("spdxId")]
-    public string SpdxId { get; set; } = string.Empty;
 
     /// <summary>
     ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
