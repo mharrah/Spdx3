@@ -6,10 +6,11 @@ namespace Spdx3.Tests.Model.Core.Experiment;
 
 public class Outer : BaseSpdxClass
 {
-    [JsonPropertyName("inners")]
+ 
+    [JsonPropertyName("middles")]
     [JsonConverter(typeof(SpdxCollectionConvertorFactory))]
-    public IList<Inner> Inners { get; } = new List<Inner>();
-
+    public IList<Middle> Middles { get; } = new List<Middle>();
+    
     [JsonPropertyName("empty")]
     [JsonConverter(typeof(SpdxCollectionConvertorFactory))]
     public IList<Inner> Empty { get;  } = new List<Inner>();

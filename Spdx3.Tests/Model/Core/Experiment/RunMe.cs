@@ -12,9 +12,8 @@ public class RunMe
     {
         var factory = new SpdxClassFactory();
         var outer = factory.New<Outer>();
-        outer.Inners.Add(factory.New<Inner>());
-        outer.Inners.Add(factory.New<Inner>());
-        outer.Inners.Add(factory.New<Inner>());
+        outer.Middles.Add(factory.New<Middle>());
+        outer.Middles.Add(factory.New<Middle>());
 
         var options = new JsonSerializerOptions()
         {
@@ -33,10 +32,9 @@ public class RunMe
 
         Assert.Equal("""
                      {
-                       "inners": [
-                         "urn:Inner:402",
-                         "urn:Inner:40f",
-                         "urn:Inner:41c"
+                       "middles": [
+                         "urn:Middle:402",
+                         "urn:Middle:40f"
                        ],
                        "comment": "Outer comment",
                        "type": "Outer",
