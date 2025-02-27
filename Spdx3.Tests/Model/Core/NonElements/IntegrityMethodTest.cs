@@ -1,6 +1,6 @@
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class IntegrityMethodTest : BaseSpdxClassTestClass
+public class IntegrityMethodTest : BaseModelTestClass
 {
     [Fact]
     public void IntegrityMethod_Basics()
@@ -12,7 +12,7 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
         Assert.NotNull(integrityMethod);
         Assert.IsType<TestIntegrityMethod>(integrityMethod);
         Assert.Equal("TestIntegrityMethod", integrityMethod.Type);
-        Assert.Equal("urn:TestIntegrityMethod:3f5", integrityMethod.SpdxId);
+        Assert.Equal("urn:TestIntegrityMethod:402", integrityMethod.SpdxId);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
         const string expected = """
                                 {
                                   "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:3f5"
+                                  "spdxId": "urn:TestIntegrityMethod:402"
                                 }
                                 """;
 
@@ -46,7 +46,7 @@ public class IntegrityMethodTest : BaseSpdxClassTestClass
                                 {
                                   "comment": "Test comment",
                                   "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:3f5"
+                                  "spdxId": "urn:TestIntegrityMethod:402"
                                 }
                                 """;
 

@@ -3,7 +3,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class DictionaryEntryTest : BaseSpdxClassTestClass
+public class DictionaryEntryTest : BaseModelTestClass
 {
     [Fact]
     public void DictionaryEntry_Basics()
@@ -33,7 +33,7 @@ public class DictionaryEntryTest : BaseSpdxClassTestClass
                                   "key": "TestKey",
                                   "value": "TestValue",
                                   "type": "DictionaryEntry",
-                                  "spdxId": "urn:DictionaryEntry:3f5"
+                                  "spdxId": "urn:DictionaryEntry:402"
                                 }
                                 """;
 

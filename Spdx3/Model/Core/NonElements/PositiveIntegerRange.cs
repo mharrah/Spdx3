@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -14,6 +15,7 @@ public class PositiveIntegerRange : BaseSpdxClass
     private int? _endIntegerRange;
 
     [JsonPropertyName("beginIntegerRange")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public int? BeginIntegerRange
     {
         get => _beginIntegerRange;
@@ -25,6 +27,7 @@ public class PositiveIntegerRange : BaseSpdxClass
     }
 
     [JsonPropertyName("endIntegerRange")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public int? EndIntegerRange
     {
         get => _endIntegerRange;
@@ -40,5 +43,9 @@ public class PositiveIntegerRange : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(BeginIntegerRange));
         ValidateRequiredProperty(nameof(EndIntegerRange));
+    }
+
+    internal PositiveIntegerRange()
+    {
     }
 }

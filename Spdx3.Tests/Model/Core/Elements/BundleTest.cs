@@ -1,9 +1,10 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class BundleTest : BaseElementTestClass
+public class BundleTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_Bundle_SerializesProperly()
@@ -34,10 +35,10 @@ public class BundleTest : BaseElementTestClass
         bundle.Context.Add("Some context");
         bundle.Context.Add("More context");
         bundle.Description = "TestDescription";
-        bundle.ElementRef.Add("testRef1");
-        bundle.ElementRef.Add("testRef2");
+        bundle.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        bundle.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
         bundle.Name = "TestName";
-        bundle.RootElementRef.Add("testref");
+        bundle.RootElement.Add(TestFactory.New<TestElement>(TestCreationInfo));
         bundle.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """
@@ -50,11 +51,11 @@ public class BundleTest : BaseElementTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "testref"
+                                    "urn:TestElement:429"
                                   ],
                                   "element": [
-                                    "testRef1",
-                                    "testRef2"
+                                    "urn:TestElement:40f",
+                                    "urn:TestElement:41c"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",

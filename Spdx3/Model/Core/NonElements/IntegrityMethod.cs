@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,5 +10,10 @@ namespace Spdx3.Model.Core.NonElements;
 public abstract class IntegrityMethod : BaseSpdxClass
 {
     [JsonPropertyName("comment")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
+
+    protected internal IntegrityMethod()
+    {
+    }
 }

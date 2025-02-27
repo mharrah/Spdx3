@@ -1,6 +1,10 @@
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.NonElements;
+using Spdx3.Tests.Model.Extension;
+
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ElementTest : BaseElementTestClass
+public class ElementTest : BaseModelTestClass
 {
     [Fact]
     public void Requires_CreationInfo_Parameter()
@@ -12,14 +16,13 @@ public class ElementTest : BaseElementTestClass
     }
 
     [Fact]
-    public void BrandNew_Element_HasRequiredFields()
+    public void BrandNew_Element_IsValid()
     {
         // Arrange
         var element = TestFactory.New<TestElement>(TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
-        Assert.Equal("TestElement", element.Type);
     }
 
     [Fact]
@@ -49,14 +52,33 @@ public class ElementTest : BaseElementTestClass
         var element = TestFactory.New<TestElement>(TestCreationInfo);
         element.Comment = "TestComment";
         element.Description = "TestDescription";
+        element.Extension.Add(TestFactory.New<TestExtension>());
+        element.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
+        element.ExternalRef.Add(TestFactory.New<ExternalRef>());
         element.Name = "TestName";
+        element.Summary = "TestSummary";
+        element.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+
 
         const string expected = """
                                 {
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
+                                  "extension": [
+                                    "urn:TestExtension:40f"
+                                  ],
+                                  "externalIdentifier": [
+                                    "urn:ExternalIdentifier:41c"
+                                  ],
+                                  "externalRef": [
+                                    "urn:ExternalRef:429"
+                                  ],
                                   "name": "TestName",
+                                  "summary": "TestSummary",
+                                  "verifiedUsing": [
+                                    "urn:TestIntegrityMethod:436"
+                                  ],
                                   "type": "TestElement",
                                   "spdxId": "urn:TestElement:402"
                                 }

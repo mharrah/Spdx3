@@ -3,7 +3,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
+public class PositiveIntegerRangeTest : BaseModelTestClass
 {
     [Fact]
     public void PositiveIntegerRange_Basics()
@@ -33,7 +33,7 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
                                   "beginIntegerRange": 1,
                                   "endIntegerRange": 5,
                                   "type": "PositiveIntegerRange",
-                                  "spdxId": "urn:PositiveIntegerRange:3f5"
+                                  "spdxId": "urn:PositiveIntegerRange:402"
                                 }
                                 """;
 
@@ -75,11 +75,11 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
         Assert.NotNull(exception);
         Assert.Equal("Object PositiveIntegerRange, property EndIntegerRange: Field is required", exception.Message);
     }
-    
+
     [Fact]
     public void PositiveIntegerRange_Setter_DoesNotThrowIf_BeginIntegerRange_IsPositive()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() =>
             {
                 p.BeginIntegerRange = 1;
@@ -93,7 +93,7 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsIf_BeginIntegerRange_Null()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.BeginIntegerRange = null; });
         Assert.NotNull(exception);
     }
@@ -102,16 +102,16 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_BeginIntegerRange_IsZero()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.BeginIntegerRange = 0; });
         Assert.NotNull(exception);
     }
-    
-    
+
+
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_BeginIntegerRange_IsNegative()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.EndIntegerRange = -1; });
         Assert.NotNull(exception);
     }
@@ -119,7 +119,7 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_DoesNotThrowIf_EndIntegerRange_IsPositive()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() =>
             {
                 p.EndIntegerRange = 1;
@@ -133,7 +133,7 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsIf_EndIntegerRange_Null()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.EndIntegerRange = null; });
         Assert.NotNull(exception);
     }
@@ -142,18 +142,17 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_EndIntegerRange_IsZero()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.EndIntegerRange = 0; });
         Assert.NotNull(exception);
     }
-    
-    
+
+
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_EndIntegerRange_IsNegative()
     {
-        var p = new PositiveIntegerRange();
+        var p = TestFactory.New<PositiveIntegerRange>();
         var exception = Record.Exception(() => { p.EndIntegerRange = -1; });
         Assert.NotNull(exception);
     }
-
 }

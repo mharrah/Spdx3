@@ -1,5 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,11 +12,18 @@ namespace Spdx3.Model.Core.Elements;
 public class SpdxDocument : ElementCollection
 {
     [JsonPropertyName("import")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
 
     [JsonPropertyName("dataLicense")]
-    public string? DataLicenseRef { get; set; }
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public License? DataLicense { get; set; }
 
     [JsonPropertyName("namespaceMap")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
+
+    internal SpdxDocument()
+    {
+    }
 }

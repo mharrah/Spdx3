@@ -2,7 +2,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class BaseSpdxClassTest : BaseSpdxClassTestClass
+public class BaseSpdxClassTest : BaseModelTestClass
 {
     [Fact]
     public void BaseSpdxClass_HasReferenceTo_ClassFactory()
@@ -10,7 +10,7 @@ public class BaseSpdxClassTest : BaseSpdxClassTestClass
         // ARRANGE
         // Get a class using the factory in the base testing class
         var baseClass1 = TestFactory.New<TestBaseSpdxClass>();
-        
+
         // Get another class from a separate factory
         var myOwnFactory = new SpdxClassFactory(PredictableDateTime);
         var baseClass2 = myOwnFactory.New<TestBaseSpdxClass>();
@@ -21,6 +21,5 @@ public class BaseSpdxClassTest : BaseSpdxClassTestClass
         Assert.NotSame(baseClass1.CreatedByFactory, baseClass2.CreatedByFactory);
         Assert.Same(baseClass1.CreatedByFactory, TestFactory);
         Assert.Same(baseClass2.CreatedByFactory, myOwnFactory);
-        
     }
 }

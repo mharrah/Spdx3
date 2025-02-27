@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -9,5 +10,10 @@ namespace Spdx3.Model.Core.Elements;
 public class Bundle : ElementCollection
 {
     [JsonPropertyName("context")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<string> Context { get; } = new List<string>();
+
+    internal Bundle()
+    {
+    }
 }

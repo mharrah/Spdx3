@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using Spdx3.Model.Core.Elements;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,22 +11,26 @@ namespace Spdx3.Model.Core.NonElements;
 public class CreationInfo : BaseSpdxClass
 {
     [JsonPropertyName("createdBy")]
-    public IList<string> CreatedByAgentRefs { get;  } = new List<string>();
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public IList<Agent> CreatedBy { get; } = new List<Agent>();
 
     [JsonPropertyName("comment")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
 
     [JsonPropertyName("created")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public DateTimeOffset? Created { get; set; }
 
     [JsonPropertyName("createdUsing")]
-    public IList<string> CreatedUsingToolRefs { get; } = new List<string>();
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public IList<Tool> CreatedUsing { get; } = new List<Tool>();
 
-    /*
-    createdBy	Agent	1	*
-    createdUsing	Tool	0	*
-    specVersion	SemVer	1	1
-    */
     [JsonPropertyName("specVersion")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string SpecVersion { get; set; } = "3.0.1";
+
+    internal CreationInfo()
+    {
+    }
 }

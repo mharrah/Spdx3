@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,14 +10,20 @@ namespace Spdx3.Model.Core.NonElements;
 public class DictionaryEntry : BaseSpdxClass
 {
     [JsonPropertyName("key")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Key { get; set; }
 
     [JsonPropertyName("value")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Value { get; set; }
 
     public new void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Key));
+    }
+
+    internal DictionaryEntry()
+    {
     }
 }

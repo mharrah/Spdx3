@@ -1,9 +1,10 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class RelationshipTest : BaseElementTestClass
+public class RelationshipTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_Relationship_SerializesProperly()
@@ -56,8 +57,8 @@ public class RelationshipTest : BaseElementTestClass
                                   ],
                                   "relationshipType": "describes",
                                   "completeness": "complete",
-                                  "startTime": "2025-02-22T01:23:45+00:00",
-                                  "endTime": "2025-02-22T01:23:45+00:00",
+                                  "startTime": "2025-02-22T01:23:45Z",
+                                  "endTime": "2025-02-22T01:23:45Z",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",

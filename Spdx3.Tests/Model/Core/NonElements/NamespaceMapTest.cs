@@ -3,7 +3,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class NamespaceMapTest : BaseSpdxClassTestClass
+public class NamespaceMapTest : BaseModelTestClass
 {
     [Fact]
     public void NamespaceMap_Basics()
@@ -33,7 +33,7 @@ public class NamespaceMapTest : BaseSpdxClassTestClass
                                   "prefix": "TestPrefix",
                                   "namespace": "TestNamespace",
                                   "type": "NamespaceMap",
-                                  "spdxId": "urn:NamespaceMap:3f5"
+                                  "spdxId": "urn:NamespaceMap:402"
                                 }
                                 """;
 

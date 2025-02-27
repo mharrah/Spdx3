@@ -14,6 +14,14 @@ namespace Spdx3.Model;
 /// </summary>
 public abstract class BaseSpdxClass
 {
+    [JsonPropertyName("type")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public string Type { get; set; } = string.Empty;
+
+    [JsonPropertyName("spdxId")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public string SpdxId { get; set; } = string.Empty;
+
     /// <summary>
     ///     Serialization options
     /// </summary>
@@ -23,17 +31,17 @@ public abstract class BaseSpdxClass
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
             Modifiers = { IgnoreEmptyCollections.Modifier }
-        }
+        },
+        MaxDepth = 2
     };
+
+    static BaseSpdxClass()
+    {
+        Options.Converters.Add(new SpdxObjectConverterFactory());
+    }
 
     [JsonIgnore]
     public SpdxClassFactory? CreatedByFactory { get; set; }
-
-    [JsonPropertyName("type")]
-    public string Type { get; set; } = string.Empty;
-
-    [JsonPropertyName("spdxId")]
-    public string SpdxId { get; set; } = string.Empty;
 
     /// <summary>
     ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
@@ -66,8 +74,9 @@ public abstract class BaseSpdxClass
         {
             case null:
                 throw new Spdx3ValidationException(this, propertyName, "Field is required");
-            case int and < 1: throw new Spdx3ValidationException(this, propertyName, 
-                "Value of {propval} must be a positive non-zero integer");
+            case int and < 1:
+                throw new Spdx3ValidationException(this, propertyName,
+                    "Value of {propval} must be a positive non-zero integer");
             case string when propVal.ToString() == string.Empty:
                 throw new Spdx3ValidationException(this, propertyName, "Field is empty");
         }

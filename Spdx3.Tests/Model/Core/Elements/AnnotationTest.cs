@@ -1,9 +1,12 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.NonElements;
+using Spdx3.Tests.Model.Extension;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class AnnotationTest : BaseElementTestClass
+public class AnnotationTest : BaseModelTestClass
 {
     [Fact]
     public void Requires_CreationInfo_Parameter()
@@ -71,24 +74,40 @@ public class AnnotationTest : BaseElementTestClass
         var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
         annotation.Comment = "TestComment";
         annotation.Description = "TestDescription";
+        annotation.Extension.Add(TestFactory.New<TestExtension>());
+        annotation.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
+        annotation.ExternalRef.Add(TestFactory.New<ExternalRef>());
         annotation.Name = "TestName";
         annotation.Statement = "TestStatement";
         annotation.MediaType = "TestMediaType";
         annotation.Summary = "TestSummary";
-        annotation.SubjectRef = "testSubjectRef";
+        annotation.Subject = TestFactory.New<TestElement>(TestCreationInfo);
         annotation.AnnotationType = AnnotationType.review;
+        annotation.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
 
         const string expected = """
                                 {
-                                  "subject": "testSubjectRef",
+                                  "subject": "urn:TestElement:443",
                                   "annotationType": "review",
                                   "statement": "TestStatement",
                                   "mediaType": "TestMediaType",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
+                                  "extension": [
+                                    "urn:TestExtension:41c"
+                                  ],
+                                  "externalIdentifier": [
+                                    "urn:ExternalIdentifier:429"
+                                  ],
+                                  "externalRef": [
+                                    "urn:ExternalRef:436"
+                                  ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
+                                  "verifiedUsing": [
+                                    "urn:TestIntegrityMethod:450"
+                                  ],
                                   "type": "Annotation",
                                   "spdxId": "urn:Annotation:40f"
                                 }

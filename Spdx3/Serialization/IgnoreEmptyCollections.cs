@@ -18,11 +18,17 @@ public static class IgnoreEmptyCollections
             propertyInfo.ShouldSerialize = (obj, val) =>
             {
                 // Never serialize null properties
-                if (val == null) return false;
+                if (val == null)
+                {
+                    return false;
+                }
 
                 // If it's a collection, and it's empty, don't serialize it
                 var countProperty = val.GetType().GetProperty("Count");
-                if (countProperty == null) return true;
+                if (countProperty == null)
+                {
+                    return true;
+                }
 
                 var v = countProperty.GetValue(val);
                 var count = (int?)v;

@@ -1,8 +1,9 @@
 using Spdx3.Model.Core.Elements;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class IndividualElementTest : BaseElementTestClass
+public class IndividualElementTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_IndividualElement_SerializesProperly()

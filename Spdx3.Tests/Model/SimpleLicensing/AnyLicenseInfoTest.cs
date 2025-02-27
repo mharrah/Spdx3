@@ -1,8 +1,9 @@
 using Spdx3.Tests.Model.Core.Elements;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.SimpleLicensing;
 
-public class AnyLicenseInfoTest : BaseElementTestClass
+public class AnyLicenseInfoTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_AnyLicenseInfo_SerializesProperly()

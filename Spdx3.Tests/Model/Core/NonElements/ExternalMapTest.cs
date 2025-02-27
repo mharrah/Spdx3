@@ -1,9 +1,10 @@
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.Elements;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class ExternalMapTest : BaseSpdxClassTestClass
+public class ExternalMapTest : BaseModelTestClass
 {
     [Fact]
     public void ExternalMap_Basics()
@@ -30,7 +31,7 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         const string expected = """
                                 {
                                   "type": "ExternalMap",
-                                  "spdxId": "urn:ExternalMap:3f5"
+                                  "spdxId": "urn:ExternalMap:402"
                                 }
                                 """;
 
@@ -48,19 +49,19 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         var externalMap = TestFactory.New<ExternalMap>();
         externalMap.ExternalSpdxId = "testref";
         externalMap.LocationHint = "Test Location Hint";
-        externalMap.VerifiedUsingRef.Add("testref");
-        externalMap.DefiningArtifactRef = "testref";
+        externalMap.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+        externalMap.DefiningArtifact = TestFactory.New<TestArtifact>(TestCreationInfo);
 
         const string expected = """
                                 {
-                                  "definingArtifact": "testref",
+                                  "definingArtifact": "urn:TestArtifact:41c",
                                   "externalSpdxId": "testref",
                                   "locationHint": "Test Location Hint",
                                   "verifiedUsing": [
-                                    "testref"
+                                    "urn:TestIntegrityMethod:40f"
                                   ],
                                   "type": "ExternalMap",
-                                  "spdxId": "urn:ExternalMap:3f5"
+                                  "spdxId": "urn:ExternalMap:402"
                                 }
                                 """;
 
@@ -78,8 +79,8 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         var externalMap = TestFactory.New<ExternalMap>();
         externalMap.ExternalSpdxId = null;
         externalMap.LocationHint = "Test Location Hint";
-        externalMap.VerifiedUsingRef.Add("testref");
-        externalMap.DefiningArtifactRef = "testref";
+        externalMap.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+        externalMap.DefiningArtifact = TestFactory.New<TestArtifact>(TestCreationInfo);
 
         //  Act
         var exception = Record.Exception(() => externalMap.Validate());
@@ -96,8 +97,8 @@ public class ExternalMapTest : BaseSpdxClassTestClass
         var externalMap = TestFactory.New<ExternalMap>();
         externalMap.ExternalSpdxId = "";
         externalMap.LocationHint = "Test Location Hint";
-        externalMap.VerifiedUsingRef.Add("testref");
-        externalMap.DefiningArtifactRef = "testref";
+        externalMap.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+        externalMap.DefiningArtifact = TestFactory.New<TestArtifact>(TestCreationInfo);
 
         //  Act
         var exception = Record.Exception(() => externalMap.Validate());

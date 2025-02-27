@@ -1,6 +1,8 @@
+using Spdx3.Tests.Model.Core.NonElements;
+
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ArtifactTest : BaseElementTestClass
+public class ArtifactTest : BaseModelTestClass
 {
     [Fact]
     public void Requires_CreationInfo_Parameter()

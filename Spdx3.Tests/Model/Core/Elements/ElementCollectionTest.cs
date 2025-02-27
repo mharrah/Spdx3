@@ -1,8 +1,9 @@
 using Spdx3.Model.Core.Enums;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ElementCollectionTest : BaseElementTestClass
+public class ElementCollectionTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_ElementCollection_SerializesProperly()
@@ -31,10 +32,10 @@ public class ElementCollectionTest : BaseElementTestClass
         var elementCollection = TestFactory.New<TestElementCollection>(TestCreationInfo);
         elementCollection.Comment = "TestComment";
         elementCollection.Description = "TestDescription";
-        elementCollection.ElementRef.Add("testRef1");
-        elementCollection.ElementRef.Add("testRef2");
+        elementCollection.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        elementCollection.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
         elementCollection.Name = "TestName";
-        elementCollection.RootElementRef.Add("testref");
+        elementCollection.RootElement.Add(TestFactory.New<TestElement>(TestCreationInfo));
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """
@@ -43,11 +44,11 @@ public class ElementCollectionTest : BaseElementTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "testref"
+                                    "urn:TestElement:429"
                                   ],
                                   "element": [
-                                    "testRef1",
-                                    "testRef2"
+                                    "urn:TestElement:40f",
+                                    "urn:TestElement:41c"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
