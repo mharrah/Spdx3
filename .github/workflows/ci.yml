@@ -30,6 +30,9 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      - name: Restore local tools
+        run: dotnet tool restore
+
       - name: Build solution
         run: dotnet build -c Debug
 
@@ -48,13 +51,19 @@ jobs:
           indicators: true
           output: both
           thresholds: '60 80'
-
-      - name: Add Coverage PR Comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request'
-        with:
-          recreate: true
-          path: code-coverage-results.md
+          
+      - name: Generate coverage report
+        run: dotnet reportgenerator -report:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummary
+        
+      - name: Create check  with coverage report
+        uses: LouisBrunner/checks-action@v2.0.0
+        if: always()
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Code coverage
+          conclusion: ${{ job.status }}
+          output: '{"summary":"Code coverage"}'
+          output_text_description_file: coverage/Summary.md
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
