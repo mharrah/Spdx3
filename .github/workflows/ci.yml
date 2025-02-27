@@ -55,7 +55,13 @@ jobs:
       - name: Generate coverage report
         run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummary
         
-      - name: Create check  with coverage report
+      - name: Create badges
+        uses: gaelgirodon/ci-badges-action@v1
+        with:
+          gist-id: 808173dd03e2f30c980d03ee49e181626088eee8
+          token: ${{ secrets.GIST_TOKEN }}
+        
+      - name: Create check with coverage report
         uses: LouisBrunner/checks-action@v2.0.0
         if: always()
         with: 
