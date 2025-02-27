@@ -13,6 +13,10 @@ in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)]()
 [![GitHub License](https://img.shields.io/github/license/mharrah/Spdx3)]()
 
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mharrah/Spdx3/ci.yml)]()
-[![Github Actions Test Status](https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/badge.svg)]()
+![version](https://img.shields.io/github/package-json/v/mharrah/spdx3?style=flat-square)
+![license](https://img.shields.io/github/license/mharrah/spdx3?style=flat-square)
+![build](https://img.shields.io/github/actions/workflow/status/mharrah/spdx3/main.yml?branch=main&style=flat-square)
+![tests](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fgist.githubusercontent.com%2Fmharrah%e434f7b17274a026c153482b64e5cf91%2Fraw%2Fci-badges-action-junit-tests.json)
+![coverage](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fgist.githubusercontent.com%2Fmharrah%e434f7b17274a026c153482b64e5cf91%2Fraw%2Fci-badges-action-cobertura-coverage.json)
+
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/mharrah/Spdx3)]()
