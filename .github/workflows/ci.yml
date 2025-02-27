@@ -53,7 +53,7 @@ jobs:
           thresholds: '60 80'
           
       - name: Generate coverage report
-        run: dotnet reportgenerator -report:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummary
+        run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummary
         
       - name: Create check  with coverage report
         uses: LouisBrunner/checks-action@v2.0.0
