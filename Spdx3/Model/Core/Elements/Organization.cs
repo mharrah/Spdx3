@@ -8,6 +8,5 @@ public class Organization : Agent
 {
     internal Organization()
     {
-        
     }
 }

@@ -3,7 +3,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
+public class PositiveIntegerRangeTest : BaseModelTestClass
 {
     [Fact]
     public void PositiveIntegerRange_Basics()
@@ -33,7 +33,7 @@ public class PositiveIntegerRangeTest : BaseSpdxClassTestClass
                                   "beginIntegerRange": 1,
                                   "endIntegerRange": 5,
                                   "type": "PositiveIntegerRange",
-                                  "spdxId": "urn:PositiveIntegerRange:3f5"
+                                  "spdxId": "urn:PositiveIntegerRange:402"
                                 }
                                 """;
 

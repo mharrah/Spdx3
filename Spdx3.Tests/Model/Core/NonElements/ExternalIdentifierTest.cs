@@ -4,7 +4,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class ExternalIdentifierTest : BaseSpdxClassTestClass
+public class ExternalIdentifierTest : BaseModelTestClass
 {
     [Fact]
     public void ExternalIdentifier_Basics()
@@ -27,11 +27,11 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
     {
         // Arrange
         var externalIdentifier = TestFactory.New<ExternalIdentifier>();
-        
+
         const string expected = """
                                 {
                                   "type": "ExternalIdentifier",
-                                  "spdxId": "urn:ExternalIdentifier:3f5"
+                                  "spdxId": "urn:ExternalIdentifier:402"
                                 }
                                 """;
 
@@ -63,7 +63,7 @@ public class ExternalIdentifierTest : BaseSpdxClassTestClass
                                   ],
                                   "issuingAuthority": "testRef",
                                   "type": "ExternalIdentifier",
-                                  "spdxId": "urn:ExternalIdentifier:3f5"
+                                  "spdxId": "urn:ExternalIdentifier:402"
                                 }
                                 """;
 

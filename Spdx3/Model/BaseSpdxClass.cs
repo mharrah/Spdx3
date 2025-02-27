@@ -15,9 +15,11 @@ namespace Spdx3.Model;
 public abstract class BaseSpdxClass
 {
     [JsonPropertyName("type")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string Type { get; set; } = string.Empty;
 
     [JsonPropertyName("spdxId")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string SpdxId { get; set; } = string.Empty;
 
     /// <summary>
@@ -35,7 +37,6 @@ public abstract class BaseSpdxClass
 
     static BaseSpdxClass()
     {
-        Options.Converters.Add(new SpdxCollectionConverterFactory());
         Options.Converters.Add(new SpdxObjectConverterFactory());
     }
 
@@ -73,8 +74,9 @@ public abstract class BaseSpdxClass
         {
             case null:
                 throw new Spdx3ValidationException(this, propertyName, "Field is required");
-            case int and < 1: throw new Spdx3ValidationException(this, propertyName, 
-                "Value of {propval} must be a positive non-zero integer");
+            case int and < 1:
+                throw new Spdx3ValidationException(this, propertyName,
+                    "Value of {propval} must be a positive non-zero integer");
             case string when propVal.ToString() == string.Empty:
                 throw new Spdx3ValidationException(this, propertyName, "Field is empty");
         }

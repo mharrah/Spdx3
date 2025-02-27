@@ -4,7 +4,7 @@ using Spdx3.Tests.Model.Extension;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ElementTest : BaseElementTestClass
+public class ElementTest : BaseModelTestClass
 {
     [Fact]
     public void Requires_CreationInfo_Parameter()
@@ -52,13 +52,13 @@ public class ElementTest : BaseElementTestClass
         var element = TestFactory.New<TestElement>(TestCreationInfo);
         element.Comment = "TestComment";
         element.Description = "TestDescription";
-        element.Extensions.Add(TestFactory.New<TestExtension>());
-        element.ExternalIdentifiers.Add(TestFactory.New<ExternalIdentifier>());
-        element.ExternalRefs.Add(TestFactory.New<ExternalRef>());
+        element.Extension.Add(TestFactory.New<TestExtension>());
+        element.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
+        element.ExternalRef.Add(TestFactory.New<ExternalRef>());
         element.Name = "TestName";
         element.Summary = "TestSummary";
         element.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
-        
+
 
         const string expected = """
                                 {

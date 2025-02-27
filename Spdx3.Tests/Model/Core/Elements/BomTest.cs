@@ -1,9 +1,10 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class BomTest : BaseElementTestClass
+public class BomTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_Bom_SerializesProperly()
@@ -34,10 +35,10 @@ public class BomTest : BaseElementTestClass
         bom.Context.Add("Some context");
         bom.Context.Add("More context");
         bom.Description = "TestDescription";
-        bom.ElementRef.Add("testRef1");
-        bom.ElementRef.Add("testRef2");
+        bom.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        bom.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
         bom.Name = "TestName";
-        bom.RootElementRef.Add("testref");
+        bom.RootElement.Add(TestFactory.New<TestElement>(TestCreationInfo));
         bom.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """
@@ -50,11 +51,11 @@ public class BomTest : BaseElementTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "testref"
+                                    "urn:TestElement:429"
                                   ],
                                   "element": [
-                                    "testRef1",
-                                    "testRef2"
+                                    "urn:TestElement:40f",
+                                    "urn:TestElement:41c"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",

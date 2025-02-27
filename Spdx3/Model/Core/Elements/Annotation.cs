@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,15 +11,19 @@ namespace Spdx3.Model.Core.Elements;
 public class Annotation : Element
 {
     [JsonPropertyName("subject")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public Element? Subject { get; set; }
 
     [JsonPropertyName("annotationType")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public AnnotationType? AnnotationType { get; set; }
 
     [JsonPropertyName("statement")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Statement { get; set; }
 
     [JsonPropertyName("mediaType")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? MediaType { get; set; }
 
     public new void Validate()

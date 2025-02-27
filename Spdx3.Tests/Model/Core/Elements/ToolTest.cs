@@ -1,8 +1,9 @@
 using Spdx3.Model.Core.Elements;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class ToolTest : BaseElementTestClass
+public class ToolTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_Tool_SerializesProperly()

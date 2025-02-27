@@ -1,9 +1,11 @@
+using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.Elements;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class CreationInfoTest
+public class CreationInfoTest : BaseModelTestClass
 {
     [Fact]
     public void CreationInfo_Basics()
@@ -33,20 +35,20 @@ public class CreationInfoTest
         // Act
         var creationInfo = factory.New<CreationInfo>();
         creationInfo.Comment = "Test comment";
-        creationInfo.CreatedByAgentRefs.Add("testref");
-        creationInfo.CreatedUsingToolRefs.Add("testref");
+        creationInfo.CreatedBy.Add(factory.New<Agent>(creationInfo));
+        creationInfo.CreatedUsing.Add(factory.New<Tool>(creationInfo));
 
 
         // Assert
         const string expected = """
                                 {
                                   "createdBy": [
-                                    "testref"
+                                    "urn:Agent:402"
                                   ],
                                   "comment": "Test comment",
-                                  "created": "2025-02-23T01:23:45+00:00",
+                                  "created": "2025-02-23T01:23:45Z",
                                   "createdUsing": [
-                                    "testref"
+                                    "urn:Tool:40f"
                                   ],
                                   "specVersion": "3.0.1",
                                   "type": "CreationInfo",
@@ -73,7 +75,7 @@ public class CreationInfoTest
         // Assert - note that empty collections are not serialized at all
         const string expected = """
                                 {
-                                  "created": "2025-02-23T01:23:45+00:00",
+                                  "created": "2025-02-23T01:23:45Z",
                                   "specVersion": "3.0.1",
                                   "type": "CreationInfo",
                                   "spdxId": "urn:CreationInfo:3f5"

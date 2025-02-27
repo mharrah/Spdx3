@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -20,18 +21,23 @@ public class ExternalIdentifier : BaseSpdxClass
     }
 
     [JsonPropertyName("comment")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
 
     [JsonPropertyName("externalIdentifierType")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public ExternalIdentifierType? ExternalIdentifierType { get; set; }
 
     [JsonPropertyName("identifier")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Identifier { get; set; }
 
     [JsonPropertyName("identifierLocator")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<string> IdentifierLocator { get; } = new List<string>();
 
     [JsonPropertyName("issuingAuthority")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? IssuingAuthority { get; set; }
 
     public new void Validate()

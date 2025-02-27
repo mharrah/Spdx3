@@ -6,7 +6,6 @@ namespace Spdx3.Model.Core.Enums;
 ///     Lifecycle phases that can provide context to relationships.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/LifecycleScopeType/
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum LifecycleScopeType
 {
     build,

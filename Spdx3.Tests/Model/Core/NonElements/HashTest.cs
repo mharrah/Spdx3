@@ -3,7 +3,7 @@ using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class HashTest : BaseSpdxClassTestClass
+public class HashTest : BaseModelTestClass
 {
     [Fact]
     public void Hash_Basics()
@@ -15,7 +15,7 @@ public class HashTest : BaseSpdxClassTestClass
         Assert.NotNull(hash);
         Assert.IsType<Hash>(hash);
         Assert.Equal("Hash", hash.Type);
-        Assert.Equal("urn:Hash:3f5", hash.SpdxId);
+        Assert.Equal("urn:Hash:402", hash.SpdxId);
     }
 
     [Fact]
@@ -30,7 +30,7 @@ public class HashTest : BaseSpdxClassTestClass
                                   "algorithm": "falcon",
                                   "hashValue": "TestHashValue",
                                   "type": "Hash",
-                                  "spdxId": "urn:Hash:3f5"
+                                  "spdxId": "urn:Hash:402"
                                 }
                                 """;
 

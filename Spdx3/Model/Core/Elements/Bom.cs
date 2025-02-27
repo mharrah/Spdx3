@@ -6,8 +6,7 @@
 /// </summary>
 public class Bom : Bundle
 {
-    internal  Bom()
+    internal Bom()
     {
-        
     }
 }

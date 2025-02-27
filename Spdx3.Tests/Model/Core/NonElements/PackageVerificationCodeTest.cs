@@ -3,7 +3,7 @@ using Spdx3.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
-public class PackageVerificationCodeTest : BaseSpdxClassTestClass
+public class PackageVerificationCodeTest : BaseModelTestClass
 {
     [Fact]
     public void PackageVerificationCode_Basics()
@@ -15,7 +15,7 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
         Assert.NotNull(hash);
         Assert.IsType<PackageVerificationCode>(hash);
         Assert.Equal("PackageVerificationCode", hash.Type);
-        Assert.Equal("urn:PackageVerificationCode:3f5", hash.SpdxId);
+        Assert.Equal("urn:PackageVerificationCode:402", hash.SpdxId);
     }
 
     [Fact]
@@ -30,7 +30,7 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
                                   "algorithm": "falcon",
                                   "hashValue": "TestHashValue",
                                   "type": "PackageVerificationCode",
-                                  "spdxId": "urn:PackageVerificationCode:3f5"
+                                  "spdxId": "urn:PackageVerificationCode:402"
                                 }
                                 """;
 
@@ -59,7 +59,7 @@ public class PackageVerificationCodeTest : BaseSpdxClassTestClass
                                     "file2"
                                   ],
                                   "type": "PackageVerificationCode",
-                                  "spdxId": "urn:PackageVerificationCode:3f5"
+                                  "spdxId": "urn:PackageVerificationCode:402"
                                 }
                                 """;
 

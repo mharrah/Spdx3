@@ -11,6 +11,5 @@ public class TestArtifact : Artifact
 {
     internal TestArtifact()
     {
-        
     }
 }

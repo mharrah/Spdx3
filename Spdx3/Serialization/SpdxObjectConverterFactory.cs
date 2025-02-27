@@ -2,6 +2,7 @@ using System.Collections;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Spdx3.Exceptions;
 using Spdx3.Model;
 
 namespace Spdx3.Serialization;
@@ -37,87 +38,156 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
 
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
-            if (value == null) return;
-
-            // If we're not writing a top level object, we only serialize the ID
-            if (writer.CurrentDepth > 0)
+            if (value == null)
             {
-                writer.WriteStringValue((value as dynamic).SpdxId);
                 return;
             }
-            
+
             // Otherwise, we need to serialize all the properties
-            var props = value.GetType().GetProperties().Where(prop => Attribute.IsDefined(prop, typeof(JsonPropertyNameAttribute)));
-            
+            var props = value.GetType().GetProperties()
+                .Where(prop => Attribute.IsDefined(prop, typeof(JsonPropertyNameAttribute)));
+
             writer.WriteStartObject();
-            
+
             foreach (var prop in props.Where(prop => prop.GetValue(value) != null))
             {
                 var propVal = prop.GetValue(value);
-                if (prop.PropertyType.Name.Contains("IList"))
-                {
-                    var breakpoint = 0;
-                }
-                
+                var propType = prop.PropertyType;
+
+                var jsonElementName = GetJsonElementNameFromPropertyAttribute(prop);
+
+
                 // If it's a list of OTHER SpdxClasses, don't serialize the objects, just serialize an array of references
-                if (prop.PropertyType.IsGenericType && 
-                    prop.PropertyType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseSpdxClass)) && 
-                    typeof(System.Collections.IList).IsAssignableFrom(propVal.GetType())
-                    )
+                if (propType.IsGenericType &&
+                    propType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseSpdxClass)) &&
+                    propVal is IList spdxClasses
+                   )
                 {
-                    var list = (IList)propVal;
-                    
-                    if (list.Count == 0)
+                    if (spdxClasses.Count > 0)
                     {
-                        continue;
+                        WriteReferencesToListItems(writer, spdxClasses, jsonElementName);
                     }
-                    writer.WritePropertyName(prop.Name);
-                    writer.WriteStartArray();
-                    foreach (object spdxClass in list) 
-                    {
-                        writer.WriteStringValue((spdxClass as BaseSpdxClass).SpdxId);
-                    }
-                    writer.WriteEndArray();
+
                     continue;
                 }
-                
-                switch (propVal)
+
+                // If it's a list of Enum values, serialize the names of the values
+                if (propType.IsGenericType &&
+                    propType.GenericTypeArguments[0].IsEnum &&
+                    propVal is IList enums
+                   )
                 {
-                    case Enum:
-                        writer.WriteString(prop.Name, Enum.GetName(propVal.GetType(), propVal));
-                        break;
-                    case int val:
-                        writer.WriteNumber(prop.Name, val);
-                        break;
-                    case string val:
-                        writer.WriteString(prop.Name, val);
-                        break;
-                    case BaseSpdxClass:
-                        writer.WriteString(prop.Name, (string)(propVal as dynamic).SpdxId);
-                        break;
-                    case List<string> list:
+                    if (enums.Count > 0)
+                    {
+                        WriteReferencesToEnumValues(writer, propType.GenericTypeArguments[0], enums, jsonElementName);
+                    }
+
+                    continue;
+                }
+
+
+                WriteSimpleProperty(writer, propVal, jsonElementName);
+            }
+
+
+            writer.WriteEndObject();
+        }
+
+        private static void WriteSimpleProperty(Utf8JsonWriter writer, object? propVal, string jsonElementName)
+        {
+            switch (propVal)
+            {
+                case Enum:
+                    writer.WriteString(jsonElementName, Enum.GetName(propVal.GetType(), propVal));
+                    break;
+                case int val:
+                    writer.WriteNumber(jsonElementName, val);
+                    break;
+                case string val:
+                    writer.WriteString(jsonElementName, val);
+                    break;
+                case DateTimeOffset val:
+                    writer.WriteString(jsonElementName, val.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+                    break;
+                case BaseSpdxClass:
+                    writer.WriteString(jsonElementName, (string)(propVal as dynamic).SpdxId);
+                    break;
+                case List<string> list:
+                    if (list.Count > 0) 
+                    {
+                        writer.WritePropertyName(jsonElementName);
                         writer.WriteStartArray();
                         list.ForEach(str => writer.WriteStringValue(str));
                         writer.WriteEndArray();
-                        break;
-                    case List<Enum> list:
+                    }
+                    break;
+                case List<Enum> list:
+                    if (list.Count > 0)
+                    {
+                        writer.WritePropertyName(jsonElementName);
                         writer.WriteStartArray();
                         list.ForEach(str => writer.WriteStringValue(Enum.GetName(propVal.GetType(), propVal)));
                         writer.WriteEndArray();
-                        break;
-                    case List<object> list:
+                    }
+                    break;
+                case List<object> list:
+                    if (list.Count > 0)
+                    {
+                        writer.WritePropertyName(jsonElementName);
                         writer.WriteStartArray();
                         list.ForEach(spdxClass => writer.WriteStringValue((propVal as dynamic).SpdxId));
                         writer.WriteEndArray();
-                        break;
-                    default:
-                        writer.WriteString(prop.GetType().Name, propVal.ToString());
-                        break;
+                    }
+                    break;
+                default:
+                    throw new Spdx3Exception($"Unhandled class type {propVal?.GetType().FullName}");
+            }
+        }
+
+        private static void WriteReferencesToListItems(Utf8JsonWriter writer, IList spdxClasses, string jsonElementName)
+        {
+            writer.WritePropertyName(jsonElementName);
+            writer.WriteStartArray();
+            foreach (var spdxClass in spdxClasses)
+            {
+                if (spdxClass != null)
+                {
+                    writer.WriteStringValue((spdxClass as BaseSpdxClass)?.SpdxId);
                 }
             }
-            
-            
-            writer.WriteEndObject();
+
+            writer.WriteEndArray();
+        }
+
+        private static void WriteReferencesToEnumValues(Utf8JsonWriter writer, Type enumType, IList enumValues,
+            string jsonElementName)
+        {
+            writer.WritePropertyName(jsonElementName);
+            writer.WriteStartArray();
+            foreach (var enumValue in enumValues)
+            {
+                if (enumValue != null)
+                {
+                    writer.WriteStringValue(Enum.GetName(enumType, enumValue));
+                }
+            }
+
+            writer.WriteEndArray();
+        }
+
+
+        private static string GetJsonElementNameFromPropertyAttribute(PropertyInfo prop)
+        {
+            var jsonElementName = "";
+            foreach (var propAttr in prop.GetCustomAttributes())
+            {
+                if (propAttr is JsonPropertyNameAttribute)
+                {
+                    jsonElementName = (propAttr as dynamic).Name;
+                }
+            }
+
+            return jsonElementName;
         }
     }
 }

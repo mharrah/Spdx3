@@ -6,7 +6,6 @@ namespace Spdx3.Model.Core.Enums;
 ///     A mathematical algorithm that maps data of arbitrary size to a bit string.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/HashAlgorithm/
 /// </summary>
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum HashAlgorithm
 {
     adler32,

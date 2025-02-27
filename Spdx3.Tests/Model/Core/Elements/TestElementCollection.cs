@@ -11,6 +11,5 @@ public class TestElementCollection : ElementCollection
 {
     internal TestElementCollection()
     {
-        
     }
 }

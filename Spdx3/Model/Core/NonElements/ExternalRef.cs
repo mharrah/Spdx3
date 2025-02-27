@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using Spdx3.Model.Core.Enums;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,23 +11,27 @@ namespace Spdx3.Model.Core.NonElements;
 public class ExternalRef : BaseSpdxClass
 {
     [JsonPropertyName("externalRefType")]
-    public string? ExternalRefType { get; set; }
-    
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public ExternalRefType? ExternalRefType { get; set; }
+
     [JsonPropertyName("locator")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<string>? Locator { get; set; } = new List<string>();
-    
+
     [JsonPropertyName("contentType")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? ContentType { get; set; }
-    
+
     [JsonPropertyName("conmment")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Conment { get; set; }
-    
+
     internal ExternalRef()
     {
     }
 
     public new void Validate()
-    {  
+    {
         base.Validate();
         ValidateRequiredProperty(nameof(ExternalRefType));
     }

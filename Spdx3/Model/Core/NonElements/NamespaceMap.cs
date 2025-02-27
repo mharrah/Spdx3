@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,9 +10,11 @@ namespace Spdx3.Model.Core.NonElements;
 public class NamespaceMap : BaseSpdxClass
 {
     [JsonPropertyName("prefix")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Prefix { get; set; }
 
     [JsonPropertyName("namespace")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Namespace { get; set; }
 
     public new void Validate()

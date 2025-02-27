@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Extension;
 
@@ -9,9 +10,11 @@ namespace Spdx3.Model.Extension;
 public class CdxPropertyEntry : BaseSpdxClass
 {
     [JsonPropertyName("cdxPropName")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? CdxPropName { get; set; }
 
     [JsonPropertyName("cdxPropValue")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? CdxPropValue { get; set; }
 
     public new void Validate()
@@ -19,7 +22,7 @@ public class CdxPropertyEntry : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(CdxPropName));
     }
-    
+
     internal CdxPropertyEntry()
     {
     }

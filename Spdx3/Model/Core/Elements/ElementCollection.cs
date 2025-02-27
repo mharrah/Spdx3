@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Serialization;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -16,10 +17,12 @@ public abstract class ElementCollection : Element
     ///     Yep, the spec says one to many root elements. Go figure.
     /// </summary>
     [JsonPropertyName("rootElement")]
-    public IList<string> RootElementRef { get; } = new List<string>();
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public IList<Element> RootElement { get; } = new List<Element>();
 
     [JsonPropertyName("element")]
-    public IList<string> ElementRef { get; } = new List<string>();
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public IList<Element> Element { get; } = new List<Element>();
 
     protected internal ElementCollection()
     {

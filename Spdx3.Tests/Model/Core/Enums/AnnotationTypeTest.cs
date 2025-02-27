@@ -10,38 +10,4 @@ public class AnnotationTypeTest
     {
         Assert.Equal(2, Enum.GetValues(typeof(AnnotationType)).Length);
     }
-
-    [Fact]
-    public void AnnotationType_Single_SerializesAsString()
-    {
-        // Arrange
-        const AnnotationType enumVal = AnnotationType.review;
-
-        // Act
-        var json = JsonSerializer.Serialize(Convert.ChangeType(enumVal, typeof(object)));
-
-        // Assert
-        Assert.Equal("\"review\"", json);
-    }
-
-    [Fact]
-    public void AnnotationType_Array_SerializesAsStrings()
-    {
-        // Arrange
-        var enumArray = new[]
-        {
-            AnnotationType.other,
-            AnnotationType.review
-        };
-
-        // Act
-        var json = JsonSerializer.Serialize<object>(enumArray);
-
-        const string expected = """
-                                ["other","review"]
-                                """;
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
 }

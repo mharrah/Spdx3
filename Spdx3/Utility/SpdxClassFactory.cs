@@ -37,8 +37,8 @@ public class SpdxClassFactory
         var result = NewItem<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         result.RelationshipType = relationshipType;
-        result.FromRef = from.SpdxId;
-        to.ForEach(t => result.ToRef.Add(t.SpdxId));
+        result.From = from;
+        to.ForEach(t => result.To.Add(t));
         return result;
     }
 
@@ -58,15 +58,19 @@ public class SpdxClassFactory
 
         // If the caller wants an Annotation, they need to use the other method
         if (classType == typeof(Annotation) || classType.IsSubclassOf(typeof(Annotation)))
+        {
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, " +
                                      $"{nameof(AnnotationType)}, and {nameof(Element)} are required " +
                                      $"when creating instances of {nameof(Annotation)} or its subclasses");
+        }
 
         // If the caller wants a Relationship, they need to use the other method
         if (classType == typeof(Relationship) || classType.IsSubclassOf(typeof(Relationship)))
+        {
             throw new Spdx3Exception($"Parameters of type {nameof(CreationInfo)}, {nameof(RelationshipType)}, " +
                                      $"{nameof(Element)}, and List<{nameof(Element)}> are required " +
                                      $"when creating instances of {nameof(Relationship)} or its subclasses");
+        }
 
         var result = NewItem<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
@@ -77,8 +81,11 @@ public class SpdxClassFactory
     {
         var classType = typeof(T);
         if (classType == typeof(Element) || classType.IsSubclassOf(typeof(Element)))
+        {
             throw new Spdx3Exception(
                 $"Parameter of type {nameof(CreationInfo)} required when creating subclasses of {nameof(Element)}");
+        }
+
         return NewItem<T>();
     }
 
@@ -86,11 +93,16 @@ public class SpdxClassFactory
     {
         var classType = typeof(T);
         if (classType.IsAbstract)
+        {
             throw new Spdx3Exception("The classType value of '" + classType.Name +
                                      "' is abstract and cannot be instantiated");
+        }
 
         var c = Activator.CreateInstance(classType, BindingFlags.Instance | BindingFlags.NonPublic, null, null, null);
-        if (c == null) throw new Spdx3Exception($"An instance of of '{classType.Name}' could not be created");
+        if (c == null)
+        {
+            throw new Spdx3Exception($"An instance of of '{classType.Name}' could not be created");
+        }
 
         var result = (T)Convert.ChangeType(c, classType);
         result.Type = classType.Name;
@@ -101,7 +113,10 @@ public class SpdxClassFactory
          * Special handling for CreationInfo classes, which requires the Created property to be set, which should
          * generally come from this factory class and not be left to the user to have to remember to set.
          */
-        if (result is CreationInfo info) info.Created = CreationDate;
+        if (result is CreationInfo info)
+        {
+            info.Created = CreationDate;
+        }
 
         EverythingProduced.Add(result);
         return result;

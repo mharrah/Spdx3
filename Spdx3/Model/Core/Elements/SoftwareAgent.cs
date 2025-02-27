@@ -8,6 +8,5 @@ public class SoftwareAgent : Agent
 {
     internal SoftwareAgent()
     {
-        
     }
 }

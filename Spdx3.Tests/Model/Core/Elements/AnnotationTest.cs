@@ -6,7 +6,7 @@ using Spdx3.Tests.Model.Extension;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class AnnotationTest : BaseElementTestClass
+public class AnnotationTest : BaseModelTestClass
 {
     [Fact]
     public void Requires_CreationInfo_Parameter()
@@ -51,11 +51,7 @@ public class AnnotationTest : BaseElementTestClass
         var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
-                                  "subject": {
-                                    "creationInfo": "urn:CreationInfo:3f5",
-                                    "type": "TestElement",
-                                    "spdxId": "urn:TestElement:402"
-                                  },
+                                  "subject": "urn:TestElement:402",
                                   "annotationType": "review",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Annotation",
@@ -78,9 +74,9 @@ public class AnnotationTest : BaseElementTestClass
         var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
         annotation.Comment = "TestComment";
         annotation.Description = "TestDescription";
-        annotation.Extensions.Add(TestFactory.New<TestExtension>());
-        annotation.ExternalIdentifiers.Add(TestFactory.New<ExternalIdentifier>());
-        annotation.ExternalRefs.Add(TestFactory.New<ExternalRef>());
+        annotation.Extension.Add(TestFactory.New<TestExtension>());
+        annotation.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
+        annotation.ExternalRef.Add(TestFactory.New<ExternalRef>());
         annotation.Name = "TestName";
         annotation.Statement = "TestStatement";
         annotation.MediaType = "TestMediaType";
@@ -91,29 +87,29 @@ public class AnnotationTest : BaseElementTestClass
 
         const string expected = """
                                 {
-                                  "Subject": "urn:TestElement:443",
-                                  "AnnotationType": "review",
-                                  "Statement": "TestStatement",
-                                  "MediaType": "TestMediaType",
-                                  "Comment": "TestComment",
-                                  "CreationInfoSpdxId": "urn:CreationInfo:3f5",
-                                  "Description": "TestDescription",
-                                  "Extensions": [
+                                  "subject": "urn:TestElement:443",
+                                  "annotationType": "review",
+                                  "statement": "TestStatement",
+                                  "mediaType": "TestMediaType",
+                                  "comment": "TestComment",
+                                  "creationInfo": "urn:CreationInfo:3f5",
+                                  "description": "TestDescription",
+                                  "extension": [
                                     "urn:TestExtension:41c"
                                   ],
-                                  "ExternalIdentifiers": [
+                                  "externalIdentifier": [
                                     "urn:ExternalIdentifier:429"
                                   ],
-                                  "ExternalRefs": [
+                                  "externalRef": [
                                     "urn:ExternalRef:436"
                                   ],
-                                  "Name": "TestName",
-                                  "Summary": "TestSummary",
-                                  "VerifiedUsing": [
+                                  "name": "TestName",
+                                  "summary": "TestSummary",
+                                  "verifiedUsing": [
                                     "urn:TestIntegrityMethod:450"
                                   ],
-                                  "Type": "Annotation",
-                                  "SpdxId": "urn:Annotation:40f"
+                                  "type": "Annotation",
+                                  "spdxId": "urn:Annotation:40f"
                                 }
                                 """;
 

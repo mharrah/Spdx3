@@ -1,8 +1,9 @@
 using Spdx3.Model.Core.Elements;
+using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
-public class AgentTest : BaseElementTestClass
+public class AgentTest : BaseModelTestClass
 {
     [Fact]
     public void BrandNew_Agent_SerializesProperly()
