@@ -12,6 +12,9 @@ on:
       - '**/README.md'
   workflow_dispatch:
 
+env:
+  GIST_ID: e434f7b17274a026c153482b64e5cf91
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -58,7 +61,7 @@ jobs:
       - name: Create badges
         uses: gaelgirodon/ci-badges-action@v1
         with:
-          gist-id: 808173dd03e2f30c980d03ee49e181626088eee8
+          gist-id: ${{ env.GIST_ID }}
           token: ${{ secrets.GIST_TOKEN }}
         
       - name: Create check with coverage report
@@ -109,5 +112,5 @@ jobs:
         uses: andymckay/append-gist-action@6e8d64427fe47cbacf4ab6b890411f1d67c07f3e
         with:
           token: ${{ secrets.GIST_TOKEN }}
-          gistURL: https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91
+          gistURL: https://gist.githubusercontent.com/mharrah/${{ env.GIST_ID }}
           file: badge.svg
