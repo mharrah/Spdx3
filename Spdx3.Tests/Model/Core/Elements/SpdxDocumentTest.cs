@@ -14,7 +14,7 @@ public class SpdxDocumentTest : BaseModelTestClass
             "Creating instances of SpdxDocument requires using the New(CreationInfo creationInfo) form",
             exception.Message);
     }
-    
+
     [Fact]
     public void SpdxDocument_NewElement_ShouldValidate()
     {

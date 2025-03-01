@@ -87,6 +87,7 @@ public class SpdxClassFactoryTest
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Creating instances of TestElement requires using the New(CreationInfo creationInfo) form", exception.Message);
+        Assert.Equal("Creating instances of TestElement requires using the New(CreationInfo creationInfo) form",
+            exception.Message);
     }
 }

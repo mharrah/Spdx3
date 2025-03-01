@@ -8,7 +8,6 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class AnnotationTest : BaseModelTestClass
 {
-
     [Fact]
     public void Requires_AnnotationType_Parameter()
     {

@@ -113,13 +113,14 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
                     writer.WriteString(jsonElementName, (string)(propVal as dynamic).SpdxId);
                     break;
                 case List<string> list:
-                    if (list.Count > 0) 
+                    if (list.Count > 0)
                     {
                         writer.WritePropertyName(jsonElementName);
                         writer.WriteStartArray();
                         list.ForEach(str => writer.WriteStringValue(str));
                         writer.WriteEndArray();
                     }
+
                     break;
                 case List<Enum> list:
                     if (list.Count > 0)
@@ -129,6 +130,7 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
                         list.ForEach(str => writer.WriteStringValue(Enum.GetName(propVal.GetType(), propVal)));
                         writer.WriteEndArray();
                     }
+
                     break;
                 case List<object> list:
                     if (list.Count > 0)
@@ -138,6 +140,7 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
                         list.ForEach(spdxClass => writer.WriteStringValue((propVal as dynamic).SpdxId));
                         writer.WriteEndArray();
                     }
+
                     break;
                 default:
                     throw new Spdx3Exception($"Unhandled class type {propVal?.GetType().FullName}");

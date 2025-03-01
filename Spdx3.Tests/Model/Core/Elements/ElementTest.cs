@@ -6,7 +6,6 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class ElementTest : BaseModelTestClass
 {
-
     [Fact]
     public void Requires_CreationInfo_Parameter()
     {

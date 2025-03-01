@@ -57,7 +57,7 @@ public class SpdxClassFactory
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         return result;
     }
-    
+
     public T New<T>(CreationInfo creationInfo, AnnotationType annotationType, Element subject) where T : Annotation
     {
         ValidateCallingRightMethod(typeof(T), typeof(Annotation));

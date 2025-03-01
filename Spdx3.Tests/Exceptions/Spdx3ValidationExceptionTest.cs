@@ -12,10 +12,10 @@ public class Spdx3ValidationExceptionTest
         // Arrange
         var factory = new SpdxClassFactory();
         var hash = factory.New<Hash>();
-        
+
         // Act
         var exception = new Spdx3ValidationException(hash, nameof(hash.Algorithm), "Some message");
-        
+
         // Assert
         Assert.Equal("Object Hash, property Algorithm: Some message", exception.Message);
     }

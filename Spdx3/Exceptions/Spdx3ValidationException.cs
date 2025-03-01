@@ -6,6 +6,8 @@ public class Spdx3ValidationException(BaseSpdxClass obj, string propertyName, st
     FormatMessage(obj,
         propertyName, why))
 {
-    private static string FormatMessage(BaseSpdxClass obj, string propertyName, string why) =>
-        ($"Object {obj.GetType().Name}, property {propertyName}: {why}");
+    private static string FormatMessage(BaseSpdxClass obj, string propertyName, string why)
+    {
+        return $"Object {obj.GetType().Name}, property {propertyName}: {why}";
+    }
 }
