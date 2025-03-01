@@ -7,6 +7,22 @@ namespace Spdx3.Tests.Model.Core.Elements;
 public class RelationshipTest : BaseModelTestClass
 {
     [Fact]
+    public void RelationShip_Requires_Correct_Factory_Method()
+    {
+        // Arrange
+        const string expected = 
+            "Creating instances of Relationship requires using the " +
+            "New(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to) form";
+
+        // Act
+        var exception = Record.Exception(() => TestFactory.New<Relationship>());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal(expected, exception.Message);
+    }
+
+    [Fact]
     public void BrandNew_Relationship_SerializesProperly()
     {
         // Arrange
