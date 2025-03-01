@@ -14,7 +14,7 @@ public abstract class ElementCollection : Element
     public IList<ProfileIdentifierType> ProfileConformance { get; } = new List<ProfileIdentifierType>();
 
     /// <summary>
-    ///     Yep, the spec says one to many root elements. Go figure.
+    ///     Yep, the spec says zero to many root elements. Go figure.
     /// </summary>
     [JsonPropertyName("rootElement")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

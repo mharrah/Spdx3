@@ -9,23 +9,46 @@ namespace Spdx3.Utility;
 
 public class SpdxClassFactory
 {
+    private static Dictionary<string, string> _prefixesForNamespaces = new()
+    {
+        { "Model.Core", "" },
+        { "Model.Security", "security_" },
+        { "Model.Software", "software_" },
+        { "Model.Licensing", "licensing_" },
+        { "Model.SimpleLicensing", "simplelicensing_" },
+        { "Model.ExpandedLicensing", "expandedlicensing_" },
+        { "Model.Dataset", "dataset_" },
+        { "Model.AI", "ai_" },
+        { "Model.Build", "build_" },
+        { "Model.Lite", "lite_" },
+        { "Model.Extension", "extension_" }
+    };
+
     /// <summary>
     /// This is a map of Types to method signatures.
     /// When requesting a subclass of Key, you should use the method with the signature Value.
     /// </summary>
-    private readonly IDictionary<Type, string> _typeToSignatureMap = new Dictionary<Type, string>();
+    private static Dictionary<Type, string> _typeToSignatureMap = new()
+    {
+        {
+            typeof(Annotation),
+            "New(CreationInfo creationInfo, AnnotationType annotationType, Element subject)"
+        },
+        {
+            typeof(Relationship),
+            "New(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to)"
+        },
+        { typeof(BaseSpdxClass), "New()" },
+        { typeof(ExternalRef), "New(ExternalRefType externalRefType)" },
+        { typeof(Element), "New(CreationInfo creationInfo)" },
+        { typeof(ExternalIdentifier), "New(ExternalIdentifierType externalIdentifierType, string identifier)" }
+    };
 
     /// <summary>
     ///     Default no-arg constructor.
     /// </summary>
     public SpdxClassFactory()
     {
-        _typeToSignatureMap[typeof(Annotation)] =
-            "New(CreationInfo creationInfo, AnnotationType annotationType, Element subject)";
-        _typeToSignatureMap[typeof(Relationship)] =
-            "New(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to)";
-        _typeToSignatureMap[typeof(BaseSpdxClass)] = "New()";
-        _typeToSignatureMap[typeof(Element)] = "New(CreationInfo creationInfo)";
     }
 
     /// <summary>
@@ -37,44 +60,127 @@ public class SpdxClassFactory
         CreationDate = creationDate;
     }
 
+
+    /// <summary>
+    /// An ID factory for getting SPDX ID's 
+    /// </summary>
     private SpdxIdFactory IdFactory { get; } = new();
 
+    /// <summary>
+    ///  The creation date that will be stamped on everything this factory creates
+    /// </summary>
     public DateTimeOffset CreationDate { get; set; } = DateTimeOffset.Now;
 
+    /// <summary>
+    /// Keeps a copy of everything produced by this factory
+    /// </summary>
     public List<BaseSpdxClass> EverythingProduced { get; } = [];
 
+    /// <summary>
+    /// Creates a BaseSpdxClass (or a subclass that doesn't take required fields)
+    /// </summary>
+    /// <typeparam name="T">The type of class you want</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
     public T New<T>() where T : BaseSpdxClass
     {
         ValidateCallingRightMethod(typeof(T), typeof(BaseSpdxClass));
-        return NewBaseClass<T>();
+        return NewRawClass<T>();
     }
 
+    /// <summary>
+    /// Creates an ExternalIdentifer (or a subclass of it)
+    /// </summary>
+    /// <param name="externalIdentifierType">The type of external identifier</param>
+    /// <param name="identifier">The identifier value</param>
+    /// <typeparam name="T">The type of class you want.  Must be an ExternalIdentfier or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
+    public T New<T>(ExternalIdentifierType externalIdentifierType, string identifier) where T : ExternalIdentifier
+    {
+        ValidateCallingRightMethod(typeof(T), typeof(ExternalIdentifier));
+        var result = NewRawClass<T>();
+        result.ExternalIdentifierType = externalIdentifierType;
+        result.Identifier = identifier;
+        return result;
+    }
+
+    /// <summary>
+    /// Creates an ExternalRef (or a subclass of it)
+    /// </summary>
+    /// <param name="externalRefType">The type of external reference</param>
+    /// <typeparam name="T">The type of class you want.  Must be an ExternalRef or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
+    public T New<T>(ExternalRefType externalRefType) where T : ExternalRef
+    {
+        ValidateCallingRightMethod(typeof(T), typeof(ExternalRef));
+        var result = NewRawClass<T>();
+        result.ExternalRefType = externalRefType;
+        return result;
+    }
+
+
+    /// <summary>
+    /// Creates an ExternalMap (or a subclass of it)
+    /// </summary>
+    /// <param name="externalSpdxId">The ID in the external document</param>
+    /// <typeparam name="T">The type of class you want.  Must be an ExternalMap or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
+    public T New<T>(string externalSpdxId) where T : ExternalMap
+    {
+        ValidateCallingRightMethod(typeof(T), typeof(ExternalRef));
+        var result = NewRawClass<T>();
+        result.ExternalSpdxId = externalSpdxId;
+        return result;
+    }
+
+    /// <summary>
+    /// Creates an Element (or one of its subclasses that only requires a CreationInfo property)
+    /// </summary>
+    /// <param name="creationInfo">Information about the creation of this entry</param>
+    /// <typeparam name="T">The type of class you want.  Must be an Element or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
     public T New<T>(CreationInfo creationInfo) where T : Element
     {
         ValidateCallingRightMethod(typeof(T), typeof(Element));
 
-        var result = NewBaseClass<T>();
+        var result = NewRawClass<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         return result;
     }
 
+    /// <summary>
+    /// Create an Annotation (or a subclass of it)
+    /// </summary>
+    /// <param name="creationInfo">Information about the creation of this entry</param>
+    /// <param name="annotationType">The type of annotation</param>
+    /// <param name="subject">The subject (Element) being annotated.</param>
+    /// <typeparam name="T">The type of class you want.  Must be an Annotation or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
     public T New<T>(CreationInfo creationInfo, AnnotationType annotationType, Element subject) where T : Annotation
     {
         ValidateCallingRightMethod(typeof(T), typeof(Annotation));
 
-        var result = NewBaseClass<T>();
+        var result = NewRawClass<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         result.AnnotationType = annotationType;
         result.Subject = subject;
         return result;
     }
 
+    /// <summary>
+    /// Create a Relationship
+    /// </summary>
+    /// <param name="creationInfo">Information about the creation of this entry</param>
+    /// <param name="relationshipType">The type of relationship this represents</param>
+    /// <param name="from">The "from" entity. In the statement 'X is related to Y', this would be the X.</param>
+    /// <param name="to">A list of "to" entities. In the statement 'X is related to [Y,Z]', this would be the [Y,Z].</param>
+    /// <typeparam name="T">The type of class you want.  Must be a Relationship or a subclass of it.</typeparam>
+    /// <returns>An instance of the desired class, with required fields populated</returns>
     public T New<T>(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to)
         where T : Relationship
     {
         ValidateCallingRightMethod(typeof(T), typeof(Relationship));
 
-        var result = NewBaseClass<T>();
+        var result = NewRawClass<T>();
         result.CreationInfoSpdxId = creationInfo.SpdxId;
         result.RelationshipType = relationshipType;
         result.From = from;
@@ -96,7 +202,7 @@ public class SpdxClassFactory
     /// <typeparam name="T">The type of object that the caller has requested</typeparam>
     /// <returns>A new, and likely incompletely-populated instance of the requested object type </returns>
     /// <exception cref="Spdx3Exception">Something has gone wrong</exception>
-    private T NewBaseClass<T>() where T : BaseSpdxClass
+    private T NewRawClass<T>() where T : BaseSpdxClass
     {
         var classType = typeof(T);
         var c = Activator.CreateInstance(classType, BindingFlags.Instance | BindingFlags.NonPublic, null, null, null);
@@ -106,8 +212,8 @@ public class SpdxClassFactory
         }
 
         var result = (T)Convert.ChangeType(c, classType);
-        result.Type = classType.Name;
-        result.SpdxId = IdFactory.New(result.Type);
+        result.Type = SpdxTypeForClass(classType);
+        result.SpdxId = IdFactory.New(classType.Name);
         result.CreatedByFactory = this;
 
         /*
@@ -121,6 +227,25 @@ public class SpdxClassFactory
 
         EverythingProduced.Add(result);
         return result;
+    }
+
+    private static string SpdxTypeForClass(Type classType)
+    {
+        if (classType?.Namespace == null)
+        {
+            throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
+        }
+
+        foreach (var prefix in _prefixesForNamespaces.Keys.Where(
+                     prefix => classType.Namespace.StartsWith($"Spdx3.{prefix}")
+                               || classType.Namespace.StartsWith($"Spdx3.Tests.{prefix}")
+                 )
+                )
+        {
+            return $"{_prefixesForNamespaces[prefix]}{classType.Name}";
+        }
+
+        throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
     }
 
     /// <summary>
@@ -137,7 +262,7 @@ public class SpdxClassFactory
     /// <param name="requestedType">The type of object that was requested</param>
     /// <param name="requiredType">The type of object that the requested type must be for the method signature actually used</param>
     /// <exception cref="Spdx3Exception">If the wrong method signature was used for the requested type</exception>
-    private void ValidateCallingRightMethod(Type requestedType, Type requiredType)
+    private static void ValidateCallingRightMethod(Type requestedType, Type requiredType)
     {
         if (requestedType.IsAbstract)
         {
@@ -147,19 +272,19 @@ public class SpdxClassFactory
         // Default to the BaseSpdxClass
         var bestMatchSoFar = new KeyValuePair<Type, string>(typeof(BaseSpdxClass),
             _typeToSignatureMap[typeof(BaseSpdxClass)]);
+        
         // Look for a more specific signature that could be used
-        foreach (var signature in _typeToSignatureMap)
+        foreach (var signature in _typeToSignatureMap
+                     .Where(
+                         /* it is applicable */ 
+                         signature => requestedType == signature.Key || requestedType.IsSubclassOf(signature.Key))
+                     .Where(
+                         /* and is more specific than the best so far */ 
+                         signature => signature.Key.IsSubclassOf(bestMatchSoFar.Key))
+                 )
         {
-            // If this signature CAN be used for the requested type...
-            if (requestedType == signature.Key || requestedType.IsSubclassOf(signature.Key))
-            {
-                // ...and is more specific than the best match so far...
-                if (signature.Key.IsSubclassOf(bestMatchSoFar.Key))
-                {
-                    // this is a better fit
-                    bestMatchSoFar = signature;
-                }
-            }
+            // this is a better fit
+            bestMatchSoFar = signature;
         }
 
         // We have the signature that we should be using. Is the requiredType a subclass of the best signature?

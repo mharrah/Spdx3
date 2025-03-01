@@ -22,7 +22,7 @@ public class PackageVerificationCode : IntegrityMethod
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<string> PackageVerificationCodeExcludedFile { get; } = new List<string>();
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Algorithm));

@@ -26,7 +26,7 @@ public class ExternalMap : BaseSpdxClass
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<IntegrityMethod> VerifiedUsing { get; } = new List<IntegrityMethod>();
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(ExternalSpdxId));

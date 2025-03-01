@@ -63,8 +63,9 @@ public class AnnotationTest : BaseModelTestClass
         annotation.Comment = "TestComment";
         annotation.Description = "TestDescription";
         annotation.Extension.Add(TestFactory.New<TestExtension>());
-        annotation.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
-        annotation.ExternalRef.Add(TestFactory.New<ExternalRef>());
+        annotation.ExternalIdentifier.Add(
+            TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "example@example.com"));
+        annotation.ExternalRef.Add(TestFactory.New<ExternalRef>(ExternalRefType.other));
         annotation.Name = "TestName";
         annotation.Statement = "TestStatement";
         annotation.MediaType = "TestMediaType";

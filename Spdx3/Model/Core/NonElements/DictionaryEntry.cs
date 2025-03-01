@@ -17,7 +17,7 @@ public class DictionaryEntry : BaseSpdxClass
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Value { get; set; }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Key));

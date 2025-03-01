@@ -35,7 +35,7 @@ public class Relationship : Element
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public DateTimeOffset? EndTime { get; set; }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(From));

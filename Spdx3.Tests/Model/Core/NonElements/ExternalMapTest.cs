@@ -26,10 +26,11 @@ public class ExternalMapTest : BaseModelTestClass
     public void ExternalMap_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalMap = TestFactory.New<ExternalMap>();
+        var externalMap = TestFactory.New<ExternalMap>("some-external-spdx-id");
 
         const string expected = """
                                 {
+                                  "externalSpdxId": "some-external-spdx-id",
                                   "type": "ExternalMap",
                                   "spdxId": "urn:ExternalMap:402"
                                 }

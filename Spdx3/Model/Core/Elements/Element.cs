@@ -44,9 +44,9 @@ public abstract class Element : BaseSpdxClass
 
     [JsonPropertyName("verifiedUsing")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<IntegrityMethod> VerifiedUsing { get; set; } = new List<IntegrityMethod>();
+    public IList<IntegrityMethod> VerifiedUsing { get; } = new List<IntegrityMethod>();
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(CreationInfoSpdxId));

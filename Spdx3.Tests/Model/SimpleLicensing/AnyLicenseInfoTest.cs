@@ -13,7 +13,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "TestAnyLicenseInfo",
+                                  "type": "simplelicensing_TestAnyLicenseInfo",
                                   "spdxId": "urn:TestAnyLicenseInfo:402"
                                 }
                                 """;
@@ -40,7 +40,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
-                                  "type": "TestAnyLicenseInfo",
+                                  "type": "simplelicensing_TestAnyLicenseInfo",
                                   "spdxId": "urn:TestAnyLicenseInfo:402"
                                 }
                                 """;

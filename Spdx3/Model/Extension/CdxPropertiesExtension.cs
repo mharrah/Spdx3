@@ -10,7 +10,7 @@ public class CdxPropertiesExtension : Extension
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<CdxPropertyEntry> CdxProperty { get; set; } = new List<CdxPropertyEntry>();
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         if (CdxProperty.Count == 0)
@@ -18,6 +18,7 @@ public class CdxPropertiesExtension : Extension
             throw new Spdx3ValidationException(this, nameof(CdxProperty), "Collection cannot be empty.");
         }
     }
+
 
     internal CdxPropertiesExtension()
     {

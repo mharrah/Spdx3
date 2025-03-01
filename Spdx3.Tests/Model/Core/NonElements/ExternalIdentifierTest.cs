@@ -7,29 +7,30 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 public class ExternalIdentifierTest : BaseModelTestClass
 {
     [Fact]
-    public void ExternalIdentifier_Basics()
+    public void ExternalIdentifier_Requires_IdentifierType_And_Identifier()
     {
         // Arrange
         var factory = new SpdxClassFactory();
 
         // Act
-        var externalIdentifier = factory.New<ExternalIdentifier>();
+        var exception = Record.Exception(() => factory.New<ExternalIdentifier>());
 
         // Assert
-        Assert.NotNull(externalIdentifier);
-        Assert.IsType<ExternalIdentifier>(externalIdentifier);
-        Assert.Equal("ExternalIdentifier", externalIdentifier.Type);
-        Assert.Equal("urn:ExternalIdentifier:3f5", externalIdentifier.SpdxId);
+        Assert.NotNull(exception);
+        Assert.Equal("Creating instances of ExternalIdentifier requires using the " +
+                     "New(ExternalIdentifierType externalIdentifierType, string identifier) form", exception.Message);
     }
 
     [Fact]
     public void ExternalIdentifier_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalIdentifier = TestFactory.New<ExternalIdentifier>();
+        var externalIdentifier = TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "email@example.com");
 
         const string expected = """
                                 {
+                                  "externalIdentifierType": "email",
+                                  "identifier": "email@example.com",
                                   "type": "ExternalIdentifier",
                                   "spdxId": "urn:ExternalIdentifier:402"
                                 }
@@ -46,12 +47,10 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalIdentifier = TestFactory.New<ExternalIdentifier>();
+        var externalIdentifier = TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.gitoid, "TestIdentity");
         externalIdentifier.Comment = "Test comment";
         externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.ExternalIdentifierType = ExternalIdentifierType.gitoid;
         externalIdentifier.IssuingAuthority = "testRef";
-        externalIdentifier.Identifier = "TestIdentity";
 
         const string expected = """
                                 {
@@ -78,12 +77,12 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FailsValidation_WhenMissing_Identifier()
     {
         // Arrange
-        var externalIdentifier = TestFactory.New<ExternalIdentifier>();
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        var externalIdentifier = TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.gitoid, null);
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         externalIdentifier.Comment = "Test comment";
         externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.ExternalIdentifierType = ExternalIdentifierType.gitoid;
         externalIdentifier.IssuingAuthority = "testRef";
-        externalIdentifier.Identifier = null;
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());
@@ -97,12 +96,10 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FailsValidation_WhenEmpty_Identifier()
     {
         // Arrange
-        var externalIdentifier = TestFactory.New<ExternalIdentifier>();
+        var externalIdentifier = TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.gitoid, string.Empty);
         externalIdentifier.Comment = "Test comment";
         externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.ExternalIdentifierType = ExternalIdentifierType.gitoid;
         externalIdentifier.IssuingAuthority = "testRef";
-        externalIdentifier.Identifier = "";
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());
@@ -117,10 +114,9 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FailsValidation_WhenMissing_ExternalIdentifierType()
     {
         // Arrange
-        var externalIdentifier = TestFactory.New<ExternalIdentifier>();
+        var externalIdentifier = TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "Test identifier");
         externalIdentifier.Comment = "Test comment";
-        externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.ExternalIdentifierType = null;
+        externalIdentifier.ExternalIdentifierType = null; // This should break Validation
         externalIdentifier.IssuingAuthority = "Test Authority";
         externalIdentifier.Identifier = "Test identifier";
 

@@ -38,7 +38,7 @@ public class PositiveIntegerRange : BaseSpdxClass
             : value;
     }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(BeginIntegerRange));

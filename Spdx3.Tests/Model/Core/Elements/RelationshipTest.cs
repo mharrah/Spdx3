@@ -10,7 +10,7 @@ public class RelationshipTest : BaseModelTestClass
     public void RelationShip_Requires_Correct_Factory_Method()
     {
         // Arrange
-        const string expected = 
+        const string expected =
             "Creating instances of Relationship requires using the " +
             "New(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to) form";
 
@@ -89,5 +89,40 @@ public class RelationshipTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void Relationship_Requires_AtLeastOne_To()
+    {
+        // Arrange
+        var from = TestFactory.New<TestElement>(TestCreationInfo);
+        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
+            from, []); // Note that the to array is empty
+
+        // Act
+        var exception = Record.Exception(() => relationship.Validate());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object Relationship, property To: Cannot be empty", exception.Message);
+    }
+
+    [Fact]
+    public void Relationship_Requires_From()
+    {
+        // Arrange
+        var from = TestFactory.New<TestElement>(TestCreationInfo);
+        var to = TestFactory.New<TestElement>(TestCreationInfo);
+        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
+            from, [to]);
+
+        relationship.From = null;
+
+        // Act
+        var exception = Record.Exception(() => relationship.Validate());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object Relationship, property From: Field is required", exception.Message);
     }
 }

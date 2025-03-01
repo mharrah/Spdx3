@@ -18,7 +18,7 @@ public class Hash : IntegrityMethod
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? HashValue { get; set; }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Algorithm));

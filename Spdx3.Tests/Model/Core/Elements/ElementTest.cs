@@ -1,3 +1,4 @@
+using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Tests.Model.Core.NonElements;
 using Spdx3.Tests.Model.Extension;
@@ -55,8 +56,9 @@ public class ElementTest : BaseModelTestClass
         element.Comment = "TestComment";
         element.Description = "TestDescription";
         element.Extension.Add(TestFactory.New<TestExtension>());
-        element.ExternalIdentifier.Add(TestFactory.New<ExternalIdentifier>());
-        element.ExternalRef.Add(TestFactory.New<ExternalRef>());
+        element.ExternalIdentifier.Add(
+            TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "example@example.com"));
+        element.ExternalRef.Add(TestFactory.New<ExternalRef>(ExternalRefType.altDownloadLocation));
         element.Name = "TestName";
         element.Summary = "TestSummary";
         element.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());

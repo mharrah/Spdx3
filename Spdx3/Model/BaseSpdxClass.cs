@@ -44,13 +44,15 @@ public abstract class BaseSpdxClass
     public SpdxClassFactory? CreatedByFactory { get; set; }
 
     /// <summary>
-    ///     A little syntactic sugar.  Returns the object as a JSON string, with the sort of formatting that's typical/expected
-    ///     for SPDX files.
+    ///     A little syntactic sugar.  Validates the object, and if ok, returns the object as a JSON string,
+    ///     with the sort of formatting that's typical/expected for SPDX files.
     /// </summary>
     /// <returns>A Json representation of this object</returns>
     public string ToJson()
     {
+        // Validate the object
         Validate();
+
         // This ridiculous looking cast is REQUIRED to get serialization to do the polymorphic thing properly.
         // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer,
         // and that's (clearly) not ok.
@@ -61,7 +63,7 @@ public abstract class BaseSpdxClass
         return JsonSerializer.Serialize<object>(o, Options);
     }
 
-    protected void Validate()
+    public virtual void Validate()
     {
         ValidateRequiredProperty(nameof(SpdxId));
         ValidateRequiredProperty(nameof(Type));

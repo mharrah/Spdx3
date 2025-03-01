@@ -26,7 +26,7 @@ public class Annotation : Element
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? MediaType { get; set; }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(AnnotationType));

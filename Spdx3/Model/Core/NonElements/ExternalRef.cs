@@ -16,21 +16,21 @@ public class ExternalRef : BaseSpdxClass
 
     [JsonPropertyName("locator")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<string>? Locator { get; set; } = new List<string>();
+    public IList<string> Locator { get; set; } = new List<string>();
 
     [JsonPropertyName("contentType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? ContentType { get; set; }
 
-    [JsonPropertyName("conmment")]
+    [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Conment { get; set; }
+    public string? Comment { get; set; }
 
     internal ExternalRef()
     {
     }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(ExternalRefType));

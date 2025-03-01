@@ -17,7 +17,7 @@ public class CdxPropertyEntry : BaseSpdxClass
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? CdxPropValue { get; set; }
 
-    public new void Validate()
+    public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(CdxPropName));
