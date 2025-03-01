@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 

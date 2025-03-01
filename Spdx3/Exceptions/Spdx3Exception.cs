@@ -5,15 +5,24 @@ namespace Spdx3.Exceptions;
 /// </summary>
 public class Spdx3Exception : ApplicationException
 {
-    public Spdx3Exception()
+    internal Spdx3Exception() : base()
     {
+        
+    }
+    
+    public Spdx3Exception(string message) : base(message)
+    {
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            throw new ArgumentNullException(nameof(message), "The message cannot be null or empty.");
+        }
     }
 
-    public Spdx3Exception(string? message) : base(message)
+    public Spdx3Exception(string message, Exception innerException) : this(message)
     {
-    }
-
-    public Spdx3Exception(string? message, Exception? innerException) : base(message, innerException)
-    {
+        if (innerException == null)
+        {
+            throw new ArgumentNullException(nameof(innerException), "The inner exception cannot be null.");
+        }
     }
 }
