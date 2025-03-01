@@ -87,6 +87,6 @@ public class SpdxClassFactoryTest
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Parameter of type CreationInfo required when creating subclasses of Element", exception.Message);
+        Assert.Equal("Creating instances of TestElement requires using the New(CreationInfo creationInfo) form", exception.Message);
     }
 }

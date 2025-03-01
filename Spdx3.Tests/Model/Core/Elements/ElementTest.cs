@@ -6,13 +6,16 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class ElementTest : BaseModelTestClass
 {
+
     [Fact]
     public void Requires_CreationInfo_Parameter()
     {
         // Act - note, no parameter
         var exception = Record.Exception(() => TestFactory.New<TestElement>());
         Assert.NotNull(exception);
-        Assert.Equal("Parameter of type CreationInfo required when creating subclasses of Element", exception.Message);
+        Assert.Equal(
+            "Creating instances of TestElement requires using the New(CreationInfo creationInfo) form",
+            exception.Message);
     }
 
     [Fact]

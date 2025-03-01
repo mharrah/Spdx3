@@ -10,8 +10,11 @@ public class ArtifactTest : BaseModelTestClass
         // Act - note, no parameter
         var exception = Record.Exception(() => TestFactory.New<TestArtifact>());
         Assert.NotNull(exception);
-        Assert.Equal("Parameter of type CreationInfo required when creating subclasses of Element", exception.Message);
+        Assert.Equal(
+            "Creating instances of TestArtifact requires using the New(CreationInfo creationInfo) form",
+            exception.Message);
     }
+
 
     [Fact]
     public void BrandNew_Artifact_HasRequiredFields()

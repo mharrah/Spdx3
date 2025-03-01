@@ -8,16 +8,6 @@ namespace Spdx3.Tests.Model.Core.Elements;
 
 public class AnnotationTest : BaseModelTestClass
 {
-    [Fact]
-    public void Requires_CreationInfo_Parameter()
-    {
-        // Act - note, no parameter
-        var exception = Record.Exception(() => TestFactory.New<Annotation>());
-        Assert.NotNull(exception);
-        Assert.Equal(
-            "Parameter of type CreationInfo required when creating subclasses of Element",
-            exception.Message);
-    }
 
     [Fact]
     public void Requires_AnnotationType_Parameter()
@@ -26,8 +16,7 @@ public class AnnotationTest : BaseModelTestClass
         var exception = Record.Exception(() => TestFactory.New<Annotation>(TestCreationInfo));
         Assert.NotNull(exception);
         Assert.Equal(
-            "Parameters of type CreationInfo, AnnotationType, and Element are required when " +
-            "creating instances of Annotation or its subclasses",
+            "Creating instances of Annotation requires using the New(CreationInfo creationInfo, AnnotationType annotationType, Element subject) form",
             exception.Message);
     }
 
