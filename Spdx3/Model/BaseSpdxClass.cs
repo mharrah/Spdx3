@@ -28,10 +28,6 @@ public abstract class BaseSpdxClass
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
-        TypeInfoResolver = new DefaultJsonTypeInfoResolver
-        {
-            Modifiers = { IgnoreEmptyCollections.Modifier }
-        },
         MaxDepth = 2
     };
 
