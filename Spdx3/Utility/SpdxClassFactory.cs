@@ -231,7 +231,7 @@ public class SpdxClassFactory
 
     private static string SpdxTypeForClass(Type classType)
     {
-        if (classType?.Namespace == null)
+        if (classType.Namespace == null)
         {
             throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
         }
