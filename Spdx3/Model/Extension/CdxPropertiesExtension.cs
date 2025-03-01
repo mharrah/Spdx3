@@ -19,7 +19,6 @@ public class CdxPropertiesExtension : Extension
         }
     }
 
-
     internal CdxPropertiesExtension()
     {
     }

@@ -24,4 +24,8 @@ public class SoftwarePackage : SoftwareArtifact
     [JsonPropertyName("sourceInfo")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? SourceInfo { get; set; }
+
+    internal SoftwarePackage()
+    {
+    }
 }
