@@ -56,7 +56,7 @@ jobs:
           thresholds: '60 80'
           
       - name: Generate coverage report
-        run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummary
+        run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub
         
       - name: Create badges
         uses: gaelgirodon/ci-badges-action@v1
