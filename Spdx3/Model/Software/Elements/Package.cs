@@ -1,10 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
+using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Elements;
 
-public class SoftwarePackage : SoftwareArtifact
+public class Package : SoftwareArtifact
 {
+    [SetsRequiredMembers]
+    public Package(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    {
+    }
+
     [JsonPropertyName("packageVersion")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? PackageVersion { get; set; }
@@ -24,8 +32,4 @@ public class SoftwarePackage : SoftwareArtifact
     [JsonPropertyName("sourceInfo")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? SourceInfo { get; set; }
-
-    internal SoftwarePackage()
-    {
-    }
 }

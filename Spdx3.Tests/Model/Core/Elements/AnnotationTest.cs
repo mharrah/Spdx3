@@ -9,22 +9,11 @@ namespace Spdx3.Tests.Model.Core.Elements;
 public class AnnotationTest : BaseModelTestClass
 {
     [Fact]
-    public void Requires_AnnotationType_Parameter()
-    {
-        // Act - note, no AnnotationType parameter
-        var exception = Record.Exception(() => TestFactory.New<Annotation>(TestCreationInfo));
-        Assert.NotNull(exception);
-        Assert.Equal(
-            "Creating instances of Annotation requires using the New(CreationInfo creationInfo, AnnotationType annotationType, Element subject) form",
-            exception.Message);
-    }
-
-    [Fact]
     public void BrandNew_Element_HasRequiredFields()
     {
         // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.review, subject);
+        var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.review, subject);
 
         // Assert
         Assert.Null(Record.Exception(() => annotation.Validate()));
@@ -35,8 +24,8 @@ public class AnnotationTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.review, subject);
+        var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
                                   "subject": "urn:TestElement:402",
@@ -58,21 +47,21 @@ public class AnnotationTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
+        var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.other, subject);
         annotation.Comment = "TestComment";
         annotation.Description = "TestDescription";
-        annotation.Extension.Add(TestFactory.New<TestExtension>());
+        annotation.Extension.Add(new TestExtension(TestSpdxIdFactory));
         annotation.ExternalIdentifier.Add(
-            TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "example@example.com"));
-        annotation.ExternalRef.Add(TestFactory.New<ExternalRef>(ExternalRefType.other));
+            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
+        annotation.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.other));
         annotation.Name = "TestName";
         annotation.Statement = "TestStatement";
         annotation.MediaType = "TestMediaType";
         annotation.Summary = "TestSummary";
-        annotation.Subject = TestFactory.New<TestElement>(TestCreationInfo);
+        annotation.Subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
         annotation.AnnotationType = AnnotationType.review;
-        annotation.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+        annotation.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
 
         const string expected = """
                                 {
@@ -110,28 +99,11 @@ public class AnnotationTest : BaseModelTestClass
     }
 
     [Fact]
-    public void TypeNew_Element_FailsValidation_Empty_SpdxId()
-    {
-        // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
-        annotation.SpdxId = string.Empty;
-
-        // Act
-        var exception = Record.Exception(() => annotation.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object Annotation, property SpdxId: Field is empty", exception.Message);
-    }
-
-
-    [Fact]
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.review, subject);
+        var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.review, subject);
         annotation.Type = string.Empty;
 
         // Act
@@ -140,19 +112,5 @@ public class AnnotationTest : BaseModelTestClass
         // Assert
         Assert.NotNull(exception);
         Assert.Equal("Object Annotation, property Type: Field is empty", exception.Message);
-    }
-
-    [Fact]
-    public void Annotation_FailsValidation_MissingAnnotationType()
-    {
-        // Arrange
-        var subject = TestFactory.New<TestElement>(TestCreationInfo);
-        var annotation = TestFactory.New<Annotation>(TestCreationInfo, AnnotationType.other, subject);
-        annotation.AnnotationType = null;
-
-        // Act
-        var exception = Record.Exception(() => annotation.Validate());
-        Assert.NotNull(exception);
-        Assert.Equal("Object Annotation, property AnnotationType: Field is required", exception.Message);
     }
 }

@@ -9,7 +9,7 @@ public class HashTest : BaseModelTestClass
     public void Hash_Basics()
     {
         // Act
-        var hash = TestFactory.New<Hash>();
+        var hash = new Hash(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue");
 
         // Assert
         Assert.NotNull(hash);
@@ -22,7 +22,7 @@ public class HashTest : BaseModelTestClass
     public void Hash_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var hash = TestFactory.New<Hash>();
+        var hash = new Hash(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue");
         hash.Algorithm = HashAlgorithm.falcon;
         hash.HashValue = "TestHashValue";
         const string expected = """
@@ -41,30 +41,16 @@ public class HashTest : BaseModelTestClass
         Assert.Equal(expected, json);
     }
 
-    [Fact]
-    public void Hash_FailsValidation_WhenMissing_Algorithm()
-    {
-        // Arrange
-        var hash = TestFactory.New<Hash>();
-        hash.Algorithm = null;
-        hash.HashValue = "TestHashValue";
-
-        //  Act
-        var exception = Record.Exception(() => hash.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object Hash, property Algorithm: Field is required", exception.Message);
-    }
-
 
     [Fact]
     public void Hash_FailsValidation_WhenMissing_HashValue()
     {
         // Arrange
-        var hash = TestFactory.New<Hash>();
+        var hash = new Hash(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue");
         hash.Algorithm = HashAlgorithm.falcon;
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         hash.HashValue = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         //  Act
         var exception = Record.Exception(() => hash.Validate());
@@ -78,7 +64,7 @@ public class HashTest : BaseModelTestClass
     public void Hash_FailsValidation_WhenEmpty_HashValue()
     {
         // Arrange
-        var hash = TestFactory.New<Hash>();
+        var hash = new Hash(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue");
         hash.Algorithm = HashAlgorithm.md5;
         hash.HashValue = "";
 

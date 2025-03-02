@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,22 +11,25 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class NamespaceMap : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    public NamespaceMap(SpdxIdFactory spdxIdFactory, string prefix, string @namespace) : base(spdxIdFactory)
+    {
+        Prefix = prefix;
+        Namespace = @namespace;
+    }
+
     [JsonPropertyName("prefix")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Prefix { get; set; }
+    public required string Prefix { get; set; }
 
     [JsonPropertyName("namespace")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Namespace { get; set; }
+    public required string Namespace { get; set; }
 
     public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Prefix));
         ValidateRequiredProperty(nameof(Namespace));
-    }
-
-    internal NamespaceMap()
-    {
     }
 }

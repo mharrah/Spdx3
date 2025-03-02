@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -10,22 +12,25 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class Hash : IntegrityMethod
 {
+    [SetsRequiredMembers]
+    public Hash(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) : base(spdxIdFactory)
+    {
+        Algorithm = algorithm;
+        HashValue = hashValue;
+    }
+
     [JsonPropertyName("algorithm")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public HashAlgorithm? Algorithm { get; set; }
+    public required HashAlgorithm Algorithm { get; set; }
 
     [JsonPropertyName("hashValue")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? HashValue { get; set; }
+    public required string HashValue { get; set; }
 
     public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Algorithm));
         ValidateRequiredProperty(nameof(HashValue));
-    }
-
-    internal Hash()
-    {
     }
 }

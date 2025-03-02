@@ -6,22 +6,10 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 public class ExternalRefTest : BaseModelTestClass
 {
     [Fact]
-    public void ExternalRef_Constructor_Requires_RefType()
-    {
-        // Act
-        var exception = Record.Exception(() => TestFactory.New<ExternalRef>());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Creating instances of ExternalRef requires using the New(ExternalRefType externalRefType) form",
-            exception.Message);
-    }
-
-    [Fact]
     public void ExternalRef_MinimalObject_Serializes()
     {
         // Arrange
-        var externalRef = TestFactory.New<ExternalRef>(ExternalRefType.license);
+        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license);
         var expected = """
                        {
                          "externalRefType": "license",
@@ -41,7 +29,7 @@ public class ExternalRefTest : BaseModelTestClass
     public void ExternalRef_FullyPopulatedObject_Serializes()
     {
         // Arrange
-        var externalRef = TestFactory.New<ExternalRef>(ExternalRefType.license);
+        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license);
         externalRef.Comment = "Test comment";
         externalRef.Locator.Add("locator 1");
         externalRef.Locator.Add("locator 2");

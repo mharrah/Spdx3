@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.NonElements;
-using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
@@ -8,24 +7,20 @@ public class NamespaceMapTest : BaseModelTestClass
     [Fact]
     public void NamespaceMap_Basics()
     {
-        // Arrange
-        var factory = new SpdxClassFactory();
-
-        // Act
-        var namespaceMap = factory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
 
         // Assert
         Assert.NotNull(namespaceMap);
         Assert.IsType<NamespaceMap>(namespaceMap);
         Assert.Equal("NamespaceMap", namespaceMap.Type);
-        Assert.Equal("urn:NamespaceMap:3f5", namespaceMap.SpdxId);
+        Assert.Equal("urn:NamespaceMap:402", namespaceMap.SpdxId);
     }
 
     [Fact]
     public void NamespaceMap_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var namespaceMap = TestFactory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
         namespaceMap.Prefix = "TestPrefix";
         namespaceMap.Namespace = "TestNamespace";
         const string expected = """
@@ -48,8 +43,10 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenMissing_Prefix()
     {
         // Arrange
-        var namespaceMap = TestFactory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         namespaceMap.Prefix = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         namespaceMap.Namespace = "TestNamespace";
 
         //  Act
@@ -64,7 +61,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenEmpty_Prefix()
     {
         // Arrange
-        var namespaceMap = TestFactory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
         namespaceMap.Prefix = "";
         namespaceMap.Namespace = "TestNamespace";
 
@@ -80,9 +77,11 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenMissing_Namespace()
     {
         // Arrange
-        var namespaceMap = TestFactory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
         namespaceMap.Prefix = "TestPrefix";
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         namespaceMap.Namespace = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         //  Act
         var exception = Record.Exception(() => namespaceMap.Validate());
@@ -96,7 +95,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenEmpty_Namespace()
     {
         // Arrange
-        var namespaceMap = TestFactory.New<NamespaceMap>();
+        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
         namespaceMap.Prefix = "TestPrefix";
         namespaceMap.Namespace = "";
 

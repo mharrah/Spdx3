@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
 using Spdx3.Exceptions;
 using Spdx3.Serialization;
 using Spdx3.Utility;
@@ -8,20 +8,12 @@ using Spdx3.Utility;
 namespace Spdx3.Model;
 
 /// <summary>
-///     This is a base class for like EVERYthing in an SPDX document, whether it's an "Element" or some other "Non-Element"
+///     This is a base class for like EVERYTHING in an SPDX document, whether it's an "Element" or some other "Non-Element"
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
 public abstract class BaseSpdxClass
 {
-    [JsonPropertyName("type")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string Type { get; set; } = string.Empty;
-
-    [JsonPropertyName("spdxId")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string SpdxId { get; set; } = string.Empty;
-
     /// <summary>
     ///     Serialization options
     /// </summary>
@@ -36,8 +28,20 @@ public abstract class BaseSpdxClass
         Options.Converters.Add(new SpdxObjectConverterFactory());
     }
 
-    [JsonIgnore]
-    public SpdxClassFactory? CreatedByFactory { get; set; }
+    [SetsRequiredMembers]
+    protected BaseSpdxClass(SpdxIdFactory spdxIdFactory)
+    {
+        Type = SpdxUtility.SpdxTypeForClass(GetType());
+        SpdxId = spdxIdFactory.New(GetType());
+    }
+
+    [JsonPropertyName("type")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public required string Type { get; set; }
+
+    [JsonPropertyName("spdxId")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public required string SpdxId { get; init; }
 
     /// <summary>
     ///     A little syntactic sugar.  Validates the object, and if ok, returns the object as a JSON string,
@@ -74,7 +78,7 @@ public abstract class BaseSpdxClass
                 throw new Spdx3ValidationException(this, propertyName, "Field is required");
             case int and < 1:
                 throw new Spdx3ValidationException(this, propertyName,
-                    "Value of {propval} must be a positive non-zero integer");
+                    "Value of {propVal} must be a positive non-zero integer");
             case string when propVal.ToString() == string.Empty:
                 throw new Spdx3ValidationException(this, propertyName, "Field is empty");
         }

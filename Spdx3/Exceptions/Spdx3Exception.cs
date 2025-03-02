@@ -5,10 +5,6 @@ namespace Spdx3.Exceptions;
 /// </summary>
 public class Spdx3Exception : ApplicationException
 {
-    internal Spdx3Exception() : base()
-    {
-    }
-
     public Spdx3Exception(string message) : base(message)
     {
         if (string.IsNullOrWhiteSpace(message))

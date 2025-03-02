@@ -8,17 +8,19 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     public void Extension_MinimalObject_Serializes()
     {
         // Arrange
-        var extension = TestFactory.New<CdxPropertiesExtension>();
-        extension.CdxProperty.Add(TestFactory.New<CdxPropertyEntry>());
-        var expected = """
-                       {
-                         "cdxProperty": [
-                           "urn:CdxPropertyEntry:40f"
-                         ],
-                         "type": "extension_CdxPropertiesExtension",
-                         "spdxId": "urn:CdxPropertiesExtension:402"
-                       }
-                       """;
+        var extension = new CdxPropertiesExtension(TestSpdxIdFactory,
+            [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
+        extension.CdxProperty.Add(new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName", "TestPropertyValue"));
+        const string expected = """
+                                {
+                                  "cdxProperty": [
+                                    "urn:CdxPropertyEntry:402",
+                                    "urn:CdxPropertyEntry:41c"
+                                  ],
+                                  "type": "extension_CdxPropertiesExtension",
+                                  "spdxId": "urn:CdxPropertiesExtension:40f"
+                                }
+                                """;
 
 
         // Act

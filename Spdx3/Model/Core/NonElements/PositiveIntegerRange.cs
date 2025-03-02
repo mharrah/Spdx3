@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -10,16 +12,24 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class PositiveIntegerRange : BaseSpdxClass
 {
-    private int? _beginIntegerRange;
+    private int _beginIntegerRange;
 
-    private int? _endIntegerRange;
+    private int _endIntegerRange;
+
+    [SetsRequiredMembers]
+    public PositiveIntegerRange(SpdxIdFactory spdxIdFactory, int beginIntegerRange, int endIntegerRange) : base(
+        spdxIdFactory)
+    {
+        BeginIntegerRange = beginIntegerRange;
+        EndIntegerRange = endIntegerRange;
+    }
 
     [JsonPropertyName("beginIntegerRange")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public int? BeginIntegerRange
+    public required int BeginIntegerRange
     {
         get => _beginIntegerRange;
-        set => _beginIntegerRange = value is null or < 1
+        set => _beginIntegerRange = value < 1
             ? throw new Spdx3Exception("Invalid property value",
                 new ArgumentOutOfRangeException(nameof(BeginIntegerRange),
                     $"Value of {value} must be a positive non-zero integer"))
@@ -28,10 +38,10 @@ public class PositiveIntegerRange : BaseSpdxClass
 
     [JsonPropertyName("endIntegerRange")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public int? EndIntegerRange
+    public required int EndIntegerRange
     {
         get => _endIntegerRange;
-        set => _endIntegerRange = value is null or < 1
+        set => _endIntegerRange = value < 1
             ? throw new Spdx3Exception("Invalid property value",
                 new ArgumentOutOfRangeException(nameof(EndIntegerRange),
                     $"Value of {value} must be a positive non-zero integer"))
@@ -43,9 +53,5 @@ public class PositiveIntegerRange : BaseSpdxClass
         base.Validate();
         ValidateRequiredProperty(nameof(BeginIntegerRange));
         ValidateRequiredProperty(nameof(EndIntegerRange));
-    }
-
-    internal PositiveIntegerRange()
-    {
     }
 }

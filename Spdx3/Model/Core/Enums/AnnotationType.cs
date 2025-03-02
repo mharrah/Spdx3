@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Spdx3.Model.Core.Enums;
 
 /// <summary>

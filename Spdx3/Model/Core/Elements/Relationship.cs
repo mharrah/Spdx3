@@ -1,7 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -11,17 +14,26 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Relationship : Element
 {
+    [SetsRequiredMembers]
+    public Relationship(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, RelationshipType relationshipType,
+        Element from, List<Element> to) : base(spdxIdFactory, creationInfo)
+    {
+        RelationshipType = relationshipType;
+        From = from;
+        To = to;
+    }
+
     [JsonPropertyName("from")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public Element? From { get; set; }
+    public required Element From { get; set; }
 
     [JsonPropertyName("to")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<Element> To { get; init; } = new List<Element>();
+    public IList<Element> To { get; set; }
 
     [JsonPropertyName("relationshipType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public RelationshipType? RelationshipType { get; set; }
+    public required RelationshipType RelationshipType { get; set; }
 
     [JsonPropertyName("completeness")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -45,9 +57,5 @@ public class Relationship : Element
         }
 
         ValidateRequiredProperty(nameof(RelationshipType));
-    }
-
-    internal Relationship()
-    {
     }
 }

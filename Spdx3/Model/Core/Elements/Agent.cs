@@ -1,4 +1,8 @@
-﻿namespace Spdx3.Model.Core.Elements;
+﻿using System.Diagnostics.CodeAnalysis;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
+
+namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
 ///     The Agent class represents anything that has the potential to act on a system.
@@ -6,7 +10,8 @@
 /// </summary>
 public class Agent : Element
 {
-    internal Agent()
+    [SetsRequiredMembers]
+    public Agent(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 }

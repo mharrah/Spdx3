@@ -1,18 +1,26 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
 /// <summary>
-/// A reference to a resource outside the scope of SPDX-3.0 content related to an Element.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalRef/
+///     A reference to a resource outside the scope of SPDX-3.0 content related to an Element.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalRef/
 /// </summary>
 public class ExternalRef : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    public ExternalRef(SpdxIdFactory spdxIdFactory, ExternalRefType externalRefType) : base(spdxIdFactory)
+    {
+        ExternalRefType = externalRefType;
+    }
+
     [JsonPropertyName("externalRefType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public ExternalRefType? ExternalRefType { get; set; }
+    public required ExternalRefType ExternalRefType { get; set; }
 
     [JsonPropertyName("locator")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -25,10 +33,6 @@ public class ExternalRef : BaseSpdxClass
     [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
-
-    internal ExternalRef()
-    {
-    }
 
     public override void Validate()
     {

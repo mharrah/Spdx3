@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class OrganizationTest : BaseModelTestClass
     public void BrandNew_Organization_SerializesProperly()
     {
         // Arrange
-        var org = TestFactory.New<Organization>(TestCreationInfo);
+        var org = new Organization(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,7 +28,7 @@ public class OrganizationTest : BaseModelTestClass
     public void FullyPopulated_Organization_SerializesProperly()
     {
         // Arrange
-        var org = TestFactory.New<Organization>(TestCreationInfo);
+        var org = new Organization(TestSpdxIdFactory, TestCreationInfo);
         org.Comment = "TestComment";
         org.Description = "TestDescription";
         org.Name = "TestName";

@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,11 +11,12 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public abstract class IntegrityMethod : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    public IntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    {
+    }
+
     [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
-
-    protected internal IntegrityMethod()
-    {
-    }
 }

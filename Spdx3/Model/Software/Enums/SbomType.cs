@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Spdx3.Model.Software.Enums;
+﻿namespace Spdx3.Model.Software.Enums;
 
 /// <summary>
 ///     Type of SBOM

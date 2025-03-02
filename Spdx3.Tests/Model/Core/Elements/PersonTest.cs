@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class PersonTest : BaseModelTestClass
     public void BrandNew_Person_SerializesProperly()
     {
         // Arrange
-        var pPerson = TestFactory.New<Person>(TestCreationInfo);
+        var pPerson = new Person(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,7 +28,7 @@ public class PersonTest : BaseModelTestClass
     public void FullyPopulated_Person_SerializesProperly()
     {
         // Arrange
-        var person = TestFactory.New<Person>(TestCreationInfo);
+        var person = new Person(TestSpdxIdFactory, TestCreationInfo);
         person.Comment = "TestComment";
         person.Description = "TestDescription";
         person.Name = "TestName";

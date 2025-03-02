@@ -1,6 +1,3 @@
-using Spdx3.Tests.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
-
 namespace Spdx3.Tests.Model.SimpleLicensing;
 
 public class AnyLicenseInfoTest : BaseModelTestClass
@@ -9,7 +6,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void BrandNew_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(TestCreationInfo);
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,7 +26,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = TestFactory.New<TestAnyLicenseInfo>(TestCreationInfo);
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo);
         anyLicenseInfo.Comment = "TestComment";
         anyLicenseInfo.Description = "TestDescription";
         anyLicenseInfo.Name = "TestName";

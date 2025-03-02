@@ -1,6 +1,5 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -10,7 +9,7 @@ public class BomTest : BaseModelTestClass
     public void BrandNew_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = TestFactory.New<Bom>(TestCreationInfo);
+        var bom = new Bom(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -30,15 +29,15 @@ public class BomTest : BaseModelTestClass
     public void FullyPopulated_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = TestFactory.New<Bom>(TestCreationInfo);
+        var bom = new Bom(TestSpdxIdFactory, TestCreationInfo);
         bom.Comment = "TestComment";
         bom.Context.Add("Some context");
         bom.Context.Add("More context");
         bom.Description = "TestDescription";
-        bom.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
-        bom.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        bom.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
+        bom.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bom.Name = "TestName";
-        bom.RootElement.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        bom.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bom.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """

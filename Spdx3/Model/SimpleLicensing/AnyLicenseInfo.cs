@@ -1,4 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using Spdx3.Model.Core.Elements;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.SimpleLicensing;
 
@@ -10,7 +13,8 @@ public abstract class AnyLicenseInfo : Element
 {
     // Abstract class, adds no properties or functionality
 
-    protected internal AnyLicenseInfo()
+    [SetsRequiredMembers]
+    public AnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 }

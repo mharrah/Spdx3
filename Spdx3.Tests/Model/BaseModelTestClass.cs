@@ -13,12 +13,10 @@ public class BaseModelTestClass
 
     protected BaseModelTestClass()
     {
-        TestFactory.CreationDate = PredictableDateTime;
-        TestCreationInfo = TestFactory.New<CreationInfo>();
+        TestCreationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime);
     }
 
-    protected CreationInfo TestCreationInfo { get; }
+    protected CreationInfo TestCreationInfo { get; set; }
 
-
-    protected SpdxClassFactory TestFactory { get; } = new();
+    protected SpdxIdFactory TestSpdxIdFactory { get; set; } = new();
 }
