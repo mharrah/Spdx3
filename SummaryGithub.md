@@ -3,31 +3,31 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/02/2025 - 14:33:39 |
-| Coverage date: | 03/02/2025 - 14:33:38 |
+| Generated on: | 03/02/2025 - 16:45:56 |
+| Coverage date: | 03/02/2025 - 16:45:55 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 38 |
 | Files: | 38 |
-| **Line coverage:** | 87% (430 of 494) |
-| Covered lines: | 430 |
-| Uncovered lines: | 64 |
-| Coverable lines: | 494 |
-| Total lines: | 1449 |
-| **Branch coverage:** | 77.2% (85 of 110) |
-| Covered branches: | 85 |
-| Total branches: | 110 |
+| **Line coverage:** | 87.5% (441 of 504) |
+| Covered lines: | 441 |
+| Uncovered lines: | 63 |
+| Coverable lines: | 504 |
+| Total lines: | 1459 |
+| **Branch coverage:** | 80.7% (92 of 114) |
+| Covered branches: | 92 |
+| Total branches: | 114 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 87%</summary>
+<details><summary>Spdx3 - 87.5%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**87%**|**77.2%**|
-|Spdx3.Exceptions.Spdx3Exception|91.6%|75%|
+|**Spdx3**|**87.5%**|**80.7%**|
+|Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.BaseSpdxClass|93.9%|83.3%|
 |Spdx3.Model.Core.Elements.Agent|100%||
@@ -54,7 +54,7 @@
 |Spdx3.Model.Core.NonElements.IntegrityMethod|100%||
 |Spdx3.Model.Core.NonElements.NamespaceMap|100%||
 |Spdx3.Model.Core.NonElements.PackageVerificationCode|100%||
-|Spdx3.Model.Core.NonElements.PositiveIntegerRange|93.1%|62.5%|
+|Spdx3.Model.Core.NonElements.PositiveIntegerRange|94.8%|91.6%|
 |Spdx3.Model.Extension.CdxPropertiesExtension|73.3%|50%|
 |Spdx3.Model.Extension.CdxPropertyEntry|66.6%||
 |Spdx3.Model.Extension.Extension|100%||
