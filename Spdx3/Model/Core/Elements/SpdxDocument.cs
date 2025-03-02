@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Model.SimpleLicensing;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -24,7 +25,7 @@ public class SpdxDocument : ElementCollection
 
     [JsonPropertyName("dataLicense")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public License? DataLicense { get; set; }
+    public AnyLicenseInfo? DataLicense { get; set; }
 
     [JsonPropertyName("namespaceMap")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
