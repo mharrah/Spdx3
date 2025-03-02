@@ -3,6 +3,7 @@ name: Build
 permissions:
   checks: write
   pull-requests: write
+  contents: write
   
 on:
   push:
