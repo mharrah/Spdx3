@@ -256,7 +256,8 @@ var assemblies = [
       { "name": "Spdx3.Model.Software.Elements.Package", "rp": "Spdx3_Package.html", "cl": 0, "ucl": 8, "cal": 8, "tl": 35, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Elements.Sbom", "rp": "Spdx3_Sbom.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Elements.SoftwareArtifact", "rp": "Spdx3_SoftwareArtifact.html", "cl": 0, "ucl": 7, "cal": 7, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.SpdxObjectConverterFactory", "rp": "Spdx3_SpdxObjectConverterFactory.html", "cl": 102, "ucl": 21, "cal": 123, "tl": 196, "cb": 57, "tb": 72, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxObjectConverterFactory", "rp": "Spdx3_SpdxObjectConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxObjectConvertor<T>", "rp": "Spdx3_SpdxObjectConvertor_1.html", "cl": 88, "ucl": 5, "cal": 93, "tl": 149, "cb": 57, "tb": 62, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.SpdxIdFactory", "rp": "Spdx3_SpdxIdFactory.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.SpdxUtility", "rp": "Spdx3_SpdxUtility.html", "cl": 23, "ucl": 3, "cal": 26, "tl": 40, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
@@ -273,16 +274,16 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxObjectConverterFactory", "reportPath": "Spdx3_SpdxObjectConverterFactory.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 97,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxObjectConvertor<T>", "reportPath": "Spdx3_SpdxObjectConvertor_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 18,
     "metrics": [
-      { "value": 124, "exceeded": true },
-      { "value": 32, "exceeded": true },
+      { "value": 24, "exceeded": false },
+      { "value": 24, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxObjectConverterFactory", "reportPath": "Spdx3_SpdxObjectConverterFactory.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 40,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxObjectConvertor<T>", "reportPath": "Spdx3_SpdxObjectConvertor_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 71,
     "metrics": [
-      { "value": 22, "exceeded": false },
-      { "value": 22, "exceeded": true },
+      { "value": 20, "exceeded": false },
+      { "value": 20, "exceeded": true },
     ]},
 ];
 
