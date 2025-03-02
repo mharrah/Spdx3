@@ -72,15 +72,13 @@ public abstract class BaseSpdxClass
     protected void ValidateRequiredProperty(string propertyName)
     {
         var propVal = GetType().GetProperty(propertyName)?.GetValue(this);
-        switch (propVal)
+        if (propVal == null)
         {
-            case null:
-                throw new Spdx3ValidationException(this, propertyName, "Field is required");
-            case < 1:
-                throw new Spdx3ValidationException(this, propertyName,
-                    "Value of {propVal} must be a positive non-zero integer");
-            case string when propVal.ToString() == string.Empty:
-                throw new Spdx3ValidationException(this, propertyName, "Field is empty");
+            throw new Spdx3ValidationException(this, propertyName, "Field is required");
+        }
+        if (propVal is string && propVal.ToString() == string.Empty)
+        {
+            throw new Spdx3ValidationException(this, propertyName, "Field is empty");
         }
     }
 }
