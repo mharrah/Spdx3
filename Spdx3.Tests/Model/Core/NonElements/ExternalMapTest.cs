@@ -53,11 +53,11 @@ public class ExternalMapTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "definingArtifact": "urn:TestArtifact:41c",
+                                  "definingArtifact": "urn:TestArtifact:40f",
                                   "externalSpdxId": "testref",
                                   "locationHint": "Test Location Hint",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:40f"
+                                    "urn:TestIntegrityMethod:41c"
                                   ],
                                   "type": "ExternalMap",
                                   "spdxId": "urn:ExternalMap:402"
