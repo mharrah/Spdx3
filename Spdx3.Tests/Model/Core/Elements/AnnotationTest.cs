@@ -67,7 +67,7 @@ public class AnnotationTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:443",
+                                  "subject": "urn:TestElement:41c",
                                   "annotationType": "review",
                                   "statement": "TestStatement",
                                   "mediaType": "TestMediaType",
@@ -75,13 +75,13 @@ public class AnnotationTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:TestExtension:429"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:429"
+                                    "urn:ExternalIdentifier:436"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:436"
+                                    "urn:ExternalRef:443"
                                   ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
