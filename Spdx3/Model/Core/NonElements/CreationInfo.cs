@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Elements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -10,6 +12,18 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class CreationInfo : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    public CreationInfo(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    {
+        Created = DateTimeOffset.UtcNow;
+    }
+
+    [SetsRequiredMembers]
+    public CreationInfo(SpdxIdFactory spdxIdFactory, DateTimeOffset created) : base(spdxIdFactory)
+    {
+        Created = created;
+    }
+
     [JsonPropertyName("createdBy")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<Agent> CreatedBy { get; } = new List<Agent>();
@@ -20,7 +34,7 @@ public class CreationInfo : BaseSpdxClass
 
     [JsonPropertyName("created")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public DateTimeOffset? Created { get; set; }
+    public required DateTimeOffset Created { get; set; }
 
     [JsonPropertyName("createdUsing")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -29,8 +43,4 @@ public class CreationInfo : BaseSpdxClass
     [JsonPropertyName("specVersion")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string SpecVersion { get; set; } = "3.0.1";
-
-    internal CreationInfo()
-    {
-    }
 }

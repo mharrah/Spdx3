@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,13 +12,19 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    protected Element(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory)
+    {
+        CreationInfo = creationInfo;
+    }
+
     [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? Comment { get; set; }
 
     [JsonPropertyName("creationInfo")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? CreationInfoSpdxId { get; set; }
+    public required CreationInfo CreationInfo { get; set; }
 
     [JsonPropertyName("description")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -49,16 +57,7 @@ public abstract class Element : BaseSpdxClass
     public override void Validate()
     {
         base.Validate();
-        ValidateRequiredProperty(nameof(CreationInfoSpdxId));
+        ValidateRequiredProperty(nameof(CreationInfo));
         ValidateRequiredProperty(nameof(Type));
-    }
-
-    protected internal Element()
-    {
-    }
-
-    protected Element(CreationInfo creationInfo)
-    {
-        CreationInfoSpdxId = creationInfo.SpdxId;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Spdx3.Model.Core.Enums;
+﻿namespace Spdx3.Model.Core.Enums;
 
 /// <summary>
 ///     Information about the relationship between two Elements.

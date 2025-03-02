@@ -8,21 +8,10 @@ namespace Spdx3.Tests.Model.Core.Elements;
 public class ElementTest : BaseModelTestClass
 {
     [Fact]
-    public void Requires_CreationInfo_Parameter()
-    {
-        // Act - note, no parameter
-        var exception = Record.Exception(() => TestFactory.New<TestElement>());
-        Assert.NotNull(exception);
-        Assert.Equal(
-            "Creating instances of TestElement requires using the New(CreationInfo creationInfo) form",
-            exception.Message);
-    }
-
-    [Fact]
     public void BrandNew_Element_IsValid()
     {
         // Arrange
-        var element = TestFactory.New<TestElement>(TestCreationInfo);
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
@@ -32,7 +21,7 @@ public class ElementTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var element = TestFactory.New<TestElement>(TestCreationInfo);
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -52,16 +41,18 @@ public class ElementTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var element = TestFactory.New<TestElement>(TestCreationInfo);
-        element.Comment = "TestComment";
-        element.Description = "TestDescription";
-        element.Extension.Add(TestFactory.New<TestExtension>());
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Summary = "TestSummary"
+        };
+        element.Extension.Add(new TestExtension(TestSpdxIdFactory));
         element.ExternalIdentifier.Add(
-            TestFactory.New<ExternalIdentifier>(ExternalIdentifierType.email, "example@example.com"));
-        element.ExternalRef.Add(TestFactory.New<ExternalRef>(ExternalRefType.altDownloadLocation));
-        element.Name = "TestName";
-        element.Summary = "TestSummary";
-        element.VerifiedUsing.Add(TestFactory.New<TestIntegrityMethod>());
+            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
+        element.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
+        element.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
 
 
         const string expected = """
@@ -96,27 +87,13 @@ public class ElementTest : BaseModelTestClass
     }
 
     [Fact]
-    public void TypeNew_Element_FailsValidation_Empty_SpdxId()
-    {
-        // Arrange
-        var element = TestFactory.New<TestElement>(TestCreationInfo);
-        element.SpdxId = string.Empty;
-
-        // Act
-        var exception = Record.Exception(() => element.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object TestElement, property SpdxId: Field is empty", exception.Message);
-    }
-
-
-    [Fact]
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = TestFactory.New<TestElement>(TestCreationInfo);
-        element.Type = string.Empty;
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Type = string.Empty
+        };
 
         // Act
         var exception = Record.Exception(() => element.Validate());

@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Enums;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class ElementCollectionTest : BaseModelTestClass
     public void BrandNew_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(TestCreationInfo);
+        var elementCollection = new TestElementCollection(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,13 +28,15 @@ public class ElementCollectionTest : BaseModelTestClass
     public void FullyPopulated_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = TestFactory.New<TestElementCollection>(TestCreationInfo);
-        elementCollection.Comment = "TestComment";
-        elementCollection.Description = "TestDescription";
-        elementCollection.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
-        elementCollection.Element.Add(TestFactory.New<TestElement>(TestCreationInfo));
-        elementCollection.Name = "TestName";
-        elementCollection.RootElement.Add(TestFactory.New<TestElement>(TestCreationInfo));
+        var elementCollection = new TestElementCollection(TestSpdxIdFactory, TestCreationInfo)
+        {
+          Comment = "TestComment",
+          Description = "TestDescription",
+          Name = "TestName"
+        };
+        elementCollection.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
+        elementCollection.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
+        elementCollection.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """

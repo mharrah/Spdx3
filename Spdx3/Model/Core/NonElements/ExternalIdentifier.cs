@@ -1,6 +1,8 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -11,13 +13,12 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class ExternalIdentifier : BaseSpdxClass
 {
-    internal ExternalIdentifier()
-    {
-    }
-
-    internal ExternalIdentifier(ExternalIdentifierType externalIdentifierType)
+    [SetsRequiredMembers]
+    public ExternalIdentifier(SpdxIdFactory spdxIdFactory, ExternalIdentifierType externalIdentifierType,
+        string identifier) : base(spdxIdFactory)
     {
         ExternalIdentifierType = externalIdentifierType;
+        Identifier = identifier;
     }
 
     [JsonPropertyName("comment")]
@@ -26,11 +27,11 @@ public class ExternalIdentifier : BaseSpdxClass
 
     [JsonPropertyName("externalIdentifierType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public ExternalIdentifierType? ExternalIdentifierType { get; set; }
+    public required ExternalIdentifierType ExternalIdentifierType { get; set; }
 
     [JsonPropertyName("identifier")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Identifier { get; set; }
+    public required string Identifier { get; set; }
 
     [JsonPropertyName("identifierLocator")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

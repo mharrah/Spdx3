@@ -1,6 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,6 +13,11 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class Artifact : Element
 {
+    [SetsRequiredMembers]
+    protected Artifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    {
+    }
+
     [JsonPropertyName("builtTime")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public DateTimeOffset? BuiltTime { get; set; }
@@ -37,8 +45,4 @@ public abstract class Artifact : Element
     [JsonPropertyName("validUntilTime")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public DateTimeOffset? ValidUntilTime { get; set; }
-
-    protected internal Artifact()
-    {
-    }
 }

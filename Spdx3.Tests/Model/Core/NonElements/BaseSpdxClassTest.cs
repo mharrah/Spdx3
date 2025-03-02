@@ -1,25 +1,20 @@
-using Spdx3.Utility;
-
 namespace Spdx3.Tests.Model.Core.NonElements;
 
 public class BaseSpdxClassTest : BaseModelTestClass
 {
     [Fact]
-    public void BaseSpdxClass_HasReferenceTo_ClassFactory()
+    public void BaseSpdxClass_NewElements_AreDifferent()
     {
         // ARRANGE
         // Get a class using the factory in the base testing class
-        var baseClass1 = TestFactory.New<TestBaseSpdxClass>();
+        var baseClass1 = new TestBaseSpdxClass(TestSpdxIdFactory);
 
         // Get another class from a separate factory
-        var myOwnFactory = new SpdxClassFactory(PredictableDateTime);
-        var baseClass2 = myOwnFactory.New<TestBaseSpdxClass>();
+        var baseClass2 = new TestBaseSpdxClass(TestSpdxIdFactory);
 
         // ASSERT
-        Assert.NotNull(baseClass1.CreatedByFactory);
-        Assert.NotNull(baseClass2.CreatedByFactory);
-        Assert.NotSame(baseClass1.CreatedByFactory, baseClass2.CreatedByFactory);
-        Assert.Same(baseClass1.CreatedByFactory, TestFactory);
-        Assert.Same(baseClass2.CreatedByFactory, myOwnFactory);
+        Assert.NotNull(baseClass1);
+        Assert.NotNull(baseClass2);
+        Assert.NotEqual(baseClass1, baseClass2);
     }
 }

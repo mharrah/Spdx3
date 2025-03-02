@@ -1,4 +1,8 @@
-﻿namespace Spdx3.Model.Core.Elements;
+﻿using System.Diagnostics.CodeAnalysis;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
+
+namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
 ///     A concrete subclass of Element used by Individuals in the Core profile (whatever *that* means)
@@ -6,7 +10,8 @@
 /// </summary>
 public class IndividualElement : Element
 {
-    internal IndividualElement()
+    [SetsRequiredMembers]
+    public IndividualElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 }

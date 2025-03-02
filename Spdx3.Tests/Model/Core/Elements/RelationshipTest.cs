@@ -1,34 +1,17 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
 public class RelationshipTest : BaseModelTestClass
 {
     [Fact]
-    public void RelationShip_Requires_Correct_Factory_Method()
-    {
-        // Arrange
-        const string expected =
-            "Creating instances of Relationship requires using the " +
-            "New(CreationInfo creationInfo, RelationshipType relationshipType, Element from, List<Element> to) form";
-
-        // Act
-        var exception = Record.Exception(() => TestFactory.New<Relationship>());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal(expected, exception.Message);
-    }
-
-    [Fact]
     public void BrandNew_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
@@ -54,16 +37,18 @@ public class RelationshipTest : BaseModelTestClass
     public void FullyPopulated_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
-            from, [to]);
-        relationship.Comment = "TestComment";
-        relationship.Description = "TestDescription";
-        relationship.Name = "TestName";
-        relationship.Completeness = RelationshipCompleteness.complete;
-        relationship.StartTime = PredictableDateTime;
-        relationship.EndTime = PredictableDateTime;
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
+            from, [to])
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Completeness = RelationshipCompleteness.complete,
+            StartTime = PredictableDateTime,
+            EndTime = PredictableDateTime
+        };
 
         const string expected = """
                                 {
@@ -95,8 +80,8 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_AtLeastOne_To()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
             from, []); // Note that the to array is empty
 
         // Act
@@ -111,12 +96,14 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_From()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<Relationship>(TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
             from, [to]);
 
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         relationship.From = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         // Act
         var exception = Record.Exception(() => relationship.Validate());

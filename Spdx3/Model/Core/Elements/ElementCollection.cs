@@ -1,6 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -10,6 +13,11 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public abstract class ElementCollection : Element
 {
+    [SetsRequiredMembers]
+    protected ElementCollection(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    {
+    }
+
     [JsonPropertyName("profileConformance")]
     public IList<ProfileIdentifierType> ProfileConformance { get; } = new List<ProfileIdentifierType>();
 
@@ -23,8 +31,4 @@ public abstract class ElementCollection : Element
     [JsonPropertyName("element")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<Element> Element { get; } = new List<Element>();
-
-    protected internal ElementCollection()
-    {
-    }
 }

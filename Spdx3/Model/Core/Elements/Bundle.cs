@@ -1,5 +1,8 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
+using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -9,11 +12,12 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class Bundle : ElementCollection
 {
+    [SetsRequiredMembers]
+    public Bundle(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    {
+    }
+
     [JsonPropertyName("context")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<string> Context { get; } = new List<string>();
-
-    internal Bundle()
-    {
-    }
 }

@@ -1,6 +1,5 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -10,9 +9,10 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
     public void BrandNew_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<LifecycleScopedRelationship>(TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new LifecycleScopedRelationship(TestSpdxIdFactory, TestCreationInfo,
+            RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
@@ -38,17 +38,20 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
     public void FullyPopulated_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = TestFactory.New<TestElement>(TestCreationInfo);
-        var to = TestFactory.New<TestElement>(TestCreationInfo);
-        var relationship = TestFactory.New<LifecycleScopedRelationship>(TestCreationInfo, RelationshipType.describes,
-            from, [to]);
-        relationship.Comment = "TestComment";
-        relationship.Description = "TestDescription";
-        relationship.Name = "TestName";
-        relationship.Completeness = RelationshipCompleteness.complete;
-        relationship.StartTime = PredictableDateTime;
-        relationship.EndTime = PredictableDateTime;
-        relationship.Scope = LifecycleScopeType.runtime;
+        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var relationship = new LifecycleScopedRelationship(TestSpdxIdFactory, TestCreationInfo,
+            RelationshipType.describes,
+            from, [to])
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Completeness = RelationshipCompleteness.complete,
+            StartTime = PredictableDateTime,
+            EndTime = PredictableDateTime,
+            Scope = LifecycleScopeType.runtime
+        };
 
         const string expected = """
                                 {

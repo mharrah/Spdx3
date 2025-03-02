@@ -4,36 +4,30 @@ using Spdx3.Model;
 namespace Spdx3.Tests.Model;
 
 /// <summary>
-/// All of the classes in the Model should have no public constructor.  They should all be internal to the SPDX3 project.
+///     All of the classes in the Model should have public constructor.
 /// </summary>
 public class NoPublicConstructorsTest
 {
     [Fact]
-    public void No_Classes_With_Public_Constructor()
+    public void No_Classes_Without_Public_Constructor()
     {
-        List<Type> violations = new List<Type>();
+        var violations = new List<Type>();
         var assembly = Assembly.GetAssembly(typeof(BaseSpdxClass));
         Assert.NotNull(assembly);
-        
+
         foreach (var t in assembly.GetTypes())
         {
-            if (t.Namespace == null) continue;
-            if (!t.Namespace.StartsWith("Spdx3.Model")) continue;
-            if (!t.IsClass) continue;
-            if (!t.IsPublic) continue;
-            if (!t.IsAssignableTo(typeof(BaseSpdxClass))) continue;
-            foreach (var c in t.GetConstructors())
+            if (t.Namespace == null || !t.Namespace.StartsWith("Spdx3.Model") || !t.IsClass || !t.IsPublic || !t.IsAssignableTo(typeof(BaseSpdxClass)))
             {
-                if (c.IsPublic) violations.Add(t);
+                continue;
             }
-            
+
+            violations.AddRange(from c in t.GetConstructors() where !c.IsPublic select t);
         }
 
         if (violations.Count != 0)
         {
-            Assert.Fail($"The following classes have public constructors: {String.Join("; ", violations)}");
+            Assert.Fail($"The following classes have public constructors: {string.Join("; ", violations)}");
         }
     }
-
 }
-

@@ -1,4 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Core.NonElements;
 
@@ -7,7 +9,8 @@ namespace Spdx3.Tests.Model.Core.NonElements;
 /// </summary>
 public class TestIntegrityMethod : IntegrityMethod
 {
-    internal TestIntegrityMethod()
+    [SetsRequiredMembers]
+    public TestIntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
     {
     }
 }

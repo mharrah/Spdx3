@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class SoftwareAgentTest : BaseModelTestClass
     public void BrandNew_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<SoftwareAgent>(TestCreationInfo);
+        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,10 +28,12 @@ public class SoftwareAgentTest : BaseModelTestClass
     public void FullyPopulated_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<SoftwareAgent>(TestCreationInfo);
-        agent.Comment = "TestComment";
-        agent.Description = "TestDescription";
-        agent.Name = "TestName";
+        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

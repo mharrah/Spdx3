@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class ToolTest : BaseModelTestClass
     public void BrandNew_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = TestFactory.New<Tool>(TestCreationInfo);
+        var tool = new Tool(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,10 +28,12 @@ public class ToolTest : BaseModelTestClass
     public void FullyPopulated_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = TestFactory.New<Tool>(TestCreationInfo);
-        tool.Comment = "TestComment";
-        tool.Description = "TestDescription";
-        tool.Name = "TestName";
+        var tool = new Tool(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

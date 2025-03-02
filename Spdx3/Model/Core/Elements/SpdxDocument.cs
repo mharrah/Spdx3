@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.NonElements;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.Elements;
 
@@ -11,6 +13,11 @@ namespace Spdx3.Model.Core.Elements;
 /// </summary>
 public class SpdxDocument : ElementCollection
 {
+    [SetsRequiredMembers]
+    public SpdxDocument(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    {
+    }
+
     [JsonPropertyName("import")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
@@ -22,8 +29,4 @@ public class SpdxDocument : ElementCollection
     [JsonPropertyName("namespaceMap")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
-
-    internal SpdxDocument()
-    {
-    }
 }

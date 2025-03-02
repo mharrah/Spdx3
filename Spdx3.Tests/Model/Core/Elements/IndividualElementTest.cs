@@ -1,5 +1,4 @@
 using Spdx3.Model.Core.Elements;
-using Spdx3.Tests.Model.Core.NonElements;
 
 namespace Spdx3.Tests.Model.Core.Elements;
 
@@ -9,7 +8,7 @@ public class IndividualElementTest : BaseModelTestClass
     public void BrandNew_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = TestFactory.New<IndividualElement>(TestCreationInfo);
+        var individualElement = new IndividualElement(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,10 +28,12 @@ public class IndividualElementTest : BaseModelTestClass
     public void FullyPopulated_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = TestFactory.New<IndividualElement>(TestCreationInfo);
-        individualElement.Comment = "TestComment";
-        individualElement.Description = "TestDescription";
-        individualElement.Name = "TestName";
+        var individualElement = new IndividualElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

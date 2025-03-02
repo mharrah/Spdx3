@@ -1,26 +1,12 @@
-using Spdx3.Tests.Model.Core.NonElements;
-
 namespace Spdx3.Tests.Model.Core.Elements;
 
 public class ArtifactTest : BaseModelTestClass
 {
     [Fact]
-    public void Requires_CreationInfo_Parameter()
-    {
-        // Act - note, no parameter
-        var exception = Record.Exception(() => TestFactory.New<TestArtifact>());
-        Assert.NotNull(exception);
-        Assert.Equal(
-            "Creating instances of TestArtifact requires using the New(CreationInfo creationInfo) form",
-            exception.Message);
-    }
-
-
-    [Fact]
     public void BrandNew_Artifact_HasRequiredFields()
     {
         // Arrange
-        var element = TestFactory.New<TestArtifact>(TestCreationInfo);
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
@@ -31,7 +17,7 @@ public class ArtifactTest : BaseModelTestClass
     public void BrandNew_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = TestFactory.New<TestArtifact>(TestCreationInfo);
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -51,10 +37,12 @@ public class ArtifactTest : BaseModelTestClass
     public void FullyPopulated_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = TestFactory.New<TestArtifact>(TestCreationInfo);
-        element.Comment = "TestComment";
-        element.Description = "TestDescription";
-        element.Name = "TestName";
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {
@@ -74,28 +62,15 @@ public class ArtifactTest : BaseModelTestClass
         Assert.Equal(expected, json);
     }
 
-    [Fact]
-    public void TypeNew_Artifact_FailsValidation_Empty_SpdxId()
-    {
-        // Arrange
-        var element = TestFactory.New<TestArtifact>(TestCreationInfo);
-        element.SpdxId = string.Empty;
-
-        // Act
-        var exception = Record.Exception(() => element.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object TestArtifact, property SpdxId: Field is empty", exception.Message);
-    }
-
 
     [Fact]
     public void TypeNew_Artifact_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = TestFactory.New<TestArtifact>(TestCreationInfo);
-        element.Type = string.Empty;
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Type = string.Empty
+        };
 
         // Act
         var exception = Record.Exception(() => element.Validate());

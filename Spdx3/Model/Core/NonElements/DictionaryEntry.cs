@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -9,9 +11,21 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class DictionaryEntry : BaseSpdxClass
 {
+    [SetsRequiredMembers]
+    public DictionaryEntry(SpdxIdFactory spdxIdFactory, string key) : base(spdxIdFactory)
+    {
+        Key = key;
+    }
+
+    [SetsRequiredMembers]
+    public DictionaryEntry(SpdxIdFactory spdxIdFactory, string key, string? value) : this(spdxIdFactory, key)
+    {
+        Value = value;
+    }
+
     [JsonPropertyName("key")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Key { get; set; }
+    public required string Key { get; set; }
 
     [JsonPropertyName("value")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -21,9 +35,5 @@ public class DictionaryEntry : BaseSpdxClass
     {
         base.Validate();
         ValidateRequiredProperty(nameof(Key));
-    }
-
-    internal DictionaryEntry()
-    {
     }
 }

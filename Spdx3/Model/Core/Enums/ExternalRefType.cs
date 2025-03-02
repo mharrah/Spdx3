@@ -1,8 +1,8 @@
 namespace Spdx3.Model.Core.Enums;
 
 /// <summary>
-/// The type of an external reference.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/ExternalRefType/
+///     The type of an external reference.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Vocabularies/ExternalRefType/
 /// </summary>
 public enum ExternalRefType
 {

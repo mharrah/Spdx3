@@ -1,5 +1,5 @@
 using Spdx3.Exceptions;
-using Spdx3.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.NonElements;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Exceptions;
@@ -10,13 +10,12 @@ public class Spdx3ValidationExceptionTest
     public void Constructor_ShouldSetMessage()
     {
         // Arrange
-        var factory = new SpdxClassFactory();
-        var hash = factory.New<Hash>();
+        var cut = new TestBaseSpdxClass(new SpdxIdFactory());
 
         // Act
-        var exception = new Spdx3ValidationException(hash, nameof(hash.Algorithm), "Some message");
+        var exception = new Spdx3ValidationException(cut, nameof(cut.SpdxId), "Some message");
 
         // Assert
-        Assert.Equal("Object Hash, property Algorithm: Some message", exception.Message);
+        Assert.Equal("Object TestBaseSpdxClass, property SpdxId: Some message", exception.Message);
     }
 }

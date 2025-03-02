@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Serialization;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Core.NonElements;
 
@@ -10,13 +12,21 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class PackageVerificationCode : IntegrityMethod
 {
+    [SetsRequiredMembers]
+    public PackageVerificationCode(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) :
+        base(spdxIdFactory)
+    {
+        Algorithm = algorithm;
+        HashValue = hashValue;
+    }
+
     [JsonPropertyName("algorithm")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public HashAlgorithm? Algorithm { get; set; }
+    public HashAlgorithm Algorithm { get; set; }
 
     [JsonPropertyName("hashValue")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? HashValue { get; set; }
+    public string HashValue { get; set; }
 
     [JsonPropertyName("packageVerificationCodeExcludedFile")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
@@ -27,9 +37,5 @@ public class PackageVerificationCode : IntegrityMethod
         base.Validate();
         ValidateRequiredProperty(nameof(Algorithm));
         ValidateRequiredProperty(nameof(HashValue));
-    }
-
-    internal PackageVerificationCode()
-    {
     }
 }

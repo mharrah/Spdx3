@@ -1,4 +1,8 @@
-﻿namespace Spdx3.Model.Core.Elements;
+﻿using System.Diagnostics.CodeAnalysis;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
+
+namespace Spdx3.Model.Core.Elements;
 
 /// <summary>
 ///     A Bill of Materials (BOM) is a container for a grouping of SPDX-3.0 content characterizing details about a product.
@@ -6,7 +10,8 @@
 /// </summary>
 public class Bom : Bundle
 {
-    internal Bom()
+    [SetsRequiredMembers]
+    public Bom(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 }

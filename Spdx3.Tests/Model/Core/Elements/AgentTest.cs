@@ -8,7 +8,7 @@ public class AgentTest : BaseModelTestClass
     public void BrandNew_Agent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<Agent>(TestCreationInfo);
+        var agent = new Agent(TestSpdxIdFactory, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,10 +28,12 @@ public class AgentTest : BaseModelTestClass
     public void FullyPopulated_Agent_SerializesProperly()
     {
         // Arrange
-        var agent = TestFactory.New<Agent>(TestCreationInfo);
-        agent.Comment = "TestComment";
-        agent.Description = "TestDescription";
-        agent.Name = "TestName";
+        var agent = new Agent(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

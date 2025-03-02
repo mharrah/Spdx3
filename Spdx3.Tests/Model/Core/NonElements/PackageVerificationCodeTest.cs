@@ -9,7 +9,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_Basics()
     {
         // Act
-        var hash = TestFactory.New<PackageVerificationCode>();
+        var hash = new PackageVerificationCode(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue");
 
         // Assert
         Assert.NotNull(hash);
@@ -22,9 +22,11 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var hash = TestFactory.New<PackageVerificationCode>();
-        hash.Algorithm = HashAlgorithm.falcon;
-        hash.HashValue = "TestHashValue";
+        var hash = new PackageVerificationCode(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue")
+            {
+                Algorithm = HashAlgorithm.falcon,
+                HashValue = "TestHashValue"
+            };
         const string expected = """
                                 {
                                   "algorithm": "falcon",
@@ -45,9 +47,11 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var hash = TestFactory.New<PackageVerificationCode>();
-        hash.Algorithm = HashAlgorithm.falcon;
-        hash.HashValue = "TestHashValue";
+        var hash = new PackageVerificationCode(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue")
+            {
+                Algorithm = HashAlgorithm.falcon,
+                HashValue = "TestHashValue"
+            };
         hash.PackageVerificationCodeExcludedFile.Add("file1");
         hash.PackageVerificationCodeExcludedFile.Add("file2");
         const string expected = """
@@ -72,28 +76,16 @@ public class PackageVerificationCodeTest : BaseModelTestClass
 
 
     [Fact]
-    public void PackageVerificationCode_FailsValidation_WhenMissing_Algorithm()
-    {
-        // Arrange
-        var hash = TestFactory.New<PackageVerificationCode>();
-        hash.Algorithm = null;
-        hash.HashValue = "TestHashValue";
-
-        //  Act
-        var exception = Record.Exception(() => hash.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object PackageVerificationCode, property Algorithm: Field is required", exception.Message);
-    }
-
-    [Fact]
     public void PackageVerificationCode_FailsValidation_WhenMissing_HashValue()
     {
         // Arrange
-        var hash = TestFactory.New<PackageVerificationCode>();
-        hash.Algorithm = HashAlgorithm.falcon;
+        var hash = new PackageVerificationCode(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue")
+            {
+                Algorithm = HashAlgorithm.falcon
+            };
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         hash.HashValue = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
         //  Act
         var exception = Record.Exception(() => hash.Validate());
@@ -107,9 +99,11 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_FailsValidation_WhenEmpty_HashValue()
     {
         // Arrange
-        var hash = TestFactory.New<PackageVerificationCode>();
-        hash.Algorithm = HashAlgorithm.md5;
-        hash.HashValue = "";
+        var hash = new PackageVerificationCode(TestSpdxIdFactory, HashAlgorithm.falcon, "TestHashValue")
+            {
+                Algorithm = HashAlgorithm.md5,
+                HashValue = ""
+            };
 
         //  Act
         var exception = Record.Exception(() => hash.Validate());

@@ -1,4 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 using Spdx3.Model.Core.Elements;
+using Spdx3.Model.Core.NonElements;
+using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.SimpleLicensing;
 
@@ -7,7 +10,9 @@ namespace Spdx3.Tests.Model.SimpleLicensing;
 /// </summary>
 public class TestAnyLicenseInfo : Element
 {
-    internal TestAnyLicenseInfo()
+    [SetsRequiredMembers]
+    public TestAnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory,
+        creationInfo)
     {
     }
 }
