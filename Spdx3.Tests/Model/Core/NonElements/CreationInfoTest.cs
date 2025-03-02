@@ -18,6 +18,24 @@ public class CreationInfoTest : BaseModelTestClass
         Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
     }
 
+    
+    [Fact]
+    public void CreationInfo_Constructor_WithoutPassingDateTime()
+    {
+        // Arrange
+        var creationInfo = new CreationInfo(TestSpdxIdFactory);
+
+        // Assert
+        Assert.NotNull(creationInfo);
+        Assert.IsType<CreationInfo>(creationInfo);
+        Assert.NotEqual(creationInfo.Created, PredictableDateTime);
+        // Created in the past...
+        Assert.True(DateTimeOffset.Now.CompareTo(creationInfo.Created) > 0);
+        // but created less than 2 sec ago
+        Assert.True(DateTimeOffset.Now.Add(new TimeSpan(0, 0, -2)).CompareTo(creationInfo.Created) < 0);
+        Assert.Equal("CreationInfo", creationInfo.Type);
+        Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
+    }
     [Fact]
     public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
