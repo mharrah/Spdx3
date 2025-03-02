@@ -14,7 +14,7 @@ namespace Spdx3.Model.Core.Elements;
 public abstract class ElementCollection : Element
 {
     [SetsRequiredMembers]
-    public ElementCollection(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    protected ElementCollection(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 

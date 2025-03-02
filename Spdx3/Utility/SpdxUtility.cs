@@ -4,7 +4,7 @@ namespace Spdx3.Utility;
 
 public class SpdxUtility
 {
-    private static readonly Dictionary<string, string> _prefixesForNamespaces = new()
+    private static readonly Dictionary<string, string> PrefixesForNamespaces = new()
     {
         { "Model.Core", "" },
         { "Model.Security", "security_" },
@@ -26,13 +26,13 @@ public class SpdxUtility
             throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
         }
 
-        foreach (var prefix in _prefixesForNamespaces.Keys.Where(
+        foreach (var prefix in PrefixesForNamespaces.Keys.Where(
                      prefix => classType.Namespace.StartsWith($"Spdx3.{prefix}")
                                || classType.Namespace.StartsWith($"Spdx3.Tests.{prefix}")
                  )
                 )
         {
-            return $"{_prefixesForNamespaces[prefix]}{classType.Name}";
+            return $"{PrefixesForNamespaces[prefix]}{classType.Name}";
         }
 
         throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");

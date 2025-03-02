@@ -28,10 +28,12 @@ public class PersonTest : BaseModelTestClass
     public void FullyPopulated_Person_SerializesProperly()
     {
         // Arrange
-        var person = new Person(TestSpdxIdFactory, TestCreationInfo);
-        person.Comment = "TestComment";
-        person.Description = "TestDescription";
-        person.Name = "TestName";
+        var person = new Person(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

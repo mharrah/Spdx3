@@ -28,10 +28,12 @@ public class SoftwareAgentTest : BaseModelTestClass
     public void FullyPopulated_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo);
-        agent.Comment = "TestComment";
-        agent.Description = "TestDescription";
-        agent.Name = "TestName";
+        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

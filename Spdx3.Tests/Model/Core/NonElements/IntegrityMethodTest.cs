@@ -39,8 +39,10 @@ public class IntegrityMethodTest : BaseModelTestClass
     public void IntegrityMethod_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var integrityMethod = new TestIntegrityMethod(TestSpdxIdFactory);
-        integrityMethod.Comment = "Test comment";
+        var integrityMethod = new TestIntegrityMethod(TestSpdxIdFactory)
+        {
+            Comment = "Test comment"
+        };
 
         const string expected = """
                                 {

@@ -57,36 +57,36 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
                 var jsonElementName = GetJsonElementNameFromPropertyAttribute(prop);
 
 
-                // If it's a list of OTHER SpdxClasses, don't serialize the objects, just serialize an array of references
-                if (propType.IsGenericType &&
-                    propType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseSpdxClass)) &&
-                    propVal is IList spdxClasses
-                   )
+                switch (propType.IsGenericType)
                 {
-                    if (spdxClasses.Count > 0)
+                    // If it's a list of OTHER SpdxClasses, don't serialize the objects, just serialize an array of references
+                    case true when
+                        propType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseSpdxClass)) &&
+                        propVal is IList spdxClasses:
                     {
-                        WriteReferencesToListItems(writer, spdxClasses, jsonElementName);
+                        if (spdxClasses.Count > 0)
+                        {
+                            WriteReferencesToListItems(writer, spdxClasses, jsonElementName);
+                        }
+
+                        continue;
                     }
-
-                    continue;
-                }
-
-                // If it's a list of Enum values, serialize the names of the values
-                if (propType.IsGenericType &&
-                    propType.GenericTypeArguments[0].IsEnum &&
-                    propVal is IList enums
-                   )
-                {
-                    if (enums.Count > 0)
+                    // If it's a list of Enum values, serialize the names of the values
+                    case true when
+                        propType.GenericTypeArguments[0].IsEnum &&
+                        propVal is IList enums:
                     {
-                        WriteReferencesToEnumValues(writer, propType.GenericTypeArguments[0], enums, jsonElementName);
+                        if (enums.Count > 0)
+                        {
+                            WriteReferencesToEnumValues(writer, propType.GenericTypeArguments[0], enums, jsonElementName);
+                        }
+
+                        continue;
                     }
-
-                    continue;
+                    default:
+                        WriteSimpleProperty(writer, propVal, jsonElementName);
+                        break;
                 }
-
-
-                WriteSimpleProperty(writer, propVal, jsonElementName);
             }
 
 
@@ -117,7 +117,7 @@ public class SpdxObjectConverterFactory : JsonConverterFactory
                     {
                         writer.WritePropertyName(jsonElementName);
                         writer.WriteStartArray();
-                        list.ForEach(str => writer.WriteStringValue(str));
+                        list.ForEach(writer.WriteStringValue);
                         writer.WriteEndArray();
                     }
 

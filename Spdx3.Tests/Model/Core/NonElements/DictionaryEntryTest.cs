@@ -20,8 +20,10 @@ public class DictionaryEntryTest : BaseModelTestClass
     public void DictionaryEntry_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var dictionaryEntry = new DictionaryEntry(TestSpdxIdFactory, "TestKey");
-        dictionaryEntry.Value = "TestValue";
+        var dictionaryEntry = new DictionaryEntry(TestSpdxIdFactory, "TestKey")
+        {
+            Value = "TestValue"
+        };
         const string expected = """
                                 {
                                   "key": "TestKey",

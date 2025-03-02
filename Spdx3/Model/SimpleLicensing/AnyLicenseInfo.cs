@@ -14,7 +14,7 @@ public abstract class AnyLicenseInfo : Element
     // Abstract class, adds no properties or functionality
 
     [SetsRequiredMembers]
-    public AnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    protected AnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 }

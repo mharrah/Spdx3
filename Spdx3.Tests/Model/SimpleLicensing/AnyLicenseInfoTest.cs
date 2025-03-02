@@ -26,10 +26,12 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo);
-        anyLicenseInfo.Comment = "TestComment";
-        anyLicenseInfo.Description = "TestDescription";
-        anyLicenseInfo.Name = "TestName";
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

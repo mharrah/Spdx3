@@ -28,10 +28,12 @@ public class IndividualElementTest : BaseModelTestClass
     public void FullyPopulated_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = new IndividualElement(TestSpdxIdFactory, TestCreationInfo);
-        individualElement.Comment = "TestComment";
-        individualElement.Description = "TestDescription";
-        individualElement.Name = "TestName";
+        var individualElement = new IndividualElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

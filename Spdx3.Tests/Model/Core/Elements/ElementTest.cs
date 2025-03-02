@@ -41,15 +41,17 @@ public class ElementTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        element.Comment = "TestComment";
-        element.Description = "TestDescription";
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Summary = "TestSummary"
+        };
         element.Extension.Add(new TestExtension(TestSpdxIdFactory));
         element.ExternalIdentifier.Add(
             new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
         element.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
-        element.Name = "TestName";
-        element.Summary = "TestSummary";
         element.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
 
 
@@ -88,8 +90,10 @@ public class ElementTest : BaseModelTestClass
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        element.Type = string.Empty;
+        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Type = string.Empty
+        };
 
         // Act
         var exception = Record.Exception(() => element.Validate());

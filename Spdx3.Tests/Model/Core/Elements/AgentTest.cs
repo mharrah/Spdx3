@@ -28,10 +28,12 @@ public class AgentTest : BaseModelTestClass
     public void FullyPopulated_Agent_SerializesProperly()
     {
         // Arrange
-        var agent = new Agent(TestSpdxIdFactory, TestCreationInfo);
-        agent.Comment = "TestComment";
-        agent.Description = "TestDescription";
-        agent.Name = "TestName";
+        var agent = new Agent(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

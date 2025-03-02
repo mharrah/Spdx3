@@ -28,10 +28,12 @@ public class ToolTest : BaseModelTestClass
     public void FullyPopulated_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = new Tool(TestSpdxIdFactory, TestCreationInfo);
-        tool.Comment = "TestComment";
-        tool.Description = "TestDescription";
-        tool.Name = "TestName";
+        var tool = new Tool(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

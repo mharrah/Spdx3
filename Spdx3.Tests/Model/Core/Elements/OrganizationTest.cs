@@ -28,10 +28,12 @@ public class OrganizationTest : BaseModelTestClass
     public void FullyPopulated_Organization_SerializesProperly()
     {
         // Arrange
-        var org = new Organization(TestSpdxIdFactory, TestCreationInfo);
-        org.Comment = "TestComment";
-        org.Description = "TestDescription";
-        org.Name = "TestName";
+        var org = new Organization(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {

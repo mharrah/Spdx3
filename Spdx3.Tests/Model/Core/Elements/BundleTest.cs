@@ -29,14 +29,16 @@ public class BundleTest : BaseModelTestClass
     public void FullyPopulated_Bundle_SerializesProperly()
     {
         // Arrange
-        var bundle = new Bundle(TestSpdxIdFactory, TestCreationInfo);
-        bundle.Comment = "TestComment";
+        var bundle = new Bundle(TestSpdxIdFactory, TestCreationInfo)
+        {
+          Comment = "TestComment",
+          Description = "TestDescription",
+          Name = "TestName"
+        };
         bundle.Context.Add("Some context");
         bundle.Context.Add("More context");
-        bundle.Description = "TestDescription";
         bundle.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bundle.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
-        bundle.Name = "TestName";
         bundle.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bundle.ProfileConformance.Add(ProfileIdentifierType.security);
 

@@ -20,6 +20,14 @@ public class PositiveIntegerRange : BaseSpdxClass
     public PositiveIntegerRange(SpdxIdFactory spdxIdFactory, int beginIntegerRange, int endIntegerRange) : base(
         spdxIdFactory)
     {
+        if (beginIntegerRange < 1)
+        {
+            throw new Spdx3Exception("beginIntegerRange must be a positive, non-zero integer");
+        }
+        if (endIntegerRange <= beginIntegerRange)
+        {
+            throw new Spdx3Exception("endIntegerRange must be >= beginIntegerRange");
+        }
         BeginIntegerRange = beginIntegerRange;
         EndIntegerRange = endIntegerRange;
     }

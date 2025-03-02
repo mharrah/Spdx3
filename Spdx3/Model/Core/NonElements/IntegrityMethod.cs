@@ -12,7 +12,7 @@ namespace Spdx3.Model.Core.NonElements;
 public abstract class IntegrityMethod : BaseSpdxClass
 {
     [SetsRequiredMembers]
-    public IntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    protected IntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
     {
     }
 

@@ -14,7 +14,7 @@ public abstract class SoftwareArtifact : Artifact
     public string? CopyrightText;
 
     [SetsRequiredMembers]
-    public SoftwareArtifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    protected SoftwareArtifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 

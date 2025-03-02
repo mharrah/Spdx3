@@ -28,12 +28,14 @@ public class ElementCollectionTest : BaseModelTestClass
     public void FullyPopulated_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = new TestElementCollection(TestSpdxIdFactory, TestCreationInfo);
-        elementCollection.Comment = "TestComment";
-        elementCollection.Description = "TestDescription";
+        var elementCollection = new TestElementCollection(TestSpdxIdFactory, TestCreationInfo)
+        {
+          Comment = "TestComment",
+          Description = "TestDescription",
+          Name = "TestName"
+        };
         elementCollection.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         elementCollection.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
-        elementCollection.Name = "TestName";
         elementCollection.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
 

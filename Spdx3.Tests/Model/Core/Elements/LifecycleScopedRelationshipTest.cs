@@ -42,14 +42,16 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
         var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
         var relationship = new LifecycleScopedRelationship(TestSpdxIdFactory, TestCreationInfo,
             RelationshipType.describes,
-            from, [to]);
-        relationship.Comment = "TestComment";
-        relationship.Description = "TestDescription";
-        relationship.Name = "TestName";
-        relationship.Completeness = RelationshipCompleteness.complete;
-        relationship.StartTime = PredictableDateTime;
-        relationship.EndTime = PredictableDateTime;
-        relationship.Scope = LifecycleScopeType.runtime;
+            from, [to])
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Completeness = RelationshipCompleteness.complete,
+            StartTime = PredictableDateTime,
+            EndTime = PredictableDateTime,
+            Scope = LifecycleScopeType.runtime
+        };
 
         const string expected = """
                                 {

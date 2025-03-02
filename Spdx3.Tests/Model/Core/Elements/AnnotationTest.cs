@@ -48,19 +48,21 @@ public class AnnotationTest : BaseModelTestClass
     {
         // Arrange
         var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.other, subject);
-        annotation.Comment = "TestComment";
-        annotation.Description = "TestDescription";
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.other, subject)
+            {
+                Comment = "TestComment",
+                Description = "TestDescription",
+                Name = "TestName",
+                Statement = "TestStatement",
+                MediaType = "TestMediaType",
+                Summary = "TestSummary",
+                Subject = new TestElement(TestSpdxIdFactory, TestCreationInfo),
+                AnnotationType = AnnotationType.review
+            };
         annotation.Extension.Add(new TestExtension(TestSpdxIdFactory));
         annotation.ExternalIdentifier.Add(
             new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
         annotation.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.other));
-        annotation.Name = "TestName";
-        annotation.Statement = "TestStatement";
-        annotation.MediaType = "TestMediaType";
-        annotation.Summary = "TestSummary";
-        annotation.Subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        annotation.AnnotationType = AnnotationType.review;
         annotation.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
 
         const string expected = """
@@ -103,8 +105,10 @@ public class AnnotationTest : BaseModelTestClass
     {
         // Arrange
         var subject = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.review, subject);
-        annotation.Type = string.Empty;
+        var annotation = new Annotation(TestSpdxIdFactory, TestCreationInfo, AnnotationType.review, subject)
+            {
+                Type = string.Empty
+            };
 
         // Act
         var exception = Record.Exception(() => annotation.Validate());

@@ -42,11 +42,14 @@ public class ExternalMapTest : BaseModelTestClass
     public void ExternalMap_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalMap = new ExternalMap(TestSpdxIdFactory, "some-external-spdx-id");
-        externalMap.ExternalSpdxId = "testref";
-        externalMap.LocationHint = "Test Location Hint";
+        var externalMap = new ExternalMap(TestSpdxIdFactory, "some-external-spdx-id")
+        {
+            ExternalSpdxId = "testref",
+            LocationHint = "Test Location Hint",
+            DefiningArtifact = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        };
         externalMap.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
-        externalMap.DefiningArtifact = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
+
 
         const string expected = """
                                 {

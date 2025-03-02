@@ -37,10 +37,12 @@ public class ArtifactTest : BaseModelTestClass
     public void FullyPopulated_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
-        element.Comment = "TestComment";
-        element.Description = "TestDescription";
-        element.Name = "TestName";
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName"
+        };
 
         const string expected = """
                                 {
@@ -65,8 +67,10 @@ public class ArtifactTest : BaseModelTestClass
     public void TypeNew_Artifact_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
-        element.Type = string.Empty;
+        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        {
+            Type = string.Empty
+        };
 
         // Act
         var exception = Record.Exception(() => element.Validate());

@@ -33,10 +33,12 @@ public class ExternalIdentifierTest : BaseModelTestClass
     {
         // Arrange
         var externalIdentifier =
-            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, "TestIdentity");
-        externalIdentifier.Comment = "Test comment";
+            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, "TestIdentity")
+            {
+                Comment = "Test comment",
+                IssuingAuthority = "testRef"
+            };
         externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.IssuingAuthority = "testRef";
 
         const string expected = """
                                 {
@@ -82,10 +84,12 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FailsValidation_WhenEmpty_Identifier()
     {
         // Arrange
-        var externalIdentifier = new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, string.Empty);
-        externalIdentifier.Comment = "Test comment";
+        var externalIdentifier = new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, string.Empty)
+            {
+                Comment = "Test comment",
+                IssuingAuthority = "testRef"
+            };
         externalIdentifier.IdentifierLocator.Add("testref");
-        externalIdentifier.IssuingAuthority = "testRef";
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());

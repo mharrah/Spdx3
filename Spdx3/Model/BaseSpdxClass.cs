@@ -76,7 +76,7 @@ public abstract class BaseSpdxClass
         {
             case null:
                 throw new Spdx3ValidationException(this, propertyName, "Field is required");
-            case int and < 1:
+            case < 1:
                 throw new Spdx3ValidationException(this, propertyName,
                     "Value of {propVal} must be a positive non-zero integer");
             case string when propVal.ToString() == string.Empty:

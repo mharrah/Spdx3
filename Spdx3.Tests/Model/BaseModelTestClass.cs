@@ -16,7 +16,7 @@ public class BaseModelTestClass
         TestCreationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime);
     }
 
-    protected CreationInfo TestCreationInfo { get; set; }
+    protected CreationInfo TestCreationInfo { get; }
 
-    protected SpdxIdFactory TestSpdxIdFactory { get; set; } = new();
+    protected SpdxIdFactory TestSpdxIdFactory { get; } = new();
 }

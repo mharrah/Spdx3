@@ -10,13 +10,13 @@ public class ExternalRefTest : BaseModelTestClass
     {
         // Arrange
         var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license);
-        var expected = """
-                       {
-                         "externalRefType": "license",
-                         "type": "ExternalRef",
-                         "spdxId": "urn:ExternalRef:402"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "externalRefType": "license",
+                                  "type": "ExternalRef",
+                                  "spdxId": "urn:ExternalRef:402"
+                                }
+                                """;
 
         // Act
         var json = externalRef.ToJson();
@@ -29,24 +29,26 @@ public class ExternalRefTest : BaseModelTestClass
     public void ExternalRef_FullyPopulatedObject_Serializes()
     {
         // Arrange
-        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license);
-        externalRef.Comment = "Test comment";
+        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license)
+        {
+            Comment = "Test comment",
+            ContentType = "some sort of content"
+        };
         externalRef.Locator.Add("locator 1");
         externalRef.Locator.Add("locator 2");
-        externalRef.ContentType = "some sort of content";
-        var expected = """
-                       {
-                         "externalRefType": "license",
-                         "locator": [
-                           "locator 1",
-                           "locator 2"
-                         ],
-                         "contentType": "some sort of content",
-                         "comment": "Test comment",
-                         "type": "ExternalRef",
-                         "spdxId": "urn:ExternalRef:402"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "externalRefType": "license",
+                                  "locator": [
+                                    "locator 1",
+                                    "locator 2"
+                                  ],
+                                  "contentType": "some sort of content",
+                                  "comment": "Test comment",
+                                  "type": "ExternalRef",
+                                  "spdxId": "urn:ExternalRef:402"
+                                }
+                                """;
 
         // Act
         var json = externalRef.ToJson();

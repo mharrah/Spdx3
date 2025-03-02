@@ -12,28 +12,26 @@ namespace Spdx3.Model.Core.Elements;
 ///     Describes a relationship between one or more elements.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
 /// </summary>
-public class Relationship : Element
+[method: SetsRequiredMembers]
+public class Relationship(
+    SpdxIdFactory spdxIdFactory,
+    CreationInfo creationInfo,
+    RelationshipType relationshipType,
+    Element from,
+    List<Element> to)
+    : Element(spdxIdFactory, creationInfo)
 {
-    [SetsRequiredMembers]
-    public Relationship(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, RelationshipType relationshipType,
-        Element from, List<Element> to) : base(spdxIdFactory, creationInfo)
-    {
-        RelationshipType = relationshipType;
-        From = from;
-        To = to;
-    }
-
     [JsonPropertyName("from")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required Element From { get; set; }
+    public required Element From { get; set; } = from;
 
     [JsonPropertyName("to")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<Element> To { get; set; }
+    public IList<Element> To { get; set; } = to;
 
     [JsonPropertyName("relationshipType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required RelationshipType RelationshipType { get; set; }
+    public required RelationshipType RelationshipType { get; set; } = relationshipType;
 
     [JsonPropertyName("completeness")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

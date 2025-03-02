@@ -7,12 +7,12 @@ public class ExtensionTest : BaseModelTestClass
     {
         // Arrange
         var extension = new TestExtension(TestSpdxIdFactory);
-        var expected = """
-                       {
-                         "type": "extension_TestExtension",
-                         "spdxId": "urn:TestExtension:402"
-                       }
-                       """;
+        const string expected = """
+                                {
+                                  "type": "extension_TestExtension",
+                                  "spdxId": "urn:TestExtension:402"
+                                }
+                                """;
 
         // Act
         var json = extension.ToJson();

@@ -11,44 +11,18 @@ public class NoPublicConstructorsTest
     [Fact]
     public void No_Classes_Without_Public_Constructor()
     {
-        List<Type> violations = new List<Type>();
+        var violations = new List<Type>();
         var assembly = Assembly.GetAssembly(typeof(BaseSpdxClass));
         Assert.NotNull(assembly);
 
         foreach (var t in assembly.GetTypes())
         {
-            if (t.Namespace == null)
+            if (t.Namespace == null || !t.Namespace.StartsWith("Spdx3.Model") || !t.IsClass || !t.IsPublic || !t.IsAssignableTo(typeof(BaseSpdxClass)))
             {
                 continue;
             }
 
-            if (!t.Namespace.StartsWith("Spdx3.Model"))
-            {
-                continue;
-            }
-
-            if (!t.IsClass)
-            {
-                continue;
-            }
-
-            if (!t.IsPublic)
-            {
-                continue;
-            }
-
-            if (!t.IsAssignableTo(typeof(BaseSpdxClass)))
-            {
-                continue;
-            }
-
-            foreach (var c in t.GetConstructors())
-            {
-                if (!c.IsPublic)
-                {
-                    violations.Add(t);
-                }
-            }
+            violations.AddRange(from c in t.GetConstructors() where !c.IsPublic select t);
         }
 
         if (violations.Count != 0)

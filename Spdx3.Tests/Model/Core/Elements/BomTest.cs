@@ -29,14 +29,16 @@ public class BomTest : BaseModelTestClass
     public void FullyPopulated_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = new Bom(TestSpdxIdFactory, TestCreationInfo);
-        bom.Comment = "TestComment";
+        var bom = new Bom(TestSpdxIdFactory, TestCreationInfo)
+        {
+          Comment = "TestComment",
+          Description = "TestDescription",
+          Name = "TestName"
+        };
         bom.Context.Add("Some context");
         bom.Context.Add("More context");
-        bom.Description = "TestDescription";
         bom.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bom.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
-        bom.Name = "TestName";
         bom.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
         bom.ProfileConformance.Add(ProfileIdentifierType.security);
 

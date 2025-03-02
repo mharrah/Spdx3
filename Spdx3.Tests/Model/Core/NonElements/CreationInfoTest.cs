@@ -22,8 +22,10 @@ public class CreationInfoTest : BaseModelTestClass
     public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var creationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime);
-        creationInfo.Comment = "Test comment";
+        var creationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime)
+        {
+            Comment = "Test comment"
+        };
         creationInfo.CreatedBy.Add(new Agent(TestSpdxIdFactory, creationInfo));
         creationInfo.CreatedUsing.Add(new Tool(TestSpdxIdFactory, creationInfo));
         const string expected = """

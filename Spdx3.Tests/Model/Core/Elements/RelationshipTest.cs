@@ -40,13 +40,15 @@ public class RelationshipTest : BaseModelTestClass
         var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
         var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
         var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
-            from, [to]);
-        relationship.Comment = "TestComment";
-        relationship.Description = "TestDescription";
-        relationship.Name = "TestName";
-        relationship.Completeness = RelationshipCompleteness.complete;
-        relationship.StartTime = PredictableDateTime;
-        relationship.EndTime = PredictableDateTime;
+            from, [to])
+        {
+            Comment = "TestComment",
+            Description = "TestDescription",
+            Name = "TestName",
+            Completeness = RelationshipCompleteness.complete,
+            StartTime = PredictableDateTime,
+            EndTime = PredictableDateTime
+        };
 
         const string expected = """
                                 {

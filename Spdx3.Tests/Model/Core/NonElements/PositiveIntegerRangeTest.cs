@@ -40,7 +40,13 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_BeginIntegerRange_IsZero()
     {
-        var exception = Record.Exception(() => { new PositiveIntegerRange(TestSpdxIdFactory, 0, 5); });
+        var exception = Record.Exception(() =>
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+#pragma warning disable CA1806
+            new PositiveIntegerRange(TestSpdxIdFactory, 0, 5);
+#pragma warning restore CA1806
+        });
         Assert.NotNull(exception);
     }
 
@@ -48,7 +54,13 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_BeginIntegerRange_IsNegative()
     {
-        var exception = Record.Exception(() => { new PositiveIntegerRange(TestSpdxIdFactory, -1, 5); });
+        var exception = Record.Exception(() =>
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+#pragma warning disable CA1806
+            new PositiveIntegerRange(TestSpdxIdFactory, -1, 5);
+#pragma warning restore CA1806
+        });
         Assert.NotNull(exception);
     }
 }

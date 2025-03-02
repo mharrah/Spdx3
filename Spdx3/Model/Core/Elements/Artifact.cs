@@ -14,7 +14,7 @@ namespace Spdx3.Model.Core.Elements;
 public abstract class Artifact : Element
 {
     [SetsRequiredMembers]
-    public Artifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    protected Artifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {
     }
 

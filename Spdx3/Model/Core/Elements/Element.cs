@@ -13,7 +13,7 @@ namespace Spdx3.Model.Core.Elements;
 public abstract class Element : BaseSpdxClass
 {
     [SetsRequiredMembers]
-    public Element(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory)
+    protected Element(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory)
     {
         CreationInfo = creationInfo;
     }
