@@ -7,3 +7,4 @@ riderModule.iml
 .vs/
 /*.DotSettings.user
 /*.DotSettings
+coverage/

@@ -43,7 +43,14 @@ jobs:
         run: dotnet test -c Debug --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage
           
       - name: Generate coverage report
-        run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub
+        run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub,Html
+
+      - name: Publish full coverage report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
         
       - name: Create badges
         uses: gaelgirodon/ci-badges-action@v1
