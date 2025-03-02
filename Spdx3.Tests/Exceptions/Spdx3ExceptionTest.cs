@@ -23,4 +23,15 @@ public class Spdx3ExceptionTest
         Assert.NotNull(expected);
         Assert.IsType<ArgumentNullException>(expected);
     }
+    
+    
+    [Fact]
+    public void Spdx3Exception_InnerException_Can_Be_Supplied()
+    {
+        Exception innerException = new ArgumentException();
+        
+        var expected = Record.Exception(() => new Spdx3Exception("Something bad happened", innerException));
+        
+        Assert.Null(expected);
+    }
 }

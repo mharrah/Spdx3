@@ -63,4 +63,93 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         });
         Assert.NotNull(exception);
     }
+    
+    [Fact]
+    public void PositiveIntegerRange_CantUse_NegativeInteger_Start()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 1, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = -5);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of -5 is not a positive non-zero integer", exception.Message);
+    }
+
+    
+    [Fact]
+    public void PositiveIntegerRange_CantUse_Zero_Start()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 1, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = 0);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of 0 is not a positive non-zero integer", exception.Message);
+    }
+    
+        
+    [Fact]
+    public void PositiveIntegerRange_Start_CantExceed_End()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 1, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = 6);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of 6 cannot exceed end integer value of 5", exception.Message);
+    }
+
+    [Fact]
+    public void PositiveIntegerRange_CantUse_NegativeInteger_End()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 1, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = -5);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of -5 is not a positive non-zero integer", exception.Message);
+    }
+
+    
+    [Fact]
+    public void PositiveIntegerRange_CantUse_Zero_End()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 1, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = 0);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of 0 is not a positive non-zero integer", exception.Message);
+    }
+    
+        
+    [Fact]
+    public void PositiveIntegerRange_End_CantBeLessThan_Start()
+    {
+        // Arrange
+        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxIdFactory, 2, 5);
+
+        // Act
+        var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = 1);
+        
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Value of 1 cannot be less than begin integer value of 2", exception.Message);
+    }
+
 }

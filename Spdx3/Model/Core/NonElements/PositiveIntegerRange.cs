@@ -12,9 +12,9 @@ namespace Spdx3.Model.Core.NonElements;
 /// </summary>
 public class PositiveIntegerRange : BaseSpdxClass
 {
-    private int _beginIntegerRange;
+    private int _beginIntegerRange = 1;
 
-    private int _endIntegerRange;
+    private int _endIntegerRange = int.MaxValue;
 
     [SetsRequiredMembers]
     public PositiveIntegerRange(SpdxIdFactory spdxIdFactory, int beginIntegerRange, int endIntegerRange) : base(
@@ -37,23 +37,33 @@ public class PositiveIntegerRange : BaseSpdxClass
     public required int BeginIntegerRange
     {
         get => _beginIntegerRange;
-        set => _beginIntegerRange = value < 1
-            ? throw new Spdx3Exception("Invalid property value",
-                new ArgumentOutOfRangeException(nameof(BeginIntegerRange),
-                    $"Value of {value} must be a positive non-zero integer"))
-            : value;
+        set
+        {
+            if (value < 1)
+                throw new Spdx3Exception($"Value of {value} is not a positive non-zero integer",
+                    new ArgumentOutOfRangeException(nameof(BeginIntegerRange)));
+            if (value > _endIntegerRange)
+                throw new Spdx3Exception($"Value of {value} cannot exceed end integer value of {_endIntegerRange}",
+                    new ArgumentOutOfRangeException(nameof(BeginIntegerRange)));
+            _beginIntegerRange = value;
+        }
     }
+
 
     [JsonPropertyName("endIntegerRange")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public required int EndIntegerRange
     {
         get => _endIntegerRange;
-        set => _endIntegerRange = value < 1
-            ? throw new Spdx3Exception("Invalid property value",
-                new ArgumentOutOfRangeException(nameof(EndIntegerRange),
-                    $"Value of {value} must be a positive non-zero integer"))
-            : value;
+        set  {
+            if (value < 1)
+                throw new Spdx3Exception($"Value of {value} is not a positive non-zero integer",
+                    new ArgumentOutOfRangeException(nameof(EndIntegerRange)));
+            if (value < _beginIntegerRange)
+                throw new Spdx3Exception($"Value of {value} cannot be less than begin integer value of {_beginIntegerRange}",
+                    new ArgumentOutOfRangeException(nameof(EndIntegerRange)));
+            _endIntegerRange = value;
+        }
     }
 
     public override void Validate()
