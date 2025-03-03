@@ -29,4 +29,33 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
+
+        
+    [Fact]
+    public void Extension_Constructor_Throws_EmptyPropertiesList()
+    {
+        // Arrange
+        
+
+        // Act
+        var expected = Record.Exception(() => new CdxPropertiesExtension(TestSpdxIdFactory, []));
+
+        // Assert
+        Assert.NotNull(expected);
+    }
+
+    [Fact]
+    public void Extension_FailsValidation_When_NoProperties()
+    {
+        // Arrange
+        var extension = new CdxPropertiesExtension(TestSpdxIdFactory,
+            [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
+        extension.CdxProperty.Clear();
+
+        // Act
+        var expected = Record.Exception(() => extension.Validate());
+
+        // Assert
+        Assert.NotNull(expected);
+    }
 }

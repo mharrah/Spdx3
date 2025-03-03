@@ -33,10 +33,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Model\Software\Elements\"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <Reference Include="xunit.v3.core">
             <HintPath>..\..\..\..\..\Applications\Rider.app\Contents\lib\ReSharperHost\TestRunner\Adapters\XUnit3\net6.0\xunit.v3.core.dll</HintPath>
         </Reference>

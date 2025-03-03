@@ -8,6 +8,11 @@ namespace Spdx3.Model.Extension;
 
 public class CdxPropertiesExtension : Extension
 {
+
+    [JsonPropertyName("cdxProperty")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public IList<CdxPropertyEntry> CdxProperty { get; init; }
+
     [SetsRequiredMembers]
     public CdxPropertiesExtension(SpdxIdFactory spdxIdFactory, IList<CdxPropertyEntry> cdxProperties) : base(
         spdxIdFactory)
@@ -19,10 +24,6 @@ public class CdxPropertiesExtension : Extension
 
         CdxProperty = cdxProperties;
     }
-
-    [JsonPropertyName("cdxProperty")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<CdxPropertyEntry> CdxProperty { get; set; } = new List<CdxPropertyEntry>();
 
     public override void Validate()
     {

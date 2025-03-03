@@ -24,7 +24,7 @@ public class PositiveIntegerRange : BaseSpdxClass
         {
             throw new Spdx3Exception("beginIntegerRange must be a positive, non-zero integer");
         }
-        if (endIntegerRange <= beginIntegerRange)
+        if (endIntegerRange < beginIntegerRange)
         {
             throw new Spdx3Exception("endIntegerRange must be >= beginIntegerRange");
         }
