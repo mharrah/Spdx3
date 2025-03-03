@@ -3,15 +3,15 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/03/2025 - 04:30:43 |
-| Coverage date: | 03/03/2025 - 04:30:42 |
+| Generated on: | 03/03/2025 - 04:59:20 |
+| Coverage date: | 03/03/2025 - 04:59:19 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 39 |
 | Files: | 39 |
-| **Line coverage:** | 97.1% (472 of 486) |
-| Covered lines: | 472 |
-| Uncovered lines: | 14 |
+| **Line coverage:** | 97.9% (476 of 486) |
+| Covered lines: | 476 |
+| Uncovered lines: | 10 |
 | Coverable lines: | 486 |
 | Total lines: | 1441 |
 | **Branch coverage:** | 91% (91 of 100) |
@@ -22,11 +22,11 @@
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 97.1%</summary>
+<details><summary>Spdx3 - 97.9%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**97.1%**|**91%**|
+|**Spdx3**|**97.9%**|**91%**|
 |Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.BaseSpdxClass|100%|87.5%|
@@ -60,7 +60,7 @@
 |Spdx3.Model.Extension.Extension|100%||
 |Spdx3.Model.SimpleLicensing.AnyLicenseInfo|100%||
 |Spdx3.Model.Software.Elements.Package|100%||
-|Spdx3.Model.Software.Elements.Sbom|0%||
+|Spdx3.Model.Software.Elements.Sbom|100%||
 |Spdx3.Model.Software.Elements.SoftwareArtifact|100%||
 |Spdx3.Serialization.SpdxObjectConverterFactory|100%||
 |Spdx3.Serialization.SpdxObjectConvertor`1|94.6%|91.9%|
