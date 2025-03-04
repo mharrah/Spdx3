@@ -8,9 +8,8 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Elements;
 
-[method: SetsRequiredMembers]
-public class File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo)
-    : SoftwareArtifact(spdxIdFactory, creationInfo)
+
+public class File : SoftwareArtifact
 {
     private string _name;
     
@@ -21,10 +20,11 @@ public class File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo)
     [JsonPropertyName("fileKind")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public FileKindType? FileKind { get; set; }
-    
+
     [JsonPropertyName("name")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public new required string Name { 
+    public new string Name
+    {
         get => _name;
         set
         {
@@ -32,12 +32,14 @@ public class File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo)
             {
                 throw new Spdx3ValidationException(this, nameof(Name), "Cannot be null, empty, or whitespace.");
             }
+
             _name = value;
         }
     }
 
+    
     [SetsRequiredMembers]
-    public File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, String name) : this(spdxIdFactory, creationInfo)
+    public File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string name) : base(spdxIdFactory, creationInfo)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -45,6 +47,7 @@ public class File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo)
         }
         _name = name;
     }
+
 
     public override void Validate()
     {
