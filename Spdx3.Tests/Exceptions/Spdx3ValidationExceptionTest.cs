@@ -1,5 +1,5 @@
 using Spdx3.Exceptions;
-using Spdx3.Tests.Model.Core.NonElements;
+using Spdx3.Tests.Model.Core.Classes;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Exceptions;

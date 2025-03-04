@@ -6,4 +6,17 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <Folder Include="Model\AI\Classes\"/>
+        <Folder Include="Model\AI\Enums\"/>
+        <Folder Include="Model\Build\Classes\"/>
+        <Folder Include="Model\Build\Enums\"/>
+        <Folder Include="Model\Dataset\Classes\"/>
+        <Folder Include="Model\Dataset\Enums\"/>
+        <Folder Include="Model\ExpandedLicensing\Classes\"/>
+        <Folder Include="Model\ExpandedLicensing\Enums\"/>
+        <Folder Include="Model\Security\Classes\"/>
+        <Folder Include="Model\Security\Enums\"/>
+    </ItemGroup>
+
 </Project>

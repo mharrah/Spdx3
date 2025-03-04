@@ -1,4 +1,4 @@
-using Spdx3.Model.Core.NonElements;
+using Spdx3.Model.Core.Classes;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model;

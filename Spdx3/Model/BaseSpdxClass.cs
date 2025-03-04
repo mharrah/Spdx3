@@ -76,6 +76,7 @@ public abstract class BaseSpdxClass
         {
             throw new Spdx3ValidationException(this, propertyName, "Field is required");
         }
+
         if (propVal is string && propVal.ToString() == string.Empty)
         {
             throw new Spdx3ValidationException(this, propertyName, "Field is empty");
