@@ -53,7 +53,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
         softwareArtifact.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.archive);
         softwareArtifact.OriginatedBy.Add(new Agent(TestSpdxIdFactory, TestCreationInfo));
-        softwareArtifact.ContentIdentifier.Add(ContentIdentifier.gitoid);
+        softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid, "some gitoid value"));
         softwareArtifact.AttributionText.Add("Some attribution text");
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.other);
         softwareArtifact.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.bower));
@@ -66,7 +66,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                     "other"
                                   ],
                                   "contentIdentifier": [
-                                    "gitoid"
+                                    "urn:ContentIdentifier:436"
                                   ],
                                   "primaryPurpose": "application",
                                   "attributionText": [
@@ -87,13 +87,13 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:450"
+                                    "urn:TestExtension:45d"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:443"
+                                    "urn:ExternalIdentifier:450"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:436"
+                                    "urn:ExternalRef:443"
                                   ],
                                   "name": "Some name",
                                   "summary": "Some summary",

@@ -3,7 +3,7 @@
 /// <summary>
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Software/Vocabularies/ContentIdentifierType/
 /// </summary>
-public enum ContentIdentifier
+public enum ContentIdentifierType
 {
     gitoid,
     swhid

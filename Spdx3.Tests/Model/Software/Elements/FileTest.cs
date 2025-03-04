@@ -1,6 +1,7 @@
 using Spdx3.Model.Core.Elements;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Core.NonElements;
+using Spdx3.Model.Software.Elements;
 using Spdx3.Model.Software.Enums;
 using Spdx3.Tests.Model.Core.NonElements;
 using Spdx3.Tests.Model.Extension;
@@ -55,7 +56,7 @@ public class FileTest : BaseModelTestClass
         file.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
         file.AdditionalPurpose.Add(SoftwarePurpose.archive);
         file.OriginatedBy.Add(new Agent(TestSpdxIdFactory, TestCreationInfo));
-        file.ContentIdentifier.Add(ContentIdentifier.gitoid);
+        file.ContentIdentifier.Add(new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid, "some gitoid value"));
         file.AttributionText.Add("Some attribution text");
         file.AdditionalPurpose.Add(SoftwarePurpose.other);
         file.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.bower));
@@ -70,7 +71,7 @@ public class FileTest : BaseModelTestClass
                                     "other"
                                   ],
                                   "contentIdentifier": [
-                                    "gitoid"
+                                    "urn:ContentIdentifier:436"
                                   ],
                                   "primaryPurpose": "application",
                                   "attributionText": [
@@ -91,13 +92,13 @@ public class FileTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:450"
+                                    "urn:TestExtension:45d"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:443"
+                                    "urn:ExternalIdentifier:450"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:436"
+                                    "urn:ExternalRef:443"
                                   ],
                                   "summary": "Some summary",
                                   "verifiedUsing": [
