@@ -1,52 +1,55 @@
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Tests.Model.Core.Classes;
 using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 
-public class AnyLicenseInfoTest : BaseModelTestClass
+public class SimpleLicensingTextTest : BaseModelTestClass
 {
     [Fact]
-    public void BrandNew_AnyLicenseInfo_SerializesProperly()
+    public void SimpleLicensingText_MinimallyPopulated_ShouldSerialize()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo);
+        var simpleLicensingText = new SimpleLicensingText(TestSpdxIdFactory, TestCreationInfo, "MIT");
+
         const string expected = """
                                 {
+                                  "licenseText": "MIT",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "simplelicensing_TestAnyLicenseInfo",
-                                  "spdxId": "urn:TestAnyLicenseInfo:402"
+                                  "type": "simplelicensing_SimpleLicensingText",
+                                  "spdxId": "urn:SimpleLicensingText:402"
                                 }
                                 """;
-
+        
         // Act
-        var json = anyLicenseInfo.ToJson();
-
+        var json = simpleLicensingText.ToJson();
+        
         // Assert
         Assert.Equal(expected, json);
     }
-
+    
     [Fact]
-    public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
+    public void SimpleLicensingText_FullyPopulated_ShouldSerialize()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo)
+        var simpleLicensingText = new SimpleLicensingText(TestSpdxIdFactory, TestCreationInfo, "MIT")
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        anyLicenseInfo.Extension.Add(new TestExtension(TestSpdxIdFactory));
-        anyLicenseInfo.ExternalIdentifier.Add(
+        simpleLicensingText.Extension.Add(new TestExtension(TestSpdxIdFactory));
+        simpleLicensingText.ExternalIdentifier.Add(
             new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
-        anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
-        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
-
+        simpleLicensingText.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
+        simpleLicensingText.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
 
         const string expected = """
                                 {
+                                  "licenseText": "MIT",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
@@ -64,14 +67,14 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                   "verifiedUsing": [
                                     "urn:TestIntegrityMethod:436"
                                   ],
-                                  "type": "simplelicensing_TestAnyLicenseInfo",
-                                  "spdxId": "urn:TestAnyLicenseInfo:402"
+                                  "type": "simplelicensing_SimpleLicensingText",
+                                  "spdxId": "urn:SimpleLicensingText:402"
                                 }
                                 """;
-
+        
         // Act
-        var json = anyLicenseInfo.ToJson();
-
+        var json = simpleLicensingText.ToJson();
+        
         // Assert
         Assert.Equal(expected, json);
     }
