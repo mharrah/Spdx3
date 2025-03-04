@@ -3,17 +3,17 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/03/2025 - 22:48:29 |
-| Coverage date: | 03/03/2025 - 22:48:28 |
+| Generated on: | 03/04/2025 - 00:12:21 |
+| Coverage date: | 03/04/2025 - 00:12:20 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 40 |
-| Files: | 40 |
-| **Line coverage:** | 97.6% (497 of 509) |
-| Covered lines: | 497 |
+| Classes: | 41 |
+| Files: | 41 |
+| **Line coverage:** | 97.6% (509 of 521) |
+| Covered lines: | 509 |
 | Uncovered lines: | 12 |
-| Coverable lines: | 509 |
-| Total lines: | 1498 |
+| Coverable lines: | 521 |
+| Total lines: | 1532 |
 | **Branch coverage:** | 90.5% (96 of 106) |
 | Covered branches: | 96 |
 | Total branches: | 106 |
@@ -59,6 +59,7 @@
 |Spdx3.Model.Extension.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Extension|100%||
 |Spdx3.Model.SimpleLicensing.AnyLicenseInfo|100%||
+|Spdx3.Model.Software.Elements.ContentIdentifier|100%||
 |Spdx3.Model.Software.Elements.File|91.3%|83.3%|
 |Spdx3.Model.Software.Elements.Package|100%||
 |Spdx3.Model.Software.Elements.Sbom|100%||
