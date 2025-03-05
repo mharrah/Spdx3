@@ -1,3 +1,4 @@
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Software.Classes;
@@ -118,4 +119,23 @@ public class SnippetTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
+    
+    
+    [Fact]
+    public void Snippet_FailsValidation_WhenEmpty_File()
+    {
+      // Arrange
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+      var snippet = new Snippet(TestSpdxIdFactory, TestCreationInfo, null);
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+
+      // Act
+      var ex = Record.Exception(() => snippet.ToJson());
+
+      // Assert
+      Assert.NotNull(ex);
+      Assert.IsType<Spdx3ValidationException>(ex);
+      Assert.Equal("Object Snippet, property SnippetFromFile: Cannot be null, empty, or whitespace.", ex.Message);
+    }
+
 }
