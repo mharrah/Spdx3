@@ -1,6 +1,6 @@
 using Spdx3.Model.Core.Individuals;
 
-namespace Spdx3.Tests.Model.SimpleLicensing.Individuals;
+namespace Spdx3.Tests.Model.Core.Individuals;
 
 public class NoneElementTest : BaseModelTestClass
 {
