@@ -3,17 +3,17 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/04/2025 - 02:59:52 |
-| Coverage date: | 03/04/2025 - 02:59:51 |
+| Generated on: | 03/04/2025 - 23:59:59 |
+| Coverage date: | 03/04/2025 - 23:59:58 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 42 |
-| Files: | 42 |
-| **Line coverage:** | 97.4% (527 of 541) |
-| Covered lines: | 527 |
+| Classes: | 47 |
+| Files: | 47 |
+| **Line coverage:** | 97.5% (555 of 569) |
+| Covered lines: | 555 |
 | Uncovered lines: | 14 |
-| Coverable lines: | 541 |
-| Total lines: | 1571 |
+| Coverable lines: | 569 |
+| Total lines: | 1686 |
 | **Branch coverage:** | 89.8% (97 of 108) |
 | Covered branches: | 97 |
 | Total branches: | 108 |
@@ -22,11 +22,11 @@
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 97.4%</summary>
+<details><summary>Spdx3 - 97.5%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**97.4%**|**89.8%**|
+|**Spdx3**|**97.5%**|**89.8%**|
 |Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.BaseSpdxClass|100%|87.5%|
@@ -55,10 +55,15 @@
 |Spdx3.Model.Core.Classes.SoftwareAgent|100%||
 |Spdx3.Model.Core.Classes.SpdxDocument|100%||
 |Spdx3.Model.Core.Classes.Tool|100%||
+|Spdx3.Model.Core.Individuals.NoAssertionElement|100%||
+|Spdx3.Model.Core.Individuals.NoneElement|100%||
+|Spdx3.Model.Core.Individuals.SpdxOrganization|100%||
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
 |Spdx3.Model.SimpleLicensing.Classes.AnyLicenseInfo|100%||
+|Spdx3.Model.SimpleLicensing.Classes.LicenseExpression|100%||
+|Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText|100%||
 |Spdx3.Model.Software.Classes.ContentIdentifier|100%||
 |Spdx3.Model.Software.Classes.File|90.9%|83.3%|
 |Spdx3.Model.Software.Classes.Package|100%||
