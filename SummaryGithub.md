@@ -3,33 +3,34 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/05/2025 - 00:11:02 |
-| Coverage date: | 03/05/2025 - 00:11:01 |
+| Generated on: | 03/05/2025 - 00:54:01 |
+| Coverage date: | 03/05/2025 - 00:54:00 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 47 |
-| Files: | 47 |
-| **Line coverage:** | 97.5% (555 of 569) |
-| Covered lines: | 555 |
+| Classes: | 48 |
+| Files: | 48 |
+| **Line coverage:** | 97.6% (582 of 596) |
+| Covered lines: | 582 |
 | Uncovered lines: | 14 |
-| Coverable lines: | 569 |
-| Total lines: | 1686 |
-| **Branch coverage:** | 89.8% (97 of 108) |
-| Covered branches: | 97 |
-| Total branches: | 108 |
+| Coverable lines: | 596 |
+| Total lines: | 1757 |
+| **Branch coverage:** | 90.3% (103 of 114) |
+| Covered branches: | 103 |
+| Total branches: | 114 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 97.5%</summary>
+<details><summary>Spdx3 - 97.6%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**97.5%**|**89.8%**|
+|**Spdx3**|**97.6%**|**90.3%**|
 |Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.BaseSpdxClass|100%|87.5%|
+|Spdx3.Model.Build.Classes.Build|100%||
 |Spdx3.Model.Core.Classes.Agent|100%||
 |Spdx3.Model.Core.Classes.Annotation|100%||
 |Spdx3.Model.Core.Classes.Artifact|100%||
@@ -71,7 +72,7 @@
 |Spdx3.Model.Software.Classes.Snippet|85.7%|50%|
 |Spdx3.Model.Software.Classes.SoftwareArtifact|100%||
 |Spdx3.Serialization.SpdxObjectConverterFactory|100%||
-|Spdx3.Serialization.SpdxObjectConvertor`1|94.6%|91.9%|
+|Spdx3.Serialization.SpdxObjectConvertor`1|95.1%|92.6%|
 |Spdx3.Utility.SpdxIdFactory|100%||
 |Spdx3.Utility.SpdxUtility|88.4%|75%|
 
