@@ -71,7 +71,12 @@ public abstract class BaseSpdxClass
 
     protected void ValidateRequiredProperty(string propertyName)
     {
-        var propVal = GetType().GetProperty(propertyName)?.GetValue(this);
+        var propertyInfo = GetType().GetProperty(propertyName);
+        if (propertyInfo == null)
+        {
+            throw new Spdx3ValidationException(this, $"'{propertyName}'", "No such property exists");
+        }
+        var propVal = propertyInfo.GetValue(this);
         if (propVal == null)
         {
             throw new Spdx3ValidationException(this, propertyName, "Field is required");
