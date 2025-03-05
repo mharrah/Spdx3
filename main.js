@@ -268,7 +268,7 @@ var assemblies = [
       { "name": "Spdx3.Serialization.SpdxObjectConverterFactory", "rp": "Spdx3_SpdxObjectConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxObjectConvertor<T>", "rp": "Spdx3_SpdxObjectConvertor_1.html", "cl": 98, "ucl": 5, "cal": 103, "tl": 162, "cb": 63, "tb": 68, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.SpdxIdFactory", "rp": "Spdx3_SpdxIdFactory.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Utility.SpdxUtility", "rp": "Spdx3_SpdxUtility.html", "cl": 23, "ucl": 3, "cal": 26, "tl": 40, "cb": 6, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Utility.SpdxUtility", "rp": "Spdx3_SpdxUtility.html", "cl": 26, "ucl": 0, "cal": 26, "tl": 40, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
