@@ -96,6 +96,19 @@ internal class SpdxObjectConvertor<T> : JsonConverter<T>
                 }
 
                 break;
+            case List<Uri> list:
+                if (list.Count > 0)
+                {
+                    writer.WritePropertyName(jsonElementName);
+                    writer.WriteStartArray();
+                    list.ForEach(u => writer.WriteStringValue(u.ToString()));
+                    writer.WriteEndArray();
+                }
+
+                break;
+            case Uri:
+                writer.WriteString(jsonElementName, propVal.ToString());
+                break;
             default:
                 throw new Spdx3Exception($"Unhandled class type {propVal?.GetType().FullName}");
         }
