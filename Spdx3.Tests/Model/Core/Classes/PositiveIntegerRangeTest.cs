@@ -50,6 +50,20 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         Assert.NotNull(exception);
     }
 
+    
+    [Fact]
+    public void PositiveIntegerRange_Setter_ThrowsExceptionIf_EndLessThanBegin()
+    {
+        var exception = Record.Exception(() =>
+        {
+            // ReSharper disable once ObjectCreationAsStatement
+#pragma warning disable CA1806
+            new PositiveIntegerRange(TestSpdxIdFactory, 8, 5);
+#pragma warning restore CA1806
+        });
+        Assert.NotNull(exception);
+    }
+
 
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_BeginIntegerRange_IsNegative()
