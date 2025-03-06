@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Utility;
 

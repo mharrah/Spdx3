@@ -11,6 +11,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class CreationInfo : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal CreationInfo()
+    {
+    }
+
     [SetsRequiredMembers]
     public CreationInfo(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
     {
@@ -42,4 +47,5 @@ public class CreationInfo : BaseSpdxClass
     [JsonPropertyName("specVersion")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string SpecVersion { get; set; } = "3.0.1";
+
 }

@@ -1,3 +1,4 @@
+using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Tests.Model.Extension.Classes;
@@ -101,4 +102,27 @@ public class ElementTest : BaseModelTestClass
         Assert.NotNull(exception);
         Assert.Equal("Object TestElement, property Type: Field is empty", exception.Message);
     }
+    
+    
+    [Fact]
+    public void TestElement_DeserializesAsExpected()
+    {
+        const string json = """
+                            {
+                              "creationInfo": "urn:CreationInfo:3f5",
+                              "type": "TestElement",
+                              "spdxId": "urn:TestElement:402"
+                            }
+                            """;
+        
+        var testElement = BaseSpdxClass.FromJson<TestElement>(json);
+        Assert.NotNull(testElement);
+        Assert.IsType<TestElement>(testElement);
+        Assert.Equal("TestElement", testElement.Type);
+        Assert.Equal("urn:TestElement:402", testElement.SpdxId);
+        Assert.NotNull(testElement.CreationInfo);
+        Assert.Equal("urn:CreationInfo:3f5", testElement.CreationInfo.SpdxId);
+        Assert.Equal("CreationInfo", testElement.CreationInfo.Type);
+    }
+
 }

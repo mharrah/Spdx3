@@ -1,3 +1,4 @@
+using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 
@@ -56,4 +57,36 @@ public class ExternalRefTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
+    
+       
+    [Fact]
+    public void ExternalRef_DeserializesAsExpected()
+    {
+        const string json = """
+                            {
+                              "externalRefType": "license",
+                              "locator": [
+                                "locator 1",
+                                "locator 2"
+                              ],
+                              "contentType": "some sort of content",
+                              "comment": "Test comment",
+                              "type": "ExternalRef",
+                              "spdxId": "urn:ExternalRef:402"
+                            }
+                            """;
+        
+        var externalRef = BaseSpdxClass.FromJson<ExternalRef>(json);
+        Assert.NotNull(externalRef);
+        Assert.IsType<ExternalRef>(externalRef);
+        Assert.Equal("ExternalRef", externalRef.Type);
+        Assert.Equal("urn:ExternalRef:402", externalRef.SpdxId);
+        Assert.Equal("some sort of content", externalRef.ContentType);
+        Assert.Equal(ExternalRefType.license, externalRef.ExternalRefType);
+        Assert.Equal("Test comment", externalRef.Comment);
+        Assert.Contains("locator 1", externalRef.Locator);
+        Assert.Contains("locator 2", externalRef.Locator);
+        Assert.Equal(2, externalRef.Locator.Count);
+    }
+
 }

@@ -11,6 +11,12 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public abstract class Element : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Element()
+    {
+    }
+    
+    
     [SetsRequiredMembers]
     protected Element(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory)
     {

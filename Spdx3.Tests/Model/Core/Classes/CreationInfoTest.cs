@@ -1,3 +1,4 @@
+using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
@@ -87,5 +88,27 @@ public class CreationInfoTest : BaseModelTestClass
         // Assert - note that empty collections are not serialized at all
         var json = creationInfo.ToJson();
         Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void CreationInfo_DeserializesAsExpected()
+    {
+        const string json = """
+                            {
+                              "created": "2025-02-22T01:23:45Z",
+                              "specVersion": "3.0.1",
+                              "type": "CreationInfo",
+                              "spdxId": "urn:CreationInfo:402"
+                            }
+                            """;
+        
+        var creationInfo = BaseSpdxClass.FromJson<CreationInfo>(json);
+        Assert.NotNull(creationInfo);
+        Assert.IsType<CreationInfo>(creationInfo);
+        Assert.Equal("CreationInfo", creationInfo.Type);
+        Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
+        Assert.Equal("3.0.1", creationInfo.SpecVersion);
+        Assert.Equal(PredictableDateTime, creationInfo.Created);
+        
     }
 }

@@ -10,6 +10,12 @@ namespace Spdx3.Tests.Model.Core.Classes;
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 public class TestElement : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal TestElement()
+    {
+        
+    }
+    
     [SetsRequiredMembers]
     public TestElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

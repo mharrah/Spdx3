@@ -28,6 +28,17 @@ public abstract class BaseSpdxClass
         Options.Converters.Add(new SpdxObjectConverterFactory());
     }
 
+    public static T? FromJson<T>(string json)
+    {
+        T? result = JsonSerializer.Deserialize<T>(json, Options);
+        return result;
+    }
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal BaseSpdxClass()
+    {
+    }
+
     [SetsRequiredMembers]
     protected BaseSpdxClass(SpdxIdFactory spdxIdFactory)
     {
@@ -62,7 +73,9 @@ public abstract class BaseSpdxClass
         // ReSharper disable once RedundantTypeArgumentsOfMethod
         return JsonSerializer.Serialize<object>(o, Options);
     }
+    
 
+    
     public virtual void Validate()
     {
         ValidateRequiredProperty(nameof(SpdxId));

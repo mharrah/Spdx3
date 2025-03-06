@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class ExternalRef : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal ExternalRef()
+    {
+    }
+
     [SetsRequiredMembers]
     public ExternalRef(SpdxIdFactory spdxIdFactory, ExternalRefType externalRefType) : base(spdxIdFactory)
     {
