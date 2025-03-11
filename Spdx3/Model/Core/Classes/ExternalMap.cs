@@ -11,6 +11,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class ExternalMap : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal ExternalMap()
+    {
+    }
+    
     [SetsRequiredMembers]
     public ExternalMap(SpdxIdFactory spdxIdFactory, string externalSpdxId) : base(spdxIdFactory)
     {

@@ -23,6 +23,11 @@ public class LicenseExpression : AnyLicenseInfo
     [JsonPropertyName("licenseListVersion")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public string? LicenseListVersion { get; set; }
+ 
+    // protected internal no-parm constructor required for deserialization
+    protected internal LicenseExpression()
+    {
+    }
     
     [SetsRequiredMembers]
     public LicenseExpression(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string licenseExpression) : base(spdxIdFactory, creationInfo)

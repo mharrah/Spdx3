@@ -1,16 +1,18 @@
+using Spdx3.Model;
 using Spdx3.Model.Extension.Classes;
+using Xunit.Internal;
 
 namespace Spdx3.Tests.Model.Extension.Classes;
 
 public class CdxPropertiesExtensionTest : BaseModelTestClass
 {
     [Fact]
-    public void Extension_MinimalObject_Serializes()
+    public void CdxPropertiesExtension_MinimalObject_Serializes()
     {
         // Arrange
-        var extension = new CdxPropertiesExtension(TestSpdxIdFactory,
+        var cdxPropExt = new CdxPropertiesExtension(TestSpdxIdFactory,
             [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
-        extension.CdxProperty.Add(new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName", "TestPropertyValue"));
+        cdxPropExt.CdxProperty.Add(new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName", "TestPropertyValue"));
         const string expected = """
                                 {
                                   "cdxProperty": [
@@ -24,7 +26,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
 
 
         // Act
-        var json = extension.ToJson();
+        var json = cdxPropExt.ToJson();
 
         // Assert
         Assert.Equal(expected, json);
@@ -32,11 +34,8 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
 
 
     [Fact]
-    public void Extension_Constructor_Throws_EmptyPropertiesList()
+    public void CdxPropertiesExtension_Constructor_Throws_EmptyPropertiesList()
     {
-        // Arrange
-
-
         // Act
         var expected = Record.Exception(() => new CdxPropertiesExtension(TestSpdxIdFactory, []));
 
@@ -45,17 +44,45 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     }
 
     [Fact]
-    public void Extension_FailsValidation_When_NoProperties()
+    public void CdxPropertiesExtension_FailsValidation_When_NoProperties()
     {
         // Arrange
-        var extension = new CdxPropertiesExtension(TestSpdxIdFactory,
+        var cdxPropExt = new CdxPropertiesExtension(TestSpdxIdFactory,
             [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
-        extension.CdxProperty.Clear();
+        cdxPropExt.CdxProperty.Clear();
 
         // Act
-        var expected = Record.Exception(() => extension.Validate());
+        var expected = Record.Exception(() => cdxPropExt.Validate());
 
         // Assert
         Assert.NotNull(expected);
+    }
+
+
+    [Fact]
+    public void CdxPropertiesExtension_Deserializes_Correctly()
+    {
+        const string json = """
+                            {
+                              "cdxProperty": [
+                                "urn:CdxPropertyEntry:402",
+                                "urn:CdxPropertyEntry:41c"
+                              ],
+                              "type": "extension_CdxPropertiesExtension",
+                              "spdxId": "urn:CdxPropertiesExtension:40f"
+                            }
+                            """;
+
+        var cdxPropExt = BaseSpdxClass.FromJson<CdxPropertiesExtension>(json);
+        
+        Assert.NotNull(cdxPropExt);
+        Assert.Equal("urn:CdxPropertiesExtension:40f", cdxPropExt.SpdxId);
+        Assert.Equal("extension_CdxPropertiesExtension", cdxPropExt.Type);
+        var propList = cdxPropExt.CdxProperty.CastOrToList<CdxPropertyEntry>();
+        Assert.Equal(2, propList.Count);
+        Assert.Equal("urn:CdxPropertyEntry:402", propList[0].SpdxId);
+        Assert.Equal("extension_CdxPropertyEntry", propList[0].Type);
+        Assert.Equal("urn:CdxPropertyEntry:41c", propList[1].SpdxId);
+        Assert.Equal("extension_CdxPropertyEntry", propList[1].Type);
     }
 }

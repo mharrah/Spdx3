@@ -9,6 +9,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Tool : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Tool()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Tool(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

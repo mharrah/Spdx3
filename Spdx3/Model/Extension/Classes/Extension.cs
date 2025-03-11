@@ -9,6 +9,11 @@ namespace Spdx3.Model.Extension.Classes;
 /// </summary>
 public abstract class Extension : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Extension()
+    {
+    }
+
     [SetsRequiredMembers]
     protected Extension(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
     {

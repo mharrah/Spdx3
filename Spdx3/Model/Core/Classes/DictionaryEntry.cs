@@ -11,6 +11,12 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class DictionaryEntry : BaseSpdxClass
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal DictionaryEntry()
+    {
+    }
+    
     [SetsRequiredMembers]
     public DictionaryEntry(SpdxIdFactory spdxIdFactory, string key) : base(spdxIdFactory)
     {

@@ -9,6 +9,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Bom : Bundle
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Bom()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Bom(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

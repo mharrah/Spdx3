@@ -9,6 +9,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Person : Agent
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Person()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Person(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

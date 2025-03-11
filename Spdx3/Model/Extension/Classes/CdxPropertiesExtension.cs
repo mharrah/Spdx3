@@ -8,6 +8,11 @@ namespace Spdx3.Model.Extension.Classes;
 
 public class CdxPropertiesExtension : Extension
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal CdxPropertiesExtension()
+    {
+    }
+    
     [SetsRequiredMembers]
     public CdxPropertiesExtension(SpdxIdFactory spdxIdFactory, IList<CdxPropertyEntry> cdxProperties) : base(
         spdxIdFactory)
@@ -22,7 +27,7 @@ public class CdxPropertiesExtension : Extension
 
     [JsonPropertyName("cdxProperty")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<CdxPropertyEntry> CdxProperty { get; init; }
+    public IList<CdxPropertyEntry> CdxProperty { get; init; } = new List<CdxPropertyEntry>();
 
     public override void Validate()
     {

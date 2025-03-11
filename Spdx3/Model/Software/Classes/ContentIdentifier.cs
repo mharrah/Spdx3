@@ -9,6 +9,11 @@ namespace Spdx3.Model.Software.Classes;
 
 public class ContentIdentifier : IntegrityMethod
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal ContentIdentifier()
+    {
+    }
+
     [SetsRequiredMembers]
     public ContentIdentifier(SpdxIdFactory spdxIdFactory, ContentIdentifierType contentIdentifierType,
         string contentIdentifierValue) : base(spdxIdFactory)

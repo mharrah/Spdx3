@@ -9,9 +9,13 @@ namespace Spdx3.Model.Extension.Classes;
 ///     A property name with an associated value.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Extension/Classes/CdxPropertyEntry/
 /// </summary>
-[method: SetsRequiredMembers]
-public class CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName) : BaseSpdxClass(spdxIdFactory)
+public class CdxPropertyEntry : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal CdxPropertyEntry()
+    {
+    }
+
     [SetsRequiredMembers]
     public CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName, string cdxPropValue) : this(spdxIdFactory,
         cdxPropName)
@@ -19,9 +23,15 @@ public class CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName) :
         CdxPropValue = cdxPropValue;
     }
 
+    [method: SetsRequiredMembers]
+    public CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName) : base(spdxIdFactory)
+    {
+        CdxPropName = cdxPropName;
+    }
+
     [JsonPropertyName("cdxPropName")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string CdxPropName { get; set; } = cdxPropName;
+    public required string CdxPropName { get; set; }
 
     [JsonPropertyName("cdxPropValue")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

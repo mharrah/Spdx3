@@ -12,6 +12,12 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class SpdxDocument : ElementCollection
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal SpdxDocument()
+    {
+    }
+    
     [SetsRequiredMembers]
     public SpdxDocument(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

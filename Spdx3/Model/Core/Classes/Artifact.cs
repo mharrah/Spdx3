@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public abstract class Artifact : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Artifact()
+    {
+    }
+    
     [SetsRequiredMembers]
     protected Artifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

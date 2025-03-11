@@ -11,26 +11,43 @@ namespace Spdx3.Model.Core.Classes;
 ///     Describes a relationship between one or more elements.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
 /// </summary>
-[method: SetsRequiredMembers]
-public class Relationship(
-    SpdxIdFactory spdxIdFactory,
-    CreationInfo creationInfo,
-    RelationshipType relationshipType,
-    Element from,
-    List<Element> to)
-    : Element(spdxIdFactory, creationInfo)
+
+public class Relationship : Element
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal Relationship()
+    {
+    }
+    
+    
+    /// <summary>
+    ///     Describes a relationship between one or more elements.
+    ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
+    /// </summary>
+    [method: SetsRequiredMembers]
+    public Relationship(SpdxIdFactory spdxIdFactory,
+        CreationInfo creationInfo,
+        RelationshipType relationshipType,
+        Element from,
+        List<Element> to) : base(spdxIdFactory, creationInfo)
+    {
+        From = from;
+        To = to;
+        RelationshipType = relationshipType;
+    }
+
     [JsonPropertyName("from")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required Element From { get; set; } = from;
+    public required Element From { get; set; }
 
     [JsonPropertyName("to")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<Element> To { get; set; } = to;
+    public IList<Element> To { get; set; }
 
     [JsonPropertyName("relationshipType")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required RelationshipType RelationshipType { get; set; } = relationshipType;
+    public required RelationshipType RelationshipType { get; set; }
 
     [JsonPropertyName("completeness")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

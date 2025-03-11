@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class PackageVerificationCode : IntegrityMethod
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal PackageVerificationCode()
+    {
+    }
+    
     [SetsRequiredMembers]
     public PackageVerificationCode(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) :
         base(spdxIdFactory)

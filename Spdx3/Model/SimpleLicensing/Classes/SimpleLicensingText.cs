@@ -12,6 +12,11 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 /// </summary>
 public class SimpleLicensingText : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal SimpleLicensingText()
+    {
+    }
+    
     [SetsRequiredMembers]
     public SimpleLicensingText(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string licenseText) : base(spdxIdFactory, creationInfo)
     {

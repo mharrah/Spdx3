@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class LifecycleScopedRelationship : Relationship
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal LifecycleScopedRelationship()
+    {
+    }
+    
     [SetsRequiredMembers]
     public LifecycleScopedRelationship(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo,
         RelationshipType relationshipType, Element from, List<Element> to) : base(spdxIdFactory, creationInfo,

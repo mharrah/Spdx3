@@ -10,32 +10,35 @@ namespace Spdx3.Serialization;
 
 internal class SpdxObjectConvertor<T> : JsonConverter<T>
 {
-    public override T? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        Console.WriteLine($"Creating a {typeToConvert}");
         var result = (T?)Activator.CreateInstance(typeToConvert, true);
-        Console.WriteLine($"TokenType={reader.TokenType}");
+        if (result == null)
+        {
+            throw new Spdx3SerializationException("Could not create instance of type " + typeof(T));
+        }
         PropertyInfo? currentProp = null;
         while (reader.Read())
             switch (reader.TokenType)
             {
                 case JsonTokenType.StartObject:
-                    Console.WriteLine($"TokenType={reader.TokenType}");
                     throw new Spdx3SerializationException($"There should not be nested objects in {currentProp?.Name}");
-                    break;
                 case JsonTokenType.EndObject:
-                    Console.WriteLine($"TokenType={reader.TokenType}");
                     break;
                 case JsonTokenType.StartArray:
-                    Console.WriteLine($"TokenType={reader.TokenType}");
-                    // The list should already be initialized on the property
                     break;
                 case JsonTokenType.EndArray:
-                    Console.WriteLine($"TokenType={reader.TokenType}");
                     break;
                 case JsonTokenType.String:
                     var strVal = reader.GetString();
-                    Console.WriteLine($"TokenType=String Value={strVal}");
+                    if (currentProp == null)
+                    {
+                        throw new Spdx3SerializationException($"String value '{strVal}' encountered outside of a property");
+                    }
+                    if (strVal == null)
+                    {
+                        throw new Spdx3SerializationException("Null value encountered for string value");
+                    }
                     if (currentProp == null)
                     {
                         throw new Spdx3SerializationException($"No current property to hold string value {strVal}");
@@ -49,15 +52,59 @@ internal class SpdxObjectConvertor<T> : JsonConverter<T>
                     {
                         currentProp.SetValue(result, DateTimeOffset.Parse(strVal));
                     }
-                    else if (currentProp.PropertyType.IsGenericType) 
+                    else if (currentProp.PropertyType.IsGenericType)
                     {
-                        if (currentProp.PropertyType == typeof(IList<string>))
+                        var genericType = currentProp.PropertyType.GetGenericArguments()[0];
+                        if (genericType == typeof(string))
                         {
-                            ((IList)currentProp.GetValue(result)).Add(strVal);
+                            if (currentProp.GetValue(result) is not IList listVal)
+                            {
+                                throw new Spdx3SerializationException($"List property {currentProp.Name} was not initialized as a list");
+                            }
+                            listVal.Add(strVal);
+                        }
+                        else if (genericType.IsAssignableTo(typeof(BaseSpdxClass)))
+                        {
+                            /*
+                             * At this point we have a string that is the URN of another Element, which we may or may not
+                             * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
+                             * Later, we're going to need to go through the objects and replace the placeholder with the real one.
+                             */
+                            var placeHolder = Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType);
+                            if (placeHolder == null)
+                            {
+                                throw new Spdx3Exception($"Could not create instance of type {genericType}");
+                            }
+
+                            var type = placeHolder.GetType();
+                            if (type == null)
+                            {
+                                throw new Spdx3Exception($"Could not determine type of object {nameof(placeHolder)}");
+                            }
+
+                            var spdxIdProperty = type.GetProperty("SpdxId");
+                            if (spdxIdProperty == null)
+                            {
+                                throw new Spdx3SerializationException($"Unable to get property 'SpdxId' of type {type}");
+                            }
+                            spdxIdProperty.SetValue(placeHolder, strVal);
+                            
+                            var typeProperty = type.GetProperty("Type");
+                            if (typeProperty == null)
+                            {
+                                throw new Spdx3SerializationException($"Unable to get property 'Type' of type {type}");
+                            }
+                            
+                            typeProperty.SetValue(placeHolder, SpdxUtility.SpdxTypeForClass(genericType));
+                            if (currentProp.GetValue(result) is not IList listVal)
+                            {
+                                throw new Spdx3SerializationException($"List property {currentProp.Name} was not initialized as a list");
+                            }
+                            listVal.Add(placeHolder);
                         }
                         else
                         {
-                            throw new NotImplementedException($"Generic type {currentProp.PropertyType} not handled");
+                            throw new Spdx3SerializationException($"The type {genericType} is not supported");
                         }
                     }
                     else if (currentProp.PropertyType.IsEnum)
@@ -72,8 +119,12 @@ internal class SpdxObjectConvertor<T> : JsonConverter<T>
                          * Later, we're going to need to go through the objects and replace the placeholder with the real one.
                          */
                         var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentProp.PropertyType, true), currentProp.PropertyType);
-                        placeHolder.GetType().GetProperty("SpdxId").SetValue(placeHolder, strVal);
-                        placeHolder.GetType().GetProperty("Type").SetValue(placeHolder, SpdxUtility.SpdxTypeForClass(currentProp.PropertyType));
+                        if (placeHolder == null)
+                        {
+                            throw new Spdx3SerializationException($"Unable to create instance of type {currentProp.PropertyType}");
+                        }
+                        currentProp.PropertyType.GetProperty("SpdxId").SetValue(placeHolder, strVal);
+                        currentProp.PropertyType.GetProperty("Type").SetValue(placeHolder, SpdxUtility.SpdxTypeForClass(currentProp.PropertyType));
                         currentProp.SetValue(result, placeHolder);
                     }
                     else
@@ -84,7 +135,6 @@ internal class SpdxObjectConvertor<T> : JsonConverter<T>
                     break;
                 case JsonTokenType.Number:
                     var intVal = reader.GetInt32();
-                    Console.WriteLine($"TokenType=Number Value={intVal}");
                     if (currentProp == null)
                     {
                         throw new Spdx3SerializationException($"No current property to hold int value {intVal}");
@@ -95,7 +145,10 @@ internal class SpdxObjectConvertor<T> : JsonConverter<T>
                     break;
                 case JsonTokenType.PropertyName:
                     var currentPropName = reader.GetString();
-                    Console.WriteLine($"TokenType=PropertyName Value={currentPropName}");
+                    if (currentPropName == null)
+                    {
+                        throw new Spdx3Exception("Expected a property name but got null value");
+                    }
                     currentProp = GetPropertyAttributeFromJsonElementName(typeToConvert, currentPropName);
                     if (currentProp == null)
                     {

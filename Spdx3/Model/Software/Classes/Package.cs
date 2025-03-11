@@ -8,6 +8,12 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Package : SoftwareArtifact
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Package()
+    {
+    }
+
+    
     [SetsRequiredMembers]
     public Package(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Hash : IntegrityMethod
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Hash()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Hash(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) : base(spdxIdFactory)
     {

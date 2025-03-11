@@ -9,6 +9,12 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class IndividualElement : Element
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal IndividualElement()
+    {
+    }
+    
     [SetsRequiredMembers]
     public IndividualElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

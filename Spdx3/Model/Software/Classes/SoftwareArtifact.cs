@@ -9,14 +9,21 @@ namespace Spdx3.Model.Software.Classes;
 
 public abstract class SoftwareArtifact : Artifact
 {
-    [JsonPropertyName("copyrightText")] [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? CopyrightText;
+    // protected internal no-parm constructor required for deserialization
+    protected internal SoftwareArtifact()
+    {
+    }
 
     [SetsRequiredMembers]
     protected SoftwareArtifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory,
         creationInfo)
     {
     }
+
+    [JsonPropertyName("copyrightText")]
+    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    public string? CopyrightText;
+
 
     [JsonPropertyName("additionalPurpose")]
     [JsonConverter(typeof(SpdxObjectConverterFactory))]

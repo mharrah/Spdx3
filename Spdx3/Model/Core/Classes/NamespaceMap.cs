@@ -11,6 +11,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class NamespaceMap : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal NamespaceMap()
+    {
+    }
+    
     [SetsRequiredMembers]
     public NamespaceMap(SpdxIdFactory spdxIdFactory, string prefix, string @namespace) : base(spdxIdFactory)
     {

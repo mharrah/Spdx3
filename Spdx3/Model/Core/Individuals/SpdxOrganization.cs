@@ -10,6 +10,12 @@ namespace Spdx3.Model.Core.Individuals;
 /// </summary>
 public class SpdxOrganization : Organization
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal SpdxOrganization()
+    {
+    }
+    
     [SetsRequiredMembers]
     public SpdxOrganization(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

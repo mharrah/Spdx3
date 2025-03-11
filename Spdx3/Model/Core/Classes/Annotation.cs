@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Annotation : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Annotation()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Annotation(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, AnnotationType annotationType,
         Element subject) : base(spdxIdFactory, creationInfo)

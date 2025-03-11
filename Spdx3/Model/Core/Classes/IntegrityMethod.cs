@@ -11,6 +11,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public abstract class IntegrityMethod : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal IntegrityMethod()
+    {
+    }
+
     [SetsRequiredMembers]
     protected IntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
     {

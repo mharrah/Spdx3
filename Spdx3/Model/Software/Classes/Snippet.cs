@@ -9,6 +9,13 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Snippet : SoftwareArtifact
 {
+#pragma warning disable CS8618, CS9264
+    // protected internal no-parm constructor required for deserialization
+    protected internal Snippet()
+    {
+    }
+#pragma warning restore CS8618, CS9264
+
     [SetsRequiredMembers]
     public Snippet(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, File snippetFromFile) : base(spdxIdFactory,
         creationInfo)

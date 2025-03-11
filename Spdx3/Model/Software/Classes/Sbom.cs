@@ -9,6 +9,11 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Sbom : Bom
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Sbom()
+    {
+    }
+
     [SetsRequiredMembers]
     public Sbom(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

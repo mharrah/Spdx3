@@ -12,6 +12,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class PositiveIntegerRange : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal PositiveIntegerRange()
+    {
+    }
+    
     private int _beginIntegerRange = 1;
 
     private int _endIntegerRange = int.MaxValue;

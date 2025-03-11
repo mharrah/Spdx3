@@ -10,6 +10,11 @@ namespace Spdx3.Model.Core.Individuals;
 /// </summary>
 public class NoAssertionElement : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal NoAssertionElement()
+    {
+    }
+    
     [SetsRequiredMembers]
     public NoAssertionElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

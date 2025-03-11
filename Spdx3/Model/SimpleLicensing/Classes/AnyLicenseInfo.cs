@@ -10,8 +10,12 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 /// </summary>
 public abstract class AnyLicenseInfo : Element
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal AnyLicenseInfo()
+    {
+    }
+    
     // Abstract class, adds no properties or functionality
-
     [SetsRequiredMembers]
     protected AnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

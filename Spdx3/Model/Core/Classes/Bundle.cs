@@ -11,6 +11,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Bundle : ElementCollection
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal Bundle()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Bundle(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

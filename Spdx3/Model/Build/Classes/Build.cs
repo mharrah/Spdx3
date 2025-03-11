@@ -44,6 +44,11 @@ public class Build : Element
     [JsonConverter(typeof(SpdxObjectConverterFactory))]
     public IList<DictionaryEntry> Parameter { get; set; } = new List<DictionaryEntry>();
     
+    // protected internal no-parm constructor required for deserialization
+    protected internal Build()
+    {
+    }
+    
     [SetsRequiredMembers]
     public Build(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, Uri buildType) : base(spdxIdFactory, creationInfo)
     {

@@ -11,7 +11,13 @@ namespace Spdx3.Model.Software.Classes;
 public class File : SoftwareArtifact
 {
     private string _name;
-
+    
+    // protected internal no-parm constructor required for deserialization
+#pragma warning disable CS8618, CS9264
+    protected internal File()
+    {
+    }
+#pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
     public File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string name) : base(spdxIdFactory, creationInfo)

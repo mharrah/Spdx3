@@ -9,6 +9,12 @@ namespace Spdx3.Model.Core.Individuals;
 /// </summary>
 public class NoneElement : Element
 {
+    
+    // protected internal no-parm constructor required for deserialization
+    protected internal NoneElement()
+    {
+    }
+    
     [SetsRequiredMembers]
     public NoneElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
     {

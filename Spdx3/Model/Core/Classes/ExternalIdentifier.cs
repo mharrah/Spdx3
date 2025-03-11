@@ -13,6 +13,11 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class ExternalIdentifier : BaseSpdxClass
 {
+    // protected internal no-parm constructor required for deserialization
+    protected internal ExternalIdentifier()
+    {
+    }
+    
     [SetsRequiredMembers]
     public ExternalIdentifier(SpdxIdFactory spdxIdFactory, ExternalIdentifierType externalIdentifierType,
         string identifier) : base(spdxIdFactory)
