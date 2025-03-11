@@ -1,87 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.8040999999999999" branch-rate="0.7968999999999999" version="1.9" timestamp="1741728162" lines-covered="702" lines-valid="873" branches-covered="157" branches-valid="197">
+<coverage line-rate="0.8220000000000001" branch-rate="0.8395" version="1.9" timestamp="1741728485" lines-covered="702" lines-valid="854" branches-covered="157" branches-valid="187">
   <sources>
     <source>/home/runner/work/Spdx3/Spdx3/Spdx3/</source>
   </sources>
   <packages>
-    <package name="Spdx3" line-rate="0.8040999999999999" branch-rate="0.7968999999999999" complexity="408">
+    <package name="Spdx3" line-rate="0.8220000000000001" branch-rate="0.8395" complexity="398">
       <classes>
-        <class name="Spdx3.Utility.ConstructorsTest" filename="Utility/ConstructorsTest.cs" line-rate="0" branch-rate="0" complexity="10">
-          <methods>
-            <method name="Main" signature="(System.String[])" line-rate="0" branch-rate="0" complexity="10">
-              <lines>
-                <line number="9" hits="0" branch="False" />
-                <line number="10" hits="0" branch="False" />
-                <line number="11" hits="0" branch="True" condition-coverage="0% (0/6)">
-                  <conditions>
-                    <condition number="6" type="jump" coverage="0%" />
-                    <condition number="14" type="jump" coverage="0%" />
-                    <condition number="22" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="14" hits="0" branch="False" />
-                <line number="15" hits="0" branch="True" condition-coverage="0% (0/2)">
-                  <conditions>
-                    <condition number="131" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="16" hits="0" branch="False" />
-                <line number="18" hits="0" branch="False" />
-                <line number="19" hits="0" branch="False" />
-                <line number="20" hits="0" branch="False" />
-                <line number="21" hits="0" branch="False" />
-                <line number="22" hits="0" branch="False" />
-                <line number="23" hits="0" branch="False" />
-                <line number="24" hits="0" branch="False" />
-                <line number="25" hits="0" branch="False" />
-                <line number="27" hits="0" branch="True" condition-coverage="0% (0/2)">
-                  <conditions>
-                    <condition number="160" type="jump" coverage="0%" />
-                  </conditions>
-                </line>
-                <line number="28" hits="0" branch="False" />
-                <line number="29" hits="0" branch="False" />
-                <line number="30" hits="0" branch="False" />
-                <line number="33" hits="0" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="9" hits="0" branch="False" />
-            <line number="10" hits="0" branch="False" />
-            <line number="11" hits="0" branch="True" condition-coverage="0% (0/6)">
-              <conditions>
-                <condition number="6" type="jump" coverage="0%" />
-                <condition number="14" type="jump" coverage="0%" />
-                <condition number="22" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="14" hits="0" branch="False" />
-            <line number="15" hits="0" branch="True" condition-coverage="0% (0/2)">
-              <conditions>
-                <condition number="131" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="16" hits="0" branch="False" />
-            <line number="18" hits="0" branch="False" />
-            <line number="19" hits="0" branch="False" />
-            <line number="20" hits="0" branch="False" />
-            <line number="21" hits="0" branch="False" />
-            <line number="22" hits="0" branch="False" />
-            <line number="23" hits="0" branch="False" />
-            <line number="24" hits="0" branch="False" />
-            <line number="25" hits="0" branch="False" />
-            <line number="27" hits="0" branch="True" condition-coverage="0% (0/2)">
-              <conditions>
-                <condition number="160" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="28" hits="0" branch="False" />
-            <line number="29" hits="0" branch="False" />
-            <line number="30" hits="0" branch="False" />
-            <line number="33" hits="0" branch="False" />
-          </lines>
-        </class>
         <class name="Spdx3.Utility.SpdxIdFactory" filename="Utility/SpdxIdFactory.cs" line-rate="1" branch-rate="1" complexity="3">
           <methods>
             <method name="New" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="1">
@@ -210,10 +134,10 @@
           <methods>
             <method name="CanConvert" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="57" branch="False" />
-                <line number="12" hits="57" branch="False" />
-                <line number="14" hits="57" branch="False" />
-                <line number="15" hits="57" branch="False" />
+                <line number="11" hits="56" branch="False" />
+                <line number="12" hits="56" branch="False" />
+                <line number="14" hits="56" branch="False" />
+                <line number="15" hits="56" branch="False" />
               </lines>
             </method>
             <method name="CreateConverter" signature="(System.Type,System.Text.Json.JsonSerializerOptions)" line-rate="1" branch-rate="1" complexity="1">
@@ -230,10 +154,10 @@
             </method>
           </methods>
           <lines>
-            <line number="11" hits="57" branch="False" />
-            <line number="12" hits="57" branch="False" />
-            <line number="14" hits="57" branch="False" />
-            <line number="15" hits="57" branch="False" />
+            <line number="11" hits="56" branch="False" />
+            <line number="12" hits="56" branch="False" />
+            <line number="14" hits="56" branch="False" />
+            <line number="15" hits="56" branch="False" />
             <line number="18" hits="45" branch="False" />
             <line number="19" hits="45" branch="False" />
             <line number="21" hits="45" branch="False" />
