@@ -1,72 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.8220000000000001" branch-rate="0.8395" version="1.9" timestamp="1741728485" lines-covered="702" lines-valid="854" branches-covered="157" branches-valid="187">
+<coverage line-rate="0.8223999999999999" branch-rate="0.8395" version="1.9" timestamp="1741734859" lines-covered="704" lines-valid="856" branches-covered="157" branches-valid="187">
   <sources>
     <source>/home/runner/work/Spdx3/Spdx3/Spdx3/</source>
   </sources>
   <packages>
-    <package name="Spdx3" line-rate="0.8220000000000001" branch-rate="0.8395" complexity="398">
+    <package name="Spdx3" line-rate="0.8223999999999999" branch-rate="0.8395" complexity="399">
       <classes>
-        <class name="Spdx3.Utility.SpdxIdFactory" filename="Utility/SpdxIdFactory.cs" line-rate="1" branch-rate="1" complexity="3">
+        <class name="Spdx3.Utility.SpdxCatalog" filename="Utility/SpdxCatalog.cs" line-rate="1" branch-rate="1" complexity="4">
           <methods>
-            <method name="New" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="1">
+            <method name="get_Items" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="341" branch="False" />
-                <line number="17" hits="341" branch="False" />
-                <line number="18" hits="341" branch="False" />
+                <line number="11" hits="463" branch="False" />
+              </lines>
+            </method>
+            <method name="NewId" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="23" hits="340" branch="False" />
+                <line number="24" hits="340" branch="False" />
+                <line number="25" hits="340" branch="False" />
               </lines>
             </method>
             <method name="GetShortUid" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="21" hits="341" branch="False" />
-                <line number="23" hits="341" branch="False" />
-                <line number="24" hits="341" branch="False" />
+                <line number="28" hits="340" branch="False" />
+                <line number="30" hits="340" branch="False" />
+                <line number="31" hits="340" branch="False" />
               </lines>
             </method>
             <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="124" branch="False" />
+                <line number="14" hits="124" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="16" hits="341" branch="False" />
-            <line number="17" hits="341" branch="False" />
-            <line number="18" hits="341" branch="False" />
-            <line number="21" hits="341" branch="False" />
-            <line number="23" hits="341" branch="False" />
-            <line number="24" hits="341" branch="False" />
-            <line number="13" hits="124" branch="False" />
+            <line number="11" hits="463" branch="False" />
+            <line number="23" hits="340" branch="False" />
+            <line number="24" hits="340" branch="False" />
+            <line number="25" hits="340" branch="False" />
+            <line number="28" hits="340" branch="False" />
+            <line number="30" hits="340" branch="False" />
+            <line number="31" hits="340" branch="False" />
+            <line number="14" hits="124" branch="False" />
           </lines>
         </class>
         <class name="Spdx3.Utility.SpdxUtility" filename="Utility/SpdxUtility.cs" line-rate="1" branch-rate="1" complexity="9">
           <methods>
             <method name="SpdxTypeForClass" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="8">
               <lines>
-                <line number="23" hits="346" branch="False" />
-                <line number="24" hits="346" branch="True" condition-coverage="100% (2/2)">
+                <line number="23" hits="345" branch="False" />
+                <line number="24" hits="345" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="30" type="jump" coverage="100%" />
                   </conditions>
                 </line>
                 <line number="25" hits="1" branch="False" />
                 <line number="26" hits="1" branch="False" />
-                <line number="29" hits="1379" branch="True" condition-coverage="100% (4/4)">
+                <line number="29" hits="1375" branch="True" condition-coverage="100% (4/4)">
                   <conditions>
                     <condition number="78" type="jump" coverage="100%" />
                     <condition number="162" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="30" hits="683" branch="True" condition-coverage="100% (2/2)">
+                <line number="30" hits="682" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="27" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="31" hits="683" branch="False" />
-                <line number="32" hits="345" branch="False" />
-                <line number="34" hits="344" branch="False" />
-                <line number="35" hits="344" branch="False" />
+                <line number="31" hits="682" branch="False" />
+                <line number="32" hits="344" branch="False" />
+                <line number="34" hits="343" branch="False" />
+                <line number="35" hits="343" branch="False" />
                 <line number="38" hits="1" branch="False" />
-                <line number="39" hits="344" branch="False" />
+                <line number="39" hits="343" branch="False" />
               </lines>
             </method>
             <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -89,31 +95,31 @@
             </method>
           </methods>
           <lines>
-            <line number="23" hits="346" branch="False" />
-            <line number="24" hits="346" branch="True" condition-coverage="100% (2/2)">
+            <line number="23" hits="345" branch="False" />
+            <line number="24" hits="345" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="30" type="jump" coverage="100%" />
               </conditions>
             </line>
             <line number="25" hits="1" branch="False" />
             <line number="26" hits="1" branch="False" />
-            <line number="29" hits="1379" branch="True" condition-coverage="100% (4/4)">
+            <line number="29" hits="1375" branch="True" condition-coverage="100% (4/4)">
               <conditions>
                 <condition number="78" type="jump" coverage="100%" />
                 <condition number="162" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="30" hits="683" branch="True" condition-coverage="100% (2/2)">
+            <line number="30" hits="682" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="27" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="31" hits="683" branch="False" />
-            <line number="32" hits="345" branch="False" />
-            <line number="34" hits="344" branch="False" />
-            <line number="35" hits="344" branch="False" />
+            <line number="31" hits="682" branch="False" />
+            <line number="32" hits="344" branch="False" />
+            <line number="34" hits="343" branch="False" />
+            <line number="35" hits="343" branch="False" />
             <line number="38" hits="1" branch="False" />
-            <line number="39" hits="344" branch="False" />
+            <line number="39" hits="343" branch="False" />
             <line number="7" hits="1" branch="False" />
             <line number="8" hits="1" branch="False" />
             <line number="9" hits="1" branch="False" />
@@ -134,10 +140,10 @@
           <methods>
             <method name="CanConvert" signature="(System.Type)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="56" branch="False" />
-                <line number="12" hits="56" branch="False" />
-                <line number="14" hits="56" branch="False" />
-                <line number="15" hits="56" branch="False" />
+                <line number="11" hits="54" branch="False" />
+                <line number="12" hits="54" branch="False" />
+                <line number="14" hits="54" branch="False" />
+                <line number="15" hits="54" branch="False" />
               </lines>
             </method>
             <method name="CreateConverter" signature="(System.Type,System.Text.Json.JsonSerializerOptions)" line-rate="1" branch-rate="1" complexity="1">
@@ -154,10 +160,10 @@
             </method>
           </methods>
           <lines>
-            <line number="11" hits="56" branch="False" />
-            <line number="12" hits="56" branch="False" />
-            <line number="14" hits="56" branch="False" />
-            <line number="15" hits="56" branch="False" />
+            <line number="11" hits="54" branch="False" />
+            <line number="12" hits="54" branch="False" />
+            <line number="14" hits="54" branch="False" />
+            <line number="15" hits="54" branch="False" />
             <line number="18" hits="45" branch="False" />
             <line number="19" hits="45" branch="False" />
             <line number="21" hits="45" branch="False" />
@@ -1068,59 +1074,59 @@
             </method>
             <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="51" hits="648" branch="False" />
+                <line number="52" hits="647" branch="False" />
               </lines>
             </method>
             <method name="get_SpdxId" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="55" hits="734" branch="False" />
+                <line number="56" hits="1069" branch="False" />
               </lines>
             </method>
             <method name="ToJson" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="63" hits="70" branch="False" />
-                <line number="65" hits="70" branch="False" />
-                <line number="72" hits="69" branch="False" />
-                <line number="74" hits="69" branch="False" />
-                <line number="75" hits="69" branch="False" />
+                <line number="69" hits="70" branch="False" />
+                <line number="71" hits="70" branch="False" />
+                <line number="78" hits="69" branch="False" />
+                <line number="80" hits="69" branch="False" />
+                <line number="81" hits="69" branch="False" />
               </lines>
             </method>
             <method name="Validate" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="80" hits="91" branch="False" />
-                <line number="81" hits="91" branch="False" />
-                <line number="82" hits="91" branch="False" />
-                <line number="83" hits="88" branch="False" />
+                <line number="86" hits="91" branch="False" />
+                <line number="87" hits="91" branch="False" />
+                <line number="88" hits="91" branch="False" />
+                <line number="89" hits="88" branch="False" />
               </lines>
             </method>
             <method name="ValidateRequiredProperty" signature="(System.String)" line-rate="1" branch-rate="1" complexity="8">
               <lines>
-                <line number="86" hits="352" branch="False" />
-                <line number="87" hits="352" branch="False" />
-                <line number="88" hits="352" branch="True" condition-coverage="100% (2/2)">
+                <line number="92" hits="352" branch="False" />
+                <line number="93" hits="352" branch="False" />
+                <line number="94" hits="352" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="23" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="89" hits="1" branch="False" />
-                <line number="90" hits="1" branch="False" />
-                <line number="92" hits="351" branch="False" />
-                <line number="93" hits="351" branch="True" condition-coverage="100% (2/2)">
+                <line number="95" hits="1" branch="False" />
+                <line number="96" hits="1" branch="False" />
+                <line number="98" hits="351" branch="False" />
+                <line number="99" hits="351" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="68" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="94" hits="6" branch="False" />
-                <line number="95" hits="6" branch="False" />
-                <line number="98" hits="345" branch="True" condition-coverage="100% (4/4)">
+                <line number="100" hits="6" branch="False" />
+                <line number="101" hits="6" branch="False" />
+                <line number="104" hits="345" branch="True" condition-coverage="100% (4/4)">
                   <conditions>
                     <condition number="90" type="jump" coverage="100%" />
                     <condition number="115" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="99" hits="8" branch="False" />
-                <line number="100" hits="8" branch="False" />
-                <line number="102" hits="337" branch="False" />
+                <line number="105" hits="8" branch="False" />
+                <line number="106" hits="8" branch="False" />
+                <line number="108" hits="337" branch="False" />
               </lines>
             </method>
             <method name=".cctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -1142,13 +1148,14 @@
                 <line number="40" hits="7" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="43" hits="337" branch="False" />
-                <line number="44" hits="337" branch="False" />
-                <line number="45" hits="337" branch="False" />
-                <line number="46" hits="337" branch="False" />
-                <line number="47" hits="337" branch="False" />
+                <line number="43" hits="336" branch="False" />
+                <line number="44" hits="336" branch="False" />
+                <line number="45" hits="336" branch="False" />
+                <line number="46" hits="336" branch="False" />
+                <line number="47" hits="336" branch="False" />
+                <line number="48" hits="336" branch="False" />
               </lines>
             </method>
           </methods>
@@ -1157,43 +1164,43 @@
             <line number="33" hits="4" branch="False" />
             <line number="34" hits="4" branch="False" />
             <line number="35" hits="4" branch="False" />
-            <line number="51" hits="648" branch="False" />
-            <line number="55" hits="734" branch="False" />
-            <line number="63" hits="70" branch="False" />
-            <line number="65" hits="70" branch="False" />
-            <line number="72" hits="69" branch="False" />
-            <line number="74" hits="69" branch="False" />
-            <line number="75" hits="69" branch="False" />
-            <line number="80" hits="91" branch="False" />
-            <line number="81" hits="91" branch="False" />
-            <line number="82" hits="91" branch="False" />
-            <line number="83" hits="88" branch="False" />
-            <line number="86" hits="352" branch="False" />
-            <line number="87" hits="352" branch="False" />
-            <line number="88" hits="352" branch="True" condition-coverage="100% (2/2)">
+            <line number="52" hits="647" branch="False" />
+            <line number="56" hits="1069" branch="False" />
+            <line number="69" hits="70" branch="False" />
+            <line number="71" hits="70" branch="False" />
+            <line number="78" hits="69" branch="False" />
+            <line number="80" hits="69" branch="False" />
+            <line number="81" hits="69" branch="False" />
+            <line number="86" hits="91" branch="False" />
+            <line number="87" hits="91" branch="False" />
+            <line number="88" hits="91" branch="False" />
+            <line number="89" hits="88" branch="False" />
+            <line number="92" hits="352" branch="False" />
+            <line number="93" hits="352" branch="False" />
+            <line number="94" hits="352" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="23" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="89" hits="1" branch="False" />
-            <line number="90" hits="1" branch="False" />
-            <line number="92" hits="351" branch="False" />
-            <line number="93" hits="351" branch="True" condition-coverage="100% (2/2)">
+            <line number="95" hits="1" branch="False" />
+            <line number="96" hits="1" branch="False" />
+            <line number="98" hits="351" branch="False" />
+            <line number="99" hits="351" branch="True" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="68" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="94" hits="6" branch="False" />
-            <line number="95" hits="6" branch="False" />
-            <line number="98" hits="345" branch="True" condition-coverage="100% (4/4)">
+            <line number="100" hits="6" branch="False" />
+            <line number="101" hits="6" branch="False" />
+            <line number="104" hits="345" branch="True" condition-coverage="100% (4/4)">
               <conditions>
                 <condition number="90" type="jump" coverage="100%" />
                 <condition number="115" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="99" hits="8" branch="False" />
-            <line number="100" hits="8" branch="False" />
-            <line number="102" hits="337" branch="False" />
+            <line number="105" hits="8" branch="False" />
+            <line number="106" hits="8" branch="False" />
+            <line number="108" hits="337" branch="False" />
             <line number="20" hits="1" branch="False" />
             <line number="21" hits="1" branch="False" />
             <line number="22" hits="1" branch="False" />
@@ -1205,11 +1212,12 @@
             <line number="38" hits="7" branch="False" />
             <line number="39" hits="7" branch="False" />
             <line number="40" hits="7" branch="False" />
-            <line number="43" hits="337" branch="False" />
-            <line number="44" hits="337" branch="False" />
-            <line number="45" hits="337" branch="False" />
-            <line number="46" hits="337" branch="False" />
-            <line number="47" hits="337" branch="False" />
+            <line number="43" hits="336" branch="False" />
+            <line number="44" hits="336" branch="False" />
+            <line number="45" hits="336" branch="False" />
+            <line number="46" hits="336" branch="False" />
+            <line number="47" hits="336" branch="False" />
+            <line number="48" hits="336" branch="False" />
           </lines>
         </class>
         <class name="Spdx3.Model.Software.Classes.ContentIdentifier" filename="Model/Software/Classes/ContentIdentifier.cs" line-rate="0.8" branch-rate="1" complexity="5">
@@ -1240,7 +1248,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Software.Enums.ContentIdentifierType,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Software.Enums.ContentIdentifierType,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="19" hits="5" branch="False" />
                 <line number="20" hits="5" branch="False" />
@@ -1320,7 +1328,7 @@
                 <line number="19" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="2">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="2">
               <lines>
                 <line number="23" hits="6" branch="False" />
                 <line number="24" hits="6" branch="False" />
@@ -1410,7 +1418,7 @@
                 <line number="14" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="1" branch="False" />
                 <line number="19" hits="1" branch="False" />
@@ -1446,7 +1454,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="2" branch="False" />
                 <line number="19" hits="2" branch="False" />
@@ -1502,7 +1510,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Software.Classes.File)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Software.Classes.File)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="3" branch="False" />
                 <line number="21" hits="3" branch="False" />
@@ -1565,7 +1573,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="12" branch="False" />
                 <line number="19" hits="12" branch="False" />
@@ -1597,7 +1605,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="5" branch="False" />
                 <line number="21" hits="5" branch="False" />
@@ -1638,7 +1646,7 @@
                 <line number="30" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="33" hits="2" branch="False" />
                 <line number="34" hits="2" branch="False" />
@@ -1682,7 +1690,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="21" hits="2" branch="False" />
                 <line number="22" hits="2" branch="False" />
@@ -1734,7 +1742,7 @@
                 <line number="14" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.Collections.Generic.IList`1&lt;Spdx3.Model.Extension.Classes.CdxPropertyEntry&gt;)" line-rate="1" branch-rate="1" complexity="2">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.Collections.Generic.IList`1&lt;Spdx3.Model.Extension.Classes.CdxPropertyEntry&gt;)" line-rate="1" branch-rate="1" complexity="2">
               <lines>
                 <line number="17" hits="3" branch="False" />
                 <line number="18" hits="3" branch="False" />
@@ -1807,7 +1815,7 @@
                 <line number="17" hits="2" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="2" branch="False" />
                 <line number="21" hits="2" branch="False" />
@@ -1816,7 +1824,7 @@
                 <line number="24" hits="2" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="27" hits="5" branch="False" />
                 <line number="28" hits="5" branch="False" />
@@ -1855,7 +1863,7 @@
                 <line number="15" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="16" branch="False" />
                 <line number="19" hits="16" branch="False" />
@@ -1881,7 +1889,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="19" hits="1" branch="False" />
                 <line number="20" hits="1" branch="False" />
@@ -1909,7 +1917,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="19" hits="1" branch="False" />
                 <line number="20" hits="1" branch="False" />
@@ -1937,7 +1945,7 @@
                 <line number="17" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="1" branch="False" />
                 <line number="21" hits="1" branch="False" />
@@ -1965,7 +1973,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="15" branch="False" />
                 <line number="19" hits="15" branch="False" />
@@ -2020,7 +2028,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.AnnotationType,Spdx3.Model.Core.Classes.Element)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.AnnotationType,Spdx3.Model.Core.Classes.Element)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="22" hits="4" branch="False" />
                 <line number="23" hits="4" branch="False" />
@@ -2094,7 +2102,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="21" hits="17" branch="False" />
                 <line number="22" hits="17" branch="False" />
@@ -2127,7 +2135,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="4" branch="False" />
                 <line number="19" hits="4" branch="False" />
@@ -2158,7 +2166,7 @@
                 <line number="17" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="6" branch="False" />
                 <line number="21" hits="6" branch="False" />
@@ -2210,7 +2218,7 @@
                 <line number="17" hits="2" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="1" branch="False" />
                 <line number="21" hits="1" branch="False" />
@@ -2218,7 +2226,7 @@
                 <line number="23" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.DateTimeOffset)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="26" hits="123" branch="False" />
                 <line number="27" hits="123" branch="False" />
@@ -2273,7 +2281,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="21" hits="5" branch="False" />
                 <line number="22" hits="5" branch="False" />
@@ -2281,7 +2289,7 @@
                 <line number="24" hits="5" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="27" hits="4" branch="False" />
                 <line number="28" hits="4" branch="False" />
@@ -2319,7 +2327,7 @@
             </method>
             <method name="get_CreationInfo" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="32" hits="253" branch="False" />
+                <line number="32" hits="252" branch="False" />
               </lines>
             </method>
             <method name="get_Description" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -2329,17 +2337,17 @@
             </method>
             <method name="get_Extension" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="40" hits="208" branch="False" />
+                <line number="40" hits="207" branch="False" />
               </lines>
             </method>
             <method name="get_ExternalIdentifier" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="44" hits="207" branch="False" />
+                <line number="44" hits="206" branch="False" />
               </lines>
             </method>
             <method name="get_ExternalRef" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="48" hits="207" branch="False" />
+                <line number="48" hits="206" branch="False" />
               </lines>
             </method>
             <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -2354,7 +2362,7 @@
             </method>
             <method name="get_VerifiedUsing" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="60" hits="207" branch="False" />
+                <line number="60" hits="206" branch="False" />
               </lines>
             </method>
             <method name="Validate" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -2373,25 +2381,25 @@
                 <line number="17" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="21" hits="101" branch="False" />
-                <line number="22" hits="101" branch="False" />
-                <line number="23" hits="101" branch="False" />
-                <line number="24" hits="101" branch="False" />
+                <line number="21" hits="100" branch="False" />
+                <line number="22" hits="100" branch="False" />
+                <line number="23" hits="100" branch="False" />
+                <line number="24" hits="100" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
             <line number="28" hits="93" branch="False" />
-            <line number="32" hits="253" branch="False" />
+            <line number="32" hits="252" branch="False" />
             <line number="36" hits="93" branch="False" />
-            <line number="40" hits="208" branch="False" />
-            <line number="44" hits="207" branch="False" />
-            <line number="48" hits="207" branch="False" />
+            <line number="40" hits="207" branch="False" />
+            <line number="44" hits="206" branch="False" />
+            <line number="48" hits="206" branch="False" />
             <line number="52" hits="89" branch="False" />
             <line number="56" hits="67" branch="False" />
-            <line number="60" hits="207" branch="False" />
+            <line number="60" hits="206" branch="False" />
             <line number="63" hits="57" branch="False" />
             <line number="64" hits="57" branch="False" />
             <line number="65" hits="54" branch="False" />
@@ -2400,10 +2408,10 @@
             <line number="15" hits="1" branch="False" />
             <line number="16" hits="1" branch="False" />
             <line number="17" hits="1" branch="False" />
-            <line number="21" hits="101" branch="False" />
-            <line number="22" hits="101" branch="False" />
-            <line number="23" hits="101" branch="False" />
-            <line number="24" hits="101" branch="False" />
+            <line number="21" hits="100" branch="False" />
+            <line number="22" hits="100" branch="False" />
+            <line number="23" hits="100" branch="False" />
+            <line number="24" hits="100" branch="False" />
           </lines>
         </class>
         <class name="Spdx3.Model.Core.Classes.ElementCollection" filename="Model/Core/Classes/ElementCollection.cs" line-rate="0.7" branch-rate="1" complexity="5">
@@ -2430,7 +2438,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="22" hits="11" branch="False" />
                 <line number="23" hits="11" branch="False" />
@@ -2495,7 +2503,7 @@
                 <line number="19" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Enums.ExternalIdentifierType,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Enums.ExternalIdentifierType,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="23" hits="15" branch="False" />
                 <line number="24" hits="15" branch="False" />
@@ -2563,7 +2571,7 @@
                 <line number="17" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="4" branch="False" />
                 <line number="21" hits="4" branch="False" />
@@ -2627,7 +2635,7 @@
                 <line number="18" hits="1" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Enums.ExternalRefType)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Enums.ExternalRefType)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="21" hits="13" branch="False" />
                 <line number="22" hits="13" branch="False" />
@@ -2682,7 +2690,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Enums.HashAlgorithm,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Enums.HashAlgorithm,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="21" hits="6" branch="False" />
                 <line number="22" hits="6" branch="False" />
@@ -2719,7 +2727,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="19" hits="2" branch="False" />
                 <line number="20" hits="2" branch="False" />
@@ -2750,7 +2758,7 @@
                 <line number="17" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="30" branch="False" />
                 <line number="21" hits="30" branch="False" />
@@ -2782,7 +2790,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.RelationshipType,Spdx3.Model.Core.Classes.Element,System.Collections.Generic.List`1&lt;Spdx3.Model.Core.Classes.Element&gt;)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.RelationshipType,Spdx3.Model.Core.Classes.Element,System.Collections.Generic.List`1&lt;Spdx3.Model.Core.Classes.Element&gt;)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="22" hits="2" branch="False" />
                 <line number="23" hits="2" branch="False" />
@@ -2830,7 +2838,7 @@
                 <line number="17" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.String,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="20" hits="7" branch="False" />
                 <line number="21" hits="7" branch="False" />
@@ -2867,7 +2875,7 @@
                 <line number="16" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="19" hits="3" branch="False" />
                 <line number="20" hits="3" branch="False" />
@@ -2917,7 +2925,7 @@
                 <line number="18" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Enums.HashAlgorithm,System.String)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Enums.HashAlgorithm,System.String)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="22" hits="5" branch="False" />
                 <line number="23" hits="5" branch="False" />
@@ -2955,7 +2963,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="2" branch="False" />
                 <line number="19" hits="2" branch="False" />
@@ -3049,7 +3057,7 @@
                 <line number="22" hits="13" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,System.Int32,System.Int32)" line-rate="1" branch-rate="1" complexity="4">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,System.Int32,System.Int32)" line-rate="1" branch-rate="1" complexity="4">
               <lines>
                 <line number="25" hits="13" branch="False" />
                 <line number="26" hits="13" branch="False" />
@@ -3203,7 +3211,7 @@
                 <line number="21" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.RelationshipType,Spdx3.Model.Core.Classes.Element,System.Collections.Generic.List`1&lt;Spdx3.Model.Core.Classes.Element&gt;)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,Spdx3.Model.Core.Enums.RelationshipType,Spdx3.Model.Core.Classes.Element,System.Collections.Generic.List`1&lt;Spdx3.Model.Core.Classes.Element&gt;)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="33" hits="6" branch="False" />
                 <line number="34" hits="6" branch="False" />
@@ -3253,7 +3261,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="2" branch="False" />
                 <line number="19" hits="2" branch="False" />
@@ -3294,7 +3302,7 @@
                 <line number="19" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="22" hits="3" branch="False" />
                 <line number="23" hits="3" branch="False" />
@@ -3323,7 +3331,7 @@
                 <line number="15" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="18" hits="3" branch="False" />
                 <line number="19" hits="3" branch="False" />
@@ -3402,7 +3410,7 @@
                 <line number="50" hits="0" branch="False" />
               </lines>
             </method>
-            <method name=".ctor" signature="(Spdx3.Utility.SpdxIdFactory,Spdx3.Model.Core.Classes.CreationInfo,System.Uri)" line-rate="1" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(Spdx3.Utility.SpdxCatalog,Spdx3.Model.Core.Classes.CreationInfo,System.Uri)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
                 <line number="53" hits="2" branch="False" />
                 <line number="54" hits="2" branch="False" />
