@@ -15,7 +15,7 @@ public class Person : Agent
     }
     
     [SetsRequiredMembers]
-    public Person(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Person(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

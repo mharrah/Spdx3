@@ -11,7 +11,7 @@ public class ElementTest : BaseModelTestClass
     public void BrandNew_Element_IsValid()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var element = new TestElement(TestSpdxCatalog, TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
@@ -21,7 +21,7 @@ public class ElementTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo);
+        var element = new TestElement(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -35,24 +35,25 @@ public class ElementTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
+        Assert.Equal(2, TestSpdxCatalog.Items.Count);
     }
 
     [Fact]
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        var element = new TestElement(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        element.Extension.Add(new TestExtension(TestSpdxIdFactory));
+        element.Extension.Add(new TestExtension(TestSpdxCatalog));
         element.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
-        element.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
-        element.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
+            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
+        element.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
+        element.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
 
 
         const string expected = """
@@ -84,13 +85,14 @@ public class ElementTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
+        Assert.Equal(6, TestSpdxCatalog.Items.Count);
     }
 
     [Fact]
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = new TestElement(TestSpdxIdFactory, TestCreationInfo)
+        var element = new TestElement(TestSpdxCatalog, TestCreationInfo)
         {
             Type = string.Empty
         };

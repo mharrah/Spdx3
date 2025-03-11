@@ -16,7 +16,7 @@ public class Organization : Agent
     }
     
     [SetsRequiredMembers]
-    public Organization(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Organization(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

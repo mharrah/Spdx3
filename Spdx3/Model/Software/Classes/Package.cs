@@ -15,7 +15,7 @@ public class Package : SoftwareArtifact
 
     
     [SetsRequiredMembers]
-    public Package(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Package(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 

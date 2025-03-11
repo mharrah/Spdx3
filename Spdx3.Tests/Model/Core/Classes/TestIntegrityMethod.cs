@@ -10,7 +10,7 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class TestIntegrityMethod : IntegrityMethod
 {
     [SetsRequiredMembers]
-    public TestIntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    public TestIntegrityMethod(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 }

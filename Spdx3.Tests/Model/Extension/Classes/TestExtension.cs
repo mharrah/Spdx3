@@ -9,7 +9,7 @@ namespace Spdx3.Tests.Model.Extension.Classes;
 public class TestExtension : Spdx3.Model.Extension.Classes.Extension
 {
     [SetsRequiredMembers]
-    public TestExtension(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    public TestExtension(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 }

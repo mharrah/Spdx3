@@ -22,8 +22,8 @@ public class PositiveIntegerRange : BaseSpdxClass
     private int _endIntegerRange = int.MaxValue;
 
     [SetsRequiredMembers]
-    public PositiveIntegerRange(SpdxIdFactory spdxIdFactory, int beginIntegerRange, int endIntegerRange) : base(
-        spdxIdFactory)
+    public PositiveIntegerRange(SpdxCatalog spdxCatalog, int beginIntegerRange, int endIntegerRange) : base(
+        spdxCatalog)
     {
         if (beginIntegerRange < 1)
         {

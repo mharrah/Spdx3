@@ -20,7 +20,7 @@ public class File : SoftwareArtifact
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public File(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string name) : base(spdxIdFactory, creationInfo)
+    public File(SpdxCatalog spdxCatalog, CreationInfo creationInfo, string name) : base(spdxCatalog, creationInfo)
     {
         if (string.IsNullOrWhiteSpace(name))
         {

@@ -17,7 +17,7 @@ public class Bundle : ElementCollection
     }
     
     [SetsRequiredMembers]
-    public Bundle(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Bundle(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 

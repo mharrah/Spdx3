@@ -19,7 +19,7 @@ public class SpdxDocument : ElementCollection
     }
     
     [SetsRequiredMembers]
-    public SpdxDocument(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public SpdxDocument(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 

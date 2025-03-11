@@ -18,7 +18,7 @@ public class Hash : IntegrityMethod
     }
     
     [SetsRequiredMembers]
-    public Hash(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) : base(spdxIdFactory)
+    public Hash(SpdxCatalog spdxCatalog, HashAlgorithm algorithm, string hashValue) : base(spdxCatalog)
     {
         Algorithm = algorithm;
         HashValue = hashValue;

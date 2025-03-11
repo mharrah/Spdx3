@@ -15,7 +15,7 @@ public class Sbom : Bom
     }
 
     [SetsRequiredMembers]
-    public Sbom(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Sbom(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 

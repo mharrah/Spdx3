@@ -17,7 +17,7 @@ public class ExternalMap : BaseSpdxClass
     }
     
     [SetsRequiredMembers]
-    public ExternalMap(SpdxIdFactory spdxIdFactory, string externalSpdxId) : base(spdxIdFactory)
+    public ExternalMap(SpdxCatalog spdxCatalog, string externalSpdxId) : base(spdxCatalog)
     {
         ExternalSpdxId = externalSpdxId;
     }

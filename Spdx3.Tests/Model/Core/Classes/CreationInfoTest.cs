@@ -9,7 +9,7 @@ public class CreationInfoTest : BaseModelTestClass
     public void CreationInfo_Basics()
     {
         // Arrange
-        var creationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime);
+        var creationInfo = new CreationInfo(TestSpdxCatalog, PredictableDateTime);
 
         // Assert
         Assert.NotNull(creationInfo);
@@ -23,7 +23,7 @@ public class CreationInfoTest : BaseModelTestClass
     public void CreationInfo_Constructor_WithoutPassingDateTime()
     {
         // Arrange
-        var creationInfo = new CreationInfo(TestSpdxIdFactory);
+        var creationInfo = new CreationInfo(TestSpdxCatalog);
 
         // Assert
         Assert.NotNull(creationInfo);
@@ -41,12 +41,12 @@ public class CreationInfoTest : BaseModelTestClass
     public void CreationInfo_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var creationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime)
+        var creationInfo = new CreationInfo(TestSpdxCatalog, PredictableDateTime)
         {
             Comment = "Test comment"
         };
-        creationInfo.CreatedBy.Add(new Agent(TestSpdxIdFactory, creationInfo));
-        creationInfo.CreatedUsing.Add(new Tool(TestSpdxIdFactory, creationInfo));
+        creationInfo.CreatedBy.Add(new Agent(TestSpdxCatalog, creationInfo));
+        creationInfo.CreatedUsing.Add(new Tool(TestSpdxCatalog, creationInfo));
         const string expected = """
                                 {
                                   "createdBy": [
@@ -75,7 +75,7 @@ public class CreationInfoTest : BaseModelTestClass
     public void CreationInfo_MinimallyPopulated_SerializesAsExpected()
     {
         // Act
-        var creationInfo = new CreationInfo(TestSpdxIdFactory, PredictableDateTime);
+        var creationInfo = new CreationInfo(TestSpdxCatalog, PredictableDateTime);
         const string expected = """
                                 {
                                   "created": "2025-02-22T01:23:45Z",

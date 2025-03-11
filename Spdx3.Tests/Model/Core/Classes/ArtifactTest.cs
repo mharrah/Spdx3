@@ -6,7 +6,7 @@ public class ArtifactTest : BaseModelTestClass
     public void BrandNew_Artifact_HasRequiredFields()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
+        var element = new TestArtifact(TestSpdxCatalog, TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
@@ -17,7 +17,7 @@ public class ArtifactTest : BaseModelTestClass
     public void BrandNew_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo);
+        var element = new TestArtifact(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -37,7 +37,7 @@ public class ArtifactTest : BaseModelTestClass
     public void FullyPopulated_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        var element = new TestArtifact(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -67,7 +67,7 @@ public class ArtifactTest : BaseModelTestClass
     public void TypeNew_Artifact_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+        var element = new TestArtifact(TestSpdxCatalog, TestCreationInfo)
         {
             Type = string.Empty
         };

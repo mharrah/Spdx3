@@ -11,7 +11,7 @@ public class NoAssertionElementTest : BaseModelTestClass
         const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement";
             
         // Act
-        var noAssertion = new NoAssertionElement(TestSpdxIdFactory, TestCreationInfo);
+        var noAssertion = new NoAssertionElement(TestSpdxCatalog, TestCreationInfo);
         
         // Assert
         Assert.Equal(expected, noAssertion.SpdxId);

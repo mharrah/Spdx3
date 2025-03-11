@@ -17,7 +17,7 @@ public class SpdxOrganization : Organization
     }
     
     [SetsRequiredMembers]
-    public SpdxOrganization(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public SpdxOrganization(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
         SpdxId = "https://spdx.org/";
     }

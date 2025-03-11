@@ -15,7 +15,7 @@ public class SoftwareAgent : Agent
     }
     
     [SetsRequiredMembers]
-    public SoftwareAgent(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public SoftwareAgent(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

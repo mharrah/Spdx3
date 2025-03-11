@@ -17,7 +17,7 @@ public class NamespaceMap : BaseSpdxClass
     }
     
     [SetsRequiredMembers]
-    public NamespaceMap(SpdxIdFactory spdxIdFactory, string prefix, string @namespace) : base(spdxIdFactory)
+    public NamespaceMap(SpdxCatalog spdxCatalog, string prefix, string @namespace) : base(spdxCatalog)
     {
         Prefix = prefix;
         Namespace = @namespace;

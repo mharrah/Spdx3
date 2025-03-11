@@ -15,7 +15,7 @@ public class Bom : Bundle
     }
     
     [SetsRequiredMembers]
-    public Bom(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Bom(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

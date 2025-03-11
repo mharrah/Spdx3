@@ -10,7 +10,7 @@ public class ExternalRefTest : BaseModelTestClass
     public void ExternalRef_MinimalObject_Serializes()
     {
         // Arrange
-        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license);
+        var externalRef = new ExternalRef(TestSpdxCatalog, ExternalRefType.license);
         const string expected = """
                                 {
                                   "externalRefType": "license",
@@ -30,7 +30,7 @@ public class ExternalRefTest : BaseModelTestClass
     public void ExternalRef_FullyPopulatedObject_Serializes()
     {
         // Arrange
-        var externalRef = new ExternalRef(TestSpdxIdFactory, ExternalRefType.license)
+        var externalRef = new ExternalRef(TestSpdxCatalog, ExternalRefType.license)
         {
             Comment = "Test comment",
             ContentType = "some sort of content"

@@ -11,7 +11,7 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class TestArtifact : Artifact
 {
     [SetsRequiredMembers]
-    public TestArtifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public TestArtifact(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

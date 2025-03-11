@@ -10,7 +10,7 @@ public class ContentIdentifierTest : BaseModelTestClass
     {
         // Arrange
         var contentIdentifier =
-            new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid, "some gitoid value");
+            new ContentIdentifier(TestSpdxCatalog, ContentIdentifierType.gitoid, "some gitoid value");
         const string expected = """
                                 {
                                   "contentIdentifierType": "gitoid",
@@ -32,7 +32,7 @@ public class ContentIdentifierTest : BaseModelTestClass
     {
         // Arrange
         var contentIdentifier =
-            new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid, "some gitoid value");
+            new ContentIdentifier(TestSpdxCatalog, ContentIdentifierType.gitoid, "some gitoid value");
         contentIdentifier.Comment = "test comment";
         const string expected = """
                                 {

@@ -11,7 +11,7 @@ namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 public class TestAnyLicenseInfo : AnyLicenseInfo
 {
     [SetsRequiredMembers]
-    public TestAnyLicenseInfo(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory,
+    public TestAnyLicenseInfo(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
         creationInfo)
     {
     }

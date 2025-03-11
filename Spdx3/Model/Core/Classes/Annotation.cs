@@ -18,8 +18,8 @@ public class Annotation : Element
     }
     
     [SetsRequiredMembers]
-    public Annotation(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, AnnotationType annotationType,
-        Element subject) : base(spdxIdFactory, creationInfo)
+    public Annotation(SpdxCatalog spdxCatalog, CreationInfo creationInfo, AnnotationType annotationType,
+        Element subject) : base(spdxCatalog, creationInfo)
     {
         AnnotationType = annotationType;
         Subject = subject;

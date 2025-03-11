@@ -6,7 +6,7 @@ public class IntegrityMethodTest : BaseModelTestClass
     public void IntegrityMethod_Basics()
     {
         // Act
-        var integrityMethod = new TestIntegrityMethod(TestSpdxIdFactory);
+        var integrityMethod = new TestIntegrityMethod(TestSpdxCatalog);
 
         // Assert
         Assert.NotNull(integrityMethod);
@@ -19,7 +19,7 @@ public class IntegrityMethodTest : BaseModelTestClass
     public void IntegrityMethod_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var integrityMethod = new TestIntegrityMethod(TestSpdxIdFactory);
+        var integrityMethod = new TestIntegrityMethod(TestSpdxCatalog);
 
         const string expected = """
                                 {
@@ -39,7 +39,7 @@ public class IntegrityMethodTest : BaseModelTestClass
     public void IntegrityMethod_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var integrityMethod = new TestIntegrityMethod(TestSpdxIdFactory)
+        var integrityMethod = new TestIntegrityMethod(TestSpdxCatalog)
         {
             Comment = "Test comment"
         };

@@ -9,9 +9,9 @@ public class RelationshipTest : BaseModelTestClass
     public void BrandNew_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var to = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
@@ -37,9 +37,9 @@ public class RelationshipTest : BaseModelTestClass
     public void FullyPopulated_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var to = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to])
         {
             Comment = "TestComment",
@@ -80,8 +80,8 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_AtLeastOne_To()
     {
         // Arrange
-        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxCatalog, TestCreationInfo, RelationshipType.describes,
             from, []); // Note that the to array is empty
 
         // Act
@@ -96,9 +96,9 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_From()
     {
         // Arrange
-        var from = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var to = new TestElement(TestSpdxIdFactory, TestCreationInfo);
-        var relationship = new Relationship(TestSpdxIdFactory, TestCreationInfo, RelationshipType.describes,
+        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var to = new TestElement(TestSpdxCatalog, TestCreationInfo);
+        var relationship = new Relationship(TestSpdxCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to]);
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.

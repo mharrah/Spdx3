@@ -10,7 +10,7 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class TestBaseSpdxClassBadValidator : BaseSpdxClass
 {
     [SetsRequiredMembers]
-    public TestBaseSpdxClassBadValidator(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    public TestBaseSpdxClassBadValidator(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 

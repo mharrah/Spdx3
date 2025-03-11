@@ -18,8 +18,8 @@ public class LifecycleScopedRelationship : Relationship
     }
     
     [SetsRequiredMembers]
-    public LifecycleScopedRelationship(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo,
-        RelationshipType relationshipType, Element from, List<Element> to) : base(spdxIdFactory, creationInfo,
+    public LifecycleScopedRelationship(SpdxCatalog spdxCatalog, CreationInfo creationInfo,
+        RelationshipType relationshipType, Element from, List<Element> to) : base(spdxCatalog, creationInfo,
         relationshipType, from, to)
     {
     }

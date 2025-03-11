@@ -17,14 +17,14 @@ public class CdxPropertyEntry : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    public CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName, string cdxPropValue) : this(spdxIdFactory,
+    public CdxPropertyEntry(SpdxCatalog spdxCatalog, string cdxPropName, string cdxPropValue) : this(spdxCatalog,
         cdxPropName)
     {
         CdxPropValue = cdxPropValue;
     }
 
     [method: SetsRequiredMembers]
-    public CdxPropertyEntry(SpdxIdFactory spdxIdFactory, string cdxPropName) : base(spdxIdFactory)
+    public CdxPropertyEntry(SpdxCatalog spdxCatalog, string cdxPropName) : base(spdxCatalog)
     {
         CdxPropName = cdxPropName;
     }

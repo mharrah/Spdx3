@@ -14,8 +14,8 @@ public class CdxPropertiesExtension : Extension
     }
     
     [SetsRequiredMembers]
-    public CdxPropertiesExtension(SpdxIdFactory spdxIdFactory, IList<CdxPropertyEntry> cdxProperties) : base(
-        spdxIdFactory)
+    public CdxPropertiesExtension(SpdxCatalog spdxCatalog, IList<CdxPropertyEntry> cdxProperties) : base(
+        spdxCatalog)
     {
         if (cdxProperties.Count == 0)
         {

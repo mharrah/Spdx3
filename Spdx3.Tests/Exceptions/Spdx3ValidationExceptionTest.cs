@@ -10,7 +10,7 @@ public class Spdx3ValidationExceptionTest
     public void Constructor_ShouldSetMessage()
     {
         // Arrange
-        var cut = new TestBaseSpdxClass(new SpdxIdFactory());
+        var cut = new TestBaseSpdxClass(new SpdxCatalog());
 
         // Act
         var exception = new Spdx3ValidationException(cut, nameof(cut.SpdxId), "Some message");

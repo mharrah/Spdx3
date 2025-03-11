@@ -17,13 +17,13 @@ public class CreationInfo : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    public CreationInfo(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    public CreationInfo(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
         Created = DateTimeOffset.UtcNow;
     }
 
     [SetsRequiredMembers]
-    public CreationInfo(SpdxIdFactory spdxIdFactory, DateTimeOffset created) : base(spdxIdFactory)
+    public CreationInfo(SpdxCatalog spdxCatalog, DateTimeOffset created) : base(spdxCatalog)
     {
         Created = created;
     }

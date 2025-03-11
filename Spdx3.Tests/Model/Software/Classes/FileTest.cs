@@ -14,7 +14,7 @@ public class FileTest : BaseModelTestClass
     public void File_MinimalObject_SerializesCorrectly()
     {
         // Arrange
-        var file = new File(TestSpdxIdFactory, TestCreationInfo, "filename");
+        var file = new File(TestSpdxCatalog, TestCreationInfo, "filename");
 
         const string expected = """
                                 {
@@ -36,7 +36,7 @@ public class FileTest : BaseModelTestClass
     public void File_FullyPopulated_SerializesCorrectly()
     {
         // Arrange
-        var file = new File(TestSpdxIdFactory, TestCreationInfo, "filename")
+        var file = new File(TestSpdxCatalog, TestCreationInfo, "filename")
         {
             Comment = "Some comment",
             Description = "Some description",
@@ -48,20 +48,20 @@ public class FileTest : BaseModelTestClass
             ReleaseTime = PredictableDateTime,
             StandardName = "Some standard name",
             ValidUntilTime = PredictableDateTime,
-            SuppliedBy = new Agent(TestSpdxIdFactory, TestCreationInfo)
+            SuppliedBy = new Agent(TestSpdxCatalog, TestCreationInfo)
         };
         file.SupportLevel.Add(SupportType.noAssertion);
-        file.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
+        file.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
         file.AdditionalPurpose.Add(SoftwarePurpose.archive);
-        file.OriginatedBy.Add(new Agent(TestSpdxIdFactory, TestCreationInfo));
-        file.ContentIdentifier.Add(new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid,
+        file.OriginatedBy.Add(new Agent(TestSpdxCatalog, TestCreationInfo));
+        file.ContentIdentifier.Add(new ContentIdentifier(TestSpdxCatalog, ContentIdentifierType.gitoid,
             "some gitoid value"));
         file.AttributionText.Add("Some attribution text");
         file.AdditionalPurpose.Add(SoftwarePurpose.other);
-        file.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.bower));
-        file.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.cpe23,
+        file.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.bower));
+        file.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        file.Extension.Add(new TestExtension(TestSpdxIdFactory));
+        file.Extension.Add(new TestExtension(TestSpdxCatalog));
 
         const string expected = """
                                 {
@@ -125,7 +125,7 @@ public class FileTest : BaseModelTestClass
         // Act
         var exception = Record.Exception(() =>
 #pragma warning disable CS8604 // Possible null reference argument.
-                new File(TestSpdxIdFactory, TestCreationInfo, nullObject)
+                new File(TestSpdxCatalog, TestCreationInfo, nullObject)
 #pragma warning restore CS8604 // Possible null reference argument.
         );
 
@@ -139,7 +139,7 @@ public class FileTest : BaseModelTestClass
     {
         // Arrange
         string? nullObject = null;
-        var file = new File(TestSpdxIdFactory, TestCreationInfo, "filename");
+        var file = new File(TestSpdxCatalog, TestCreationInfo, "filename");
 
         // Act
         var exception = Record.Exception(() =>

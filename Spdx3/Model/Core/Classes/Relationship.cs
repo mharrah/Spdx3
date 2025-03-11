@@ -26,11 +26,11 @@ public class Relationship : Element
     ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
     /// </summary>
     [method: SetsRequiredMembers]
-    public Relationship(SpdxIdFactory spdxIdFactory,
+    public Relationship(SpdxCatalog spdxCatalog,
         CreationInfo creationInfo,
         RelationshipType relationshipType,
         Element from,
-        List<Element> to) : base(spdxIdFactory, creationInfo)
+        List<Element> to) : base(spdxCatalog, creationInfo)
     {
         From = from;
         To = to;

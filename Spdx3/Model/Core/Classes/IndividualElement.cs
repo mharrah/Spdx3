@@ -16,7 +16,7 @@ public class IndividualElement : Element
     }
     
     [SetsRequiredMembers]
-    public IndividualElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public IndividualElement(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

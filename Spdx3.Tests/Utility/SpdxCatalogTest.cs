@@ -3,13 +3,13 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Utility;
 
-public class SpdxIdFactoryTest
+public class SpdxCatalogTest
 {
     [Fact]
     public void SpdxIdFactory_NewGeneratesId()
     {
-        var spdxIdFactory = new SpdxIdFactory();
-        var id = spdxIdFactory.New(typeof(TestBaseSpdxClass));
+        var spdxIdFactory = new SpdxCatalog();
+        var id = spdxIdFactory.NewId(typeof(TestBaseSpdxClass));
         Assert.NotNull(id);
         Assert.Matches("urn:TestBaseSpdxClass:[0-9a-f]{3}", id);
     }
@@ -17,8 +17,8 @@ public class SpdxIdFactoryTest
     [Fact]
     public void SpdxIdFactory_NewGeneratesAnother()
     {
-        var spdxIdFactory = new SpdxIdFactory();
-        var id = spdxIdFactory.New(typeof(string));
+        var spdxIdFactory = new SpdxCatalog();
+        var id = spdxIdFactory.NewId(typeof(string));
         Assert.NotNull(id);
         Assert.Matches("urn:String:[0-9a-f]{3}", id);
     }
@@ -26,9 +26,9 @@ public class SpdxIdFactoryTest
     [Fact]
     public void SpdxIdFactory_NewGeneratesDifferentIdsEachTime()
     {
-        var spdxIdFactory = new SpdxIdFactory();
-        var id1 = spdxIdFactory.New(typeof(TestBaseSpdxClass));
-        var id2 = spdxIdFactory.New(typeof(TestBaseSpdxClass));
+        var spdxIdFactory = new SpdxCatalog();
+        var id1 = spdxIdFactory.NewId(typeof(TestBaseSpdxClass));
+        var id2 = spdxIdFactory.NewId(typeof(TestBaseSpdxClass));
         Assert.NotEqual(id1, id2);
     }
 }

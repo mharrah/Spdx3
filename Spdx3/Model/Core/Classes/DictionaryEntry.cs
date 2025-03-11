@@ -18,13 +18,13 @@ public class DictionaryEntry : BaseSpdxClass
     }
     
     [SetsRequiredMembers]
-    public DictionaryEntry(SpdxIdFactory spdxIdFactory, string key) : base(spdxIdFactory)
+    public DictionaryEntry(SpdxCatalog spdxCatalog, string key) : base(spdxCatalog)
     {
         Key = key;
     }
 
     [SetsRequiredMembers]
-    public DictionaryEntry(SpdxIdFactory spdxIdFactory, string key, string? value) : this(spdxIdFactory, key)
+    public DictionaryEntry(SpdxCatalog spdxCatalog, string key, string? value) : this(spdxCatalog, key)
     {
         Value = value;
     }

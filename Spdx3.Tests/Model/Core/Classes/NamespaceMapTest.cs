@@ -7,7 +7,7 @@ public class NamespaceMapTest : BaseModelTestClass
     [Fact]
     public void NamespaceMap_Basics()
     {
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace");
 
         // Assert
         Assert.NotNull(namespaceMap);
@@ -20,7 +20,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace")
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace")
         {
             Prefix = "TestPrefix",
             Namespace = "TestNamespace"
@@ -45,7 +45,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenMissing_Prefix()
     {
         // Arrange
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace");
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace");
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         namespaceMap.Prefix = null;
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
@@ -63,7 +63,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenEmpty_Prefix()
     {
         // Arrange
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace")
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace")
         {
             Prefix = "",
             Namespace = "TestNamespace"
@@ -81,7 +81,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenMissing_Namespace()
     {
         // Arrange
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace")
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace")
         {
             Prefix = "TestPrefix"
         };
@@ -101,7 +101,7 @@ public class NamespaceMapTest : BaseModelTestClass
     public void NamespaceMap_FailsValidation_WhenEmpty_Namespace()
     {
         // Arrange
-        var namespaceMap = new NamespaceMap(TestSpdxIdFactory, "TestPrefix", "TestNamespace")
+        var namespaceMap = new NamespaceMap(TestSpdxCatalog, "TestPrefix", "TestNamespace")
         {
             Prefix = "TestPrefix",
             Namespace = ""

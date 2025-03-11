@@ -13,7 +13,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
     public void SoftwareArtifact_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var softwareArtifact = new TestSoftwareArtifact(TestSpdxIdFactory, TestCreationInfo);
+        var softwareArtifact = new TestSoftwareArtifact(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -34,7 +34,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
     public void SoftwareArtifact_FullyPopulated_ShouldSerialize()
     {
         // Arrange
-        var softwareArtifact = new TestSoftwareArtifact(TestSpdxIdFactory, TestCreationInfo)
+        var softwareArtifact = new TestSoftwareArtifact(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "Some comment",
             Description = "Some description",
@@ -46,20 +46,20 @@ public class SoftwareArtifactTest : BaseModelTestClass
             ReleaseTime = PredictableDateTime,
             StandardName = "Some standard name",
             ValidUntilTime = PredictableDateTime,
-            SuppliedBy = new Agent(TestSpdxIdFactory, TestCreationInfo)
+            SuppliedBy = new Agent(TestSpdxCatalog, TestCreationInfo)
         };
         softwareArtifact.SupportLevel.Add(SupportType.noAssertion);
-        softwareArtifact.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
+        softwareArtifact.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.archive);
-        softwareArtifact.OriginatedBy.Add(new Agent(TestSpdxIdFactory, TestCreationInfo));
-        softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestSpdxIdFactory, ContentIdentifierType.gitoid,
+        softwareArtifact.OriginatedBy.Add(new Agent(TestSpdxCatalog, TestCreationInfo));
+        softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestSpdxCatalog, ContentIdentifierType.gitoid,
             "some gitoid value"));
         softwareArtifact.AttributionText.Add("Some attribution text");
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.other);
-        softwareArtifact.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.bower));
-        softwareArtifact.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.cpe23,
+        softwareArtifact.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.bower));
+        softwareArtifact.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        softwareArtifact.Extension.Add(new TestExtension(TestSpdxIdFactory));
+        softwareArtifact.Extension.Add(new TestExtension(TestSpdxCatalog));
         const string expected = """
                                 {
                                   "additionalPurpose": [

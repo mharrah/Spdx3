@@ -9,7 +9,7 @@ public class BundleTest : BaseModelTestClass
     public void BrandNew_Bundle_SerializesProperly()
     {
         // Arrange
-        var bundle = new Bundle(TestSpdxIdFactory, TestCreationInfo);
+        var bundle = new Bundle(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,7 +29,7 @@ public class BundleTest : BaseModelTestClass
     public void FullyPopulated_Bundle_SerializesProperly()
     {
         // Arrange
-        var bundle = new Bundle(TestSpdxIdFactory, TestCreationInfo)
+        var bundle = new Bundle(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -37,9 +37,9 @@ public class BundleTest : BaseModelTestClass
         };
         bundle.Context.Add("Some context");
         bundle.Context.Add("More context");
-        bundle.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
-        bundle.Element.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
-        bundle.RootElement.Add(new TestElement(TestSpdxIdFactory, TestCreationInfo));
+        bundle.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
+        bundle.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
+        bundle.RootElement.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
         bundle.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """

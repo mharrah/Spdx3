@@ -9,10 +9,10 @@ public class BaseSpdxClassTest : BaseModelTestClass
     {
         // ARRANGE
         // Get a class using the factory in the base testing class
-        var baseClass1 = new TestBaseSpdxClass(TestSpdxIdFactory);
+        var baseClass1 = new TestBaseSpdxClass(TestSpdxCatalog);
 
         // Get another class from a separate factory
-        var baseClass2 = new TestBaseSpdxClass(TestSpdxIdFactory);
+        var baseClass2 = new TestBaseSpdxClass(TestSpdxCatalog);
 
         // ASSERT
         Assert.NotNull(baseClass1);
@@ -24,7 +24,7 @@ public class BaseSpdxClassTest : BaseModelTestClass
     public void Validate_Throws_If_PropertyName_Is_Wrong()
     {
         // Arrange
-        var baseClass1 = new TestBaseSpdxClassBadValidator(TestSpdxIdFactory);
+        var baseClass1 = new TestBaseSpdxClassBadValidator(TestSpdxCatalog);
         
         // Act
         var exception = Record.Exception(() => baseClass1.Validate());

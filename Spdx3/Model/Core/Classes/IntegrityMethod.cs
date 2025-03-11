@@ -17,7 +17,7 @@ public abstract class IntegrityMethod : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    protected IntegrityMethod(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    protected IntegrityMethod(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 

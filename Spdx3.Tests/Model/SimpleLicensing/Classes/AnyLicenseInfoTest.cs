@@ -11,7 +11,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void BrandNew_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo);
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -31,18 +31,18 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxIdFactory, TestCreationInfo)
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        anyLicenseInfo.Extension.Add(new TestExtension(TestSpdxIdFactory));
+        anyLicenseInfo.Extension.Add(new TestExtension(TestSpdxCatalog));
         anyLicenseInfo.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "example@example.com"));
-        anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestSpdxIdFactory, ExternalRefType.altDownloadLocation));
-        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
+            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
+        anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
+        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
 
 
         const string expected = """

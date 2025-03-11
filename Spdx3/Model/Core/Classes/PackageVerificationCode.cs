@@ -18,8 +18,8 @@ public class PackageVerificationCode : IntegrityMethod
     }
     
     [SetsRequiredMembers]
-    public PackageVerificationCode(SpdxIdFactory spdxIdFactory, HashAlgorithm algorithm, string hashValue) :
-        base(spdxIdFactory)
+    public PackageVerificationCode(SpdxCatalog spdxCatalog, HashAlgorithm algorithm, string hashValue) :
+        base(spdxCatalog)
     {
         Algorithm = algorithm;
         HashValue = hashValue;

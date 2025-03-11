@@ -18,7 +18,7 @@ public class ExternalRef : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    public ExternalRef(SpdxIdFactory spdxIdFactory, ExternalRefType externalRefType) : base(spdxIdFactory)
+    public ExternalRef(SpdxCatalog spdxCatalog, ExternalRefType externalRefType) : base(spdxCatalog)
     {
         ExternalRefType = externalRefType;
     }

@@ -15,7 +15,7 @@ public class Tool : Element
     }
     
     [SetsRequiredMembers]
-    public Tool(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Tool(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

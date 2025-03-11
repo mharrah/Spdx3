@@ -19,7 +19,7 @@ public abstract class ElementCollection : Element
     
     
     [SetsRequiredMembers]
-    protected ElementCollection(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory,
+    protected ElementCollection(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
         creationInfo)
     {
     }

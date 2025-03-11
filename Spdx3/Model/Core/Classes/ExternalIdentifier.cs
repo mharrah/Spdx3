@@ -19,8 +19,8 @@ public class ExternalIdentifier : BaseSpdxClass
     }
     
     [SetsRequiredMembers]
-    public ExternalIdentifier(SpdxIdFactory spdxIdFactory, ExternalIdentifierType externalIdentifierType,
-        string identifier) : base(spdxIdFactory)
+    public ExternalIdentifier(SpdxCatalog spdxCatalog, ExternalIdentifierType externalIdentifierType,
+        string identifier) : base(spdxCatalog)
     {
         ExternalIdentifierType = externalIdentifierType;
         Identifier = identifier;

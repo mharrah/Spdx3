@@ -18,7 +18,7 @@ public class SimpleLicensingText : Element
     }
     
     [SetsRequiredMembers]
-    public SimpleLicensingText(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string licenseText) : base(spdxIdFactory, creationInfo)
+    public SimpleLicensingText(SpdxCatalog spdxCatalog, CreationInfo creationInfo, string licenseText) : base(spdxCatalog, creationInfo)
     {
         LicenseText = licenseText;
     }

@@ -40,10 +40,11 @@ public abstract class BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    protected BaseSpdxClass(SpdxIdFactory spdxIdFactory)
+    protected BaseSpdxClass(SpdxCatalog spdxCatalog)
     {
         Type = SpdxUtility.SpdxTypeForClass(GetType());
-        SpdxId = spdxIdFactory.New(GetType());
+        SpdxId = spdxCatalog.NewId(GetType());
+        spdxCatalog.Items[SpdxId] = this;
     }
 
     [JsonPropertyName("type")]
@@ -57,6 +58,11 @@ public abstract class BaseSpdxClass
     /// <summary>
     ///     A little syntactic sugar.  Validates the object, and if ok, returns the object as a JSON string,
     ///     with the sort of formatting that's typical/expected for SPDX files.
+    /// 
+    ///     Note that this is not what is actually written to JSON files when the catalog is written to JSON.
+    /// 
+    ///     One major difference is that this method includes line breaks and indentation, where the output
+    ///     for a well-formed SPDX 3.0.1 document is supposed to have no line breaks. 
     /// </summary>
     /// <returns>A Json representation of this object</returns>
     public string ToJson()

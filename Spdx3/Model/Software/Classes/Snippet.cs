@@ -17,7 +17,7 @@ public class Snippet : SoftwareArtifact
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public Snippet(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, File snippetFromFile) : base(spdxIdFactory,
+    public Snippet(SpdxCatalog spdxCatalog, CreationInfo creationInfo, File snippetFromFile) : base(spdxCatalog,
         creationInfo)
     {
         SnippetFromFile = snippetFromFile;

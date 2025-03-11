@@ -16,7 +16,7 @@ public class NoneElement : Element
     }
     
     [SetsRequiredMembers]
-    public NoneElement(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public NoneElement(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
         SpdxId = "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement";
     }

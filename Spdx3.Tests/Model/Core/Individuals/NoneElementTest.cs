@@ -11,7 +11,7 @@ public class NoneElementTest : BaseModelTestClass
         const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement";
             
         // Act
-        var noneElement = new NoneElement(TestSpdxIdFactory, TestCreationInfo);
+        var noneElement = new NoneElement(TestSpdxCatalog, TestCreationInfo);
         
         // Assert
         Assert.Equal(expected, noneElement.SpdxId);

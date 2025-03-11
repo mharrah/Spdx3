@@ -15,7 +15,7 @@ public abstract class Extension : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    protected Extension(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    protected Extension(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 }

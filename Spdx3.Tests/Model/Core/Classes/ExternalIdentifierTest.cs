@@ -10,7 +10,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
     {
         // Arrange
         var externalIdentifier =
-            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.email, "email@example.com");
+            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "email@example.com");
 
         const string expected = """
                                 {
@@ -33,7 +33,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
     {
         // Arrange
         var externalIdentifier =
-            new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, "TestIdentity")
+            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.gitoid, "TestIdentity")
             {
                 Comment = "Test comment",
                 IssuingAuthority = "testRef"
@@ -66,7 +66,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
     {
         // Arrange
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        var externalIdentifier = new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, null);
+        var externalIdentifier = new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.gitoid, null);
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         externalIdentifier.Comment = "Test comment";
         externalIdentifier.IdentifierLocator.Add("testref");
@@ -84,7 +84,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
     public void ExternalIdentifier_FailsValidation_WhenEmpty_Identifier()
     {
         // Arrange
-        var externalIdentifier = new ExternalIdentifier(TestSpdxIdFactory, ExternalIdentifierType.gitoid, string.Empty)
+        var externalIdentifier = new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.gitoid, string.Empty)
         {
             Comment = "Test comment",
             IssuingAuthority = "testRef"

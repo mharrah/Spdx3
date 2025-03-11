@@ -8,7 +8,7 @@ public class SoftwareAgentTest : BaseModelTestClass
     public void BrandNew_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo);
+        var agent = new SoftwareAgent(TestSpdxCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,7 +28,7 @@ public class SoftwareAgentTest : BaseModelTestClass
     public void FullyPopulated_SoftwareAgent_SerializesProperly()
     {
         // Arrange
-        var agent = new SoftwareAgent(TestSpdxIdFactory, TestCreationInfo)
+        var agent = new SoftwareAgent(TestSpdxCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",

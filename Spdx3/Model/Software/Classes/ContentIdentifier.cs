@@ -15,8 +15,8 @@ public class ContentIdentifier : IntegrityMethod
     }
 
     [SetsRequiredMembers]
-    public ContentIdentifier(SpdxIdFactory spdxIdFactory, ContentIdentifierType contentIdentifierType,
-        string contentIdentifierValue) : base(spdxIdFactory)
+    public ContentIdentifier(SpdxCatalog spdxCatalog, ContentIdentifierType contentIdentifierType,
+        string contentIdentifierValue) : base(spdxCatalog)
     {
         ContentIdentifierType = contentIdentifierType;
         ContentIdentifierValue = contentIdentifierValue;

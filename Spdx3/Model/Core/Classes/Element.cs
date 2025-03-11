@@ -18,7 +18,7 @@ public abstract class Element : BaseSpdxClass
     
     
     [SetsRequiredMembers]
-    protected Element(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory)
+    protected Element(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog)
     {
         CreationInfo = creationInfo;
     }

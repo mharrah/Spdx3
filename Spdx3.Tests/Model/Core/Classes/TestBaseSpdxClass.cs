@@ -10,7 +10,7 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class TestBaseSpdxClass : BaseSpdxClass
 {
     [SetsRequiredMembers]
-    public TestBaseSpdxClass(SpdxIdFactory spdxIdFactory) : base(spdxIdFactory)
+    public TestBaseSpdxClass(SpdxCatalog spdxCatalog) : base(spdxCatalog)
     {
     }
 }

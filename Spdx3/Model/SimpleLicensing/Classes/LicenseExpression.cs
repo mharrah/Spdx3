@@ -30,7 +30,7 @@ public class LicenseExpression : AnyLicenseInfo
     }
     
     [SetsRequiredMembers]
-    public LicenseExpression(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, string licenseExpression) : base(spdxIdFactory, creationInfo)
+    public LicenseExpression(SpdxCatalog spdxCatalog, CreationInfo creationInfo, string licenseExpression) : base(spdxCatalog, creationInfo)
     {
         LicenseExpressionText = licenseExpression;
     }

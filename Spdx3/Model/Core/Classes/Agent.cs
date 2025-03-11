@@ -15,7 +15,7 @@ public class Agent : Element
     }
     
     [SetsRequiredMembers]
-    public Agent(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    public Agent(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 }

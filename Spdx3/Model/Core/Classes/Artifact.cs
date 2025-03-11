@@ -18,7 +18,7 @@ public abstract class Artifact : Element
     }
     
     [SetsRequiredMembers]
-    protected Artifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory, creationInfo)
+    protected Artifact(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
     {
     }
 

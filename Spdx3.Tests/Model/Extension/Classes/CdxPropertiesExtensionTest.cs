@@ -10,9 +10,9 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     public void CdxPropertiesExtension_MinimalObject_Serializes()
     {
         // Arrange
-        var cdxPropExt = new CdxPropertiesExtension(TestSpdxIdFactory,
-            [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
-        cdxPropExt.CdxProperty.Add(new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName", "TestPropertyValue"));
+        var cdxPropExt = new CdxPropertiesExtension(TestSpdxCatalog,
+            [new CdxPropertyEntry(TestSpdxCatalog, "TestPropertyName")]);
+        cdxPropExt.CdxProperty.Add(new CdxPropertyEntry(TestSpdxCatalog, "TestPropertyName", "TestPropertyValue"));
         const string expected = """
                                 {
                                   "cdxProperty": [
@@ -37,7 +37,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     public void CdxPropertiesExtension_Constructor_Throws_EmptyPropertiesList()
     {
         // Act
-        var expected = Record.Exception(() => new CdxPropertiesExtension(TestSpdxIdFactory, []));
+        var expected = Record.Exception(() => new CdxPropertiesExtension(TestSpdxCatalog, []));
 
         // Assert
         Assert.NotNull(expected);
@@ -47,8 +47,8 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     public void CdxPropertiesExtension_FailsValidation_When_NoProperties()
     {
         // Arrange
-        var cdxPropExt = new CdxPropertiesExtension(TestSpdxIdFactory,
-            [new CdxPropertyEntry(TestSpdxIdFactory, "TestPropertyName")]);
+        var cdxPropExt = new CdxPropertiesExtension(TestSpdxCatalog,
+            [new CdxPropertyEntry(TestSpdxCatalog, "TestPropertyName")]);
         cdxPropExt.CdxProperty.Clear();
 
         // Act

@@ -15,7 +15,7 @@ public abstract class SoftwareArtifact : Artifact
     }
 
     [SetsRequiredMembers]
-    protected SoftwareArtifact(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo) : base(spdxIdFactory,
+    protected SoftwareArtifact(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
         creationInfo)
     {
     }

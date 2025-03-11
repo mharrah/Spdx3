@@ -50,7 +50,7 @@ public class Build : Element
     }
     
     [SetsRequiredMembers]
-    public Build(SpdxIdFactory spdxIdFactory, CreationInfo creationInfo, Uri buildType) : base(spdxIdFactory, creationInfo)
+    public Build(SpdxCatalog spdxCatalog, CreationInfo creationInfo, Uri buildType) : base(spdxCatalog, creationInfo)
     {
         BuildType = buildType;
     }

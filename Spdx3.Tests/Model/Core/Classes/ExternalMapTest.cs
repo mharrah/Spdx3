@@ -7,7 +7,7 @@ public class ExternalMapTest : BaseModelTestClass
     [Fact]
     public void ExternalMap_Basics()
     {
-        var externalMap = new ExternalMap(TestSpdxIdFactory, "some-external-spdx-id");
+        var externalMap = new ExternalMap(TestSpdxCatalog, "some-external-spdx-id");
 
         // Assert
         Assert.NotNull(externalMap);
@@ -20,7 +20,7 @@ public class ExternalMapTest : BaseModelTestClass
     public void ExternalMap_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalMap = new ExternalMap(TestSpdxIdFactory, "some-external-spdx-id");
+        var externalMap = new ExternalMap(TestSpdxCatalog, "some-external-spdx-id");
 
         const string expected = """
                                 {
@@ -41,13 +41,13 @@ public class ExternalMapTest : BaseModelTestClass
     public void ExternalMap_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var externalMap = new ExternalMap(TestSpdxIdFactory, "some-external-spdx-id")
+        var externalMap = new ExternalMap(TestSpdxCatalog, "some-external-spdx-id")
         {
             ExternalSpdxId = "testref",
             LocationHint = "Test Location Hint",
-            DefiningArtifact = new TestArtifact(TestSpdxIdFactory, TestCreationInfo)
+            DefiningArtifact = new TestArtifact(TestSpdxCatalog, TestCreationInfo)
         };
-        externalMap.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxIdFactory));
+        externalMap.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
 
 
         const string expected = """
