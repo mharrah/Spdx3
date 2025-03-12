@@ -3,34 +3,34 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/12/2025 - 00:08:09 |
-| Coverage date: | 03/12/2025 - 00:08:08 |
+| Generated on: | 03/12/2025 - 21:28:58 |
+| Coverage date: | 03/12/2025 - 21:28:57 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 50 |
-| Files: | 50 |
-| **Line coverage:** | 79.6% (687 of 863) |
-| Covered lines: | 687 |
-| Uncovered lines: | 176 |
-| Coverable lines: | 863 |
-| Total lines: | 2217 |
-| **Branch coverage:** | 83.9% (157 of 187) |
-| Covered branches: | 157 |
-| Total branches: | 187 |
+| Classes: | 53 |
+| Files: | 53 |
+| **Line coverage:** | 80.3% (766 of 953) |
+| Covered lines: | 766 |
+| Uncovered lines: | 187 |
+| Coverable lines: | 953 |
+| Total lines: | 2518 |
+| **Branch coverage:** | 79.1% (178 of 225) |
+| Covered branches: | 178 |
+| Total branches: | 225 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 79.6%</summary>
+<details><summary>Spdx3 - 80.3%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**79.6%**|**83.9%**|
+|**Spdx3**|**80.3%**|**79.1%**|
 |Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3SerializationException|0%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
-|Spdx3.Model.BaseSpdxClass|100%|100%|
+|Spdx3.Model.BaseModelClass|100%|100%|
 |Spdx3.Model.Build.Classes.Build|85%||
 |Spdx3.Model.Core.Classes.Agent|50%||
 |Spdx3.Model.Core.Classes.Annotation|82.3%||
@@ -64,18 +64,21 @@
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
 |Spdx3.Model.SimpleLicensing.Classes.AnyLicenseInfo|50%||
-|Spdx3.Model.SimpleLicensing.Classes.LicenseExpression|70%||
-|Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText|75%||
+|Spdx3.Model.SimpleLicensing.Classes.LicenseExpression|72.7%||
+|Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText|76.9%||
 |Spdx3.Model.Software.Classes.ContentIdentifier|80%||
 |Spdx3.Model.Software.Classes.File|80%|83.3%|
 |Spdx3.Model.Software.Classes.Package|72.7%||
 |Spdx3.Model.Software.Classes.Sbom|57.1%||
 |Spdx3.Model.Software.Classes.Snippet|82.3%|100%|
 |Spdx3.Model.Software.Classes.SoftwareArtifact|72.7%||
-|Spdx3.Serialization.SpdxObjectConverterFactory|100%||
-|Spdx3.Serialization.SpdxObjectConvertor`1|80.5%|79.4%|
-|Spdx3.Serialization.SpdxWriter|0%||
-|Spdx3.Utility.SpdxCatalog|100%||
-|Spdx3.Utility.SpdxUtility|100%|100%|
+|Spdx3.Serialization.PhysicalSerialization|66.6%||
+|Spdx3.Serialization.SpdxModelConverter`1|78.6%|79.4%|
+|Spdx3.Serialization.SpdxModelConverterFactory|100%||
+|Spdx3.Serialization.SpdxWrapperConverter`1|71.4%|55.2%|
+|Spdx3.Serialization.SpdxWrapperConverterFactory|100%||
+|Spdx3.Serialization.Writer|61.5%||
+|Spdx3.Utility.Catalog|100%||
+|Spdx3.Utility.Naming|100%|100%|
 
 </details>
