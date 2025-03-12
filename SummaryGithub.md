@@ -3,17 +3,17 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/11/2025 - 23:14:20 |
-| Coverage date: | 03/11/2025 - 23:14:19 |
+| Generated on: | 03/12/2025 - 00:08:09 |
+| Coverage date: | 03/12/2025 - 00:08:08 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 49 |
-| Files: | 49 |
-| **Line coverage:** | 82.2% (704 of 856) |
-| Covered lines: | 704 |
-| Uncovered lines: | 152 |
-| Coverable lines: | 856 |
-| Total lines: | 2198 |
+| Classes: | 50 |
+| Files: | 50 |
+| **Line coverage:** | 79.6% (687 of 863) |
+| Covered lines: | 687 |
+| Uncovered lines: | 176 |
+| Coverable lines: | 863 |
+| Total lines: | 2217 |
 | **Branch coverage:** | 83.9% (157 of 187) |
 | Covered branches: | 157 |
 | Total branches: | 187 |
@@ -22,11 +22,11 @@
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 82.2%</summary>
+<details><summary>Spdx3 - 79.6%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**82.2%**|**83.9%**|
+|**Spdx3**|**79.6%**|**83.9%**|
 |Spdx3.Exceptions.Spdx3Exception|100%|100%|
 |Spdx3.Exceptions.Spdx3SerializationException|0%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -74,6 +74,7 @@
 |Spdx3.Model.Software.Classes.SoftwareArtifact|72.7%||
 |Spdx3.Serialization.SpdxObjectConverterFactory|100%||
 |Spdx3.Serialization.SpdxObjectConvertor`1|80.5%|79.4%|
+|Spdx3.Serialization.SpdxWriter|0%||
 |Spdx3.Utility.SpdxCatalog|100%||
 |Spdx3.Utility.SpdxUtility|100%|100%|
 
