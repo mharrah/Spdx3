@@ -12,26 +12,25 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class SpdxDocument : ElementCollection
 {
-    
+    [JsonPropertyName("import")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
+
+    [JsonPropertyName("dataLicense")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public AnyLicenseInfo? DataLicense { get; set; }
+
+    [JsonPropertyName("namespaceMap")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
+
     // protected internal no-parm constructor required for deserialization
     protected internal SpdxDocument()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public SpdxDocument(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public SpdxDocument(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
-
-    [JsonPropertyName("import")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
-
-    [JsonPropertyName("dataLicense")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public AnyLicenseInfo? DataLicense { get; set; }
-
-    [JsonPropertyName("namespaceMap")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
 }

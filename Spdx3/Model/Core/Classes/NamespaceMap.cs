@@ -9,27 +9,27 @@ namespace Spdx3.Model.Core.Classes;
 ///     A mapping between prefixes and namespace partial URIs.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/NamespaceMap/
 /// </summary>
-public class NamespaceMap : BaseSpdxClass
+public class NamespaceMap : BaseModelClass
 {
+    [JsonPropertyName("prefix")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string Prefix { get; set; }
+
+    [JsonPropertyName("namespace")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string Namespace { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal NamespaceMap()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public NamespaceMap(SpdxCatalog spdxCatalog, string prefix, string @namespace) : base(spdxCatalog)
+    public NamespaceMap(Catalog catalog, string prefix, string @namespace) : base(catalog)
     {
         Prefix = prefix;
         Namespace = @namespace;
     }
-
-    [JsonPropertyName("prefix")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string Prefix { get; set; }
-
-    [JsonPropertyName("namespace")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string Namespace { get; set; }
 
     public override void Validate()
     {

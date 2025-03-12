@@ -8,7 +8,7 @@ public class PackageTest : BaseModelTestClass
     public void Package_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var package = new Package(TestSpdxCatalog, TestCreationInfo);
+        var package = new Package(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",

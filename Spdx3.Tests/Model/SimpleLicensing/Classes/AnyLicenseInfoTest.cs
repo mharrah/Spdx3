@@ -11,7 +11,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void BrandNew_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxCatalog, TestCreationInfo);
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -31,18 +31,18 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestSpdxCatalog, TestCreationInfo)
+        var anyLicenseInfo = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        anyLicenseInfo.Extension.Add(new TestExtension(TestSpdxCatalog));
+        anyLicenseInfo.Extension.Add(new TestExtension(TestCatalog));
         anyLicenseInfo.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
-        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
+        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
 
 
         const string expected = """

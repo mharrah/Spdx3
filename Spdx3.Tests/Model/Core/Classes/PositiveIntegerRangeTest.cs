@@ -7,7 +7,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     [Fact]
     public void PositiveIntegerRange_Basics()
     {
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Assert
         Assert.NotNull(positiveIntegerRange);
@@ -20,7 +20,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
         const string expected = """
                                 {
                                   "beginIntegerRange": 1,
@@ -44,7 +44,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         {
             // ReSharper disable once ObjectCreationAsStatement
 #pragma warning disable CA1806
-            new PositiveIntegerRange(TestSpdxCatalog, 0, 5);
+            new PositiveIntegerRange(TestCatalog, 0, 5);
 #pragma warning restore CA1806
         });
         Assert.NotNull(exception);
@@ -58,7 +58,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         {
             // ReSharper disable once ObjectCreationAsStatement
 #pragma warning disable CA1806
-            new PositiveIntegerRange(TestSpdxCatalog, 8, 5);
+            new PositiveIntegerRange(TestCatalog, 8, 5);
 #pragma warning restore CA1806
         });
         Assert.NotNull(exception);
@@ -72,7 +72,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         {
             // ReSharper disable once ObjectCreationAsStatement
 #pragma warning disable CA1806
-            new PositiveIntegerRange(TestSpdxCatalog, -1, 5);
+            new PositiveIntegerRange(TestCatalog, -1, 5);
 #pragma warning restore CA1806
         });
         Assert.NotNull(exception);
@@ -82,7 +82,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_CantUse_NegativeInteger_Start()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = -5);
@@ -97,7 +97,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_CantUse_Zero_Start()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = 0);
@@ -112,7 +112,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_Start_CantExceed_End()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.BeginIntegerRange = 6);
@@ -126,7 +126,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_CantUse_NegativeInteger_End()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = -5);
@@ -141,7 +141,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_CantUse_Zero_End()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 1, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = 0);
@@ -156,7 +156,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
     public void PositiveIntegerRange_End_CantBeLessThan_Start()
     {
         // Arrange
-        var positiveIntegerRange = new PositiveIntegerRange(TestSpdxCatalog, 2, 5);
+        var positiveIntegerRange = new PositiveIntegerRange(TestCatalog, 2, 5);
 
         // Act
         var exception = Record.Exception(() => positiveIntegerRange.EndIntegerRange = 1);

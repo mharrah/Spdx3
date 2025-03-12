@@ -13,9 +13,9 @@ public class Person : Agent
     protected internal Person()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Person(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Person(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

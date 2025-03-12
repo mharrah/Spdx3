@@ -13,9 +13,9 @@ public class Tool : Element
     protected internal Tool()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Tool(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Tool(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

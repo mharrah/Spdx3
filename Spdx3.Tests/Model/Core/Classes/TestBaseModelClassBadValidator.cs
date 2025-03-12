@@ -5,12 +5,12 @@ using Spdx3.Utility;
 namespace Spdx3.Tests.Model.Core.Classes;
 
 /// <summary>
-///     Concrete implementation of the abstract BaseSpdxClass class, so it can be tested
+///     Concrete implementation of the abstract BaseModelClass class, so it can be tested
 /// </summary>
-public class TestBaseSpdxClassBadValidator : BaseSpdxClass
+public class TestBaseModelClassBadValidator : BaseModelClass
 {
     [SetsRequiredMembers]
-    public TestBaseSpdxClassBadValidator(SpdxCatalog spdxCatalog) : base(spdxCatalog)
+    public TestBaseModelClassBadValidator(Catalog catalog) : base(catalog)
     {
     }
 

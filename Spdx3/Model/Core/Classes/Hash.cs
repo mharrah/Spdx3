@@ -12,25 +12,25 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Hash : IntegrityMethod
 {
+    [JsonPropertyName("algorithm")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required HashAlgorithm Algorithm { get; set; }
+
+    [JsonPropertyName("hashValue")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string HashValue { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal Hash()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Hash(SpdxCatalog spdxCatalog, HashAlgorithm algorithm, string hashValue) : base(spdxCatalog)
+    public Hash(Catalog catalog, HashAlgorithm algorithm, string hashValue) : base(catalog)
     {
         Algorithm = algorithm;
         HashValue = hashValue;
     }
-
-    [JsonPropertyName("algorithm")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required HashAlgorithm Algorithm { get; set; }
-
-    [JsonPropertyName("hashValue")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string HashValue { get; set; }
 
     public override void Validate()
     {

@@ -8,7 +8,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
     public void Extension_MinimalObject_Serializes()
     {
         // Arrange
-        var cdxProp = new CdxPropertyEntry(TestSpdxCatalog, "TestPropertyName");
+        var cdxProp = new CdxPropertyEntry(TestCatalog, "TestPropertyName");
         const string expected = """
                                 {
                                   "cdxPropName": "TestPropertyName",
@@ -29,7 +29,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
     public void Extension_FullyPopulatedObject_Serializes()
     {
         // Arrange
-        var cdxProp = new CdxPropertyEntry(TestSpdxCatalog, "TestPropertyName", "test value");
+        var cdxProp = new CdxPropertyEntry(TestCatalog, "TestPropertyName", "test value");
         const string expected = """
                                 {
                                   "cdxPropName": "TestPropertyName",

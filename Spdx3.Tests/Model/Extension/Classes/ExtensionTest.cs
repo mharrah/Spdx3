@@ -6,7 +6,7 @@ public class ExtensionTest : BaseModelTestClass
     public void Extension_MinimalObject_Serializes()
     {
         // Arrange
-        var extension = new TestExtension(TestSpdxCatalog);
+        var extension = new TestExtension(TestCatalog);
         const string expected = """
                                 {
                                   "type": "extension_TestExtension",

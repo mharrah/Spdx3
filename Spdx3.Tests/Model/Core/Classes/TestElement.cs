@@ -17,7 +17,7 @@ public class TestElement : Element
     }
     
     [SetsRequiredMembers]
-    public TestElement(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public TestElement(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

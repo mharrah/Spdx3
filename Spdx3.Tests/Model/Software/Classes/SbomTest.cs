@@ -13,7 +13,7 @@ public class SbomTest : BaseModelTestClass
     public void Sbom_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var sbom = new Sbom(TestSpdxCatalog, TestCreationInfo);
+        var sbom = new Sbom(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -33,21 +33,21 @@ public class SbomTest : BaseModelTestClass
     public void Sbom_FullyPopulatedObject_ShouldSerialize()
     {
         // Arrange
-        var sbom = new Sbom(TestSpdxCatalog, TestCreationInfo)
+        var sbom = new Sbom(TestCatalog, TestCreationInfo)
         {
             Comment = "Some comment",
             Description = "Some description",
             Name = "Some name",
             Summary = "Some summary"
         };
-        sbom.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email,
+        sbom.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
             "example@example.com"));
-        sbom.Extension.Add(new TestExtension(TestSpdxCatalog));
-        sbom.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.other));
-        sbom.VerifiedUsing.Add(new Hash(TestSpdxCatalog, HashAlgorithm.sha1, "test hashvalue"));
-        sbom.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
+        sbom.Extension.Add(new TestExtension(TestCatalog));
+        sbom.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.other));
+        sbom.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.sha1, "test hashvalue"));
+        sbom.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
         sbom.Context.Add("Some context");
-        sbom.Extension.Add(new TestExtension(TestSpdxCatalog));
+        sbom.Extension.Add(new TestExtension(TestCatalog));
         sbom.SbomType.Add(SbomType.build);
         const string expected = """
                                 {

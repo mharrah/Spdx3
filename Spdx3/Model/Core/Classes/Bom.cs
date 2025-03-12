@@ -13,9 +13,9 @@ public class Bom : Bundle
     protected internal Bom()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Bom(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Bom(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

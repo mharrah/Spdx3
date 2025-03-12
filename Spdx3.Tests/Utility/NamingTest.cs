@@ -8,21 +8,21 @@ using File = Spdx3.Model.Software.Classes.File;
 
 namespace Spdx3.Tests.Utility;
 
-public class SpdxUtilityTest
+public class NamingTest
 {
     [Fact]
     public void SpdxUtility_SpdxTypeForClass_ShouldReturnSpdxTypes()
     {
-        Assert.Equal("Annotation",  SpdxUtility.SpdxTypeForClass(typeof(Annotation)));
-        Assert.Equal("simplelicensing_LicenseExpression",  SpdxUtility.SpdxTypeForClass(typeof(LicenseExpression)));
-        Assert.Equal("software_File",  SpdxUtility.SpdxTypeForClass(typeof(File)));
-        Assert.Equal("extension_CdxPropertiesExtension",  SpdxUtility.SpdxTypeForClass(typeof(CdxPropertiesExtension)));
+        Assert.Equal("Annotation",  Naming.SpdxTypeForClass(typeof(Annotation)));
+        Assert.Equal("simplelicensing_LicenseExpression",  Naming.SpdxTypeForClass(typeof(LicenseExpression)));
+        Assert.Equal("software_File",  Naming.SpdxTypeForClass(typeof(File)));
+        Assert.Equal("extension_CdxPropertiesExtension",  Naming.SpdxTypeForClass(typeof(CdxPropertiesExtension)));
     }
     
     [Fact]
     public void SpdxUtility_SpdxTypeForClass_ShouldThrowForNonSpdxTypes()
     {
-        var ex = Record.Exception(() =>  SpdxUtility.SpdxTypeForClass(typeof(string)));
+        var ex = Record.Exception(() =>  Naming.SpdxTypeForClass(typeof(string)));
 
         Assert.NotNull(ex);
         Assert.IsType<Spdx3Exception>(ex);
@@ -34,7 +34,7 @@ public class SpdxUtilityTest
     public void SpdxUtility_SpdxTypeForClass_ShouldThrowForTypeInEmptyNamespace()
     {
         var t = typeof(TestClassWithEmptyNamespace);
-        var ex = Record.Exception(() =>  SpdxUtility.SpdxTypeForClass(t));
+        var ex = Record.Exception(() =>  Naming.SpdxTypeForClass(t));
 
         Assert.NotNull(ex);
         Assert.IsType<Spdx3Exception>(ex);

@@ -8,7 +8,7 @@ public class PersonTest : BaseModelTestClass
     public void BrandNew_Person_SerializesProperly()
     {
         // Arrange
-        var pPerson = new Person(TestSpdxCatalog, TestCreationInfo);
+        var pPerson = new Person(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,7 +28,7 @@ public class PersonTest : BaseModelTestClass
     public void FullyPopulated_Person_SerializesProperly()
     {
         // Arrange
-        var person = new Person(TestSpdxCatalog, TestCreationInfo)
+        var person = new Person(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",

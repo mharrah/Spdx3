@@ -8,7 +8,7 @@ public class OrganizationTest : BaseModelTestClass
     public void BrandNew_Organization_SerializesProperly()
     {
         // Arrange
-        var org = new Organization(TestSpdxCatalog, TestCreationInfo);
+        var org = new Organization(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,7 +28,7 @@ public class OrganizationTest : BaseModelTestClass
     public void FullyPopulated_Organization_SerializesProperly()
     {
         // Arrange
-        var org = new Organization(TestSpdxCatalog, TestCreationInfo)
+        var org = new Organization(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",

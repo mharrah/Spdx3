@@ -7,30 +7,31 @@ using Spdx3.Utility;
 namespace Spdx3.Model.SimpleLicensing.Classes;
 
 /// <summary>
-/// An SPDX Element containing an SPDX license expression string.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/SimpleLicensing/Classes/LicenseExpression/
+///     An SPDX Element containing an SPDX license expression string.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/SimpleLicensing/Classes/LicenseExpression/
 /// </summary>
 public class LicenseExpression : AnyLicenseInfo
 {
     [JsonPropertyName("licenseExpression")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string LicenseExpressionText { get; set; }
-    
+
     [JsonPropertyName("customIdToUri")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DictionaryEntry? CustomIdToUri { get; set; }
-    
+
     [JsonPropertyName("licenseListVersion")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? LicenseListVersion { get; set; }
- 
+
     // protected internal no-parm constructor required for deserialization
     protected internal LicenseExpression()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public LicenseExpression(SpdxCatalog spdxCatalog, CreationInfo creationInfo, string licenseExpression) : base(spdxCatalog, creationInfo)
+    public LicenseExpression(Catalog catalog, CreationInfo creationInfo, string licenseExpression) : base(catalog,
+        creationInfo)
     {
         LicenseExpressionText = licenseExpression;
     }

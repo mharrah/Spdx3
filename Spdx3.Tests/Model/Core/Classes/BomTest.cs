@@ -9,7 +9,7 @@ public class BomTest : BaseModelTestClass
     public void BrandNew_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = new Bom(TestSpdxCatalog, TestCreationInfo);
+        var bom = new Bom(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -29,7 +29,7 @@ public class BomTest : BaseModelTestClass
     public void FullyPopulated_Bom_SerializesProperly()
     {
         // Arrange
-        var bom = new Bom(TestSpdxCatalog, TestCreationInfo)
+        var bom = new Bom(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -37,9 +37,9 @@ public class BomTest : BaseModelTestClass
         };
         bom.Context.Add("Some context");
         bom.Context.Add("More context");
-        bom.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        bom.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        bom.RootElement.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
+        bom.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        bom.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        bom.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
         bom.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """

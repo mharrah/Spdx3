@@ -11,17 +11,17 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Bundle : ElementCollection
 {
+    [JsonPropertyName("context")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<string> Context { get; } = new List<string>();
+
     // protected internal no-parm constructor required for deserialization
     protected internal Bundle()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Bundle(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Bundle(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
-
-    [JsonPropertyName("context")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<string> Context { get; } = new List<string>();
 }

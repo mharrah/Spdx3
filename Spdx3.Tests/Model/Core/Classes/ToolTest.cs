@@ -8,7 +8,7 @@ public class ToolTest : BaseModelTestClass
     public void BrandNew_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = new Tool(TestSpdxCatalog, TestCreationInfo);
+        var tool = new Tool(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,7 +28,7 @@ public class ToolTest : BaseModelTestClass
     public void FullyPopulated_Tool_SerializesProperly()
     {
         // Arrange
-        var tool = new Tool(TestSpdxCatalog, TestCreationInfo)
+        var tool = new Tool(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",

@@ -11,40 +11,40 @@ namespace Spdx3.Model.Core.Classes;
 ///     Element.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalIdentifier/
 /// </summary>
-public class ExternalIdentifier : BaseSpdxClass
+public class ExternalIdentifier : BaseModelClass
 {
+    [JsonPropertyName("comment")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? Comment { get; set; }
+
+    [JsonPropertyName("externalIdentifierType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required ExternalIdentifierType ExternalIdentifierType { get; set; }
+
+    [JsonPropertyName("identifier")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string Identifier { get; set; }
+
+    [JsonPropertyName("identifierLocator")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<string> IdentifierLocator { get; } = new List<string>();
+
+    [JsonPropertyName("issuingAuthority")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? IssuingAuthority { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal ExternalIdentifier()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public ExternalIdentifier(SpdxCatalog spdxCatalog, ExternalIdentifierType externalIdentifierType,
-        string identifier) : base(spdxCatalog)
+    public ExternalIdentifier(Catalog catalog, ExternalIdentifierType externalIdentifierType,
+        string identifier) : base(catalog)
     {
         ExternalIdentifierType = externalIdentifierType;
         Identifier = identifier;
     }
-
-    [JsonPropertyName("comment")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Comment { get; set; }
-
-    [JsonPropertyName("externalIdentifierType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required ExternalIdentifierType ExternalIdentifierType { get; set; }
-
-    [JsonPropertyName("identifier")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string Identifier { get; set; }
-
-    [JsonPropertyName("identifierLocator")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<string> IdentifierLocator { get; } = new List<string>();
-
-    [JsonPropertyName("issuingAuthority")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? IssuingAuthority { get; set; }
 
     public override void Validate()
     {

@@ -11,55 +11,53 @@ namespace Spdx3.Model.Core.Classes;
 ///     Describes a relationship between one or more elements.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
 /// </summary>
-
 public class Relationship : Element
 {
-    
+    [JsonPropertyName("from")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required Element From { get; set; }
+
+    [JsonPropertyName("to")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<Element> To { get; set; }
+
+    [JsonPropertyName("relationshipType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required RelationshipType RelationshipType { get; set; }
+
+    [JsonPropertyName("completeness")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public RelationshipCompleteness? Completeness { get; set; }
+
+    [JsonPropertyName("startTime")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public DateTimeOffset? StartTime { get; set; }
+
+    [JsonPropertyName("endTime")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public DateTimeOffset? EndTime { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal Relationship()
     {
     }
-    
-    
+
+
     /// <summary>
     ///     Describes a relationship between one or more elements.
     ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
     /// </summary>
     [method: SetsRequiredMembers]
-    public Relationship(SpdxCatalog spdxCatalog,
+    public Relationship(Catalog catalog,
         CreationInfo creationInfo,
         RelationshipType relationshipType,
         Element from,
-        List<Element> to) : base(spdxCatalog, creationInfo)
+        List<Element> to) : base(catalog, creationInfo)
     {
         From = from;
         To = to;
         RelationshipType = relationshipType;
     }
-
-    [JsonPropertyName("from")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required Element From { get; set; }
-
-    [JsonPropertyName("to")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<Element> To { get; set; }
-
-    [JsonPropertyName("relationshipType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required RelationshipType RelationshipType { get; set; }
-
-    [JsonPropertyName("completeness")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public RelationshipCompleteness? Completeness { get; set; }
-
-    [JsonPropertyName("startTime")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public DateTimeOffset? StartTime { get; set; }
-
-    [JsonPropertyName("endTime")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public DateTimeOffset? EndTime { get; set; }
 
     public override void Validate()
     {

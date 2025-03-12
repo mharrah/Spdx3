@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Serialization;
@@ -12,31 +11,30 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseSpdxClass
+public abstract class BaseModelClass
 {
-    
+    [JsonPropertyName("type")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string Type { get; set; }
+
+    [JsonPropertyName("spdxId")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required string SpdxId { get; init; }
+
     // protected internal no-parm constructor required for deserialization
-    protected internal BaseSpdxClass()
+    protected internal BaseModelClass()
     {
     }
 
     [SetsRequiredMembers]
-    protected BaseSpdxClass(SpdxCatalog spdxCatalog)
+    protected BaseModelClass(Catalog catalog)
     {
-        Type = SpdxUtility.SpdxTypeForClass(GetType());
-        SpdxId = spdxCatalog.NewId(GetType());
-        spdxCatalog.Items[SpdxId] = this;
+        Type = Naming.SpdxTypeForClass(GetType());
+        SpdxId = catalog.NewId(GetType());
+        catalog.Items[SpdxId] = this;
     }
 
-    [JsonPropertyName("type")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string Type { get; set; }
 
-    [JsonPropertyName("spdxId")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required string SpdxId { get; init; }
-
-    
     public virtual void Validate()
     {
         ValidateRequiredProperty(nameof(SpdxId));
@@ -50,6 +48,7 @@ public abstract class BaseSpdxClass
         {
             throw new Spdx3ValidationException(this, $"'{propertyName}'", "No such property exists");
         }
+
         var propVal = propertyInfo.GetValue(this);
         if (propVal == null)
         {

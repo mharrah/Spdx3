@@ -11,7 +11,7 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class TestElementCollection : ElementCollection
 {
     [SetsRequiredMembers]
-    public TestElementCollection(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
+    public TestElementCollection(Catalog catalog, CreationInfo creationInfo) : base(catalog,
         creationInfo)
     {
     }

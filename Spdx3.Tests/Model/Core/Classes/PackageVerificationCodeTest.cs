@@ -9,7 +9,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_Basics()
     {
         // Act
-        var hash = new PackageVerificationCode(TestSpdxCatalog, HashAlgorithm.falcon, "TestHashValue");
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue");
 
         // Assert
         Assert.NotNull(hash);
@@ -22,7 +22,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var hash = new PackageVerificationCode(TestSpdxCatalog, HashAlgorithm.falcon, "TestHashValue")
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
             Algorithm = HashAlgorithm.falcon,
             HashValue = "TestHashValue"
@@ -47,7 +47,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var hash = new PackageVerificationCode(TestSpdxCatalog, HashAlgorithm.falcon, "TestHashValue")
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
             Algorithm = HashAlgorithm.falcon,
             HashValue = "TestHashValue"
@@ -79,7 +79,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_FailsValidation_WhenMissing_HashValue()
     {
         // Arrange
-        var hash = new PackageVerificationCode(TestSpdxCatalog, HashAlgorithm.falcon, "TestHashValue")
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
             Algorithm = HashAlgorithm.falcon
         };
@@ -99,7 +99,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
     public void PackageVerificationCode_FailsValidation_WhenEmpty_HashValue()
     {
         // Arrange
-        var hash = new PackageVerificationCode(TestSpdxCatalog, HashAlgorithm.falcon, "TestHashValue")
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
             Algorithm = HashAlgorithm.md5,
             HashValue = ""

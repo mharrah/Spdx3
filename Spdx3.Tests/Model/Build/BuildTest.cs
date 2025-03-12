@@ -11,7 +11,7 @@ public class BuildTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var element = new Spdx3.Model.Build.Classes.Build(TestSpdxCatalog, TestCreationInfo, new Uri("https://github.com"));
+        var element = new Spdx3.Model.Build.Classes.Build(TestCatalog, TestCreationInfo, new Uri("https://github.com"));
         const string expected = """
                                 {
                                   "buildType": "https://github.com/",
@@ -32,7 +32,7 @@ public class BuildTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var build = new Spdx3.Model.Build.Classes.Build(TestSpdxCatalog, TestCreationInfo, new Uri("https://github.com"))
+        var build = new Spdx3.Model.Build.Classes.Build(TestCatalog, TestCreationInfo, new Uri("https://github.com"))
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -42,16 +42,16 @@ public class BuildTest : BaseModelTestClass
             BuildEndTime = PredictableDateTime,
             BuildId = "TestBuildId"
         };
-        build.Extension.Add(new TestExtension(TestSpdxCatalog));
+        build.Extension.Add(new TestExtension(TestCatalog));
         build.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        build.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
-        build.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
-        build.ConfigSourceDigest.Add(new Hash(TestSpdxCatalog, HashAlgorithm.adler32, "hashval"));
+            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        build.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
+        build.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        build.ConfigSourceDigest.Add(new Hash(TestCatalog, HashAlgorithm.adler32, "hashval"));
         build.ConfigSourceEntrypoint.Add("TestEntryPoint");
         build.ConfigSourceUri.Add(new Uri("https://github.com"));
-        build.Environment.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
-        build.Parameter.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
+        build.Environment.Add(new DictionaryEntry(TestCatalog, "key", "val"));
+        build.Parameter.Add(new DictionaryEntry(TestCatalog, "key", "val"));
 
 
         const string expected = """

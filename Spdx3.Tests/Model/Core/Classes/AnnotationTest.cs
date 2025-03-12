@@ -10,8 +10,8 @@ public class AnnotationTest : BaseModelTestClass
     public void BrandNew_Element_HasRequiredFields()
     {
         // Arrange
-        var subject = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxCatalog, TestCreationInfo, AnnotationType.review, subject);
+        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
         
         // Assert
         Assert.Null(Record.Exception(() => annotation.Validate()));
@@ -22,8 +22,8 @@ public class AnnotationTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var subject = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxCatalog, TestCreationInfo, AnnotationType.review, subject);
+        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
                                   "subject": "urn:TestElement:402",
@@ -45,8 +45,8 @@ public class AnnotationTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var subject = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxCatalog, TestCreationInfo, AnnotationType.other, subject)
+        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.other, subject)
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -57,11 +57,11 @@ public class AnnotationTest : BaseModelTestClass
             Subject = subject,
             AnnotationType = AnnotationType.review
         };
-        annotation.Extension.Add(new TestExtension(TestSpdxCatalog));
+        annotation.Extension.Add(new TestExtension(TestCatalog));
         annotation.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        annotation.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.other));
-        annotation.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        annotation.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.other));
+        annotation.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
 
         const string expected = """
                                 {
@@ -96,15 +96,15 @@ public class AnnotationTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
-        Assert.Equal(7, TestSpdxCatalog.Items.Count);
+        Assert.Equal(7, TestCatalog.Items.Count);
     }
 
     [Fact]
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var subject = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var annotation = new Annotation(TestSpdxCatalog, TestCreationInfo, AnnotationType.review, subject)
+        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject)
         {
             Type = string.Empty
         };

@@ -12,18 +12,6 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public abstract class ElementCollection : Element
 {
-    // protected internal no-parm constructor required for deserialization
-    protected internal ElementCollection()
-    {
-    }
-    
-    
-    [SetsRequiredMembers]
-    protected ElementCollection(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
-        creationInfo)
-    {
-    }
-
     [JsonPropertyName("profileConformance")]
     public IList<ProfileIdentifierType> ProfileConformance { get; } = new List<ProfileIdentifierType>();
 
@@ -31,10 +19,22 @@ public abstract class ElementCollection : Element
     ///     Yep, the spec says zero to many root elements. Go figure.
     /// </summary>
     [JsonPropertyName("rootElement")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<Element> RootElement { get; } = new List<Element>();
 
     [JsonPropertyName("element")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<Element> Element { get; } = new List<Element>();
+
+    // protected internal no-parm constructor required for deserialization
+    protected internal ElementCollection()
+    {
+    }
+
+
+    [SetsRequiredMembers]
+    protected ElementCollection(Catalog catalog, CreationInfo creationInfo) : base(catalog,
+        creationInfo)
+    {
+    }
 }

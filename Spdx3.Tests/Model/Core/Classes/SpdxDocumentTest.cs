@@ -10,7 +10,7 @@ public class SpdxDocumentTest : BaseModelTestClass
     [Fact]
     public void SpdxDocument_NewElement_ShouldValidate()
     {
-        var spdxDocument = new SpdxDocument(TestSpdxCatalog, TestCreationInfo);
+        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
         var exception = Record.Exception(() => spdxDocument.Validate());
         Assert.Null(exception);
     }
@@ -19,7 +19,7 @@ public class SpdxDocumentTest : BaseModelTestClass
     public void SpdxDocument_NewElement_ShouldSerialize()
     {
         // Arrange
-        var spdxDocument = new SpdxDocument(TestSpdxCatalog, TestCreationInfo);
+        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -40,25 +40,25 @@ public class SpdxDocumentTest : BaseModelTestClass
     public void SpdxDocument_FullyPopulatedElement_ShouldSerialize()
     {
         // Arrange
-        var spdxDocument = new SpdxDocument(TestSpdxCatalog, TestCreationInfo)
+        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo)
         {
-            DataLicense = new TestAnyLicenseInfo(TestSpdxCatalog, TestCreationInfo),
+            DataLicense = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo),
             Comment = "Test Comment",
             Description = "Test Description",
             Name = "Test Name",
             Summary = "Test Summary"
         };
-        spdxDocument.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.nuget));
-        spdxDocument.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email,
+        spdxDocument.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.nuget));
+        spdxDocument.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
             "email@amail.com"));
         spdxDocument.ProfileConformance.Add(ProfileIdentifierType.ai);
         spdxDocument.ProfileConformance.Add(ProfileIdentifierType.build);
-        spdxDocument.RootElement.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        spdxDocument.Extension.Add(new TestExtension(TestSpdxCatalog));
-        spdxDocument.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        spdxDocument.Import.Add(new ExternalMap(TestSpdxCatalog, "some-external-spdxid"));
-        spdxDocument.NamespaceMap.Add(new NamespaceMap(TestSpdxCatalog, "some-prefix", "some-namespace"));
-        spdxDocument.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+        spdxDocument.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
+        spdxDocument.Extension.Add(new TestExtension(TestCatalog));
+        spdxDocument.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        spdxDocument.Import.Add(new ExternalMap(TestCatalog, "some-external-spdxid"));
+        spdxDocument.NamespaceMap.Add(new NamespaceMap(TestCatalog, "some-prefix", "some-namespace"));
+        spdxDocument.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
         const string expected = """
                                 {
                                   "import": [

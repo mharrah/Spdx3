@@ -10,37 +10,14 @@ namespace Spdx3.Model.Core.Classes;
 ///     A mapping between prefixes and namespace partial URIs.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/PositiveIntegerRange/
 /// </summary>
-public class PositiveIntegerRange : BaseSpdxClass
+public class PositiveIntegerRange : BaseModelClass
 {
-    // protected internal no-parm constructor required for deserialization
-    protected internal PositiveIntegerRange()
-    {
-    }
-    
     private int _beginIntegerRange = 1;
 
     private int _endIntegerRange = int.MaxValue;
 
-    [SetsRequiredMembers]
-    public PositiveIntegerRange(SpdxCatalog spdxCatalog, int beginIntegerRange, int endIntegerRange) : base(
-        spdxCatalog)
-    {
-        if (beginIntegerRange < 1)
-        {
-            throw new Spdx3Exception("beginIntegerRange must be a positive, non-zero integer");
-        }
-
-        if (endIntegerRange < beginIntegerRange)
-        {
-            throw new Spdx3Exception("endIntegerRange must be >= beginIntegerRange");
-        }
-
-        BeginIntegerRange = beginIntegerRange;
-        EndIntegerRange = endIntegerRange;
-    }
-
     [JsonPropertyName("beginIntegerRange")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required int BeginIntegerRange
     {
         get => _beginIntegerRange;
@@ -64,7 +41,7 @@ public class PositiveIntegerRange : BaseSpdxClass
 
 
     [JsonPropertyName("endIntegerRange")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required int EndIntegerRange
     {
         get => _endIntegerRange;
@@ -85,6 +62,29 @@ public class PositiveIntegerRange : BaseSpdxClass
 
             _endIntegerRange = value;
         }
+    }
+
+    // protected internal no-parm constructor required for deserialization
+    protected internal PositiveIntegerRange()
+    {
+    }
+
+    [SetsRequiredMembers]
+    public PositiveIntegerRange(Catalog catalog, int beginIntegerRange, int endIntegerRange) : base(
+        catalog)
+    {
+        if (beginIntegerRange < 1)
+        {
+            throw new Spdx3Exception("beginIntegerRange must be a positive, non-zero integer");
+        }
+
+        if (endIntegerRange < beginIntegerRange)
+        {
+            throw new Spdx3Exception("endIntegerRange must be >= beginIntegerRange");
+        }
+
+        BeginIntegerRange = beginIntegerRange;
+        EndIntegerRange = endIntegerRange;
     }
 
     public override void Validate()

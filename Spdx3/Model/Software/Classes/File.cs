@@ -11,35 +11,17 @@ namespace Spdx3.Model.Software.Classes;
 public class File : SoftwareArtifact
 {
     private string _name;
-    
-    // protected internal no-parm constructor required for deserialization
-#pragma warning disable CS8618, CS9264
-    protected internal File()
-    {
-    }
-#pragma warning restore CS8618, CS9264
-
-    [SetsRequiredMembers]
-    public File(SpdxCatalog spdxCatalog, CreationInfo creationInfo, string name) : base(spdxCatalog, creationInfo)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new Spdx3ValidationException(this, nameof(Name), "Cannot be null, empty, or whitespace.");
-        }
-
-        _name = name;
-    }
 
     [JsonPropertyName("contentType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ContentType { get; set; }
 
     [JsonPropertyName("fileKind")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public FileKindType? FileKind { get; set; }
 
     [JsonPropertyName("name")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public new string Name
     {
         get => _name;
@@ -52,6 +34,24 @@ public class File : SoftwareArtifact
 
             _name = value;
         }
+    }
+
+    // protected internal no-parm constructor required for deserialization
+#pragma warning disable CS8618, CS9264
+    protected internal File()
+    {
+    }
+#pragma warning restore CS8618, CS9264
+
+    [SetsRequiredMembers]
+    public File(Catalog catalog, CreationInfo creationInfo, string name) : base(catalog, creationInfo)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new Spdx3ValidationException(this, nameof(Name), "Cannot be null, empty, or whitespace.");
+        }
+
+        _name = name;
     }
 
 

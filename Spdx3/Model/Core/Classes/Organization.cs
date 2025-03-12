@@ -9,14 +9,13 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Organization : Agent
 {
-    
     // protected internal no-parm constructor required for deserialization
     protected internal Organization()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Organization(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Organization(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

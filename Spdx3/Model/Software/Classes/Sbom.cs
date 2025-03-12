@@ -9,17 +9,17 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Sbom : Bom
 {
+    [JsonPropertyName("sbomType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<SbomType> SbomType { get; } = new List<SbomType>();
+
     // protected internal no-parm constructor required for deserialization
     protected internal Sbom()
     {
     }
 
     [SetsRequiredMembers]
-    public Sbom(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Sbom(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
-
-    [JsonPropertyName("sbomType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<SbomType> SbomType { get; } = new List<SbomType>();
 }

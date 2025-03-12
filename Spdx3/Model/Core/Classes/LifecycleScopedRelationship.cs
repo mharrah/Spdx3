@@ -12,19 +12,19 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class LifecycleScopedRelationship : Relationship
 {
+    [JsonPropertyName("scope")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public LifecycleScopeType? Scope { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal LifecycleScopedRelationship()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public LifecycleScopedRelationship(SpdxCatalog spdxCatalog, CreationInfo creationInfo,
-        RelationshipType relationshipType, Element from, List<Element> to) : base(spdxCatalog, creationInfo,
+    public LifecycleScopedRelationship(Catalog catalog, CreationInfo creationInfo,
+        RelationshipType relationshipType, Element from, List<Element> to) : base(catalog, creationInfo,
         relationshipType, from, to)
     {
     }
-
-    [JsonPropertyName("scope")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public LifecycleScopeType? Scope { get; set; }
 }

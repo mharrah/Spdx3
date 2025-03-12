@@ -11,7 +11,7 @@ namespace Spdx3.Tests.Model.Software.Classes;
 public class TestSoftwareArtifact : SoftwareArtifact
 {
     [SetsRequiredMembers]
-    public TestSoftwareArtifact(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog,
+    public TestSoftwareArtifact(Catalog catalog, CreationInfo creationInfo) : base(catalog,
         creationInfo)
     {
     }

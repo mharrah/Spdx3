@@ -12,7 +12,7 @@ public class LicenseExpressionTest : BaseModelTestClass
     public void BrandNew_LicenseExpression_SerializesProperly()
     {
         // Arrange
-        var licenseExpression = new LicenseExpression(TestSpdxCatalog, TestCreationInfo, "MIT");
+        var licenseExpression = new LicenseExpression(TestCatalog, TestCreationInfo, "MIT");
         const string expected = """
                                 {
                                   "licenseExpression": "MIT",
@@ -33,19 +33,19 @@ public class LicenseExpressionTest : BaseModelTestClass
     public void FullyPopulated_LicenseExpression_SerializesProperly()
     {
         // Arrange
-        var licenseExpression = new LicenseExpression(TestSpdxCatalog, TestCreationInfo, "MIT")
+        var licenseExpression = new LicenseExpression(TestCatalog, TestCreationInfo, "MIT")
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             LicenseListVersion = "1.0.0",
-            CustomIdToUri = new DictionaryEntry(TestSpdxCatalog, "some key", "some value")
+            CustomIdToUri = new DictionaryEntry(TestCatalog, "some key", "some value")
         };
-        licenseExpression.Extension.Add(new TestExtension(TestSpdxCatalog));
+        licenseExpression.Extension.Add(new TestExtension(TestCatalog));
         licenseExpression.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        licenseExpression.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
-        licenseExpression.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        licenseExpression.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
+        licenseExpression.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
         const string expected = """
                                 {
                                   "licenseExpression": "MIT",

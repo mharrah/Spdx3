@@ -12,7 +12,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
     public void SimpleLicensingText_MinimallyPopulated_ShouldSerialize()
     {
         // Arrange
-        var simpleLicensingText = new SimpleLicensingText(TestSpdxCatalog, TestCreationInfo, "MIT");
+        var simpleLicensingText = new SimpleLicensingText(TestCatalog, TestCreationInfo, "MIT");
 
         const string expected = """
                                 {
@@ -34,18 +34,18 @@ public class SimpleLicensingTextTest : BaseModelTestClass
     public void SimpleLicensingText_FullyPopulated_ShouldSerialize()
     {
         // Arrange
-        var simpleLicensingText = new SimpleLicensingText(TestSpdxCatalog, TestCreationInfo, "MIT")
+        var simpleLicensingText = new SimpleLicensingText(TestCatalog, TestCreationInfo, "MIT")
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        simpleLicensingText.Extension.Add(new TestExtension(TestSpdxCatalog));
+        simpleLicensingText.Extension.Add(new TestExtension(TestCatalog));
         simpleLicensingText.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        simpleLicensingText.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
-        simpleLicensingText.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        simpleLicensingText.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
+        simpleLicensingText.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
 
         const string expected = """
                                 {

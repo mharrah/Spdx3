@@ -13,9 +13,9 @@ public class SoftwareAgent : Agent
     protected internal SoftwareAgent()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public SoftwareAgent(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public SoftwareAgent(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

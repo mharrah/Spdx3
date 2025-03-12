@@ -13,9 +13,9 @@ public class Agent : Element
     protected internal Agent()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Agent(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Agent(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

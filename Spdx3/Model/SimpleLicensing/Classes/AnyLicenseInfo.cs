@@ -14,10 +14,10 @@ public abstract class AnyLicenseInfo : Element
     protected internal AnyLicenseInfo()
     {
     }
-    
+
     // Abstract class, adds no properties or functionality
     [SetsRequiredMembers]
-    protected AnyLicenseInfo(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    protected AnyLicenseInfo(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

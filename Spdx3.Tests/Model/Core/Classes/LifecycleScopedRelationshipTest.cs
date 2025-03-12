@@ -9,9 +9,9 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
     public void BrandNew_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var to = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var relationship = new LifecycleScopedRelationship(TestSpdxCatalog, TestCreationInfo,
+        var from = new TestElement(TestCatalog, TestCreationInfo);
+        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var relationship = new LifecycleScopedRelationship(TestCatalog, TestCreationInfo,
             RelationshipType.describes,
             from, [to]);
         const string expected = """
@@ -38,9 +38,9 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
     public void FullyPopulated_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var to = new TestElement(TestSpdxCatalog, TestCreationInfo);
-        var relationship = new LifecycleScopedRelationship(TestSpdxCatalog, TestCreationInfo,
+        var from = new TestElement(TestCatalog, TestCreationInfo);
+        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var relationship = new LifecycleScopedRelationship(TestCatalog, TestCreationInfo,
             RelationshipType.describes,
             from, [to])
         {

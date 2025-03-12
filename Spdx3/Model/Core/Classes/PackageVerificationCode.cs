@@ -12,30 +12,30 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class PackageVerificationCode : IntegrityMethod
 {
+    [JsonPropertyName("algorithm")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public HashAlgorithm Algorithm { get; set; }
+
+    [JsonPropertyName("hashValue")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string HashValue { get; set; }
+
+    [JsonPropertyName("packageVerificationCodeExcludedFile")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<string> PackageVerificationCodeExcludedFile { get; } = new List<string>();
+
     // protected internal no-parm constructor required for deserialization
     protected internal PackageVerificationCode()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public PackageVerificationCode(SpdxCatalog spdxCatalog, HashAlgorithm algorithm, string hashValue) :
-        base(spdxCatalog)
+    public PackageVerificationCode(Catalog catalog, HashAlgorithm algorithm, string hashValue) :
+        base(catalog)
     {
         Algorithm = algorithm;
         HashValue = hashValue;
     }
-
-    [JsonPropertyName("algorithm")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public HashAlgorithm Algorithm { get; set; }
-
-    [JsonPropertyName("hashValue")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string HashValue { get; set; }
-
-    [JsonPropertyName("packageVerificationCodeExcludedFile")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public IList<string> PackageVerificationCodeExcludedFile { get; } = new List<string>();
 
     public override void Validate()
     {

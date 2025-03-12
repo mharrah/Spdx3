@@ -1,6 +1,6 @@
 namespace Spdx3.Serialization;
 
-public class SpdxReader
+public class Reader
 {
     // TODO implement
 }

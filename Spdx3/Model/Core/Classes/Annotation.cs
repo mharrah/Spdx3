@@ -12,34 +12,34 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class Annotation : Element
 {
+    [JsonPropertyName("subject")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required Element Subject { get; set; }
+
+    [JsonPropertyName("annotationType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public required AnnotationType AnnotationType { get; set; }
+
+    [JsonPropertyName("statement")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? Statement { get; set; }
+
+    [JsonPropertyName("mediaType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? MediaType { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal Annotation()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public Annotation(SpdxCatalog spdxCatalog, CreationInfo creationInfo, AnnotationType annotationType,
-        Element subject) : base(spdxCatalog, creationInfo)
+    public Annotation(Catalog catalog, CreationInfo creationInfo, AnnotationType annotationType,
+        Element subject) : base(catalog, creationInfo)
     {
         AnnotationType = annotationType;
         Subject = subject;
     }
-
-    [JsonPropertyName("subject")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required Element Subject { get; set; }
-
-    [JsonPropertyName("annotationType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public required AnnotationType AnnotationType { get; set; }
-
-    [JsonPropertyName("statement")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? Statement { get; set; }
-
-    [JsonPropertyName("mediaType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? MediaType { get; set; }
 
     public override void Validate()
     {

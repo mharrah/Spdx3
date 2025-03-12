@@ -7,7 +7,7 @@ public class DictionaryEntryTest : BaseModelTestClass
     [Fact]
     public void DictionaryEntry_Basics()
     {
-        var dictionaryEntry = new DictionaryEntry(TestSpdxCatalog, "foo", "bar");
+        var dictionaryEntry = new DictionaryEntry(TestCatalog, "foo", "bar");
 
         // Assert
         Assert.NotNull(dictionaryEntry);
@@ -20,7 +20,7 @@ public class DictionaryEntryTest : BaseModelTestClass
     public void DictionaryEntry_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var dictionaryEntry = new DictionaryEntry(TestSpdxCatalog, "TestKey")
+        var dictionaryEntry = new DictionaryEntry(TestCatalog, "TestKey")
         {
             Value = "TestValue"
         };

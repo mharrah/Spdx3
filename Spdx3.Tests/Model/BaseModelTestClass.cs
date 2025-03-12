@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Serialization;
@@ -19,7 +20,7 @@ public class BaseModelTestClass
     protected CreationInfo TestCreationInfo { get; }
 
     // A premade SpdxCatalog to use
-    protected SpdxCatalog TestSpdxCatalog { get; } = new();
+    protected Catalog TestCatalog { get; } = new();
 
     /// <summary>
     ///     Serialization options
@@ -34,8 +35,8 @@ public class BaseModelTestClass
     // Constructor
     protected BaseModelTestClass()
     {
-        TestCreationInfo = new CreationInfo(TestSpdxCatalog, PredictableDateTime);
-        Options.Converters.Add(new SpdxObjectConverterFactory());
+        TestCreationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
+        Options.Converters.Add(new SpdxModelConverterFactory());
     }
     
     /// <summary>
@@ -43,7 +44,7 @@ public class BaseModelTestClass
     ///     JSON that has line breaks and indents
     /// </summary>
     /// <returns>A Json representation of this object</returns>
-    protected string ToJson(BaseSpdxClass obj)
+    protected string ToJson(BaseModelClass obj)
     {
         // Validate the object
         obj.Validate();
@@ -58,8 +59,24 @@ public class BaseModelTestClass
     
     protected T? FromJson<T>(string json)
     {
-        T? result = JsonSerializer.Deserialize<T>(json, Options);
+        var result = JsonSerializer.Deserialize<T>(json, Options);
         return result;
+    }
+    
+    /// <summary>
+    /// Convenience method to remove line breaks and all whitespace at the beginning and end of the line breaks.
+    /// This makes it easy to use here-strings for JSON literals without having to use ugly escapes and have
+    /// weird, opaque line wrapping.
+    /// </summary>
+    /// <param name="json">The json you want to normalize</param>
+    /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
+    protected string NormalizeJson(string json)
+    {
+        var r = Regex.Replace(json, "^\\s*", "", RegexOptions.Multiline);
+        r = Regex.Replace(r, "\\s*$", "", RegexOptions.Multiline);
+        r = Regex.Replace(r, "\r", "", RegexOptions.Multiline);
+        r = Regex.Replace(r, "\n", "", RegexOptions.Multiline);
+        return r;
     }
 
 }

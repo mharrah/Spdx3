@@ -9,6 +9,17 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Snippet : SoftwareArtifact
 {
+    [JsonPropertyName("byteRange")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public PositiveIntegerRange? ByteRange { get; set; }
+
+    [JsonPropertyName("lineRange")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public PositiveIntegerRange? LineRange { get; set; }
+
+    [JsonPropertyName("snippetFromFile")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public File SnippetFromFile { get; set; }
 #pragma warning disable CS8618, CS9264
     // protected internal no-parm constructor required for deserialization
     protected internal Snippet()
@@ -17,23 +28,11 @@ public class Snippet : SoftwareArtifact
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public Snippet(SpdxCatalog spdxCatalog, CreationInfo creationInfo, File snippetFromFile) : base(spdxCatalog,
+    public Snippet(Catalog catalog, CreationInfo creationInfo, File snippetFromFile) : base(catalog,
         creationInfo)
     {
         SnippetFromFile = snippetFromFile;
     }
-
-    [JsonPropertyName("byteRange")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public PositiveIntegerRange? ByteRange { get; set; }
-
-    [JsonPropertyName("lineRange")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public PositiveIntegerRange? LineRange { get; set; }
-
-    [JsonPropertyName("snippetFromFile")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public File SnippetFromFile { get; set; }
 
     public override void Validate()
     {

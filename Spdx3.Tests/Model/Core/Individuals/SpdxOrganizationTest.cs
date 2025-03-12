@@ -11,7 +11,7 @@ public class SpdxOrganizationTest : BaseModelTestClass
         const string spdxId = "https://spdx.org/";
         
         // Act
-        var spdxOrg = new SpdxOrganization(TestSpdxCatalog, TestCreationInfo);
+        var spdxOrg = new SpdxOrganization(TestCatalog, TestCreationInfo);
         
         // Assert
         Assert.Equal(spdxId, spdxOrg.SpdxId);

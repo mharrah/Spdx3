@@ -8,34 +8,34 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Package : SoftwareArtifact
 {
+    [JsonPropertyName("packageVersion")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? PackageVersion { get; set; }
+
+    [JsonPropertyName("downloadLocation")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? DownloadLocation { get; set; }
+
+    [JsonPropertyName("packageUrl")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? PackageUrl { get; set; }
+
+    [JsonPropertyName("homePage")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? HomePage { get; set; }
+
+    [JsonPropertyName("sourceInfo")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? SourceInfo { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal Package()
     {
     }
 
-    
+
     [SetsRequiredMembers]
-    public Package(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public Package(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
-
-    [JsonPropertyName("packageVersion")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? PackageVersion { get; set; }
-
-    [JsonPropertyName("downloadLocation")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? DownloadLocation { get; set; }
-
-    [JsonPropertyName("packageUrl")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? PackageUrl { get; set; }
-
-    [JsonPropertyName("homePage")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? HomePage { get; set; }
-
-    [JsonPropertyName("sourceInfo")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? SourceInfo { get; set; }
 }

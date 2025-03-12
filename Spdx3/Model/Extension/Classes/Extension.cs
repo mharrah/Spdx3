@@ -7,7 +7,7 @@ namespace Spdx3.Model.Extension.Classes;
 ///     A characterization of some aspect of an Element that is associated with the Element in a generalized fashion.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Extension/Classes/Extension/
 /// </summary>
-public abstract class Extension : BaseSpdxClass
+public abstract class Extension : BaseModelClass
 {
     // protected internal no-parm constructor required for deserialization
     protected internal Extension()
@@ -15,7 +15,7 @@ public abstract class Extension : BaseSpdxClass
     }
 
     [SetsRequiredMembers]
-    protected Extension(SpdxCatalog spdxCatalog) : base(spdxCatalog)
+    protected Extension(Catalog catalog) : base(catalog)
     {
     }
 }

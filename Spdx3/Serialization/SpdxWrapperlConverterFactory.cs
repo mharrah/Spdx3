@@ -1,22 +1,21 @@
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Spdx3.Model;
 
 namespace Spdx3.Serialization;
 
-public class SpdxObjectConverterFactory : JsonConverterFactory
+public class SpdxWrapperConverterFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {
-        var canConvert = typeToConvert.IsSubclassOf(typeof(BaseSpdxClass));
+        var canConvert = typeToConvert.IsAssignableTo(typeof(PhysicalSerialization));
 
         return canConvert;
     }
 
     public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
-        var converterGenericType = typeof(SpdxObjectConvertor<>);
+        var converterGenericType = typeof(SpdxWrapperConverter<>);
 
         Type[] typeArgs = [typeToConvert];
         var constructedType = converterGenericType.MakeGenericType(typeArgs);

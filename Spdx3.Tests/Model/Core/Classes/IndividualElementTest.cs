@@ -8,7 +8,7 @@ public class IndividualElementTest : BaseModelTestClass
     public void BrandNew_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = new IndividualElement(TestSpdxCatalog, TestCreationInfo);
+        var individualElement = new IndividualElement(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,7 +28,7 @@ public class IndividualElementTest : BaseModelTestClass
     public void FullyPopulated_IndividualElement_SerializesProperly()
     {
         // Arrange
-        var individualElement = new IndividualElement(TestSpdxCatalog, TestCreationInfo)
+        var individualElement = new IndividualElement(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",

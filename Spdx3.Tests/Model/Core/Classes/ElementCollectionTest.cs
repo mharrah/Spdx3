@@ -8,7 +8,7 @@ public class ElementCollectionTest : BaseModelTestClass
     public void BrandNew_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = new TestElementCollection(TestSpdxCatalog, TestCreationInfo);
+        var elementCollection = new TestElementCollection(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -28,15 +28,15 @@ public class ElementCollectionTest : BaseModelTestClass
     public void FullyPopulated_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = new TestElementCollection(TestSpdxCatalog, TestCreationInfo)
+        var elementCollection = new TestElementCollection(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName"
         };
-        elementCollection.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        elementCollection.Element.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
-        elementCollection.RootElement.Add(new TestElement(TestSpdxCatalog, TestCreationInfo));
+        elementCollection.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        elementCollection.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        elementCollection.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """

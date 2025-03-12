@@ -9,26 +9,26 @@ namespace Spdx3.Model.Software.Classes;
 
 public class ContentIdentifier : IntegrityMethod
 {
+    [JsonPropertyName("contentIdentifierType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public ContentIdentifierType ContentIdentifierType { get; set; }
+
+    [JsonPropertyName("contentIdentifierValue")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? ContentIdentifierValue { get; set; }
+
     // protected internal no-parm constructor required for deserialization
     protected internal ContentIdentifier()
     {
     }
 
     [SetsRequiredMembers]
-    public ContentIdentifier(SpdxCatalog spdxCatalog, ContentIdentifierType contentIdentifierType,
-        string contentIdentifierValue) : base(spdxCatalog)
+    public ContentIdentifier(Catalog catalog, ContentIdentifierType contentIdentifierType,
+        string contentIdentifierValue) : base(catalog)
     {
         ContentIdentifierType = contentIdentifierType;
         ContentIdentifierValue = contentIdentifierValue;
     }
-
-    [JsonPropertyName("contentIdentifierType")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public ContentIdentifierType ContentIdentifierType { get; set; }
-
-    [JsonPropertyName("contentIdentifierValue")]
-    [JsonConverter(typeof(SpdxObjectConverterFactory))]
-    public string? ContentIdentifierValue { get; set; }
 
     public override void Validate()
     {

@@ -5,19 +5,18 @@ using Spdx3.Utility;
 namespace Spdx3.Model.Core.Individuals;
 
 /// <summary>
-/// An Organization representing the SPDX Project.
-/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Individuals/SpdxOrganization/
+///     An Organization representing the SPDX Project.
+///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Individuals/SpdxOrganization/
 /// </summary>
 public class SpdxOrganization : Organization
 {
-    
     // protected internal no-parm constructor required for deserialization
     protected internal SpdxOrganization()
     {
     }
-    
+
     [SetsRequiredMembers]
-    public SpdxOrganization(SpdxCatalog spdxCatalog, CreationInfo creationInfo) : base(spdxCatalog, creationInfo)
+    public SpdxOrganization(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
         SpdxId = "https://spdx.org/";
     }

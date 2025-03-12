@@ -15,8 +15,8 @@ public class SnippetTest : BaseModelTestClass
     public void Snippet_MinimalObject_SerializesCorrectly()
     {
         // Arrange
-        var file = new File(TestSpdxCatalog, TestCreationInfo, "filename");
-        var snippet = new Snippet(TestSpdxCatalog, TestCreationInfo, file);
+        var file = new File(TestCatalog, TestCreationInfo, "filename");
+        var snippet = new Snippet(TestCatalog, TestCreationInfo, file);
         const string expected = """
                                 {
                                   "snippetFromFile": "urn:File:402",
@@ -37,8 +37,8 @@ public class SnippetTest : BaseModelTestClass
     public void Snippet_FullyPopulated_SerializesCorrectly()
     {
         // Arrange
-        var file = new File(TestSpdxCatalog, TestCreationInfo, "filename");
-        var snippet = new Snippet(TestSpdxCatalog, TestCreationInfo, file)
+        var file = new File(TestCatalog, TestCreationInfo, "filename");
+        var snippet = new Snippet(TestCatalog, TestCreationInfo, file)
         {
             Comment = "Some comment",
             Description = "Some description",
@@ -49,21 +49,21 @@ public class SnippetTest : BaseModelTestClass
             ReleaseTime = PredictableDateTime,
             StandardName = "Some standard name",
             ValidUntilTime = PredictableDateTime,
-            ByteRange = new PositiveIntegerRange(TestSpdxCatalog, 1, 5),
-            LineRange = new PositiveIntegerRange(TestSpdxCatalog, 7, 15)
+            ByteRange = new PositiveIntegerRange(TestCatalog, 1, 5),
+            LineRange = new PositiveIntegerRange(TestCatalog, 7, 15)
         };
         snippet.SupportLevel.Add(SupportType.noAssertion);
-        snippet.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+        snippet.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
         snippet.AdditionalPurpose.Add(SoftwarePurpose.archive);
-        snippet.OriginatedBy.Add(new Agent(TestSpdxCatalog, TestCreationInfo));
-        snippet.ContentIdentifier.Add(new ContentIdentifier(TestSpdxCatalog, ContentIdentifierType.gitoid,
+        snippet.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
+        snippet.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
             "some gitoid value"));
         snippet.AttributionText.Add("Some attribution text");
         snippet.AdditionalPurpose.Add(SoftwarePurpose.other);
-        snippet.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.bower));
-        snippet.ExternalIdentifier.Add(new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.cpe23,
+        snippet.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));
+        snippet.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        snippet.Extension.Add(new TestExtension(TestSpdxCatalog));
+        snippet.Extension.Add(new TestExtension(TestCatalog));
 
 
         const string expected = """
@@ -126,7 +126,7 @@ public class SnippetTest : BaseModelTestClass
     {
       // Arrange
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-      var snippet = new Snippet(TestSpdxCatalog, TestCreationInfo, null);
+      var snippet = new Snippet(TestCatalog, TestCreationInfo, null);
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
       // Act
