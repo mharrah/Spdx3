@@ -29,7 +29,7 @@ public class IntegrityMethodTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = integrityMethod.ToJson();
+        var json = ToJson(integrityMethod);
 
         // Assert
         Assert.Equal(expected, json);
@@ -53,7 +53,7 @@ public class IntegrityMethodTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = integrityMethod.ToJson();
+        var json = ToJson(integrityMethod);
 
         // Assert
         Assert.Equal(expected, json);

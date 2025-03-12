@@ -18,7 +18,7 @@ public class ElementCollectionTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = elementCollection.ToJson();
+        var json = ToJson(elementCollection);
 
         // Assert
         Assert.Equal(expected, json);
@@ -61,7 +61,7 @@ public class ElementCollectionTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = elementCollection.ToJson();
+        var json = ToJson(elementCollection);
 
         // Assert
         Assert.Equal(expected, json);

@@ -27,7 +27,7 @@ public class SnippetTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = snippet.ToJson();
+        var json = ToJson(snippet);
 
         // Assert
         Assert.Equal(expected, json);
@@ -114,7 +114,7 @@ public class SnippetTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = snippet.ToJson();
+        var json = ToJson(snippet);
 
         // Assert
         Assert.Equal(expected, json);
@@ -130,7 +130,7 @@ public class SnippetTest : BaseModelTestClass
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
       // Act
-      var ex = Record.Exception(() => snippet.ToJson());
+      var ex = Record.Exception(() => ToJson(snippet));
 
       // Assert
       Assert.NotNull(ex);

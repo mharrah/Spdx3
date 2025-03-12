@@ -24,7 +24,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                 """;
         
         // Act
-        var json = simpleLicensingText.ToJson();
+        var json = ToJson(simpleLicensingText);
         
         // Assert
         Assert.Equal(expected, json);
@@ -73,7 +73,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                 """;
         
         // Act
-        var json = simpleLicensingText.ToJson();
+        var json = ToJson(simpleLicensingText);
         
         // Assert
         Assert.Equal(expected, json);

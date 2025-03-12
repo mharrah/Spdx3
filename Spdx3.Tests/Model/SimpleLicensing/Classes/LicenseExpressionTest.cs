@@ -23,7 +23,7 @@ public class LicenseExpressionTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = licenseExpression.ToJson();
+        var json = ToJson(licenseExpression);
 
         // Assert
         Assert.Equal(expected, json);
@@ -73,7 +73,7 @@ public class LicenseExpressionTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = licenseExpression.ToJson();
+        var json = ToJson(licenseExpression);
 
         // Assert
         Assert.Equal(expected, json);

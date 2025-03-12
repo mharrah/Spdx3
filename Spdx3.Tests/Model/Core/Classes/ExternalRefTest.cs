@@ -20,7 +20,7 @@ public class ExternalRefTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalRef.ToJson();
+        var json = ToJson(externalRef);
 
         // Assert
         Assert.Equal(expected, json);
@@ -52,7 +52,7 @@ public class ExternalRefTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalRef.ToJson();
+        var json = ToJson(externalRef);
 
         // Assert
         Assert.Equal(expected, json);
@@ -76,7 +76,7 @@ public class ExternalRefTest : BaseModelTestClass
                             }
                             """;
         
-        var externalRef = BaseSpdxClass.FromJson<ExternalRef>(json);
+        var externalRef = FromJson<ExternalRef>(json);
         Assert.NotNull(externalRef);
         Assert.IsType<ExternalRef>(externalRef);
         Assert.Equal("ExternalRef", externalRef.Type);

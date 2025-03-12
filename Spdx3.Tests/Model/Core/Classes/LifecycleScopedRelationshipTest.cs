@@ -28,7 +28,7 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = relationship.ToJson();
+        var json = ToJson(relationship);
 
         // Assert
         Assert.Equal(expected, json);
@@ -74,7 +74,7 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = relationship.ToJson();
+        var json = ToJson(relationship);
 
         // Assert
         Assert.Equal(expected, json);

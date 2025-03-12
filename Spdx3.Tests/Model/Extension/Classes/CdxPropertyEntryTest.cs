@@ -19,7 +19,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
 
 
         // Act
-        var json = cdxProp.ToJson();
+        var json = ToJson(cdxProp);
 
         // Assert
         Assert.Equal(expected, json);
@@ -41,7 +41,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
 
 
         // Act
-        var json = cdxProp.ToJson();
+        var json = ToJson(cdxProp);
 
         // Assert
         Assert.Equal(expected, json);

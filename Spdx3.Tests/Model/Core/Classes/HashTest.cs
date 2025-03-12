@@ -37,7 +37,7 @@ public class HashTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = hash.ToJson();
+        var json = ToJson(hash);
 
         // Assert
         Assert.Equal(expected, json);

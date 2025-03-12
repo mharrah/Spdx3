@@ -21,7 +21,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = anyLicenseInfo.ToJson();
+        var json = ToJson(anyLicenseInfo);
 
         // Assert
         Assert.Equal(expected, json);
@@ -70,7 +70,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = anyLicenseInfo.ToJson();
+        var json = ToJson(anyLicenseInfo);
 
         // Assert
         Assert.Equal(expected, json);

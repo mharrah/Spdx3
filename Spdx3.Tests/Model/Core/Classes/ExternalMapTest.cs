@@ -31,7 +31,7 @@ public class ExternalMapTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalMap.ToJson();
+        var json = ToJson(externalMap);
 
         // Assert
         Assert.Equal(expected, json);
@@ -64,7 +64,7 @@ public class ExternalMapTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalMap.ToJson();
+        var json = ToJson(externalMap);
 
         // Assert
         Assert.Equal(expected, json);

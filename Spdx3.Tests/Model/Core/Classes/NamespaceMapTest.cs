@@ -35,7 +35,7 @@ public class NamespaceMapTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = namespaceMap.ToJson();
+        var json = ToJson(namespaceMap);
 
         // Assert
         Assert.Equal(expected, json);

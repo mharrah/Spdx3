@@ -29,7 +29,7 @@ public class SpdxDocumentTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = spdxDocument.ToJson();
+        var json = ToJson(spdxDocument);
 
         // Assert
         Assert.Equal(expected, json);
@@ -101,7 +101,7 @@ public class SpdxDocumentTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = spdxDocument.ToJson();
+        var json = ToJson(spdxDocument);
 
         // Assert
         Assert.Equal(expected, json);

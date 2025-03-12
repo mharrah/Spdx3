@@ -18,7 +18,7 @@ public class OrganizationTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = org.ToJson();
+        var json = ToJson(org);
 
         // Assert
         Assert.Equal(expected, json);
@@ -47,7 +47,7 @@ public class OrganizationTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = org.ToJson();
+        var json = ToJson(org);
 
         // Assert
         Assert.Equal(expected, json);

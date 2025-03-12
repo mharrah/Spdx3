@@ -34,7 +34,7 @@ public class DictionaryEntryTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = dictionaryEntry.ToJson();
+        var json = ToJson(dictionaryEntry);
 
         // Assert
         Assert.Equal(expected, json);

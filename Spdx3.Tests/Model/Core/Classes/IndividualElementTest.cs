@@ -18,7 +18,7 @@ public class IndividualElementTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = individualElement.ToJson();
+        var json = ToJson(individualElement);
 
         // Assert
         Assert.Equal(expected, json);
@@ -47,7 +47,7 @@ public class IndividualElementTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = individualElement.ToJson();
+        var json = ToJson(individualElement);
 
         // Assert
         Assert.Equal(expected, json);

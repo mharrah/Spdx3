@@ -15,7 +15,7 @@ public class ExtensionTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = extension.ToJson();
+        var json = ToJson(extension);
 
         // Assert
         Assert.Equal(expected, json);

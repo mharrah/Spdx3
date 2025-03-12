@@ -21,7 +21,7 @@ public class ContentIdentifierTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = contentIdentifier.ToJson();
+        var json = ToJson(contentIdentifier);
 
         // Assert
         Assert.Equal(expected, json);
@@ -45,7 +45,7 @@ public class ContentIdentifierTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = contentIdentifier.ToJson();
+        var json = ToJson(contentIdentifier);
 
         // Assert
         Assert.Equal(expected, json);

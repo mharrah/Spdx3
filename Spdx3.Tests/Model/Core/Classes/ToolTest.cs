@@ -18,7 +18,7 @@ public class ToolTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = tool.ToJson();
+        var json = ToJson(tool);
 
         // Assert
         Assert.Equal(expected, json);
@@ -47,7 +47,7 @@ public class ToolTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = tool.ToJson();
+        var json = ToJson(tool);
 
         // Assert
         Assert.Equal(expected, json);

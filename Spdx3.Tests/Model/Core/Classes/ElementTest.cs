@@ -31,7 +31,7 @@ public class ElementTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(element);
 
         // Assert
         Assert.Equal(expected, json);
@@ -81,7 +81,7 @@ public class ElementTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(element);
 
         // Assert
         Assert.Equal(expected, json);
@@ -117,7 +117,7 @@ public class ElementTest : BaseModelTestClass
                             }
                             """;
         
-        var testElement = BaseSpdxClass.FromJson<TestElement>(json);
+        var testElement = FromJson<TestElement>(json);
         Assert.NotNull(testElement);
         Assert.IsType<TestElement>(testElement);
         Assert.Equal("TestElement", testElement.Type);

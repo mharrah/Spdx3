@@ -37,7 +37,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = hash.ToJson();
+        var json = ToJson(hash);
 
         // Assert
         Assert.Equal(expected, json);
@@ -68,7 +68,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = hash.ToJson();
+        var json = ToJson(hash);
 
         // Assert
         Assert.Equal(expected, json);

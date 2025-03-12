@@ -27,7 +27,7 @@ public class ArtifactTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(element);
 
         // Assert
         Assert.Equal(expected, json);
@@ -56,7 +56,7 @@ public class ArtifactTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(element);
 
         // Assert
         Assert.Equal(expected, json);

@@ -23,7 +23,7 @@ public class SbomTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = sbom.ToJson();
+        var json = ToJson(sbom);
 
         // Assert
         Assert.Equal(expected, json);
@@ -84,7 +84,7 @@ public class SbomTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = sbom.ToJson();
+        var json = ToJson(sbom);
 
         // Assert
         Assert.Equal(expected, json);

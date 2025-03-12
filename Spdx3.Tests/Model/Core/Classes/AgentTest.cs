@@ -18,7 +18,7 @@ public class AgentTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = agent.ToJson();
+        var json = ToJson(agent);
 
         // Assert
         Assert.Equal(expected, json);
@@ -47,7 +47,7 @@ public class AgentTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = agent.ToJson();
+        var json = ToJson(agent);
 
         // Assert
         Assert.Equal(expected, json);

@@ -19,7 +19,7 @@ public class BundleTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = bundle.ToJson();
+        var json = ToJson(bundle);
 
         // Assert
         Assert.Equal(expected, json);
@@ -68,7 +68,7 @@ public class BundleTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = bundle.ToJson();
+        var json = ToJson(bundle);
 
         // Assert
         Assert.Equal(expected, json);

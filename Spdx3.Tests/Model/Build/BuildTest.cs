@@ -22,7 +22,7 @@ public class BuildTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(element);
 
         // Assert
         Assert.Equal(expected, json);
@@ -32,7 +32,7 @@ public class BuildTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var element = new Spdx3.Model.Build.Classes.Build(TestSpdxCatalog, TestCreationInfo, new Uri("https://github.com"))
+        var build = new Spdx3.Model.Build.Classes.Build(TestSpdxCatalog, TestCreationInfo, new Uri("https://github.com"))
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -42,16 +42,16 @@ public class BuildTest : BaseModelTestClass
             BuildEndTime = PredictableDateTime,
             BuildId = "TestBuildId"
         };
-        element.Extension.Add(new TestExtension(TestSpdxCatalog));
-        element.ExternalIdentifier.Add(
+        build.Extension.Add(new TestExtension(TestSpdxCatalog));
+        build.ExternalIdentifier.Add(
             new ExternalIdentifier(TestSpdxCatalog, ExternalIdentifierType.email, "example@example.com"));
-        element.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
-        element.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
-        element.ConfigSourceDigest.Add(new Hash(TestSpdxCatalog, HashAlgorithm.adler32, "hashval"));
-        element.ConfigSourceEntrypoint.Add("TestEntryPoint");
-        element.ConfigSourceUri.Add(new Uri("https://github.com"));
-        element.Environment.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
-        element.Parameter.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
+        build.ExternalRef.Add(new ExternalRef(TestSpdxCatalog, ExternalRefType.altDownloadLocation));
+        build.VerifiedUsing.Add(new TestIntegrityMethod(TestSpdxCatalog));
+        build.ConfigSourceDigest.Add(new Hash(TestSpdxCatalog, HashAlgorithm.adler32, "hashval"));
+        build.ConfigSourceEntrypoint.Add("TestEntryPoint");
+        build.ConfigSourceUri.Add(new Uri("https://github.com"));
+        build.Environment.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
+        build.Parameter.Add(new DictionaryEntry(TestSpdxCatalog, "key", "val"));
 
 
         const string expected = """
@@ -98,7 +98,7 @@ public class BuildTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = element.ToJson();
+        var json = ToJson(build);
 
         // Assert
         Assert.Equal(expected, json);

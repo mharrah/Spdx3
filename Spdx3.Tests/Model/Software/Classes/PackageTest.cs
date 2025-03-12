@@ -18,7 +18,7 @@ public class PackageTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = package.ToJson();
+        var json = ToJson(package);
 
         // Assert
         Assert.Equal(expected, json);

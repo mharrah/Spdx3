@@ -35,7 +35,7 @@ public class AnnotationTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = annotation.ToJson();
+        var json = ToJson(annotation);
 
         // Assert
         Assert.Equal(expected, json);
@@ -92,7 +92,7 @@ public class AnnotationTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = annotation.ToJson();
+        var json = ToJson(annotation);
 
         // Assert
         Assert.Equal(expected, json);

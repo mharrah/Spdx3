@@ -19,7 +19,7 @@ public class BomTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = bom.ToJson();
+        var json = ToJson(bom);
 
         // Assert
         Assert.Equal(expected, json);
@@ -68,7 +68,7 @@ public class BomTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = bom.ToJson();
+        var json = ToJson(bom);
 
         // Assert
         Assert.Equal(expected, json);

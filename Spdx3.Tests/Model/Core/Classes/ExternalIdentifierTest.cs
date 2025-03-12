@@ -22,7 +22,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalIdentifier.ToJson();
+        var json = ToJson(externalIdentifier);
 
         // Assert
         Assert.Equal(expected, json);
@@ -55,7 +55,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = externalIdentifier.ToJson();
+        var json = ToJson(externalIdentifier);
 
         // Assert
         Assert.Equal(expected, json);

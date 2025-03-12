@@ -8,10 +8,10 @@ public class BaseSpdxClassTest : BaseModelTestClass
     public void BaseSpdxClass_NewElements_AreDifferent()
     {
         // ARRANGE
-        // Get a class using the factory in the base testing class
+        // Get a class using the id factory method in the catalog in the base testing class
         var baseClass1 = new TestBaseSpdxClass(TestSpdxCatalog);
 
-        // Get another class from a separate factory
+        // Get another class the same catalog
         var baseClass2 = new TestBaseSpdxClass(TestSpdxCatalog);
 
         // ASSERT

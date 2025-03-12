@@ -64,7 +64,7 @@ public class CreationInfoTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = creationInfo.ToJson();
+        var json = ToJson(creationInfo);
 
         // Assert
         Assert.Equal(expected, json);
@@ -86,7 +86,7 @@ public class CreationInfoTest : BaseModelTestClass
                                 """;
 
         // Assert - note that empty collections are not serialized at all
-        var json = creationInfo.ToJson();
+        var json = ToJson(creationInfo);
         Assert.Equal(expected, json);
     }
 
@@ -102,7 +102,7 @@ public class CreationInfoTest : BaseModelTestClass
                             }
                             """;
         
-        var creationInfo = BaseSpdxClass.FromJson<CreationInfo>(json);
+        var creationInfo = FromJson<CreationInfo>(json);
         Assert.NotNull(creationInfo);
         Assert.IsType<CreationInfo>(creationInfo);
         Assert.Equal("CreationInfo", creationInfo.Type);

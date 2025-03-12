@@ -26,7 +26,7 @@ public class FileTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = file.ToJson();
+        var json = ToJson(file);
 
         // Assert
         Assert.Equal(expected, json);
@@ -110,7 +110,7 @@ public class FileTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = file.ToJson();
+        var json = ToJson(file);
 
         // Assert
         Assert.Equal(expected, json);

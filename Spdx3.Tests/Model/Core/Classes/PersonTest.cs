@@ -18,7 +18,7 @@ public class PersonTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = pPerson.ToJson();
+        var json = ToJson(pPerson);
 
         // Assert
         Assert.Equal(expected, json);
@@ -47,7 +47,7 @@ public class PersonTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = person.ToJson();
+        var json = ToJson(person);
 
         // Assert
         Assert.Equal(expected, json);

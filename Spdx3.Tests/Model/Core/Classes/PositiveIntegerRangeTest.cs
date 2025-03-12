@@ -31,7 +31,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = positiveIntegerRange.ToJson();
+        var json = ToJson(positiveIntegerRange);
 
         // Assert
         Assert.Equal(expected, json);

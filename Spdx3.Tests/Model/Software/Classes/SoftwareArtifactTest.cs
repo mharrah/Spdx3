@@ -23,7 +23,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = softwareArtifact.ToJson();
+        var json = ToJson(softwareArtifact);
 
         // Assert
         Assert.Equal(expected, json);
@@ -107,7 +107,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                 """;
 
         // Act
-        var json = softwareArtifact.ToJson();
+        var json = ToJson(softwareArtifact);
 
         // Assert
         Assert.Equal(expected, json);
