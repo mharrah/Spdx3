@@ -62,7 +62,7 @@ public class Catalog
                 {
                     continue;
                 }
-
+                
                 if (Items.ContainsKey(baseModelClass.SpdxId))
                 {
                     var replacement = Items[baseModelClass.SpdxId];
@@ -71,6 +71,13 @@ public class Catalog
             }
         }
         
+        foreach (var baseModelClass in Items.Values.ToList())
+        {
+            if (baseModelClass is Element e)
+            {
+                result.Element.Add(e);
+            }
+        }
         return result;
     }
 }

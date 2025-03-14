@@ -27,24 +27,30 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
         // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
         // hashtable into an SpdxBaseClass object from the model
-        Dictionary<string, object> hashTable = new Dictionary<string, object>();
+        Dictionary<string, object>? hashTable = null;
         
         // As we read the object properties, first we read the name, then we read the value.  This is the name and
         // the key into the hashtable that we're about to set.
         var hashTableKey = String.Empty;
+        
+        // This is whatever array we happen to be in the middle of populating
+        List<object>? currentArray = null;
         
         while (reader.Read())
         {
             switch (reader.TokenType)
             {
                 case JsonTokenType.PropertyName:
-                    if (reader.CurrentDepth == 1)
+                    var propertyName = reader.GetString();
+                    Console.WriteLine($"Property name: '{propertyName}'");
+                    
+                    if (reader.CurrentDepth < 2)
                     {
                         // Nothing to do at the first level
-                        continue;
+                        break;
                     }
-                    
-                    hashTableKey = reader.GetString();
+
+                    hashTableKey = propertyName;
                     if (hashTableKey == null)
                     {
                         throw new Spdx3Exception("Expected a property name but got null value");
@@ -53,80 +59,136 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     break;
 
                 case JsonTokenType.String:
-                    if (reader.CurrentDepth == 1)
+                    var strVal = reader.GetString();
+                    Console.WriteLine($"String value: '{strVal}'");
+
+                    if (reader.CurrentDepth < 2)
                     {
                         // This must be the @context or the @graph, in which case there's nothing to do
                         continue;
                     }
 
-                    var strVal = reader.GetString();
-                    if (hashTableKey == null)
-                    {
-                        throw new Spdx3SerializationException(
-                            $"No hashtable key for value {strVal}");
-                    }
                     if (strVal == null)
                     {
                         throw new Spdx3SerializationException($"Null value encountered for string value for {hashTableKey}");
                     }
 
-                    hashTable[hashTableKey] = strVal;
+                    if (currentArray == null) {
+                        if (hashTableKey == null)
+                        {
+                            throw new Spdx3SerializationException(
+                                $"No hashtable key for value {strVal}");
+                        }
+
+                        hashTable[hashTableKey] = strVal;
+                    }
+                    else
+                    {
+                        currentArray.Add(strVal);
+                    }
 
                     break;
 
                 case JsonTokenType.Number:
-                    if (reader.CurrentDepth == 1)
+                    var intVal = reader.GetInt32();
+                    Console.WriteLine($"Integer value: '{intVal}'");
+
+                    if (reader.CurrentDepth < 2)
                     {
                         // This must be the @context or the @graph, in which case there's nothing to do
                         continue;
                     }
 
-                    var intVal = reader.GetInt32();
-                    if (hashTableKey == null)
+                    if (currentArray == null)
                     {
-                        throw new Spdx3SerializationException(
-                            $"No hashtable key for value {intVal}");
-                    }
+                        if (hashTableKey == null)
+                        {
+                            throw new Spdx3SerializationException(
+                                $"No hashtable key for value {intVal}");
+                        }
 
-                    hashTable[hashTableKey] = intVal;
+                        hashTable[hashTableKey] = intVal;
+                    }
+                    else
+                    {
+                        currentArray.Add(intVal);
+                    }
 
                     break;
 
 
                 case JsonTokenType.StartArray:
-                    if (reader.CurrentDepth == 1)
+                    Console.WriteLine("Starting array");
+                    
+                    if (reader.CurrentDepth < 2)
                     {
                         // We're just starting the @graph array, nothing more to do here
                         continue;
                     }
 
-                    // TODO - Deal with arrays of values going into the hashtable
-                    
+                    if (currentArray != null)
+                    {
+                        throw new Spdx3SerializationException("Can't process nested array values");
+                    }
+                    currentArray = [];
                     break;
 
                 case JsonTokenType.EndArray:
-                    
-                    // TODO - Deal with arrays of values going into the hashtable
+                    Console.WriteLine("Ending array");
 
+                    if (reader.CurrentDepth < 2)
+                    {
+                        break;
+                    }
+
+                    if (currentArray == null)
+                    {
+                        throw new Spdx3SerializationException("End of array but no array value available");
+                    }
+
+                    if (hashTable == null)
+                    {
+                        throw new Spdx3SerializationException("End of array but not in a property value");
+                    }
+
+                    hashTable[hashTableKey] = currentArray;
+                    currentArray = null;
                     break;
 
                 case JsonTokenType.StartObject:
+                    Console.WriteLine("Starting object");
+
                     // Start a new hashtable to collect values in for this object
-                    if (reader.CurrentDepth == 2)
+                    if (reader.CurrentDepth > 1)
                     {
+                        if (hashTable != null)
+                        {
+                            throw new Spdx3SerializationException("Can't process nested object values");
+                        }
                         hashTable = new Dictionary<string, object>();
                     }
                     
                     break;
 
                 case JsonTokenType.EndObject:
+                    Console.WriteLine("Ending object");
+
+                    if (reader.CurrentDepth < 2)
+                    {
+                        break;
+                    }
                     // Turn the hashtable into an Spdx class
+                    if (hashTable == null)
+                    {
+                        throw new Spdx3SerializationException("End of object but no hashtable of values available");
+                    }
                     var cls = GetObjectFromHashTable(hashTable);
                     if (cls == null)
                     {
                         throw new Spdx3SerializationException("Unable to get an Spdx class from properties of object");
                     }
                     (result as PhysicalSerialization).Graph.Add(cls);
+                    hashTable = null;
                     break;
 
                 default:
@@ -256,7 +318,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             
             if (property.PropertyType.IsAssignableTo(typeof(BaseModelClass)))
             {
-                var placeHolder = GetPlaceHolder(property, entry);
+                var placeHolder = GetPlaceHolder(property, (string)entry.Value);
                 property.SetValue(result, placeHolder);
             }
             else if (property.PropertyType == typeof(string))
@@ -282,22 +344,36 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType}");
                 }
 
-                var placeholder = GetPlaceHolder(property, entry);
-                list.Add(placeholder);
+                foreach (var item in list)
+                {
+                    var placeholder = GetPlaceHolder(property, (item as BaseModelClass).SpdxId);    
+                    list.Add(placeholder);
+                }
+                
             }
             else if (property.PropertyType.IsGenericType &&
                      property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) &&
                      property.PropertyType.GetGenericArguments()[0].IsEnum)
             {
-                var value = Enum.Parse(property.PropertyType.GetGenericArguments()[0], (string)entry.Value);
-                
-                var list = (property.GetValue(result) as IList);
-                if (list == null)
+                if (entry.Value == null)
                 {
                     throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType}");
                 }
+                var enumType = property.PropertyType.GetGenericArguments()[0];
                 
-                list.Add(value);
+                var listOfEnums = (property.GetValue(result) as IList);
+                if (listOfEnums == null)
+                {
+                    throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType} as a list");
+                }
+
+                foreach (var id in entry.Value as IList<object>)
+                {
+                    var value = Enum.Parse(enumType, (string)id); 
+                    listOfEnums.Add(value);
+                }
+                
+                
             }
             else if (property.PropertyType.IsEnum)
             {
@@ -320,7 +396,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         return result;
     }
 
-    private static BaseModelClass GetPlaceHolder(PropertyInfo property, KeyValuePair<string, object> entry)
+    private static BaseModelClass GetPlaceHolder(PropertyInfo property, string spdxId)
     {
         var propType = property.PropertyType;
         if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(IList<>))
@@ -337,10 +413,16 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 throw new Spdx3Exception($"Could not determine placeholder class type for {property.PropertyType.FullName}");
             }
         }
+        
+        var placeHolder = NewPlaceHolderWithId(propType, spdxId);
+        return placeHolder;
+    }
 
+    private static BaseModelClass NewPlaceHolderWithId(Type propType, string? id)
+    {
         var placeHolder = (BaseModelClass)Activator.CreateInstance(propType, true);
         placeHolder.Type = Naming.SpdxTypeForClass(propType);
-        placeHolder.SpdxId = (string)entry.Value;
+        placeHolder.SpdxId = id;
         if (placeHolder is Element)
         {
             (placeHolder as Element).Comment = "***Placeholder***";

@@ -19,6 +19,8 @@ public class ReaderTest
         
         // Assert
         Assert.NotNull(spdxDocument);
+        Assert.NotEmpty(spdxDocument.Element);
+        Assert.Equal(2,spdxDocument.ProfileConformance.Count);
     } 
         
         
