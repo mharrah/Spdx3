@@ -226,16 +226,16 @@ var assemblies = [
       { "name": "Spdx3.Exceptions.Spdx3ValidationException", "rp": "Spdx3_Spdx3ValidationException.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.BaseModelClass", "rp": "Spdx3_BaseModelClass.html", "cl": 28, "ucl": 0, "cal": 28, "tl": 63, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Build.Classes.Build", "rp": "Spdx3_Build.html", "cl": 17, "ucl": 3, "cal": 20, "tl": 63, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Agent", "rp": "Spdx3_Agent.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Agent", "rp": "Spdx3_Agent.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.Annotation", "rp": "Spdx3_Annotation.html", "cl": 14, "ucl": 3, "cal": 17, "tl": 50, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Artifact", "rp": "Spdx3_Artifact.html", "cl": 10, "ucl": 3, "cal": 13, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Bom", "rp": "Spdx3_Bom.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Bundle", "rp": "Spdx3_Bundle.html", "cl": 4, "ucl": 3, "cal": 7, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Artifact", "rp": "Spdx3_Artifact.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 52, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Bom", "rp": "Spdx3_Bom.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Bundle", "rp": "Spdx3_Bundle.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.CreationInfo", "rp": "Spdx3_CreationInfo.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 50, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.DictionaryEntry", "rp": "Spdx3_DictionaryEntry.html", "cl": 14, "ucl": 3, "cal": 17, "tl": 44, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.Element", "rp": "Spdx3_Element.html", "cl": 21, "ucl": 0, "cal": 21, "tl": 68, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.ElementCollection", "rp": "Spdx3_ElementCollection.html", "cl": 7, "ucl": 3, "cal": 10, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.ExternalIdentifier", "rp": "Spdx3_ExternalIdentifier.html", "cl": 15, "ucl": 3, "cal": 18, "tl": 55, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.ElementCollection", "rp": "Spdx3_ElementCollection.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.ExternalIdentifier", "rp": "Spdx3_ExternalIdentifier.html", "cl": 18, "ucl": 0, "cal": 18, "tl": 55, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.ExternalMap", "rp": "Spdx3_ExternalMap.html", "cl": 12, "ucl": 3, "cal": 15, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.ExternalRef", "rp": "Spdx3_ExternalRef.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 47, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.Hash", "rp": "Spdx3_Hash.html", "cl": 12, "ucl": 3, "cal": 15, "tl": 41, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -243,13 +243,13 @@ var assemblies = [
       { "name": "Spdx3.Model.Core.Classes.IntegrityMethod", "rp": "Spdx3_IntegrityMethod.html", "cl": 4, "ucl": 3, "cal": 7, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.LifecycleScopedRelationship", "rp": "Spdx3_LifecycleScopedRelationship.html", "cl": 5, "ucl": 3, "cal": 8, "tl": 30, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.NamespaceMap", "rp": "Spdx3_NamespaceMap.html", "cl": 12, "ucl": 3, "cal": 15, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Organization", "rp": "Spdx3_Organization.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Organization", "rp": "Spdx3_Organization.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.PackageVerificationCode", "rp": "Spdx3_PackageVerificationCode.html", "cl": 13, "ucl": 3, "cal": 16, "tl": 46, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Person", "rp": "Spdx3_Person.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Person", "rp": "Spdx3_Person.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.PositiveIntegerRange", "rp": "Spdx3_PositiveIntegerRange.html", "cl": 44, "ucl": 3, "cal": 47, "tl": 96, "cb": 12, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.Relationship", "rp": "Spdx3_Relationship.html", "cl": 20, "ucl": 3, "cal": 23, "tl": 73, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.Relationship", "rp": "Spdx3_Relationship.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 73, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.SoftwareAgent", "rp": "Spdx3_SoftwareAgent.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Core.Classes.SpdxDocument", "rp": "Spdx3_SpdxDocument.html", "cl": 6, "ucl": 3, "cal": 9, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Core.Classes.SpdxDocument", "rp": "Spdx3_SpdxDocument.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Classes.Tool", "rp": "Spdx3_Tool.html", "cl": 3, "ucl": 3, "cal": 6, "tl": 21, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Individuals.NoAssertionElement", "rp": "Spdx3_NoAssertionElement.html", "cl": 4, "ucl": 3, "cal": 7, "tl": 23, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Core.Individuals.NoneElement", "rp": "Spdx3_NoneElement.html", "cl": 4, "ucl": 3, "cal": 7, "tl": 23, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -262,18 +262,19 @@ var assemblies = [
       { "name": "Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText", "rp": "Spdx3_SimpleLicensingText.html", "cl": 10, "ucl": 3, "cal": 13, "tl": 36, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Classes.ContentIdentifier", "rp": "Spdx3_ContentIdentifier.html", "cl": 12, "ucl": 3, "cal": 15, "tl": 39, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Classes.File", "rp": "Spdx3_File.html", "cl": 20, "ucl": 5, "cal": 25, "tl": 66, "cb": 5, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Software.Classes.Package", "rp": "Spdx3_Package.html", "cl": 8, "ucl": 3, "cal": 11, "tl": 41, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Software.Classes.Sbom", "rp": "Spdx3_Sbom.html", "cl": 4, "ucl": 3, "cal": 7, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Software.Classes.Package", "rp": "Spdx3_Package.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 41, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Software.Classes.Sbom", "rp": "Spdx3_Sbom.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 25, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Classes.Snippet", "rp": "Spdx3_Snippet.html", "cl": 14, "ucl": 3, "cal": 17, "tl": 45, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Model.Software.Classes.SoftwareArtifact", "rp": "Spdx3_SoftwareArtifact.html", "cl": 8, "ucl": 3, "cal": 11, "tl": 42, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.PhysicalSerialization", "rp": "Spdx3_PhysicalSerialization.html", "cl": 6, "ucl": 3, "cal": 9, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.SpdxModelConverter<T>", "rp": "Spdx3_SpdxModelConverter_1.html", "cl": 177, "ucl": 48, "cal": 225, "tl": 344, "cb": 112, "tb": 141, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Model.Software.Classes.SoftwareArtifact", "rp": "Spdx3_SoftwareArtifact.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 42, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.PhysicalSerialization", "rp": "Spdx3_PhysicalSerialization.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.Reader", "rp": "Spdx3_Reader.html", "cl": 28, "ucl": 2, "cal": 30, "tl": 62, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxModelConverter<T>", "rp": "Spdx3_SpdxModelConverter_1.html", "cl": 173, "ucl": 46, "cal": 219, "tl": 335, "cb": 109, "tb": 137, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxModelConverterFactory", "rp": "Spdx3_SpdxModelConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 40, "ucl": 16, "cal": 56, "tl": 231, "cb": 21, "tb": 38, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 138, "ucl": 43, "cal": 181, "tl": 289, "cb": 79, "tb": 101, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapperConverterFactory", "rp": "Spdx3_SpdxWrapperConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.Writer", "rp": "Spdx3_Writer.html", "cl": 16, "ucl": 10, "cal": 26, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 32, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Utility.Naming", "rp": "Spdx3_Naming.html", "cl": 26, "ucl": 0, "cal": 26, "tl": 40, "cb": 8, "tb": 8, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 33, "ucl": 2, "cal": 35, "tl": 76, "cb": 11, "tb": 12, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Utility.Naming", "rp": "Spdx3_Naming.html", "cl": 44, "ucl": 2, "cal": 46, "tl": 67, "cb": 17, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -288,31 +289,43 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetPropertyAttributeFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyAttributeFromJsonElementName(...)", "fileIndex": 0, "line": 217,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
     "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Read(...)", "fileIndex": 0, "line": 14,
     "metrics": [
-      { "value": 254, "exceeded": true },
-      { "value": 57, "exceeded": true },
+      { "value": 228, "exceeded": true },
+      { "value": 53, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 236,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Read(...)", "fileIndex": 0, "line": 16,
+    "metrics": [
+      { "value": 100, "exceeded": true },
+      { "value": 35, "exceeded": true },
+    ]},
+  {
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetObjectFromHashTable(System.Collections.Generic.Dictionary`2<System.String,System.Object>)", "methodShortName": "GetObjectFromHashTable(...)", "fileIndex": 0, "line": 214,
+    "metrics": [
+      { "value": 40, "exceeded": true },
+      { "value": 28, "exceeded": true },
+    ]},
+  {
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 227,
     "metrics": [
       { "value": 26, "exceeded": false },
       { "value": 26, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 183,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 174,
     "metrics": [
       { "value": 24, "exceeded": false },
       { "value": 24, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "GetPropertyAttributeFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyAttributeFromJsonElementName(...)", "fileIndex": 0, "line": 330,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 321,
+    "metrics": [
+      { "value": 16, "exceeded": false },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 197,
     "metrics": [
       { "value": 16, "exceeded": false },
       { "value": 16, "exceeded": true },
