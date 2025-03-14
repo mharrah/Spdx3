@@ -19,7 +19,7 @@ public class Relationship : Element
 
     [JsonPropertyName("to")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<Element> To { get; set; }
+    public IList<Element> To { get; set; } = new List<Element>();
 
     [JsonPropertyName("relationshipType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
