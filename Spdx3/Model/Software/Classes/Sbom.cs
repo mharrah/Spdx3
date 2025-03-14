@@ -9,7 +9,7 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Sbom : Bom
 {
-    [JsonPropertyName("sbomType")]
+    [JsonPropertyName("software_sbomType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<SbomType> SbomType { get; } = new List<SbomType>();
 

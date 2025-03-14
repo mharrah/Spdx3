@@ -9,23 +9,23 @@ namespace Spdx3.Model.Software.Classes;
 
 public abstract class SoftwareArtifact : Artifact
 {
-    [JsonPropertyName("copyrightText")] [JsonConverter(typeof(SpdxModelConverterFactory))]
+    [JsonPropertyName("software_copyrightText")] 
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? CopyrightText;
 
-
-    [JsonPropertyName("additionalPurpose")]
+    [JsonPropertyName("software_additionalPurpose")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<SoftwarePurpose> AdditionalPurpose { get; } = new List<SoftwarePurpose>();
 
-    [JsonPropertyName("contentIdentifier")]
+    [JsonPropertyName("software_contentIdentifier")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<ContentIdentifier> ContentIdentifier { get; } = new List<ContentIdentifier>();
 
-    [JsonPropertyName("primaryPurpose")]
+    [JsonPropertyName("software_primaryPurpose")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public SoftwarePurpose? PrimaryPurpose { get; set; }
 
-    [JsonPropertyName("attributionText")]
+    [JsonPropertyName("software_attributionText")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<string> AttributionText { get; } = new List<string>();
 

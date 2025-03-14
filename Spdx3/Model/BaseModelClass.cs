@@ -19,7 +19,7 @@ public abstract class BaseModelClass
 
     [JsonPropertyName("spdxId")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public required string SpdxId { get; init; }
+    public required string SpdxId { get; set; }
 
     // protected internal no-parm constructor required for deserialization
     protected internal BaseModelClass()

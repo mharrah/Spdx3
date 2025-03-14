@@ -37,4 +37,31 @@ public class Naming
 
         throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
     }
+
+    public static string ClassNameForSpdxType(string spdxType)
+    {
+        string? className = null;
+        if (!spdxType.Contains("_"))
+        {
+            className = $"Spdx3.Model.Core.Classes.{spdxType}";
+        }
+        else
+        {
+            foreach (var prefix in PrefixesForNamespaces)
+            {
+                if (!string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value))
+                {
+                    className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
+                    break;
+                }
+            }
+        }
+
+        if (className == null)
+        {
+            throw new Spdx3SerializationException($"Unable to determine class type for node of Type={spdxType}");
+        }
+        
+        return className;
+    }
 }

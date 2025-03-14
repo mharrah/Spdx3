@@ -16,7 +16,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "licenseText": "MIT",
+                                  "simplelicensing_licenseText": "MIT",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "simplelicensing_SimpleLicensingText",
                                   "spdxId": "urn:SimpleLicensingText:402"
@@ -49,7 +49,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "licenseText": "MIT",
+                                  "simplelicensing_licenseText": "MIT",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",

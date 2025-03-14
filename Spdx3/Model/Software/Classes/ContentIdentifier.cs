@@ -9,11 +9,11 @@ namespace Spdx3.Model.Software.Classes;
 
 public class ContentIdentifier : IntegrityMethod
 {
-    [JsonPropertyName("contentIdentifierType")]
+    [JsonPropertyName("software_contentIdentifierType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public ContentIdentifierType ContentIdentifierType { get; set; }
 
-    [JsonPropertyName("contentIdentifierValue")]
+    [JsonPropertyName("software_contentIdentifierValue")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ContentIdentifierValue { get; set; }
 

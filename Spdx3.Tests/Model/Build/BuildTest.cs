@@ -14,7 +14,7 @@ public class BuildTest : BaseModelTestClass
         var element = new Spdx3.Model.Build.Classes.Build(TestCatalog, TestCreationInfo, new Uri("https://github.com"));
         const string expected = """
                                 {
-                                  "buildType": "https://github.com/",
+                                  "build_buildType": "https://github.com/",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "build_Build",
                                   "spdxId": "urn:Build:402"
@@ -56,23 +56,23 @@ public class BuildTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "buildEndTime": "2025-02-22T01:23:45Z",
-                                  "buildId": "TestBuildId",
-                                  "buildStartTime": "2025-02-22T01:23:45Z",
-                                  "buildType": "https://github.com/",
-                                  "configSourceDigest": [
+                                  "build_buildEndTime": "2025-02-22T01:23:45Z",
+                                  "build_buildId": "TestBuildId",
+                                  "build_buildStartTime": "2025-02-22T01:23:45Z",
+                                  "build_buildType": "https://github.com/",
+                                  "build_configSourceDigest": [
                                     "urn:Hash:443"
                                   ],
-                                  "configSourceEntrypoint": [
+                                  "build_configSourceEntrypoint": [
                                     "TestEntryPoint"
                                   ],
-                                  "configSourceUri": [
+                                  "build_configSourceUri": [
                                     "https://github.com/"
                                   ],
-                                  "environment": [
+                                  "build_environment": [
                                     "urn:DictionaryEntry:450"
                                   ],
-                                  "configSourceUri": [
+                                  "build_parameter": [
                                     "urn:DictionaryEntry:45d"
                                   ],
                                   "comment": "TestComment",

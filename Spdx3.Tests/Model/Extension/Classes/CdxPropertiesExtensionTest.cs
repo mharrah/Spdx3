@@ -15,7 +15,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
         cdxPropExt.CdxProperty.Add(new CdxPropertyEntry(TestCatalog, "TestPropertyName", "TestPropertyValue"));
         const string expected = """
                                 {
-                                  "cdxProperty": [
+                                  "extension_cdxProperty": [
                                     "urn:CdxPropertyEntry:402",
                                     "urn:CdxPropertyEntry:41c"
                                   ],
@@ -64,7 +64,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
     {
         const string json = """
                             {
-                              "cdxProperty": [
+                              "extension_cdxProperty": [
                                 "urn:CdxPropertyEntry:402",
                                 "urn:CdxPropertyEntry:41c"
                               ],

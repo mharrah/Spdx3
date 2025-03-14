@@ -8,7 +8,7 @@ namespace Spdx3.Model.Extension.Classes;
 
 public class CdxPropertiesExtension : Extension
 {
-    [JsonPropertyName("cdxProperty")]
+    [JsonPropertyName("extension_cdxProperty")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public IList<CdxPropertyEntry> CdxProperty { get; init; } = new List<CdxPropertyEntry>();
 

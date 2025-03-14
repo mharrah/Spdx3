@@ -12,11 +12,11 @@ public class File : SoftwareArtifact
 {
     private string _name;
 
-    [JsonPropertyName("contentType")]
+    [JsonPropertyName("software_contentType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ContentType { get; set; }
 
-    [JsonPropertyName("fileKind")]
+    [JsonPropertyName("software_fileKind")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public FileKindType? FileKind { get; set; }
 

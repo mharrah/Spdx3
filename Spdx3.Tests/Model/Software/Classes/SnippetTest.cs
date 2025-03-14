@@ -19,7 +19,7 @@ public class SnippetTest : BaseModelTestClass
         var snippet = new Snippet(TestCatalog, TestCreationInfo, file);
         const string expected = """
                                 {
-                                  "snippetFromFile": "urn:File:402",
+                                  "software_snippetFromFile": "urn:File:402",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_Snippet",
                                   "spdxId": "urn:Snippet:40f"
@@ -68,17 +68,17 @@ public class SnippetTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "byteRange": "urn:PositiveIntegerRange:41c",
-                                  "lineRange": "urn:PositiveIntegerRange:429",
-                                  "snippetFromFile": "urn:File:402",
-                                  "additionalPurpose": [
+                                  "software_byteRange": "urn:PositiveIntegerRange:41c",
+                                  "software_lineRange": "urn:PositiveIntegerRange:429",
+                                  "software_snippetFromFile": "urn:File:402",
+                                  "software_additionalPurpose": [
                                     "archive",
                                     "other"
                                   ],
-                                  "contentIdentifier": [
+                                  "software_contentIdentifier": [
                                     "urn:ContentIdentifier:450"
                                   ],
-                                  "attributionText": [
+                                  "software_attributionText": [
                                     "Some attribution text"
                                   ],
                                   "builtTime": "2025-02-22T01:23:45Z",

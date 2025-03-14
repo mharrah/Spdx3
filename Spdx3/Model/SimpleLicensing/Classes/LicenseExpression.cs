@@ -12,15 +12,15 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 /// </summary>
 public class LicenseExpression : AnyLicenseInfo
 {
-    [JsonPropertyName("licenseExpression")]
+    [JsonPropertyName("simplelicensing_licenseExpression")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string LicenseExpressionText { get; set; }
 
-    [JsonPropertyName("customIdToUri")]
+    [JsonPropertyName("simplelicensing_customIdToUri")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DictionaryEntry? CustomIdToUri { get; set; }
 
-    [JsonPropertyName("licenseListVersion")]
+    [JsonPropertyName("simplelicensing_licenseListVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? LicenseListVersion { get; set; }
 

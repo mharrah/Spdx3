@@ -9,15 +9,15 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Snippet : SoftwareArtifact
 {
-    [JsonPropertyName("byteRange")]
+    [JsonPropertyName("software_byteRange")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public PositiveIntegerRange? ByteRange { get; set; }
 
-    [JsonPropertyName("lineRange")]
+    [JsonPropertyName("software_lineRange")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public PositiveIntegerRange? LineRange { get; set; }
 
-    [JsonPropertyName("snippetFromFile")]
+    [JsonPropertyName("software_snippetFromFile")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public File SnippetFromFile { get; set; }
 #pragma warning disable CS8618, CS9264

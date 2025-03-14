@@ -1,4 +1,6 @@
-﻿using Spdx3.Model;
+﻿using Spdx3.Exceptions;
+using Spdx3.Model;
+using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Utility;
 
@@ -28,5 +30,47 @@ public class Catalog
     {
         // add 13 each time so the numbers look more different from each other and don't look like an incrementing counter
         return (_idCounter += 13).ToString("x");
+    }
+
+    /// <summary>
+    /// Reconstruct a model object graph from the flat list of items in the catalog
+    /// </summary>
+    /// <returns>The SpdxDocument that is the top-level element in the document</returns>
+    /// <exception cref="Spdx3SerializationException">If there is not exactly one SpdxDocument element in the catalog</exception>
+    public SpdxDocument GetModel()
+    {
+        var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
+        if (spdxDocs.Count() != 1)
+        {
+            throw new Spdx3SerializationException($"Expected exactly one SpdxDocument, but got {spdxDocs.Count()}.");
+        }
+        var result = (SpdxDocument) spdxDocs.First();
+
+        // Replace all placeholders with their real objects
+        foreach (var item in Items.Values.ToList())
+        {
+            var props = item.GetType().GetProperties();
+            foreach (var prop in props)
+            {
+                if (!prop.PropertyType.IsAssignableTo(typeof(BaseModelClass)))
+                {
+                    continue;
+                }
+
+                BaseModelClass baseModelClass = (BaseModelClass) prop.GetValue(item, null);
+                if (baseModelClass == null)
+                {
+                    continue;
+                }
+
+                if (Items.ContainsKey(baseModelClass.SpdxId))
+                {
+                    var replacement = Items[baseModelClass.SpdxId];
+                    prop.SetValue(item, replacement);
+                }
+            }
+        }
+        
+        return result;
     }
 }

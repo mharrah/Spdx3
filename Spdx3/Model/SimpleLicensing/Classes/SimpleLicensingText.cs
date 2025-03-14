@@ -12,7 +12,7 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 /// </summary>
 public class SimpleLicensingText : Element
 {
-    [JsonPropertyName("licenseText")]
+    [JsonPropertyName("simplelicensing_licenseText")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string LicenseText { get; set; }
 

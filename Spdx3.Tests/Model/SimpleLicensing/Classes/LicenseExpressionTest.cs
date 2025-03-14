@@ -15,7 +15,7 @@ public class LicenseExpressionTest : BaseModelTestClass
         var licenseExpression = new LicenseExpression(TestCatalog, TestCreationInfo, "MIT");
         const string expected = """
                                 {
-                                  "licenseExpression": "MIT",
+                                  "simplelicensing_licenseExpression": "MIT",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "simplelicensing_LicenseExpression",
                                   "spdxId": "urn:LicenseExpression:402"
@@ -48,9 +48,9 @@ public class LicenseExpressionTest : BaseModelTestClass
         licenseExpression.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
         const string expected = """
                                 {
-                                  "licenseExpression": "MIT",
-                                  "customIdToUri": "urn:DictionaryEntry:40f",
-                                  "licenseListVersion": "1.0.0",
+                                  "simplelicensing_licenseExpression": "MIT",
+                                  "simplelicensing_customIdToUri": "urn:DictionaryEntry:40f",
+                                  "simplelicensing_licenseListVersion": "1.0.0",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",

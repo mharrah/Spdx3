@@ -11,11 +11,11 @@ namespace Spdx3.Model.Extension.Classes;
 /// </summary>
 public class CdxPropertyEntry : BaseModelClass
 {
-    [JsonPropertyName("cdxPropName")]
+    [JsonPropertyName("extension_cdxPropName")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string CdxPropName { get; set; }
 
-    [JsonPropertyName("cdxPropValue")]
+    [JsonPropertyName("extension_cdxPropValue")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? CdxPropValue { get; set; }
 

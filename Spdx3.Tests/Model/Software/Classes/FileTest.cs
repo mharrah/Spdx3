@@ -66,15 +66,15 @@ public class FileTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "name": "Some name",
-                                  "additionalPurpose": [
+                                  "software_additionalPurpose": [
                                     "archive",
                                     "other"
                                   ],
-                                  "contentIdentifier": [
+                                  "software_contentIdentifier": [
                                     "urn:ContentIdentifier:436"
                                   ],
-                                  "primaryPurpose": "application",
-                                  "attributionText": [
+                                  "software_primaryPurpose": "application",
+                                  "software_attributionText": [
                                     "Some attribution text"
                                   ],
                                   "builtTime": "2025-02-22T01:23:45Z",

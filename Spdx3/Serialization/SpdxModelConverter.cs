@@ -22,14 +22,25 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
         while (reader.Read())
             switch (reader.TokenType)
             {
+                case JsonTokenType.PropertyName:
+                    var currentPropName = reader.GetString();
+                    if (currentPropName == null)
+                    {
+                        throw new Spdx3Exception("Expected a property name but got null value");
+                    }
+
+                    currentProp = GetPropertyFromJsonElementName(typeToConvert, currentPropName);
+                    if (currentProp == null)
+                    {
+                        throw new Spdx3SerializationException(
+                            $"Property {currentPropName} is not found on type {typeToConvert}");
+                    }
+
+                    break;
+
                 case JsonTokenType.StartObject:
                     throw new Spdx3SerializationException($"There should not be nested objects in {currentProp?.Name}");
-                case JsonTokenType.EndObject:
-                    break;
-                case JsonTokenType.StartArray:
-                    break;
-                case JsonTokenType.EndArray:
-                    break;
+                
                 case JsonTokenType.String:
                     var strVal = reader.GetString();
                     if (currentProp == null)
@@ -41,11 +52,6 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                     if (strVal == null)
                     {
                         throw new Spdx3SerializationException("Null value encountered for string value");
-                    }
-
-                    if (currentProp == null)
-                    {
-                        throw new Spdx3SerializationException($"No current property to hold string value {strVal}");
                     }
 
                     if (currentProp.PropertyType == typeof(string))
@@ -157,21 +163,6 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                     }
 
                     currentProp.SetValue(result, intVal);
-
-                    break;
-                case JsonTokenType.PropertyName:
-                    var currentPropName = reader.GetString();
-                    if (currentPropName == null)
-                    {
-                        throw new Spdx3Exception("Expected a property name but got null value");
-                    }
-
-                    currentProp = GetPropertyAttributeFromJsonElementName(typeToConvert, currentPropName);
-                    if (currentProp == null)
-                    {
-                        throw new Spdx3SerializationException(
-                            $"Property {currentPropName} is not found on type {typeToConvert}");
-                    }
 
                     break;
             }
@@ -326,7 +317,7 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
     }
 
 
-    private static PropertyInfo? GetPropertyAttributeFromJsonElementName(Type typeToConvert, string elementName)
+    private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
         foreach (var prop in typeToConvert.GetProperties())
         {

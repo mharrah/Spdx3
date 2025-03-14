@@ -24,7 +24,7 @@ public class WriterTest : BaseModelTestClass
         var writer = new Writer(TestCatalog);
 
         // Act
-        var json = writer.Write();
+        var json = writer.WriteString();
 
         // Assert
         Assert.NotNull(json);
@@ -136,7 +136,7 @@ public class WriterTest : BaseModelTestClass
         var writer = new Writer(TestCatalog);
 
         // Act
-        var json = writer.Write();
+        var json = writer.WriteString();
 
         // Assert
         Assert.NotNull(json);

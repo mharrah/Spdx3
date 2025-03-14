@@ -8,23 +8,23 @@ namespace Spdx3.Model.Software.Classes;
 
 public class Package : SoftwareArtifact
 {
-    [JsonPropertyName("packageVersion")]
+    [JsonPropertyName("software_packageVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? PackageVersion { get; set; }
 
-    [JsonPropertyName("downloadLocation")]
+    [JsonPropertyName("software_downloadLocation")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? DownloadLocation { get; set; }
 
-    [JsonPropertyName("packageUrl")]
+    [JsonPropertyName("software_packageUrl")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? PackageUrl { get; set; }
 
-    [JsonPropertyName("homePage")]
+    [JsonPropertyName("software_homePage")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? HomePage { get; set; }
 
-    [JsonPropertyName("sourceInfo")]
+    [JsonPropertyName("software_sourceInfo")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? SourceInfo { get; set; }
 

@@ -11,7 +11,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
         var cdxProp = new CdxPropertyEntry(TestCatalog, "TestPropertyName");
         const string expected = """
                                 {
-                                  "cdxPropName": "TestPropertyName",
+                                  "extension_cdxPropName": "TestPropertyName",
                                   "type": "extension_CdxPropertyEntry",
                                   "spdxId": "urn:CdxPropertyEntry:402"
                                 }
@@ -32,8 +32,8 @@ public class CdxPropertyEntryTest : BaseModelTestClass
         var cdxProp = new CdxPropertyEntry(TestCatalog, "TestPropertyName", "test value");
         const string expected = """
                                 {
-                                  "cdxPropName": "TestPropertyName",
-                                  "cdxPropValue": "test value",
+                                  "extension_cdxPropName": "TestPropertyName",
+                                  "extension_cdxPropValue": "test value",
                                   "type": "extension_CdxPropertyEntry",
                                   "spdxId": "urn:CdxPropertyEntry:402"
                                 }

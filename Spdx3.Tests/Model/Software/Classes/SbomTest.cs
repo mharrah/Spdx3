@@ -51,7 +51,7 @@ public class SbomTest : BaseModelTestClass
         sbom.SbomType.Add(SbomType.build);
         const string expected = """
                                 {
-                                  "sbomType": [
+                                  "software_sbomType": [
                                     "build"
                                   ],
                                   "context": [

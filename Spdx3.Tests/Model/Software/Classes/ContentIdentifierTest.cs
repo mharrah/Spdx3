@@ -13,8 +13,8 @@ public class ContentIdentifierTest : BaseModelTestClass
             new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, "some gitoid value");
         const string expected = """
                                 {
-                                  "contentIdentifierType": "gitoid",
-                                  "contentIdentifierValue": "some gitoid value",
+                                  "software_contentIdentifierType": "gitoid",
+                                  "software_contentIdentifierValue": "some gitoid value",
                                   "type": "software_ContentIdentifier",
                                   "spdxId": "urn:ContentIdentifier:402"
                                 }
@@ -36,8 +36,8 @@ public class ContentIdentifierTest : BaseModelTestClass
         contentIdentifier.Comment = "test comment";
         const string expected = """
                                 {
-                                  "contentIdentifierType": "gitoid",
-                                  "contentIdentifierValue": "some gitoid value",
+                                  "software_contentIdentifierType": "gitoid",
+                                  "software_contentIdentifierValue": "some gitoid value",
                                   "comment": "test comment",
                                   "type": "software_ContentIdentifier",
                                   "spdxId": "urn:ContentIdentifier:402"
