@@ -159,7 +159,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     Console.WriteLine("Starting object");
 
                     // Start a new hashtable to collect values in for this object
-                    if (reader.CurrentDepth > 1)
+                    if (reader.CurrentDepth > 0)
                     {
                         if (hashTable != null)
                         {
@@ -259,7 +259,6 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         return jsonElementName;
     }
 
-
     private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
         var eName = Regex.Replace(elementName, @"^spdx:.*/", "");
@@ -337,17 +336,32 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                      property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) &&
                      property.PropertyType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
             {
-                var l = property.GetValue(result);
-                var list = (l as IList);
-                if (list == null)
+                var l  = property.GetValue(result);
+                var listOfObjects = l as IList;
+                if (listOfObjects == null)
                 {
-                    throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType}");
+                    throw new Spdx3SerializationException($"Could not get list of objects for type {property.PropertyType}");
                 }
 
-                foreach (var item in list)
+                List<object>? listOfIds;
+                if (entry.Value is string)
                 {
-                    var placeholder = GetPlaceHolder(property, (item as BaseModelClass).SpdxId);    
-                    list.Add(placeholder);
+                    listOfIds = new List<object>();
+                    listOfIds.Add(entry.Value);
+                }
+                else
+                {
+                    listOfIds = (entry.Value as List<object>);
+                    if (listOfIds == null)
+                    {
+                        throw new Spdx3SerializationException($"Could not get list of ID's from hashtable");
+                    }
+                }
+
+                foreach (var id in listOfIds)
+                {
+                    var placeholder = GetPlaceHolder(property, (string)id);    
+                    listOfObjects.Add(placeholder);
                 }
                 
             }

@@ -1,4 +1,6 @@
-﻿using Spdx3.Exceptions;
+﻿using System.Collections;
+using System.Reflection;
+using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 
@@ -52,21 +54,57 @@ public class Catalog
             var props = item.GetType().GetProperties();
             foreach (var prop in props)
             {
-                if (!prop.PropertyType.IsAssignableTo(typeof(BaseModelClass)))
+                if (prop.Name == "RootElement")
                 {
-                    continue;
+                    var x = 3;
                 }
 
-                BaseModelClass baseModelClass = (BaseModelClass) prop.GetValue(item, null);
-                if (baseModelClass == null)
+                if (prop.GetValue(item) == null)
                 {
                     continue;
                 }
                 
-                if (Items.ContainsKey(baseModelClass.SpdxId))
+                var isSpdxClass = prop.PropertyType.IsAssignableTo(typeof(BaseModelClass));
+                var isListOfSpdxClass = prop.PropertyType.IsGenericType
+                                        && prop.PropertyType.GetGenericTypeDefinition() == typeof(IList<>)
+                                        && prop.PropertyType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass));
+
+                if (isSpdxClass)
                 {
-                    var replacement = Items[baseModelClass.SpdxId];
-                    prop.SetValue(item, replacement);
+                    BaseModelClass placeHolder = (BaseModelClass)prop.GetValue(item);
+                    if (placeHolder == null)
+                    {
+                        continue;
+                    }
+
+                    if (Items.ContainsKey(placeHolder.SpdxId))
+                    {
+                        var replacement = Items[placeHolder.SpdxId];
+                            prop.SetValue(item, replacement);
+                    }
+                }
+
+                if (isListOfSpdxClass)
+                {
+                    var listOfPlaceHolders = (IList)prop.GetValue(item);
+                    if (listOfPlaceHolders.Count == 0)
+                    {
+                        continue;
+                    }
+                    var listOfReplacements = new List<BaseModelClass>();
+                    foreach (var ph in listOfPlaceHolders)
+                    {
+                        var placeHolder = (BaseModelClass)ph;
+                        if (!Items.ContainsKey(placeHolder.SpdxId))
+                        {
+                            throw new Spdx3SerializationException($"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
+                        }
+
+                        var replacement = Items[placeHolder.SpdxId];
+                        listOfReplacements.Add(replacement);
+                    }
+                    listOfPlaceHolders.Clear();
+                    listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));
                 }
             }
         }
