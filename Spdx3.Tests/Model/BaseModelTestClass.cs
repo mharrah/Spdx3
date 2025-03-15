@@ -70,7 +70,7 @@ public class BaseModelTestClass
     /// </summary>
     /// <param name="json">The json you want to normalize</param>
     /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
-    protected string NormalizeJson(string json)
+    protected static string NormalizeJson(string json)
     {
         var r = Regex.Replace(json, "^\\s*", "", RegexOptions.Multiline);
         r = Regex.Replace(r, "\\s*$", "", RegexOptions.Multiline);

@@ -42,9 +42,9 @@ public class Catalog
     public SpdxDocument GetModel()
     {
         var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
-        if (spdxDocs.Count() != 1)
+        if (spdxDocs.Count != 1)
         {
-            throw new Spdx3SerializationException($"Expected exactly one SpdxDocument, but got {spdxDocs.Count()}.");
+            throw new Spdx3SerializationException($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
         }
         var result = (SpdxDocument) spdxDocs.First();
 
@@ -71,15 +71,15 @@ public class Catalog
 
                 if (isSpdxClass)
                 {
-                    BaseModelClass placeHolder = (BaseModelClass)prop.GetValue(item);
+                    var placeHolder = (BaseModelClass)prop.GetValue(item);
                     if (placeHolder == null)
                     {
                         continue;
                     }
 
-                    if (Items.ContainsKey(placeHolder.SpdxId))
+                    if (Items.TryGetValue(placeHolder.SpdxId, out BaseModelClass? value))
                     {
-                        var replacement = Items[placeHolder.SpdxId];
+                        var replacement = value;
                             prop.SetValue(item, replacement);
                     }
                 }
@@ -95,12 +95,12 @@ public class Catalog
                     foreach (var ph in listOfPlaceHolders)
                     {
                         var placeHolder = (BaseModelClass)ph;
-                        if (!Items.ContainsKey(placeHolder.SpdxId))
+                        if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
                         {
                             throw new Spdx3SerializationException($"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
                         }
 
-                        var replacement = Items[placeHolder.SpdxId];
+                        var replacement = value;
                         listOfReplacements.Add(replacement);
                     }
                     listOfPlaceHolders.Clear();

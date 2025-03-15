@@ -31,7 +31,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         
         // As we read the object properties, first we read the name, then we read the value.  This is the name and
         // the key into the hashtable that we're about to set.
-        var hashTableKey = String.Empty;
+        var hashTableKey = string.Empty;
         
         // This is whatever array we happen to be in the middle of populating
         List<object>? currentArray = null;
@@ -279,11 +279,11 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
     private static BaseModelClass? GetObjectFromHashTable(Dictionary<string, object> hashTable)
     {
         // Create the needed object
-        if (!hashTable.ContainsKey("type"))
+        if (!hashTable.TryGetValue("type", out object? val))
         {
             throw new Spdx3Exception("No type found in hash table");
         }
-        var t = (string)hashTable["type"];
+        var t = (string)val;
         var classTypeName = Naming.ClassNameForSpdxType(t);
         var classType = Type.GetType(classTypeName);
         if (classType == null)
@@ -326,7 +326,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             }
             else if (property.PropertyType == typeof(int))
             {
-                property.SetValue(result, Int32.Parse((string)entry.Value));
+                property.SetValue(result, int.Parse((string)entry.Value));
             }
             else if (property.PropertyType == typeof(DateTimeOffset))
             {
@@ -351,7 +351,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 }
                 else
                 {
-                    listOfIds = (entry.Value as List<object>);
+                    listOfIds = entry.Value as List<object>;
                     if (listOfIds == null)
                     {
                         throw new Spdx3SerializationException($"Could not get list of ID's from hashtable");
@@ -375,7 +375,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 }
                 var enumType = property.PropertyType.GetGenericArguments()[0];
                 
-                var listOfEnums = (property.GetValue(result) as IList);
+                var listOfEnums = property.GetValue(result) as IList;
                 if (listOfEnums == null)
                 {
                     throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType} as a list");

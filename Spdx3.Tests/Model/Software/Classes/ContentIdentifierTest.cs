@@ -31,9 +31,10 @@ public class ContentIdentifierTest : BaseModelTestClass
     public void ContentIdentifier_FullyPopulated_ShouldSerialize()
     {
         // Arrange
-        var contentIdentifier =
-            new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, "some gitoid value");
-        contentIdentifier.Comment = "test comment";
+        var contentIdentifier = new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, "some gitoid value")
+            {
+                Comment = "test comment"
+            };
         const string expected = """
                                 {
                                   "software_contentIdentifierType": "gitoid",

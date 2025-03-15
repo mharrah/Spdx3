@@ -41,7 +41,7 @@ public class Naming
     public static string ClassNameForSpdxType(string spdxType)
     {
         string? className = null;
-        if (!spdxType.Contains("_"))
+        if (!spdxType.Contains('_'))
         {
             className = $"Spdx3.Model.Core.Classes.{spdxType}";
         }
@@ -49,11 +49,13 @@ public class Naming
         {
             foreach (var prefix in PrefixesForNamespaces)
             {
-                if (!string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value))
+                if (string.IsNullOrWhiteSpace(prefix.Value) || !spdxType.StartsWith(prefix.Value))
                 {
-                    className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
-                    break;
+                    continue;
                 }
+
+                className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
+                break;
             }
         }
 
