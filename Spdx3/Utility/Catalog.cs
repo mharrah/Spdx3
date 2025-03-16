@@ -71,10 +71,9 @@ public class Catalog
                         continue;
                     }
 
-                    if (Items.TryGetValue(placeHolder.SpdxId, out BaseModelClass? value))
+                    if (Items.TryGetValue(placeHolder.SpdxId, out var value))
                     {
-                        var replacement = value;
-                            prop.SetValue(item, replacement);
+                        prop.SetValue(item, value);
                     }
                 }
 
@@ -94,8 +93,7 @@ public class Catalog
                             throw new Spdx3SerializationException($"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
                         }
 
-                        var replacement = value;
-                        listOfReplacements.Add(replacement);
+                        listOfReplacements.Add(value);
                     }
                     listOfPlaceHolders.Clear();
                     listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));

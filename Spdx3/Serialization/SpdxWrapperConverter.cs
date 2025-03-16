@@ -278,7 +278,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
     private static BaseModelClass? GetObjectFromHashTable(Dictionary<string, object> hashTable)
     {
         // Create the needed object
-        if (!hashTable.TryGetValue("type", out object? val))
+        if (!hashTable.TryGetValue("type", out var val))
         {
             throw new Spdx3Exception("No type found in hash table");
         }
@@ -336,8 +336,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                      property.PropertyType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
             {
                 var l  = property.GetValue(result);
-                var listOfObjects = l as IList;
-                if (listOfObjects == null)
+                if (l is not IList listOfObjects)
                 {
                     throw new Spdx3SerializationException($"Could not get list of objects for type {property.PropertyType}");
                 }
@@ -357,9 +356,8 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     }
                 }
 
-                foreach (var id in listOfIds)
+                foreach (var placeholder in listOfIds.Select(id => GetPlaceHolder(property, (string)id)))
                 {
-                    var placeholder = GetPlaceHolder(property, (string)id);    
                     listOfObjects.Add(placeholder);
                 }
                 

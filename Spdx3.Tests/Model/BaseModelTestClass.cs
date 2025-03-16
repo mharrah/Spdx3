@@ -53,6 +53,7 @@ public class BaseModelTestClass
         // If you don't cast it like this, only the base class properties will be serialized by JsonSerializer,
         // and that's (clearly) not ok.
         // ReSharper disable once CanReplaceCastWithVariableType
+        // ReSharper disable once SuggestVarOrType_BuiltInTypes
         object plainObject = (object)obj;
         return JsonSerializer.Serialize<object>(plainObject, Options);
     }
