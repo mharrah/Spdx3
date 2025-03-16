@@ -1,4 +1,3 @@
-using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 

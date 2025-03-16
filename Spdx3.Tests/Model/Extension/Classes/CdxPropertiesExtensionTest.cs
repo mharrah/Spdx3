@@ -1,4 +1,3 @@
-using Spdx3.Model;
 using Spdx3.Model.Extension.Classes;
 using Xunit.Internal;
 
@@ -78,7 +77,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
         Assert.NotNull(cdxPropExt);
         Assert.Equal("urn:CdxPropertiesExtension:40f", cdxPropExt.SpdxId);
         Assert.Equal("extension_CdxPropertiesExtension", cdxPropExt.Type);
-        var propList = cdxPropExt.CdxProperty.CastOrToList<CdxPropertyEntry>();
+        var propList = cdxPropExt.CdxProperty.CastOrToList();
         Assert.Equal(2, propList.Count);
         Assert.Equal("urn:CdxPropertyEntry:402", propList[0].SpdxId);
         Assert.Equal("extension_CdxPropertyEntry", propList[0].Type);

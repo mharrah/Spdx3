@@ -1,4 +1,5 @@
 using System.Reflection;
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Serialization;
 using Spdx3.Utility;
@@ -38,6 +39,6 @@ public class ReaderTest
         var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().Location);
         var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
         var dirPath = Path.GetDirectoryName(codeBasePath);
-        return Path.Combine(dirPath, "TestFiles", relativePath);
+        return Path.Combine(dirPath ?? throw new Spdx3SerializationException("Could not find test file directory"), "TestFiles", relativePath);
     }
 }

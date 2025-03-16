@@ -1,4 +1,5 @@
 // ReSharper disable CheckNamespace
+// ReSharper disable RedundantTypeDeclarationBody
 #pragma warning disable CA1050
 
 

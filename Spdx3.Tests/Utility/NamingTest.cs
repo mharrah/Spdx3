@@ -1,5 +1,4 @@
 using Spdx3.Exceptions;
-using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Extension.Classes;
 using Spdx3.Model.SimpleLicensing.Classes;

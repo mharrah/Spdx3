@@ -1,4 +1,3 @@
-using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;

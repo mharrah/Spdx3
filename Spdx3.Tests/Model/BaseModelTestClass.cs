@@ -54,7 +54,9 @@ public class BaseModelTestClass
         // and that's (clearly) not ok.
         // ReSharper disable once CanReplaceCastWithVariableType
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
+        // ReSharper disable once RedundantCast
         object plainObject = (object)obj;
+        // ReSharper disable once RedundantTypeArgumentsOfMethod
         return JsonSerializer.Serialize<object>(plainObject, Options);
     }
     

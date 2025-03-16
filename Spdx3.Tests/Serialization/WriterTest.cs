@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Software.Classes;
