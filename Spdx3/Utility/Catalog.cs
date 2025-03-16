@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Reflection;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
@@ -54,11 +53,6 @@ public class Catalog
             var props = item.GetType().GetProperties();
             foreach (var prop in props)
             {
-                if (prop.Name == "RootElement")
-                {
-                    var x = 3;
-                }
-
                 if (prop.GetValue(item) == null)
                 {
                     continue;

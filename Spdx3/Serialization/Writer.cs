@@ -60,7 +60,6 @@ public class Writer
     ///     Create a new file and write the catalog to it as SPDX 3.0.1 compliant JSON
     /// </summary>
     /// <param name="fileName">The name of the new JSON file to create</param>
-    /// <param name="catalog">The catalog of objects to write</param>
     /// <returns>The file we created and wrote to</returns>
     public FileStream WriteFileName(string fileName)
     {

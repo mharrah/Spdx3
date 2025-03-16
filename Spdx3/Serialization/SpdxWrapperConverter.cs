@@ -214,7 +214,6 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         {
             var jsonElementName = GetJsonElementNameFromPropertyAttribute(prop);
 
-            var propType = prop.PropertyType;
             var propVal = prop.GetValue(value);
 
             switch (propVal)

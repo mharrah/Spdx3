@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace Spdx3.Model.Core.Enums;
 
 /// <summary>

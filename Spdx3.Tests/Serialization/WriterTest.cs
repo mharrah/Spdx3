@@ -19,11 +19,11 @@ public class WriterTest : BaseModelTestClass
         new SpdxDocument(TestCatalog, TestCreationInfo);
 #pragma warning restore CA1806
 
-        var expected = "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
-                       "\"@graph\":[{\"created\":\"2025-02-22T01:23:45Z\",\"specVersion\":\"3.0.1\"," +
-                       "\"type\":\"CreationInfo\",\"spdxId\":\"urn:CreationInfo:3f5\"}," +
-                       "{\"creationInfo\":\"urn:CreationInfo:3f5\",\"type\":\"SpdxDocument\"," +
-                       "\"spdxId\":\"urn:SpdxDocument:402\"}]}";
+        const string expected = "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
+                                "\"@graph\":[{\"created\":\"2025-02-22T01:23:45Z\",\"specVersion\":\"3.0.1\"," +
+                                "\"type\":\"CreationInfo\",\"spdxId\":\"urn:CreationInfo:3f5\"}," +
+                                "{\"creationInfo\":\"urn:CreationInfo:3f5\",\"type\":\"SpdxDocument\"," +
+                                "\"spdxId\":\"urn:SpdxDocument:402\"}]}";
         var writer = new Writer(TestCatalog);
 
         // Act
