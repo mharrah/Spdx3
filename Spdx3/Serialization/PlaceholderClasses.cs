@@ -1,7 +1,6 @@
-
-
 // ReSharper disable RedundantTypeDeclarationBody
 // ReSharper disable UnusedType.Global
+
 namespace Spdx3.Model.Core.Classes
 {
     public class PlaceholderElement : Element
@@ -19,32 +18,26 @@ namespace Spdx3.Model.Core.Classes
     public class PlaceholderIntegrityMethod : IntegrityMethod
     {
     }
-
 }
 
 namespace Spdx3.Model.Extension.Classes
 {
-    
-    public class PlaceholderExtension: Extension
+    public class PlaceholderExtension : Extension
     {
     }
-
 }
 
 
 namespace Spdx3.Model.Software.Classes
 {
-    
-    public class PlaceholderSoftwareArtifact: SoftwareArtifact
+    public class PlaceholderSoftwareArtifact : SoftwareArtifact
     {
     }
-
 }
 
 namespace Spdx3.Model.SimpleLicensing.Classes
 {
-    public class PlaceholderAnyLicenseInfo: AnyLicenseInfo
+    public class PlaceholderAnyLicenseInfo : AnyLicenseInfo
     {
     }
-
 }

@@ -103,8 +103,8 @@ public class ElementTest : BaseModelTestClass
         Assert.NotNull(exception);
         Assert.Equal("Object TestElement, property Type: Field is empty", exception.Message);
     }
-    
-    
+
+
     [Fact]
     public void TestElement_DeserializesAsExpected()
     {
@@ -115,7 +115,7 @@ public class ElementTest : BaseModelTestClass
                               "spdxId": "urn:TestElement:402"
                             }
                             """;
-        
+
         var testElement = FromJson<TestElement>(json);
         Assert.NotNull(testElement);
         Assert.IsType<TestElement>(testElement);
@@ -125,5 +125,4 @@ public class ElementTest : BaseModelTestClass
         Assert.Equal("urn:CreationInfo:3f5", testElement.CreationInfo.SpdxId);
         Assert.Equal("CreationInfo", testElement.CreationInfo.Type);
     }
-
 }

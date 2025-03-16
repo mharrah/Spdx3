@@ -9,12 +9,11 @@ public class SpdxOrganizationTest : BaseModelTestClass
     {
         // Arrange
         const string spdxId = "https://spdx.org/";
-        
+
         // Act
         var spdxOrg = new SpdxOrganization(TestCatalog, TestCreationInfo);
-        
+
         // Assert
         Assert.Equal(spdxId, spdxOrg.SpdxId);
     }
-    
 }

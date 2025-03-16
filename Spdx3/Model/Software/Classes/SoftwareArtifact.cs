@@ -9,8 +9,7 @@ namespace Spdx3.Model.Software.Classes;
 
 public abstract class SoftwareArtifact : Artifact
 {
-    [JsonPropertyName("software_copyrightText")] 
-    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    [JsonPropertyName("software_copyrightText")] [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? CopyrightText;
 
     [JsonPropertyName("software_additionalPurpose")]

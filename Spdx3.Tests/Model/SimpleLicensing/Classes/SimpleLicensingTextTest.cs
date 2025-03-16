@@ -22,14 +22,14 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "spdxId": "urn:SimpleLicensingText:402"
                                 }
                                 """;
-        
+
         // Act
         var json = ToJson(simpleLicensingText);
-        
+
         // Assert
         Assert.Equal(expected, json);
     }
-    
+
     [Fact]
     public void SimpleLicensingText_FullyPopulated_ShouldSerialize()
     {
@@ -71,10 +71,10 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "spdxId": "urn:SimpleLicensingText:402"
                                 }
                                 """;
-        
+
         // Act
         var json = ToJson(simpleLicensingText);
-        
+
         // Assert
         Assert.Equal(expected, json);
     }

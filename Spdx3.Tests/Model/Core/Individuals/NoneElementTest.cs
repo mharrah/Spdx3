@@ -9,10 +9,10 @@ public class NoneElementTest : BaseModelTestClass
     {
         // Arrange
         const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement";
-            
+
         // Act
         var noneElement = new NoneElement(TestCatalog, TestCreationInfo);
-        
+
         // Assert
         Assert.Equal(expected, noneElement.SpdxId);
     }

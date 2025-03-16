@@ -1,5 +1,6 @@
 // ReSharper disable InconsistentNaming
 // ReSharper disable UnusedMember.Global
+
 namespace Spdx3.Model.Core.Enums;
 
 /// <summary>

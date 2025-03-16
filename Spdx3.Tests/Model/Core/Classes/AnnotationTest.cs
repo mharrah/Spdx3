@@ -12,7 +12,7 @@ public class AnnotationTest : BaseModelTestClass
         // Arrange
         var subject = new TestElement(TestCatalog, TestCreationInfo);
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
-        
+
         // Assert
         Assert.Null(Record.Exception(() => annotation.Validate()));
         Assert.Equal("Annotation", annotation.Type);

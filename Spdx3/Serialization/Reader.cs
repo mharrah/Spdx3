@@ -7,7 +7,6 @@ namespace Spdx3.Serialization;
 
 public class Reader
 {
-    
     /// <summary>
     ///     The catalog we're writing out
     /// </summary>
@@ -40,6 +39,7 @@ public class Reader
         {
             throw new Spdx3SerializationException("Could not deserialize JSON in expected format.");
         }
+
         foreach (var entry in fileWithWrapper.Graph)
         {
             _catalog.Items[entry.SpdxId] = entry;
@@ -47,11 +47,11 @@ public class Reader
 
         return _catalog.GetModel();
     }
-    
+
     public SpdxDocument ReadFileStream(FileStream fileStream)
     {
         var json = new StreamReader(fileStream).ReadToEnd();
-        return ReadString(json); 
+        return ReadString(json);
     }
 
     public SpdxDocument ReadFileName(string fileName)

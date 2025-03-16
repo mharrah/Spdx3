@@ -12,28 +12,28 @@ public class NamingTest
     [Fact]
     public void SpdxUtility_SpdxTypeForClass_ShouldReturnSpdxTypes()
     {
-        Assert.Equal("Annotation",  Naming.SpdxTypeForClass(typeof(Annotation)));
-        Assert.Equal("simplelicensing_LicenseExpression",  Naming.SpdxTypeForClass(typeof(LicenseExpression)));
-        Assert.Equal("software_File",  Naming.SpdxTypeForClass(typeof(File)));
-        Assert.Equal("extension_CdxPropertiesExtension",  Naming.SpdxTypeForClass(typeof(CdxPropertiesExtension)));
+        Assert.Equal("Annotation", Naming.SpdxTypeForClass(typeof(Annotation)));
+        Assert.Equal("simplelicensing_LicenseExpression", Naming.SpdxTypeForClass(typeof(LicenseExpression)));
+        Assert.Equal("software_File", Naming.SpdxTypeForClass(typeof(File)));
+        Assert.Equal("extension_CdxPropertiesExtension", Naming.SpdxTypeForClass(typeof(CdxPropertiesExtension)));
     }
-    
+
     [Fact]
     public void SpdxUtility_SpdxTypeForClass_ShouldThrowForNonSpdxTypes()
     {
-        var ex = Record.Exception(() =>  Naming.SpdxTypeForClass(typeof(string)));
+        var ex = Record.Exception(() => Naming.SpdxTypeForClass(typeof(string)));
 
         Assert.NotNull(ex);
         Assert.IsType<Spdx3Exception>(ex);
         Assert.Equal("Unable to determine SPDX3 node type value for System.String", ex.Message);
     }
-    
-        
+
+
     [Fact]
     public void SpdxUtility_SpdxTypeForClass_ShouldThrowForTypeInEmptyNamespace()
     {
         var t = typeof(TestClassWithEmptyNamespace);
-        var ex = Record.Exception(() =>  Naming.SpdxTypeForClass(t));
+        var ex = Record.Exception(() => Naming.SpdxTypeForClass(t));
 
         Assert.NotNull(ex);
         Assert.IsType<Spdx3Exception>(ex);

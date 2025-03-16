@@ -25,15 +25,14 @@ public class BaseModelClassTest : BaseModelTestClass
     {
         // Arrange
         var baseClass1 = new TestBaseModelClassBadValidator(TestCatalog);
-        
+
         // Act
         var exception = Record.Exception(() => baseClass1.Validate());
-        
+
         // Assert
         Assert.NotNull(exception);
         Assert.IsType<Spdx3ValidationException>(exception);
         Assert.Equal("Object TestBaseModelClassBadValidator, property 'This property doesn't exist on the class': " +
                      "No such property exists", exception.Message);
-
     }
 }

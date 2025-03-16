@@ -42,7 +42,7 @@ public class Build : Element
 
     [JsonPropertyName("build_parameter")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<DictionaryEntry> Parameter { get;  } = new List<DictionaryEntry>();
+    public IList<DictionaryEntry> Parameter { get; } = new List<DictionaryEntry>();
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global

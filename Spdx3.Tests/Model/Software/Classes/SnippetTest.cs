@@ -119,23 +119,22 @@ public class SnippetTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
-    
-    
+
+
     [Fact]
     public void Snippet_FailsValidation_WhenEmpty_File()
     {
-      // Arrange
+        // Arrange
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-      var snippet = new Snippet(TestCatalog, TestCreationInfo, null);
+        var snippet = new Snippet(TestCatalog, TestCreationInfo, null);
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
-      // Act
-      var ex = Record.Exception(() => ToJson(snippet));
+        // Act
+        var ex = Record.Exception(() => ToJson(snippet));
 
-      // Assert
-      Assert.NotNull(ex);
-      Assert.IsType<Spdx3ValidationException>(ex);
-      Assert.Equal("Object Snippet, property SnippetFromFile: Cannot be null, empty, or whitespace.", ex.Message);
+        // Assert
+        Assert.NotNull(ex);
+        Assert.IsType<Spdx3ValidationException>(ex);
+        Assert.Equal("Object Snippet, property SnippetFromFile: Cannot be null, empty, or whitespace.", ex.Message);
     }
-
 }

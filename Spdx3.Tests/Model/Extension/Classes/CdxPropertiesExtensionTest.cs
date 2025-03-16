@@ -73,7 +73,7 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
                             """;
 
         var cdxPropExt = FromJson<CdxPropertiesExtension>(json);
-        
+
         Assert.NotNull(cdxPropExt);
         Assert.Equal("urn:CdxPropertiesExtension:40f", cdxPropExt.SpdxId);
         Assert.Equal("extension_CdxPropertiesExtension", cdxPropExt.Type);

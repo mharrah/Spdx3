@@ -144,7 +144,4 @@ public class WriterTest : BaseModelTestClass
         Assert.NotNull(json);
         Assert.Equal(NormalizeJson(expected), json);
     }
-
-
-
 }

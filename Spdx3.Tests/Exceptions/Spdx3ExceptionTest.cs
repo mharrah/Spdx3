@@ -4,7 +4,6 @@ namespace Spdx3.Tests.Exceptions;
 
 public class Spdx3ExceptionTest
 {
- 
     [Fact]
     public void Spdx3Exception_InnerException_Can_Be_Supplied()
     {

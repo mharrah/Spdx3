@@ -13,9 +13,8 @@ public class TestElement : Element
     // protected internal no-parm constructor required for deserialization
     protected internal TestElement()
     {
-        
     }
-    
+
     [SetsRequiredMembers]
     public TestElement(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {

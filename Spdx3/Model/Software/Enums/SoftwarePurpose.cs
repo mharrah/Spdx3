@@ -1,4 +1,5 @@
 ﻿// ReSharper disable UnusedMember.Global
+
 namespace Spdx3.Model.Software.Enums;
 
 /// <summary>

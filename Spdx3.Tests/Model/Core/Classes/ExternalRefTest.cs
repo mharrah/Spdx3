@@ -56,8 +56,8 @@ public class ExternalRefTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
-    
-       
+
+
     [Fact]
     public void ExternalRef_DeserializesAsExpected()
     {
@@ -74,7 +74,7 @@ public class ExternalRefTest : BaseModelTestClass
                               "spdxId": "urn:ExternalRef:402"
                             }
                             """;
-        
+
         var externalRef = FromJson<ExternalRef>(json);
         Assert.NotNull(externalRef);
         Assert.IsType<ExternalRef>(externalRef);
@@ -87,5 +87,4 @@ public class ExternalRefTest : BaseModelTestClass
         Assert.Contains("locator 2", externalRef.Locator);
         Assert.Equal(2, externalRef.Locator.Count);
     }
-
 }

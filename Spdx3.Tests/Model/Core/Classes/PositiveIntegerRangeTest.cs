@@ -50,7 +50,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         Assert.NotNull(exception);
     }
 
-    
+
     [Fact]
     public void PositiveIntegerRange_Setter_ThrowsExceptionIf_EndLessThanBegin()
     {

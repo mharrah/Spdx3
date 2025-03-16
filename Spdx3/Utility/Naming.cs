@@ -47,7 +47,8 @@ public static class Naming
         }
         else
         {
-            foreach (var prefix in PrefixesForNamespaces.Where(prefix => !string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value)))
+            foreach (var prefix in PrefixesForNamespaces.Where(prefix =>
+                         !string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value)))
             {
                 className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
                 break;
@@ -58,7 +59,7 @@ public static class Naming
         {
             throw new Spdx3SerializationException($"Unable to determine class type for node of Type={spdxType}");
         }
-        
+
         return className;
     }
 }

@@ -7,7 +7,7 @@ namespace Spdx3.Tests.Model.Build;
 
 public class BuildTest : BaseModelTestClass
 {
-   [Fact]
+    [Fact]
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
@@ -103,5 +103,4 @@ public class BuildTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
-
- }
+}

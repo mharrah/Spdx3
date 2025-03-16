@@ -31,14 +31,14 @@ public partial class BaseModelTestClass
         MaxDepth = 2
     };
 
-    
+
     // Constructor
     protected BaseModelTestClass()
     {
         TestCreationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
         Options.Converters.Add(new SpdxModelConverterFactory());
     }
-    
+
     /// <summary>
     ///     Syntactic sugar method for testing serialization.  Unlike the SpdxWriter class, this method produces
     ///     JSON that has line breaks and indents
@@ -59,17 +59,17 @@ public partial class BaseModelTestClass
         // ReSharper disable once RedundantTypeArgumentsOfMethod
         return JsonSerializer.Serialize<object>(plainObject, Options);
     }
-    
+
     protected T? FromJson<T>(string json)
     {
         var result = JsonSerializer.Deserialize<T>(json, Options);
         return result;
     }
-    
+
     /// <summary>
-    /// Convenience method to remove line breaks and all whitespace at the beginning and end of the line breaks.
-    /// This makes it easy to use here-strings for JSON literals without having to use ugly escapes and have
-    /// weird, opaque line wrapping.
+    ///     Convenience method to remove line breaks and all whitespace at the beginning and end of the line breaks.
+    ///     This makes it easy to use here-strings for JSON literals without having to use ugly escapes and have
+    ///     weird, opaque line wrapping.
     /// </summary>
     /// <param name="json">The json you want to normalize</param>
     /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
@@ -83,10 +83,10 @@ public partial class BaseModelTestClass
 
     [GeneratedRegex("(\r|\n)", RegexOptions.Multiline)]
     private static partial Regex RegexCrLf();
-    
+
     [GeneratedRegex("\\s*$", RegexOptions.Multiline)]
     private static partial Regex RegexTrailingSpace();
-    
+
     [GeneratedRegex("^\\s*", RegexOptions.Multiline)]
     private static partial Regex RegexLeadingSpace();
 }

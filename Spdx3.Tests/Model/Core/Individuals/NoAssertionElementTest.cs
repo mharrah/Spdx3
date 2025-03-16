@@ -9,10 +9,10 @@ public class NoAssertionElementTest : BaseModelTestClass
     {
         // Arrange
         const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement";
-            
+
         // Act
         var noAssertion = new NoAssertionElement(TestCatalog, TestCreationInfo);
-        
+
         // Assert
         Assert.Equal(expected, noAssertion.SpdxId);
     }

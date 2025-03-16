@@ -100,7 +100,7 @@ public class CreationInfoTest : BaseModelTestClass
                               "spdxId": "urn:CreationInfo:402"
                             }
                             """;
-        
+
         var creationInfo = FromJson<CreationInfo>(json);
         Assert.NotNull(creationInfo);
         Assert.IsType<CreationInfo>(creationInfo);
@@ -108,6 +108,5 @@ public class CreationInfoTest : BaseModelTestClass
         Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
         Assert.Equal("3.0.1", creationInfo.SpecVersion);
         Assert.Equal(PredictableDateTime, creationInfo.Created);
-        
     }
 }
