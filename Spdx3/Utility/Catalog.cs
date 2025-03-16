@@ -77,27 +77,30 @@ public class Catalog
                     }
                 }
 
-                if (isListOfSpdxClass)
+                if (!isListOfSpdxClass)
                 {
-                    var listOfPlaceHolders = (IList)prop.GetValue(item);
-                    if (listOfPlaceHolders.Count == 0)
-                    {
-                        continue;
-                    }
-                    var listOfReplacements = new List<BaseModelClass>();
-                    foreach (var ph in listOfPlaceHolders)
-                    {
-                        var placeHolder = (BaseModelClass)ph;
-                        if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
-                        {
-                            throw new Spdx3SerializationException($"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
-                        }
-
-                        listOfReplacements.Add(value);
-                    }
-                    listOfPlaceHolders.Clear();
-                    listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));
+                    continue;
                 }
+                
+                var listOfPlaceHolders = (IList)prop.GetValue(item);
+                if (listOfPlaceHolders.Count == 0)
+                {
+                    continue;
+                }
+                var listOfReplacements = new List<BaseModelClass>();
+                foreach (var ph in listOfPlaceHolders)
+                {
+                    var placeHolder = (BaseModelClass)ph;
+                    if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
+                    {
+                        throw new Spdx3SerializationException($"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
+                    }
+
+                    listOfReplacements.Add(value);
+                }
+                listOfPlaceHolders.Clear();
+                listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));
+                
             }
         }
         

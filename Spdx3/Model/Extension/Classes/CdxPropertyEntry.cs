@@ -20,6 +20,7 @@ public class CdxPropertyEntry : BaseModelClass
     public string? CdxPropValue { get; set; }
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal CdxPropertyEntry()
     {
     }

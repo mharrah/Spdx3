@@ -18,6 +18,7 @@ public class ContentIdentifier : IntegrityMethod
     public string? ContentIdentifierValue { get; set; }
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal ContentIdentifier()
     {
     }

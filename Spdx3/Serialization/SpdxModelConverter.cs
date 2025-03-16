@@ -165,6 +165,9 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                     currentProp.SetValue(result, intVal);
 
                     break;
+                default:
+                    // Nothing to do
+                    break;
             }
 
         return result;

@@ -191,6 +191,11 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     hashTable = null;
                     break;
 
+                case JsonTokenType.None:
+                case JsonTokenType.Comment:
+                case JsonTokenType.True:
+                case JsonTokenType.False:
+                case JsonTokenType.Null:
                 default:
                     throw new Spdx3SerializationException($"Unexpected token type {reader.TokenType}");
             }
@@ -371,9 +376,8 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType}");
                 }
                 var enumType = property.PropertyType.GetGenericArguments()[0];
-                
-                var listOfEnums = property.GetValue(result) as IList;
-                if (listOfEnums == null)
+
+                if (property.GetValue(result) is not IList listOfEnums)
                 {
                     throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType} as a list");
                 }

@@ -1,4 +1,5 @@
-﻿namespace Spdx3.Model.Core.Enums;
+﻿// ReSharper disable UnusedMember.Global
+namespace Spdx3.Model.Core.Enums;
 
 /// <summary>
 ///     Information about the relationship between two Elements.

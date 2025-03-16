@@ -38,6 +38,7 @@ public class File : SoftwareArtifact
 
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
+    // ReSharper disable once UnusedMember.Global
     protected internal File()
     {
     }

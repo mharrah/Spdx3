@@ -75,8 +75,7 @@ public class BaseModelTestClass
     {
         var r = Regex.Replace(json, "^\\s*", "", RegexOptions.Multiline);
         r = Regex.Replace(r, "\\s*$", "", RegexOptions.Multiline);
-        r = Regex.Replace(r, "\r", "", RegexOptions.Multiline);
-        r = Regex.Replace(r, "\n", "", RegexOptions.Multiline);
+        r = Regex.Replace(r, "(\r|\n)", "", RegexOptions.Multiline);
         return r;
     }
 

@@ -17,6 +17,7 @@ public class SimpleLicensingText : Element
     public required string LicenseText { get; set; }
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal SimpleLicensingText()
     {
     }

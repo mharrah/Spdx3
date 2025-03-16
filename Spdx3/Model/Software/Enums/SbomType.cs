@@ -1,4 +1,5 @@
-﻿namespace Spdx3.Model.Software.Enums;
+﻿// ReSharper disable UnusedMember.Global
+namespace Spdx3.Model.Software.Enums;
 
 /// <summary>
 ///     Type of SBOM

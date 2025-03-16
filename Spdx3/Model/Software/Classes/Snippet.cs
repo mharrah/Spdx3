@@ -22,6 +22,7 @@ public class Snippet : SoftwareArtifact
     public File SnippetFromFile { get; set; }
 #pragma warning disable CS8618, CS9264
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal Snippet()
     {
     }

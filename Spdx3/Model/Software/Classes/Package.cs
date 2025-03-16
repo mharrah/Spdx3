@@ -29,6 +29,7 @@ public class Package : SoftwareArtifact
     public string? SourceInfo { get; set; }
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal Package()
     {
     }

@@ -14,6 +14,7 @@ public class Sbom : Bom
     public IList<SbomType> SbomType { get; } = new List<SbomType>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal Sbom()
     {
     }

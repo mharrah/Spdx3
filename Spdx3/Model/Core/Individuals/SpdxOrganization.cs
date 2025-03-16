@@ -11,6 +11,7 @@ namespace Spdx3.Model.Core.Individuals;
 public class SpdxOrganization : Organization
 {
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal SpdxOrganization()
     {
     }

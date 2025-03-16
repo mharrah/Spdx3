@@ -13,6 +13,7 @@ public class CdxPropertiesExtension : Extension
     public IList<CdxPropertyEntry> CdxProperty { get; init; } = new List<CdxPropertyEntry>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal CdxPropertiesExtension()
     {
     }
