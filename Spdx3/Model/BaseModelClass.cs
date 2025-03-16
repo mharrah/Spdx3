@@ -50,14 +50,12 @@ public abstract class BaseModelClass
         }
 
         var propVal = propertyInfo.GetValue(this);
-        if (propVal == null)
+        switch (propVal)
         {
-            throw new Spdx3ValidationException(this, propertyName, "Field is required");
-        }
-
-        if (propVal is string && propVal.ToString() == string.Empty)
-        {
-            throw new Spdx3ValidationException(this, propertyName, "Field is empty");
+            case null:
+                throw new Spdx3ValidationException(this, propertyName, "Field is required");
+            case string when propVal.ToString() == string.Empty:
+                throw new Spdx3ValidationException(this, propertyName, "Field is empty");
         }
     }
 }

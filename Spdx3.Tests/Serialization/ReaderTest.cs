@@ -12,7 +12,6 @@ public class ReaderTest
     {
         // Arrange
         var jsonFile = GetTestFilePath("Acme Application.spdx3.0.1.json");
-        var json = File.ReadAllText(jsonFile);
 
         // Act
         var catalog = new Catalog();

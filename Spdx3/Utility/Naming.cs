@@ -47,13 +47,8 @@ public class Naming
         }
         else
         {
-            foreach (var prefix in PrefixesForNamespaces)
+            foreach (var prefix in PrefixesForNamespaces.Where(prefix => !string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value)))
             {
-                if (string.IsNullOrWhiteSpace(prefix.Value) || !spdxType.StartsWith(prefix.Value))
-                {
-                    continue;
-                }
-
                 className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
                 break;
             }

@@ -204,7 +204,7 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
             }
 
             // If it's a list of Enum values, serialize the names of the values
-            if (propType.IsGenericType &&
+            else if (propType.IsGenericType &&
                 propType.GenericTypeArguments[0].IsEnum &&
                 propVal is IList enums)
             {

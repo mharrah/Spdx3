@@ -14,7 +14,10 @@ public class WriterTest : BaseModelTestClass
     public void Writer_ShouldWrite_Minimal_SpdxDocument_AsString()
     {
         // Arrange
-        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
+        // ReSharper disable once ObjectCreationAsStatement
+#pragma warning disable CA1806
+        new SpdxDocument(TestCatalog, TestCreationInfo);
+#pragma warning restore CA1806
 
         var expected = "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
                        "\"@graph\":[{\"created\":\"2025-02-22T01:23:45Z\",\"specVersion\":\"3.0.1\"," +

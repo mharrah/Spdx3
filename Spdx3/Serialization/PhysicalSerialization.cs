@@ -11,7 +11,7 @@ public class PhysicalSerialization
 {
     [JsonPropertyName("@context")]
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]
-    public string Context { get; } = "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld";
+    public static string Context => "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld";
 
     [JsonPropertyName("@graph")]
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]
