@@ -20,10 +20,8 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         }
 
         var result = (T?)Activator.CreateInstance(typeToConvert, true);
-        if (result == null)
-        {
-            throw new Spdx3SerializationException($"Could not create instance of type {typeof(T)}");
-        }
+        AssertNotNull(result, $"Could not create instance of type {typeof(T)}");
+        
 
         // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
         // hashtable into an SpdxBaseClass object from the model
@@ -51,10 +49,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                     }
 
                     hashTableKey = propertyName;
-                    if (hashTableKey == null)
-                    {
-                        throw new Spdx3Exception("Expected a property name but got null value");
-                    }
+                    AssertNotNull(hashTableKey , "Expected a property name but got null value");
 
                     break;
 
@@ -68,21 +63,11 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                         continue;
                     }
 
-                    if (strVal == null)
-                    {
-                        throw new Spdx3SerializationException($"Null value encountered for string value for {hashTableKey}");
-                    }
-
-                    if (hashTable == null)
-                    {
-                        throw new Spdx3SerializationException("Not expecting a value at this point");
-                    }
+                    AssertNotNull(strVal, $"Null value encountered for string value for {hashTableKey}"); 
+                    AssertNotNull(hashTable, "Not expecting a value at this point");
                     
                     if (currentArray == null) {
-                        if (hashTableKey == null)
-                        {
-                            throw new Spdx3SerializationException($"No hashtable key for value {strVal}");
-                        }
+                        AssertNotNull(hashTableKey, $"No hashtable key for value {strVal}");
 
                         hashTable[hashTableKey] = strVal;
                     }
@@ -103,18 +88,11 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                         continue;
                     }
 
-                    if (hashTable == null)
-                    {
-                        throw new Spdx3SerializationException("Not expecting a value at this point");
-                    }
+                    AssertNotNull(hashTable, "Not expecting a value at this point");
 
                     if (currentArray == null)
                     {
-                        if (hashTableKey == null)
-                        {
-                            throw new Spdx3SerializationException(
-                                $"No hashtable key for value {intVal}");
-                        }
+                        AssertNotNull(hashTableKey, $"No hashtable key for value {intVal}");
 
                         hashTable[hashTableKey] = intVal;
                     }
@@ -150,10 +128,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                         break;
                     }
 
-                    if (hashTable == null)
-                    {
-                        throw new Spdx3SerializationException("End of array but not in a property value");
-                    }
+                    AssertNotNull(hashTable, "End of array but not in a property value");
 
                     hashTable[hashTableKey] = currentArray ?? throw new Spdx3SerializationException("End of array but no array value available");
                     currentArray = null;
@@ -182,16 +157,11 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                         break;
                     }
                     // Turn the hashtable into an Spdx class
-                    if (hashTable == null)
-                    {
-                        throw new Spdx3SerializationException("End of object but no hashtable of values available");
-                    }
+                    AssertNotNull(hashTable, "End of object but no hashtable of values available");
                     
                     var cls = GetObjectFromHashTable(hashTable);
-                    if (cls == null)
-                    {
-                        throw new Spdx3SerializationException("Unable to get an Spdx class from properties of object");
-                    }
+                    AssertNotNull(cls, "Unable to get an Spdx class from properties of object");
+                    
                     (result as PhysicalSerialization)?.Graph.Add(cls);
                     hashTable = null;
                     break;
@@ -211,10 +181,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
-        if (value == null)
-        {
-            throw new Spdx3SerializationException("Value cannot be null.");
-        }
+        AssertNotNull(value, "Value cannot be null.");
 
         var props = value.GetType().GetProperties();
 
@@ -295,10 +262,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         var t = (string)val;
         var classTypeName = Naming.ClassNameForSpdxType(t);
         var classType = Type.GetType(classTypeName);
-        if (classType == null)
-        {
-            throw new Spdx3Exception($"Could not determine class type for {classTypeName}");
-        }
+        AssertNotNull(classType, $"Could not determine class type for {classTypeName}");
 
         if (classType.IsAbstract)
         {
@@ -319,10 +283,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 key = "type";
             }
             var property = GetPropertyFromJsonElementName(classType, key);
-            if (property == null)
-            {
-                throw new Spdx3SerializationException($"Property for {key} on class {classType} could not be found.");
-            }
+            AssertNotNull(property, $"Property for {key} on class {classType} could not be found.");
 
             var propType = property.PropertyType;
             if (propType.IsAssignableTo(typeof(BaseModelClass)))
@@ -361,10 +322,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                     else
                     {
                         listOfIds = entry.Value as List<object>;
-                        if (listOfIds == null)
-                        {
-                            throw new Spdx3SerializationException("Could not get list of ID's from hashtable");
-                        }
+                        AssertNotNull(listOfIds, "Could not get list of ID's from hashtable");
                     }
 
                     foreach (var placeholder in listOfIds.Select(id => GetPlaceHolder(property, (string)id)))
@@ -376,10 +334,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 else if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
                          propType.GetGenericArguments()[0].IsEnum)
                 {
-                    if (entry.Value == null)
-                    {
-                        throw new Spdx3SerializationException($"Could not get value of type {propType}");
-                    }
+                    AssertNotNull(entry.Value, $"Could not get value of type {propType}");
 
                     var enumType = propType.GetGenericArguments()[0];
 
@@ -431,10 +386,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                          throw new Spdx3SerializationException($"Could not determine full name of property type {propType}"),
                     ".Classes.Placeholder");
             propType = Type.GetType(placeHolderClassName);
-            if (propType == null)
-            {
-                throw new Spdx3Exception($"Could not determine placeholder class type for {property.PropertyType.FullName}");
-            }
+            AssertNotNull(propType, $"Could not determine placeholder class type for {property.PropertyType.FullName}");
         }
         
         var placeHolder = NewPlaceHolderWithId(propType, spdxId);
@@ -457,8 +409,19 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         return placeHolder;
     }
 
+    // Null check to make code a bit terser and more expressive
+    private static void AssertNotNull(object? obj, string messageIfNull)
+    {
+        if (obj == null)
+        {
+            throw new Spdx3SerializationException(messageIfNull);
+        }
+    }
+
     [GeneratedRegex("^spdx:.*/")]
     private static partial Regex RegexSpdxDomainSlash();
+    
+    
     [GeneratedRegex(@"\.Classes\.")]
     private static partial Regex RegexClassesNamespaceSegment();
 }

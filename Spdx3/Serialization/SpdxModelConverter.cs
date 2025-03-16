@@ -13,10 +13,7 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var result = (T?)Activator.CreateInstance(typeToConvert, true);
-        if (result == null)
-        {
-            throw new Spdx3SerializationException("Could not create instance of type " + typeof(T));
-        }
+        AssertNotNull(result, "Could not create instance of type " + typeof(T));
 
         PropertyInfo? currentProp = null;
         while (reader.Read())
@@ -24,17 +21,10 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
             {
                 case JsonTokenType.PropertyName:
                     var currentPropName = reader.GetString();
-                    if (currentPropName == null)
-                    {
-                        throw new Spdx3Exception("Expected a property name but got null value");
-                    }
+                    AssertNotNull(currentPropName, "Expected a property name but got null value");
 
                     currentProp = GetPropertyFromJsonElementName(typeToConvert, currentPropName);
-                    if (currentProp == null)
-                    {
-                        throw new Spdx3SerializationException(
-                            $"Property {currentPropName} is not found on type {typeToConvert}");
-                    }
+                    AssertNotNull(currentProp, $"Property {currentPropName} is not found on type {typeToConvert}");
 
                     break;
 
@@ -43,16 +33,9 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                 
                 case JsonTokenType.String:
                     var strVal = reader.GetString();
-                    if (currentProp == null)
-                    {
-                        throw new Spdx3SerializationException(
-                            $"String value '{strVal}' encountered outside of a property");
-                    }
-
-                    if (strVal == null)
-                    {
-                        throw new Spdx3SerializationException("Null value encountered for string value");
-                    }
+                    AssertNotNull(currentProp, $"String value '{strVal}' encountered outside of a property");
+                    AssertNotNull(strVal, "Null value encountered for string value");
+                    
 
                     var currentPropertyType = currentProp.PropertyType;
                     if (currentPropertyType == typeof(string))
@@ -85,31 +68,20 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                              */
                             var placeHolder =
                                 Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType);
-                            if (placeHolder == null)
-                            {
-                                throw new Spdx3Exception($"Could not create instance of type {genericType}");
-                            }
+                            AssertNotNull(placeHolder, $"Could not create instance of type {genericType}");
+                            
 
                             var type = placeHolder.GetType();
-                            if (type == null)
-                            {
-                                throw new Spdx3Exception($"Could not determine type of object {nameof(placeHolder)}");
-                            }
+                            AssertNotNull(type, $"Could not determine type of object {nameof(placeHolder)}");
 
                             var spdxIdProperty = type.GetProperty("SpdxId");
-                            if (spdxIdProperty == null)
-                            {
-                                throw new Spdx3SerializationException(
-                                    $"Unable to get property 'SpdxId' of type {type}");
-                            }
+                            AssertNotNull(spdxIdProperty, $"Unable to get property 'SpdxId' of type {type}");
+                            
 
                             spdxIdProperty.SetValue(placeHolder, strVal);
 
                             var typeProperty = type.GetProperty("Type");
-                            if (typeProperty == null)
-                            {
-                                throw new Spdx3SerializationException($"Unable to get property 'Type' of type {type}");
-                            }
+                            AssertNotNull(typeProperty, $"Unable to get property 'Type' of type {type}");
 
                             typeProperty.SetValue(placeHolder, Naming.SpdxTypeForClass(genericType));
                             if (currentProp.GetValue(result) is not IList listVal)
@@ -138,16 +110,9 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                          */
                         var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentPropertyType, true),
                             currentPropertyType);
-                        if (placeHolder == null)
-                        {
-                            throw new Spdx3SerializationException(
-                                $"Unable to create instance of type {currentPropertyType}");
-                        }
-
-                        if (currentProp == null || currentPropertyType == null)
-                        {
-                            throw new Spdx3SerializationException("No current property when one was expected");
-                        }
+                        AssertNotNull(placeHolder, $"Unable to create instance of type {currentPropertyType}");
+                        AssertNotNull(currentProp, "No current property when one was expected");
+                        AssertNotNull(currentPropertyType, "Unable to determine property type");
                         currentPropertyType.GetProperty("SpdxId")?.SetValue(placeHolder, strVal);
                         currentPropertyType.GetProperty("Type")?.SetValue(placeHolder,
                             Naming.SpdxTypeForClass(currentPropertyType));
@@ -162,10 +127,7 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                     break;
                 case JsonTokenType.Number:
                     var intVal = reader.GetInt32();
-                    if (currentProp == null)
-                    {
-                        throw new Spdx3SerializationException($"No current property to hold int value {intVal}");
-                    }
+                    AssertNotNull(currentProp, $"No current property to hold int value {intVal}");
 
                     currentProp.SetValue(result, intVal);
 
@@ -348,5 +310,14 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
         }
 
         return null;
+    }
+    
+    // Null check to make code a bit terser and more expressive
+    private static void AssertNotNull(object? obj, string messageIfNull)
+    {
+        if (obj == null)
+        {
+            throw new Spdx3SerializationException(messageIfNull);
+        }
     }
 }
