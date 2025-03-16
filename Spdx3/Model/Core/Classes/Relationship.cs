@@ -38,6 +38,7 @@ public class Relationship : Element
     public DateTimeOffset? EndTime { get; set; }
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once MemberCanBeProtected.Global
     protected internal Relationship()
     {
     }

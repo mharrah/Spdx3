@@ -16,6 +16,7 @@ public class Bundle : ElementCollection
     public IList<string> Context { get; } = new List<string>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once MemberCanBeProtected.Global
     protected internal Bundle()
     {
     }

@@ -25,6 +25,7 @@ public class PackageVerificationCode : IntegrityMethod
     public IList<string> PackageVerificationCodeExcludedFile { get; } = new List<string>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal PackageVerificationCode()
     {
     }

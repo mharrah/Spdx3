@@ -1,5 +1,7 @@
 
 
+// ReSharper disable RedundantTypeDeclarationBody
+// ReSharper disable UnusedType.Global
 namespace Spdx3.Model.Core.Classes
 {
     public class PlaceholderElement : Element

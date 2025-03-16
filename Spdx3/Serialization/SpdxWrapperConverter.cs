@@ -265,7 +265,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
     private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
-        var eName = Regex.Replace(elementName, @"^spdx:.*/", "");
+        var eName = Regex.Replace(elementName, "^spdx:.*/", "");
         foreach (var prop in typeToConvert.GetProperties())
         {
             foreach (var propAttr in prop.GetCustomAttributes())
@@ -299,7 +299,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         {
             throw new Spdx3Exception($"{classTypeName} is an abstract class and cannot be instantiated");
         }
-        var result = (BaseModelClass)Activator.CreateInstance(classType, true);
+        var result = Activator.CreateInstance(classType, true) as BaseModelClass;
         
         // Populate the object with values
         foreach (var entry in hashTable)
@@ -349,15 +349,17 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 List<object>? listOfIds;
                 if (entry.Value is string)
                 {
-                    listOfIds = new List<object>();
-                    listOfIds.Add(entry.Value);
+                    listOfIds =
+                    [
+                        entry.Value
+                    ];
                 }
                 else
                 {
                     listOfIds = entry.Value as List<object>;
                     if (listOfIds == null)
                     {
-                        throw new Spdx3SerializationException($"Could not get list of ID's from hashtable");
+                        throw new Spdx3SerializationException("Could not get list of ID's from hashtable");
                     }
                 }
 
@@ -438,9 +440,10 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         var placeHolder = (BaseModelClass)Activator.CreateInstance(propType, true);
         placeHolder.Type = Naming.SpdxTypeForClass(propType);
         placeHolder.SpdxId = id;
-        if (placeHolder is Element)
+        var element = placeHolder as Element;
+        if (element != null)
         {
-            (placeHolder as Element).Comment = "***Placeholder***";
+            element.Comment = "***Placeholder***";
         }
 
         return placeHolder;

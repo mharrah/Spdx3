@@ -2,7 +2,7 @@ using Spdx3.Exceptions;
 
 namespace Spdx3.Utility;
 
-public class Naming
+public static class Naming
 {
     private static readonly Dictionary<string, string> PrefixesForNamespaces = new()
     {
