@@ -10,6 +10,7 @@ namespace Spdx3.Model.Core.Classes;
 public class Tool : Element
 {
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal Tool()
     {
     }

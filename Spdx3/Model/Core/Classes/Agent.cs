@@ -10,6 +10,7 @@ namespace Spdx3.Model.Core.Classes;
 public class Agent : Element
 {
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once MemberCanBeProtected.Global
     protected internal Agent()
     {
     }

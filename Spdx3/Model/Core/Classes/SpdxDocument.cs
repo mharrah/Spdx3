@@ -25,6 +25,7 @@ public class SpdxDocument : ElementCollection
     public IList<NamespaceMap> NamespaceMap { get; } = new List<NamespaceMap>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal SpdxDocument()
     {
     }

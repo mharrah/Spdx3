@@ -28,6 +28,7 @@ public class ExternalMap : BaseModelClass
     public IList<IntegrityMethod> VerifiedUsing { get; } = new List<IntegrityMethod>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal ExternalMap()
     {
     }

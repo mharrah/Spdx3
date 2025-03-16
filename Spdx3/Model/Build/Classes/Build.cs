@@ -45,6 +45,7 @@ public class Build : Element
     public IList<DictionaryEntry> Parameter { get;  } = new List<DictionaryEntry>();
 
     // protected internal no-parm constructor required for deserialization
+    // ReSharper disable once UnusedMember.Global
     protected internal Build()
     {
     }
