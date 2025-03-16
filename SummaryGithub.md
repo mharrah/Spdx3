@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/16/2025 - 01:06:22 |
-| Coverage date: | 03/16/2025 - 01:06:21 |
+| Generated on: | 03/16/2025 - 02:29:33 |
+| Coverage date: | 03/16/2025 - 02:29:32 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 54 |
-| Files: | 54 |
-| **Line coverage:** | 83.8% (1076 of 1283) |
-| Covered lines: | 1076 |
-| Uncovered lines: | 207 |
-| Coverable lines: | 1283 |
-| Total lines: | 2922 |
-| **Branch coverage:** | 80.8% (312 of 386) |
-| Covered branches: | 312 |
-| Total branches: | 386 |
+| Classes: | 57 |
+| Files: | 55 |
+| **Line coverage:** | 88% (1281 of 1455) |
+| Covered lines: | 1281 |
+| Uncovered lines: | 174 |
+| Coverable lines: | 1455 |
+| Total lines: | 2927 |
+| **Branch coverage:** | 84.2% (349 of 414) |
+| Covered branches: | 349 |
+| Total branches: | 414 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 83.8%</summary>
+<details><summary>Spdx3 - 88%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**83.8%**|**80.8%**|
+|**Spdx3**|**88%**|**84.2%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|0%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -74,12 +74,15 @@
 |Spdx3.Model.Software.Classes.SoftwareArtifact|100%||
 |Spdx3.Serialization.PhysicalSerialization|100%||
 |Spdx3.Serialization.Reader|93.3%|75%|
-|Spdx3.Serialization.SpdxModelConverter`1|78.9%|79.5%|
+|Spdx3.Serialization.SpdxModelConverter`1|88.7%|84.8%|
 |Spdx3.Serialization.SpdxModelConverterFactory|100%||
-|Spdx3.Serialization.SpdxWrapperConverter`1|76.2%|75.4%|
+|Spdx3.Serialization.SpdxWrapperConverter`1|83.9%|79.8%|
 |Spdx3.Serialization.SpdxWrapperConverterFactory|100%||
 |Spdx3.Serialization.Writer|61.5%||
-|Spdx3.Utility.Catalog|90.9%|90%|
+|Spdx3.Utility.Catalog|90.6%|87.5%|
 |Spdx3.Utility.Naming|95.3%|94.4%|
+|System.Text.RegularExpressions.Generated|92.4%|81.2%|
+|System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7<br/>483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexClassesNamespaceSeg<br/>ment_1|96.8%|83.3%|
+|System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7<br/>483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexSpdxDomainSlash_0|90.2%|83.3%|
 
 </details>
