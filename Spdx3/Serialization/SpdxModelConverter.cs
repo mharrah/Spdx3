@@ -54,17 +54,18 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                         throw new Spdx3SerializationException("Null value encountered for string value");
                     }
 
-                    if (currentProp.PropertyType == typeof(string))
+                    var currentPropertyType = currentProp.PropertyType;
+                    if (currentPropertyType == typeof(string))
                     {
                         currentProp.SetValue(result, strVal);
                     }
-                    else if (currentProp.PropertyType == typeof(DateTimeOffset))
+                    else if (currentPropertyType == typeof(DateTimeOffset))
                     {
                         currentProp.SetValue(result, DateTimeOffset.Parse(strVal));
                     }
-                    else if (currentProp.PropertyType.IsGenericType)
+                    else if (currentPropertyType.IsGenericType)
                     {
-                        var genericType = currentProp.PropertyType.GetGenericArguments()[0];
+                        var genericType = currentPropertyType.GetGenericArguments()[0];
                         if (genericType == typeof(string))
                         {
                             if (currentProp.GetValue(result) is not IList listVal)
@@ -124,34 +125,38 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                             throw new Spdx3SerializationException($"The type {genericType} is not supported");
                         }
                     }
-                    else if (currentProp.PropertyType.IsEnum)
+                    else if (currentPropertyType.IsEnum)
                     {
-                        currentProp.SetValue(result, Enum.Parse(currentProp.PropertyType, strVal));
+                        currentProp.SetValue(result, Enum.Parse(currentPropertyType, strVal));
                     }
-                    else if (currentProp.PropertyType.IsSubclassOf(typeof(BaseModelClass)))
+                    else if (currentPropertyType.IsSubclassOf(typeof(BaseModelClass)))
                     {
                         /*
                          * At this point we have a string that is the URN of another Element, which we may or may not
                          * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
                          * Later, we're going to need to go through the objects and replace the placeholder with the real one.
                          */
-                        var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentProp.PropertyType, true),
-                            currentProp.PropertyType);
+                        var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentPropertyType, true),
+                            currentPropertyType);
                         if (placeHolder == null)
                         {
                             throw new Spdx3SerializationException(
-                                $"Unable to create instance of type {currentProp.PropertyType}");
+                                $"Unable to create instance of type {currentPropertyType}");
                         }
 
-                        currentProp.PropertyType.GetProperty("SpdxId").SetValue(placeHolder, strVal);
-                        currentProp.PropertyType.GetProperty("Type").SetValue(placeHolder,
-                            Naming.SpdxTypeForClass(currentProp.PropertyType));
+                        if (currentProp == null || currentPropertyType == null)
+                        {
+                            throw new Spdx3SerializationException("No current property when one was expected");
+                        }
+                        currentPropertyType.GetProperty("SpdxId")?.SetValue(placeHolder, strVal);
+                        currentPropertyType.GetProperty("Type")?.SetValue(placeHolder,
+                            Naming.SpdxTypeForClass(currentPropertyType));
                         currentProp.SetValue(result, placeHolder);
                     }
                     else
                     {
                         throw new NotImplementedException(
-                            $"No handler for string for a {currentProp.PropertyType.Name}");
+                            $"No handler for string for a {currentPropertyType.Name}");
                     }
 
                     break;
@@ -165,6 +170,17 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
                     currentProp.SetValue(result, intVal);
 
                     break;
+                case JsonTokenType.None:
+                case JsonTokenType.EndObject:
+                case JsonTokenType.StartArray:
+                case JsonTokenType.EndArray:
+                case JsonTokenType.Comment:
+                case JsonTokenType.True:
+                case JsonTokenType.False:
+                case JsonTokenType.Null:
+                    break;
+                default:
+                    throw new Spdx3SerializationException("Unknown json token type");
             }
 
         return result;
@@ -191,29 +207,30 @@ internal class SpdxModelConverter<T> : JsonConverter<T>
             var propVal = prop.GetValue(value);
 
             // If it's a list of OTHER SpdxClasses, don't serialize the objects, just serialize an array of references
-            if (propType.IsGenericType &&
-                propType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseModelClass)) &&
-                propVal is IList spdxClasses)
+            if (propType.IsGenericType)
             {
-                if (spdxClasses.Count > 0)
+                if (propType.GenericTypeArguments[0].IsSubclassOf(typeof(BaseModelClass)) &&
+                    propVal is IList spdxClasses)
                 {
-                    WriteReferencesToListItems(writer, spdxClasses, jsonElementName);
+                    if (spdxClasses.Count > 0)
+                    {
+                        WriteReferencesToListItems(writer, spdxClasses, jsonElementName);
+                    }
+
+                    continue;
                 }
 
-                continue;
-            }
-
-            // If it's a list of Enum values, serialize the names of the values
-            if (propType.IsGenericType &&
-                propType.GenericTypeArguments[0].IsEnum &&
-                propVal is IList enums)
-            {
-                if (enums.Count > 0)
+                // If it's a list of Enum values, serialize the names of the values
+                if (propType.GenericTypeArguments[0].IsEnum &&
+                         propVal is IList enums)
                 {
-                    WriteReferencesToEnumValues(writer, propType.GenericTypeArguments[0], enums, jsonElementName);
-                }
+                    if (enums.Count > 0)
+                    {
+                        WriteReferencesToEnumValues(writer, propType.GenericTypeArguments[0], enums, jsonElementName);
+                    }
 
-                continue;
+                    continue;
+                }
             }
 
             WriteSimpleProperty(writer, propVal, jsonElementName);

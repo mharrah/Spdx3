@@ -10,7 +10,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Serialization;
 
-internal class SpdxWrapperConverter<T> : JsonConverter<T>
+internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 {
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
@@ -73,11 +73,15 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                         throw new Spdx3SerializationException($"Null value encountered for string value for {hashTableKey}");
                     }
 
+                    if (hashTable == null)
+                    {
+                        throw new Spdx3SerializationException("Not expecting a value at this point");
+                    }
+                    
                     if (currentArray == null) {
                         if (hashTableKey == null)
                         {
-                            throw new Spdx3SerializationException(
-                                $"No hashtable key for value {strVal}");
+                            throw new Spdx3SerializationException($"No hashtable key for value {strVal}");
                         }
 
                         hashTable[hashTableKey] = strVal;
@@ -97,6 +101,11 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     {
                         // This must be the @context or the @graph, in which case there's nothing to do
                         continue;
+                    }
+
+                    if (hashTable == null)
+                    {
+                        throw new Spdx3SerializationException("Not expecting a value at this point");
                     }
 
                     if (currentArray == null)
@@ -141,17 +150,12 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                         break;
                     }
 
-                    if (currentArray == null)
-                    {
-                        throw new Spdx3SerializationException("End of array but no array value available");
-                    }
-
                     if (hashTable == null)
                     {
                         throw new Spdx3SerializationException("End of array but not in a property value");
                     }
 
-                    hashTable[hashTableKey] = currentArray;
+                    hashTable[hashTableKey] = currentArray ?? throw new Spdx3SerializationException("End of array but no array value available");
                     currentArray = null;
                     break;
 
@@ -182,12 +186,13 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     {
                         throw new Spdx3SerializationException("End of object but no hashtable of values available");
                     }
+                    
                     var cls = GetObjectFromHashTable(hashTable);
                     if (cls == null)
                     {
                         throw new Spdx3SerializationException("Unable to get an Spdx class from properties of object");
                     }
-                    (result as PhysicalSerialization).Graph.Add(cls);
+                    (result as PhysicalSerialization)?.Graph.Add(cls);
                     hashTable = null;
                     break;
 
@@ -265,7 +270,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
     private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
-        var eName = Regex.Replace(elementName, "^spdx:.*/", "");
+        var eName = RegexSpdxDomainSlash().Replace(elementName, "");
         foreach (var prop in typeToConvert.GetProperties())
         {
             foreach (var propAttr in prop.GetCustomAttributes())
@@ -292,7 +297,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         var classType = Type.GetType(classTypeName);
         if (classType == null)
         {
-            throw new Spdx3Exception($"Could not determine classtype for {classTypeName}");
+            throw new Spdx3Exception($"Could not determine class type for {classTypeName}");
         }
 
         if (classType.IsAbstract)
@@ -318,90 +323,88 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             {
                 throw new Spdx3SerializationException($"Property for {key} on class {classType} could not be found.");
             }
-            
-            if (property.PropertyType.IsAssignableTo(typeof(BaseModelClass)))
+
+            var propType = property.PropertyType;
+            if (propType.IsAssignableTo(typeof(BaseModelClass)))
             {
                 var placeHolder = GetPlaceHolder(property, (string)entry.Value);
                 property.SetValue(result, placeHolder);
             }
-            else if (property.PropertyType == typeof(string))
+            else if (propType == typeof(string))
             {
                 property.SetValue(result, entry.Value);
             }
-            else if (property.PropertyType == typeof(int))
+            else if (propType == typeof(int))
             {
                 property.SetValue(result, int.Parse((string)entry.Value));
             }
-            else if (property.PropertyType == typeof(DateTimeOffset))
+            else if (propType == typeof(DateTimeOffset))
             {
                 property.SetValue(result, DateTimeOffset.Parse((string)entry.Value));
             }
-            else if (property.PropertyType.IsGenericType &&
-                     property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) &&
-                     property.PropertyType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
+            else if (propType.IsGenericType)
             {
-                var l  = property.GetValue(result);
-                if (l is not IList listOfObjects)
+                if ( propType.GetGenericTypeDefinition() == typeof(IList<>) &&
+                     propType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
                 {
-                    throw new Spdx3SerializationException($"Could not get list of objects for type {property.PropertyType}");
-                }
-
-                List<object>? listOfIds;
-                if (entry.Value is string)
-                {
-                    listOfIds =
-                    [
-                        entry.Value
-                    ];
-                }
-                else
-                {
-                    listOfIds = entry.Value as List<object>;
-                    if (listOfIds == null)
+                    var l  = property.GetValue(result);
+                    if (l is not IList listOfObjects)
                     {
-                        throw new Spdx3SerializationException("Could not get list of ID's from hashtable");
+                        throw new Spdx3SerializationException($"Could not get list of objects for type {propType}");
+                    }
+
+                    List<object>? listOfIds;
+                    if (entry.Value is string)
+                    {
+                        listOfIds = [];
+                    }
+                    else
+                    {
+                        listOfIds = entry.Value as List<object>;
+                        if (listOfIds == null)
+                        {
+                            throw new Spdx3SerializationException("Could not get list of ID's from hashtable");
+                        }
+                    }
+
+                    foreach (var placeholder in listOfIds.Select(id => GetPlaceHolder(property, (string)id)))
+                    {
+                        listOfObjects.Add(placeholder);
+                    }
+                    
+                }
+                else if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
+                         propType.GetGenericArguments()[0].IsEnum)
+                {
+                    if (entry.Value == null)
+                    {
+                        throw new Spdx3SerializationException($"Could not get value of type {propType}");
+                    }
+
+                    var enumType = propType.GetGenericArguments()[0];
+
+                    if (property.GetValue(result) is not IList listOfEnums)
+                    {
+                        throw new Spdx3SerializationException(
+                            $"Could not get value of type {propType} as a list");
+                    }
+
+                    foreach (var id in (IList<object>)entry.Value)
+                    {
+                        var value = Enum.Parse(enumType, (string)id);
+                        listOfEnums.Add(value);
                     }
                 }
-
-                foreach (var placeholder in listOfIds.Select(id => GetPlaceHolder(property, (string)id)))
+                else if (propType.GetGenericTypeDefinition() == typeof(Nullable<>) &&
+                         propType.GetGenericArguments()[0].IsEnum)
                 {
-                    listOfObjects.Add(placeholder);
+                    var value = Enum.Parse(propType.GetGenericArguments()[0], (string)entry.Value);
+                    property.SetValue(result, value);
                 }
-                
             }
-            else if (property.PropertyType.IsGenericType &&
-                     property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) &&
-                     property.PropertyType.GetGenericArguments()[0].IsEnum)
+            else if (propType.IsEnum)
             {
-                if (entry.Value == null)
-                {
-                    throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType}");
-                }
-                var enumType = property.PropertyType.GetGenericArguments()[0];
-
-                if (property.GetValue(result) is not IList listOfEnums)
-                {
-                    throw new Spdx3SerializationException($"Could not get value of type {property.PropertyType} as a list");
-                }
-
-                foreach (var id in entry.Value as IList<object>)
-                {
-                    var value = Enum.Parse(enumType, (string)id); 
-                    listOfEnums.Add(value);
-                }
-                
-                
-            }
-            else if (property.PropertyType.IsEnum)
-            {
-                var value = Enum.Parse(property.PropertyType, (string)entry.Value);
-                property.SetValue(result, value);
-            }
-            else if (property.PropertyType.IsGenericType &&
-                     property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) &&
-                     property.PropertyType.GetGenericArguments()[0].IsEnum)
-            {
-                var value = Enum.Parse(property.PropertyType.GetGenericArguments()[0], (string)entry.Value);
+                var value = Enum.Parse(propType, (string)entry.Value);
                 property.SetValue(result, value);
             }
             else
@@ -423,7 +426,10 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
         if (propType.IsAbstract)
         {
-            var placeHolderClassName = Regex.Replace(propType.FullName, @"\.Classes\.", ".Classes.Placeholder");
+            var placeHolderClassName = RegexClassesNamespaceSegment()
+                .Replace(propType.FullName ?? 
+                         throw new Spdx3SerializationException($"Could not determine full name of property type {propType}"),
+                    ".Classes.Placeholder");
             propType = Type.GetType(placeHolderClassName);
             if (propType == null)
             {
@@ -435,17 +441,24 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         return placeHolder;
     }
 
-    private static BaseModelClass NewPlaceHolderWithId(Type propType, string? id)
+    private static BaseModelClass NewPlaceHolderWithId(Type propType, string id)
     {
-        var placeHolder = (BaseModelClass)Activator.CreateInstance(propType, true);
+        if (Activator.CreateInstance(propType, true) is not BaseModelClass placeHolder)
+        {
+            throw new Spdx3Exception($"Could not create placeholder for {propType.FullName}");
+        }
         placeHolder.Type = Naming.SpdxTypeForClass(propType);
         placeHolder.SpdxId = id;
-        var element = placeHolder as Element;
-        if (element != null)
+        if (placeHolder is Element element)
         {
             element.Comment = "***Placeholder***";
         }
 
         return placeHolder;
     }
+
+    [GeneratedRegex("^spdx:.*/")]
+    private static partial Regex RegexSpdxDomainSlash();
+    [GeneratedRegex(@"\.Classes\.")]
+    private static partial Regex RegexClassesNamespaceSegment();
 }

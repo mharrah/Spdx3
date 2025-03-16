@@ -65,8 +65,7 @@ public class Catalog
 
                 if (isSpdxClass)
                 {
-                    var placeHolder = (BaseModelClass)prop.GetValue(item);
-                    if (placeHolder == null)
+                    if (prop.GetValue(item) is not BaseModelClass placeHolder)
                     {
                         continue;
                     }
@@ -81,9 +80,8 @@ public class Catalog
                 {
                     continue;
                 }
-                
-                var listOfPlaceHolders = (IList)prop.GetValue(item);
-                if (listOfPlaceHolders.Count == 0)
+
+                if (prop.GetValue(item) is not IList listOfPlaceHolders || listOfPlaceHolders.Count == 0)
                 {
                     continue;
                 }

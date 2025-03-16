@@ -26,9 +26,11 @@ public class PackageVerificationCode : IntegrityMethod
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global
+#pragma warning disable CS8618, CS9264
     protected internal PackageVerificationCode()
     {
     }
+#pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
     public PackageVerificationCode(Catalog catalog, HashAlgorithm algorithm, string hashValue) :
