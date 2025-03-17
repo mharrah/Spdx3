@@ -39,6 +39,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Model\Software\Individuals\" />
       <Folder Include="TestFiles\" />
     </ItemGroup>
 
