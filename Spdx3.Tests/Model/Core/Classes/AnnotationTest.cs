@@ -68,7 +68,7 @@ public class AnnotationTest : BaseModelTestClass
                                   "subject": "urn:TestElement:402",
                                   "annotationType": "review",
                                   "statement": "TestStatement",
-                                  "mediaType": "TestMediaType",
+                                  "contentType": "TestMediaType",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
