@@ -11,6 +11,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Serialization;
 
+[SuppressMessage("Performance", "SYSLIB1045:Convert to \'GeneratedRegexAttribute\'.")]
 internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 {
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -219,7 +220,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 
     private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
-        var eName = RegexSpdxDomainSlash().Replace(elementName, "");
+        var eName = Regex.Replace(elementName, "^spdx:.*/", "");
         foreach (var prop in typeToConvert.GetProperties())
         {
             foreach (var propAttr in prop.GetCustomAttributes())
@@ -258,7 +259,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         // Populate the object with values
         foreach (var entry in hashTable)
         {
-            var key = RegexSpdxDomainSlash().Replace(entry.Key, "");
+            var key = Regex.Replace(entry.Key, "^spdx:.*/", "");
             if (key == "@id")
             {
                 key = "spdxId";
@@ -370,10 +371,10 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 
         if (propType.IsAbstract)
         {
-            var placeHolderClassName = RegexClassesNamespaceSegment()
-                .Replace(propType.FullName ??
+            var placeHolderClassName = Regex.Replace(propType.FullName ??
                          throw new Spdx3SerializationException(
                              $"Could not determine full name of property type {propType}"),
+                    @"\.Classes\.",
                     ".Classes.Placeholder");
             propType = Type.GetType(placeHolderClassName)
                        ?? throw new Spdx3SerializationException($"Could not get type {placeHolderClassName}");
@@ -400,12 +401,4 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         return placeHolder;
     }
 
-    [ExcludeFromCodeCoverage]
-    [GeneratedRegex("^spdx:.*/")]
-    private static partial Regex RegexSpdxDomainSlash();
-
-
-    [ExcludeFromCodeCoverage]
-    [GeneratedRegex(@"\.Classes\.")]
-    private static partial Regex RegexClassesNamespaceSegment();
 }

@@ -1,3 +1,4 @@
+using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Build.Classes;
 using Spdx3.Model.Core.Classes;
@@ -58,7 +59,8 @@ public class IncompleteObjectFactoryTest
 
         foreach (var type in modelClasses.Where(t => !t.IsAbstract))
         {
-            var method = typeof(IncompleteObjectFactory).GetMethod(nameof(IncompleteObjectFactory.Create));
+            var method = typeof(IncompleteObjectFactory).GetMethod(nameof(IncompleteObjectFactory.Create))
+                         ?? throw new Spdx3Exception($"Could not find {nameof(IncompleteObjectFactory.Create)} method on {typeof(IncompleteObjectFactory)}");
             var generic = method.MakeGenericMethod(type);
             var t = generic.Invoke(null, null);
             Assert.NotNull(t);

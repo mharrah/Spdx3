@@ -12,6 +12,7 @@ namespace Spdx3.Tests.Model;
 ///     Base class for all tests of SpdxClass (and its subclasses). Has convenience methods to keep things predictable and
 ///     less repetitive.
 /// </summary>
+[SuppressMessage("Performance", "SYSLIB1045:Convert to \'GeneratedRegexAttribute\'.")]
 public partial class BaseModelTestClass
 {
     // What the name says - a predictable datetimeoffset value
@@ -76,21 +77,10 @@ public partial class BaseModelTestClass
     /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
     protected static string NormalizeJson(string json)
     {
-        var result = RegexLeadingSpace().Replace(json, "");
-        result = RegexTrailingSpace().Replace(result, "");
-        result = RegexCrLf().Replace(result, "");
+        var result = Regex.Replace(json, @"^\s*", "", RegexOptions.Multiline);
+        result = Regex.Replace(result, @"\s*$", "", RegexOptions.Multiline);
+        result = Regex.Replace(result, @"(\r|\n)", "", RegexOptions.Multiline);
         return result;
     }
 
-    [ExcludeFromCodeCoverage]
-    [GeneratedRegex("(\r|\n)", RegexOptions.Multiline)]
-    private static partial Regex RegexCrLf();
-
-    [ExcludeFromCodeCoverage]
-    [GeneratedRegex("\\s*$", RegexOptions.Multiline)]
-    private static partial Regex RegexTrailingSpace();
-
-    [ExcludeFromCodeCoverage]
-    [GeneratedRegex("^\\s*", RegexOptions.Multiline)]
-    private static partial Regex RegexLeadingSpace();
 }
