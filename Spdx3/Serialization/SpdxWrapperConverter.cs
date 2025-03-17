@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -397,10 +398,12 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         return placeHolder;
     }
 
+    [ExcludeFromCodeCoverage]
     [GeneratedRegex("^spdx:.*/")]
     private static partial Regex RegexSpdxDomainSlash();
 
 
+    [ExcludeFromCodeCoverage]
     [GeneratedRegex(@"\.Classes\.")]
     private static partial Regex RegexClassesNamespaceSegment();
 }

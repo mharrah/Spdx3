@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Spdx3.Model;
@@ -81,12 +82,15 @@ public partial class BaseModelTestClass
         return result;
     }
 
+    [ExcludeFromCodeCoverage]
     [GeneratedRegex("(\r|\n)", RegexOptions.Multiline)]
     private static partial Regex RegexCrLf();
 
+    [ExcludeFromCodeCoverage]
     [GeneratedRegex("\\s*$", RegexOptions.Multiline)]
     private static partial Regex RegexTrailingSpace();
 
+    [ExcludeFromCodeCoverage]
     [GeneratedRegex("^\\s*", RegexOptions.Multiline)]
     private static partial Regex RegexLeadingSpace();
 }
