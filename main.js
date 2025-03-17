@@ -270,15 +270,12 @@ var assemblies = [
       { "name": "Spdx3.Serialization.Reader", "rp": "Spdx3_Reader.html", "cl": 28, "ucl": 2, "cal": 30, "tl": 62, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxModelConverter<T>", "rp": "Spdx3_SpdxModelConverter_1.html", "cl": 172, "ucl": 20, "cal": 192, "tl": 287, "cb": 107, "tb": 133, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxModelConverterFactory", "rp": "Spdx3_SpdxModelConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 231, "ucl": 37, "cal": 268, "tl": 411, "cb": 133, "tb": 179, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 231, "ucl": 37, "cal": 268, "tl": 404, "cb": 133, "tb": 179, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapperConverterFactory", "rp": "Spdx3_SpdxWrapperConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.Writer", "rp": "Spdx3_Writer.html", "cl": 16, "ucl": 10, "cal": 26, "tl": 70, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.Writer", "rp": "Spdx3_Writer.html", "cl": 26, "ucl": 0, "cal": 26, "tl": 70, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 59, "ucl": 7, "cal": 66, "tl": 119, "cb": 28, "tb": 32, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.IncompleteObjectFactory", "rp": "Spdx3_IncompleteObjectFactory.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 17, "cb": 1, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.Naming", "rp": "Spdx3_Naming.html", "cl": 42, "ucl": 2, "cal": 44, "tl": 65, "cb": 17, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "System.Text.RegularExpressions.Generated", "rp": "Spdx3_Generated.html", "cl": 70, "ucl": 36, "cal": 106, "tl": 270, "cb": 15, "tb": 32, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexClassesNamespaceSegment_1", "rp": "Spdx3__RegexGenerator_g_F77BD5D3015247F7483858C92BEFA9E764__RegexClassesNamespaceSegment_1.html", "cl": 31, "ucl": 1, "cal": 32, "tl": 256, "cb": 5, "tb": 6, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexSpdxDomainSlash_0", "rp": "Spdx3__RegexGenerator_g_F77BD5D3015247F7483858C92B8EDE961AEFA9E764__RegexSpdxDomainSlash_0.html", "cl": 37, "ucl": 35, "cal": 72, "tl": 187, "cb": 9, "tb": 24, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -293,19 +290,7 @@ var riskHotspotMetrics = [
 
 var riskHotspots = [
   {
-    "assembly": "Spdx3", "class": "System.Text.RegularExpressions.Generated", "reportPath": "Spdx3_Generated.html", "methodName": "TryMatchAtCurrentPosition(System.ReadOnlySpan`1<System.Char>)", "methodShortName": "TryMatchAtCurrentPosition(...)", "fileIndex": 0, "line": 120,
-    "metrics": [
-      { "value": 134, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Spdx3", "class": "System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexSpdxDomainSlash_0", "reportPath": "Spdx3__RegexGenerator_g_F77BD5D3015247F7483858C92B8EDE961AEFA9E764__RegexSpdxDomainSlash_0.html", "methodName": "TryMatchAtCurrentPosition(System.ReadOnlySpan`1<System.Char>)", "methodShortName": "TryMatchAtCurrentPosition(...)", "fileIndex": 0, "line": 120,
-    "metrics": [
-      { "value": 134, "exceeded": true },
-      { "value": 16, "exceeded": true },
-    ]},
-  {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Read(...)", "fileIndex": 0, "line": 17,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Read(...)", "fileIndex": 0, "line": 18,
     "metrics": [
       { "value": 117, "exceeded": true },
       { "value": 63, "exceeded": true },
@@ -317,7 +302,7 @@ var riskHotspots = [
       { "value": 51, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetObjectFromHashTable(System.Collections.Generic.Dictionary`2<System.String,System.Object>)", "methodShortName": "GetObjectFromHashTable(...)", "fileIndex": 0, "line": 238,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetObjectFromHashTable(System.Collections.Generic.Dictionary`2<System.String,System.Object>)", "methodShortName": "GetObjectFromHashTable(...)", "fileIndex": 0, "line": 239,
     "metrics": [
       { "value": 65, "exceeded": true },
       { "value": 56, "exceeded": true },
@@ -341,7 +326,7 @@ var riskHotspots = [
       { "value": 22, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 166,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 167,
     "metrics": [
       { "value": 18, "exceeded": false },
       { "value": 18, "exceeded": true },
@@ -353,7 +338,7 @@ var riskHotspots = [
       { "value": 16, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 221,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 222,
     "metrics": [
       { "value": 16, "exceeded": false },
       { "value": 16, "exceeded": true },

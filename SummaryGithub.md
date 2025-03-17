@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/17/2025 - 23:08:35 |
-| Coverage date: | 03/17/2025 - 23:08:34 |
+| Generated on: | 03/17/2025 - 23:43:18 |
+| Coverage date: | 03/17/2025 - 23:43:17 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 58 |
-| Files: | 56 |
-| **Line coverage:** | 88.8% (1282 of 1443) |
-| Covered lines: | 1282 |
-| Uncovered lines: | 161 |
-| Coverable lines: | 1443 |
-| Total lines: | 3128 |
-| **Branch coverage:** | 75.6% (351 of 464) |
-| Covered branches: | 351 |
-| Total branches: | 464 |
+| Classes: | 55 |
+| Files: | 55 |
+| **Line coverage:** | 93.5% (1154 of 1233) |
+| Covered lines: | 1154 |
+| Uncovered lines: | 79 |
+| Coverable lines: | 1233 |
+| Total lines: | 2851 |
+| **Branch coverage:** | 80% (322 of 402) |
+| Covered branches: | 322 |
+| Total branches: | 402 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 88.8%</summary>
+<details><summary>Spdx3 - 93.5%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**88.8%**|**75.6%**|
+|**Spdx3**|**93.5%**|**80%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -78,12 +78,9 @@
 |Spdx3.Serialization.SpdxModelConverterFactory|100%||
 |Spdx3.Serialization.SpdxWrapperConverter`1|86.1%|74.3%|
 |Spdx3.Serialization.SpdxWrapperConverterFactory|100%||
-|Spdx3.Serialization.Writer|61.5%||
+|Spdx3.Serialization.Writer|100%||
 |Spdx3.Utility.Catalog|89.3%|87.5%|
 |Spdx3.Utility.IncompleteObjectFactory|100%|50%|
 |Spdx3.Utility.Naming|95.4%|94.4%|
-|System.Text.RegularExpressions.Generated|66%|46.8%|
-|System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7<br/>483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexClassesNamespaceSeg<br/>ment_1|96.8%|83.3%|
-|System.Text.RegularExpressions.Generated.<RegexGenerator_g>F77BD5D3015247F7<br/>483858C92B57A6928BCE5A0344CFACF668EDE961AEFA9E764__RegexSpdxDomainSlash_0|51.3%|37.5%|
 
 </details>
