@@ -39,9 +39,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="TestFiles\Acme Application.spdx3.0.1.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+      <Folder Include="TestFiles\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="TestFiles\Acme Application.spdx3.0.1.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

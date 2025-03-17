@@ -8,7 +8,7 @@ namespace Spdx3.Model.Core.Individuals;
 ///     An Individual Value for Element representing a set of Elements of unknown identity or cardinality (number).
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Individuals/NoAssertionElement/
 /// </summary>
-public class NoAssertionElement : Element
+public class NoAssertionElement : IndividualElement
 {
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global

@@ -120,7 +120,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 
                 case JsonTokenType.StartObject:
                     // Start a new hashtable to collect values in for this object
-                    if (reader.CurrentDepth > 0)
+                    if (reader.CurrentDepth > 1)
                     {
                         if (hashTable != null)
                         {
@@ -255,7 +255,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         // Populate the object with values
         foreach (var entry in hashTable)
         {
-            var key = entry.Key;
+            var key = RegexSpdxDomainSlash().Replace(entry.Key, "");
             if (key == "@id")
             {
                 key = "spdxId";
@@ -343,6 +343,8 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 var value = Enum.Parse(propType, (string)entry.Value);
                 property.SetValue(result, value);
             }
+            else if (propType == typeof(Uri))
+                property.SetValue(result, new Uri((string)entry.Value));
             else
             {
                 throw new Spdx3SerializationException("No handler for property");

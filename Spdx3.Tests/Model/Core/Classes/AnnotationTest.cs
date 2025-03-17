@@ -52,7 +52,7 @@ public class AnnotationTest : BaseModelTestClass
             Description = "TestDescription",
             Name = "TestName",
             Statement = "TestStatement",
-            MediaType = "TestMediaType",
+            ContentType = "TestMediaType",
             Summary = "TestSummary",
             Subject = subject,
             AnnotationType = AnnotationType.review

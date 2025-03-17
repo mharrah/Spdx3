@@ -8,7 +8,7 @@ namespace Spdx3.Model.Core.Individuals;
 ///     An Organization representing the SPDX Project.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Individuals/SpdxOrganization/
 /// </summary>
-public class SpdxOrganization : Organization
+public class SpdxOrganization : IndividualElement
 {
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global

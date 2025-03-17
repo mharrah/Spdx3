@@ -24,9 +24,9 @@ public class Annotation : Element
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? Statement { get; set; }
 
-    [JsonPropertyName("mediaType")]
+    [JsonPropertyName("contentType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public string? MediaType { get; set; }
+    public string? ContentType { get; set; }
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global
