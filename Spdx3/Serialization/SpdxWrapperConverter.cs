@@ -20,7 +20,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
             throw new Spdx3SerializationException($"Can only read classes of type {typeof(PhysicalSerialization)} ");
         }
 
-        var result = (T?)Activator.CreateInstance(typeToConvert, true)
+        var result = (T?)Activator.CreateInstance(typeToConvert, true) 
                      ?? throw new Spdx3SerializationException($"Could not create instance of {typeToConvert}");
 
         // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
@@ -144,7 +144,9 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                         GetObjectFromHashTable(hashTable ??
                                                throw new Spdx3SerializationException("Hash table is null")) ??
                         throw new Spdx3SerializationException("Class from hash table is null");
-                    (result as PhysicalSerialization)?.Graph.Add(cls);
+                    (result as PhysicalSerialization 
+                     ?? throw new Spdx3SerializationException($"Result is not a {nameof(PhysicalSerialization)}")
+                     ).Graph.Add(cls);
                     hashTable = null;
                     break;
 
