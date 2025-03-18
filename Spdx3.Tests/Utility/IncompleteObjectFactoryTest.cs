@@ -13,8 +13,9 @@ namespace Spdx3.Tests.Utility;
 public class IncompleteObjectFactoryTest
 {
     [Fact]
-    public static void TestDefaultConstructors()
+    public static void TestDefaultConstructors_And_Validators()
     {
+        // Arrange
         Type[] modelClasses =
         [
             typeof(BaseModelClass),
@@ -57,14 +58,25 @@ public class IncompleteObjectFactoryTest
             typeof(SoftwareArtifact)
         ];
 
+        
         foreach (var type in modelClasses.Where(t => !t.IsAbstract))
         {
+            // Act
             var method = typeof(IncompleteObjectFactory).GetMethod(nameof(IncompleteObjectFactory.Create))
                          ?? throw new Spdx3Exception($"Could not find {nameof(IncompleteObjectFactory.Create)} method on {typeof(IncompleteObjectFactory)}");
             var generic = method.MakeGenericMethod(type);
-            var t = generic.Invoke(null, null);
+            var t = generic.Invoke(null, null) as BaseModelClass;
+            
+            // Assert
             Assert.NotNull(t);
             Assert.Equal(type, t.GetType());
+            
+            
+            // Act again
+            var exception = Record.Exception(() => t.Validate()); 
+
+            // Assert again
+            Assert.NotNull(exception);
         }
         
     }
