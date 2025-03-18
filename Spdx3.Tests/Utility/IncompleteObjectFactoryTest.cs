@@ -63,7 +63,8 @@ public class IncompleteObjectFactoryTest
         {
             // Act
             var method = typeof(IncompleteObjectFactory).GetMethod(nameof(IncompleteObjectFactory.Create))
-                         ?? throw new Spdx3Exception($"Could not find {nameof(IncompleteObjectFactory.Create)} method on {typeof(IncompleteObjectFactory)}");
+                         ?? throw new Spdx3Exception(
+                             $"Could not find {nameof(IncompleteObjectFactory.Create)} method on {typeof(IncompleteObjectFactory)}");
             var generic = method.MakeGenericMethod(type);
             var t = generic.Invoke(null, null) as BaseModelClass;
             
