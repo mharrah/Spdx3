@@ -269,13 +269,34 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 var placeHolder = GetPlaceHolderForProperty(property, (string)entry.Value);
                 property.SetValue(result, placeHolder);
             }
-            else if (propType == typeof(string) || propType == typeof(int))
+            else if (propType == typeof(int))
             {
+                if (entry.Value.GetType() != typeof(int))
+                {
+                    throw new Spdx3Exception($"{propType.Name} expected an integer, but {entry.Value.GetType()} encountered");
+                }
+                property.SetValue(result, entry.Value);
+            }
+            else if (propType == typeof(string))
+            {
+                if (entry.Value.GetType() != typeof(string))
+                {
+                    throw new Spdx3Exception($"{propType.Name} expected a string, but {entry.Value.GetType()} encountered");
+                }
                 property.SetValue(result, entry.Value);
             }
             else if (propType == typeof(DateTimeOffset))
             {
-                property.SetValue(result, DateTimeOffset.Parse((string)entry.Value));
+                if (entry.Value.GetType() != typeof(string))
+                {
+                    throw new Spdx3Exception($"{propType.Name} expected an string, but {entry.Value.GetType()} encountered");
+                }
+
+                if (!DateTimeOffset.TryParse((string)entry.Value, out var dateTimeOffset))
+                {
+                    throw new Spdx3Exception($"{entry.Value} could not be parsed as DateTimeOffset encountered");
+                }
+                property.SetValue(result, dateTimeOffset);
             }
             else if (propType.IsGenericType)
             {

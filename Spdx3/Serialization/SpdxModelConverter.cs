@@ -33,6 +33,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                     var currentPropertyType = currentProp?.PropertyType ??
                                               throw new Spdx3SerializationException(
                                                   "Couldn't get current property type");
+                    
                     if (currentPropertyType == typeof(string))
                     {
                         currentProp.SetValue(result, strVal);

@@ -1,4 +1,5 @@
 using System.Reflection;
+using Newtonsoft.Json;
 using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Serialization;
@@ -63,6 +64,80 @@ public class ReaderTest
         Assert.Equal(2, catalog.Items.Count);
     }
     
+
+    [Fact]
+    public void Reader_SingleValueInPlaceOfArray_ShouldThrow()
+    {
+      // Arrange
+      const string json = """
+                          {
+                            "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                            "@graph": [
+                              {
+                                "created": "2025-02-22T01:23:45Z",
+                                "specVersion": "3.0.1",
+                                "type": "CreationInfo",
+                                "spdxId": "urn:CreationInfo:3f5"
+                              },
+                              {
+                                "creationInfo": "urn:CreationInfo:3f5",
+                                "type": "SpdxDocument",
+                                "spdxId": "urn:SpdxDocument:402",
+                                "createdBy": "single-value-in-place-of-array"
+                              }
+                            ]
+                          }
+                          """;
+        
+      var catalog = new Catalog();
+      var reader = new Reader(catalog);
+        
+      // Act
+      var exception = Record.Exception(() => reader.ReadString(json));
+        
+      // Assert
+      Assert.NotNull(exception);
+      Assert.IsType<Spdx3SerializationException>(exception);
+    }
+
+    [Fact]
+    public void Reader_ArrayInPlaceOfSingleValue_ShouldThrow()
+    {
+      // Arrange
+      const string json = """
+                          {
+                            "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                            "@graph": [
+                              {
+                                "created": "2025-02-22T01:23:45Z",
+                                "specVersion": "3.0.1",
+                                "type": "CreationInfo",
+                                "spdxId": "urn:CreationInfo:3f5"
+                              },
+                              {
+                                "creationInfo": "urn:CreationInfo:3f5",
+                                "type": "SpdxDocument",
+                                "spdxId": "urn:SpdxDocument:402",
+                                "comment": [
+                                  "only a single value is allowed here",
+                                  "so this needs to throw an exception"
+                                ]
+                              }
+                            ]
+                          }
+                          """;
+        
+      var catalog = new Catalog();
+      var reader = new Reader(catalog);
+        
+      // Act
+      var exception = Record.Exception(() => reader.ReadString(json));
+        
+      // Assert
+      Assert.NotNull(exception);
+      Assert.IsType<Spdx3Exception>(exception);
+    }
+
     
     [Fact]
     public void Reader_BrokenReferenceLinks_ShouldThrow()
@@ -95,6 +170,8 @@ public class ReaderTest
         
         // Assert
         Assert.NotNull(exception);
+        Assert.IsType<Spdx3Exception>(exception);
+
     }
 
     
@@ -128,11 +205,10 @@ public class ReaderTest
         
       // Assert
       Assert.NotNull(exception);
+      Assert.IsType<Spdx3SerializationException>(exception);
+
     }
-
-
-    
-    
+  
     [Fact]
     public void Reader_Malformed_MissingValue_ShouldThrow()
     {
@@ -163,6 +239,7 @@ public class ReaderTest
         
       // Assert
       Assert.NotNull(exception);
+      Assert.IsType<Spdx3SerializationException>(exception);
     }
 
 
@@ -196,6 +273,7 @@ public class ReaderTest
         
       // Assert
       Assert.NotNull(exception);
+      Assert.IsType<Spdx3SerializationException>(exception);
     }
     
     
