@@ -283,8 +283,8 @@
     },
     {
       "type": "PositiveIntegerRange",
-      "beginIntegerRange": "1",
-      "endIntegerRange": "4",
+      "beginIntegerRange": 1,
+      "endIntegerRange": 4,
       "@id": "_:b6"
     }
   ]

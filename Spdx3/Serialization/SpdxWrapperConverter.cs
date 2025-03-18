@@ -279,13 +279,9 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 var placeHolder = GetPlaceHolder(property, (string)entry.Value);
                 property.SetValue(result, placeHolder);
             }
-            else if (propType == typeof(string))
+            else if (propType == typeof(string) || propType == typeof(int))
             {
                 property.SetValue(result, entry.Value);
-            }
-            else if (propType == typeof(int))
-            {
-                property.SetValue(result, int.Parse((string)entry.Value));
             }
             else if (propType == typeof(DateTimeOffset))
             {

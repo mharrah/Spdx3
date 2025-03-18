@@ -6,7 +6,8 @@ using Spdx3.Model.Extension.Classes;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
 using Spdx3.Utility;
-using File = System.IO.File;
+using File = Spdx3.Model.Software.Classes.File;
+
 
 namespace Spdx3.Tests.Utility;
 
