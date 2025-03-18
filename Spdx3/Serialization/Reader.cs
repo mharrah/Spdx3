@@ -34,7 +34,7 @@ public class Reader
 
     public SpdxDocument ReadString(string json)
     {
-        var fileWithWrapper = JsonSerializer.Deserialize<PhysicalSerialization>(json, Options);
+        var fileWithWrapper = JsonSerializer.Deserialize<SpdxWrapper>(json, Options);
         if (fileWithWrapper == null)
         {
             throw new Spdx3SerializationException("Could not deserialize JSON in expected format.");

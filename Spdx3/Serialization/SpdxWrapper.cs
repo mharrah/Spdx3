@@ -5,9 +5,9 @@ using Spdx3.Utility;
 namespace Spdx3.Serialization;
 
 /// <summary>
-///     A wrapper class for the contents of the catalog
+///     A wrapper class for the contents of the catalog. This is the top level object of a physical representation of SPDX data.
 /// </summary>
-public class PhysicalSerialization
+internal class SpdxWrapper
 {
     [JsonPropertyName("@context")]
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]
@@ -17,12 +17,12 @@ public class PhysicalSerialization
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]
     public IList<BaseModelClass> Graph { get; } = new List<BaseModelClass>();
 
-    public PhysicalSerialization(Catalog catalog)
+    public SpdxWrapper(Catalog catalog)
     {
         Graph = catalog.Items.Values.ToList();
     }
 
-    public PhysicalSerialization()
+    public SpdxWrapper()
     {
     }
 }

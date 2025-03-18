@@ -43,7 +43,7 @@ public class Catalog
         var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
         if (spdxDocs.Count != 1)
         {
-            throw new Spdx3SerializationException($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
+            throw new Spdx3Exception($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
         }
 
         var result = (SpdxDocument)spdxDocs.First();
@@ -75,6 +75,10 @@ public class Catalog
                     if (Items.TryGetValue(placeHolder.SpdxId, out var value))
                     {
                         prop.SetValue(item, value);
+                    }
+                    else
+                    {
+                        throw new Spdx3Exception($"Could not find catalog item with ID {placeHolder.SpdxId}");
                     }
                 }
 

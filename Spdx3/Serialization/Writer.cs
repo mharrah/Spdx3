@@ -37,7 +37,7 @@ public class Writer
     public string WriteString()
     {
         // ReSharper disable once SuggestVarOrType_BuiltInTypes
-        object obj = new PhysicalSerialization(_catalog);
+        object obj = new SpdxWrapper(_catalog);
         // ReSharper disable once RedundantTypeArgumentsOfMethod
         var result = JsonSerializer.Serialize<object>(obj, Options);
 

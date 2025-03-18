@@ -4,11 +4,11 @@ using System.Text.Json.Serialization;
 
 namespace Spdx3.Serialization;
 
-public class SpdxWrapperConverterFactory : JsonConverterFactory
+internal class SpdxWrapperConverterFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {
-        var canConvert = typeToConvert.IsAssignableTo(typeof(PhysicalSerialization));
+        var canConvert = typeToConvert.IsAssignableTo(typeof(SpdxWrapper));
 
         return canConvert;
     }

@@ -3,26 +3,26 @@
 
 namespace Spdx3.Model.Core.Classes
 {
-    public class PlaceholderElement : Element
+    internal class PlaceholderElement : Element
     {
     }
 
-    public class PlaceholderArtifact : Artifact
+    internal class PlaceholderArtifact : Artifact
     {
     }
 
-    public class PlaceholderElementCollection : ElementCollection
+    internal class PlaceholderElementCollection : ElementCollection
     {
     }
 
-    public class PlaceholderIntegrityMethod : IntegrityMethod
+    internal class PlaceholderIntegrityMethod : IntegrityMethod
     {
     }
 }
 
 namespace Spdx3.Model.Extension.Classes
 {
-    public class PlaceholderExtension : Extension
+    internal class PlaceholderExtension : Extension
     {
     }
 }
@@ -30,14 +30,14 @@ namespace Spdx3.Model.Extension.Classes
 
 namespace Spdx3.Model.Software.Classes
 {
-    public class PlaceholderSoftwareArtifact : SoftwareArtifact
+    internal class PlaceholderSoftwareArtifact : SoftwareArtifact
     {
     }
 }
 
 namespace Spdx3.Model.SimpleLicensing.Classes
 {
-    public class PlaceholderAnyLicenseInfo : AnyLicenseInfo
+    internal class PlaceholderAnyLicenseInfo : AnyLicenseInfo
     {
     }
 }

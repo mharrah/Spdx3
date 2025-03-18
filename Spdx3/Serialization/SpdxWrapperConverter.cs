@@ -10,9 +10,12 @@ using Spdx3.Utility;
 
 namespace Spdx3.Serialization;
 
+/// <summary>
+/// This is the JsonConvertoo for the SpdxWrapper object
+/// </summary>
+/// <typeparam name="T"></typeparam>
 internal class SpdxWrapperConverter<T> : JsonConverter<T>
 {
-    
     // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
     // hashtable into an SpdxBaseClass object from the model
     private Dictionary<string, object>? _hashTable;
@@ -26,12 +29,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
     
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if (typeToConvert != typeof(PhysicalSerialization))
-        {
-            throw new Spdx3SerializationException($"Can only read classes of type {typeof(PhysicalSerialization)} ");
-        }
-
-        PhysicalSerialization result = new PhysicalSerialization(); 
+        var result = new SpdxWrapper(); 
 
         while (reader.Read())
         {
@@ -215,7 +213,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             }
         }
 
-        throw new Spdx3SerializationException($"Could not find a property with JsonPropertyNameAttribute matching {{eName}} on {typeToConvert.Name}");
+        throw new Spdx3SerializationException($"Could not find a property with JsonPropertyNameAttribute matching {eName} on {typeToConvert.Name}");
     }
 
     /// <summary>

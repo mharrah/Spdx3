@@ -8,7 +8,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Serialization;
 
-internal class SpdxModelConverter<T> : JsonConverter<T>
+public class SpdxModelConverter<T> : JsonConverter<T>
 {
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
