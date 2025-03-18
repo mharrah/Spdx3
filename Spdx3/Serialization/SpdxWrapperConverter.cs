@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -11,61 +10,55 @@ using Spdx3.Utility;
 
 namespace Spdx3.Serialization;
 
-[SuppressMessage("Performance", "SYSLIB1045:Convert to \'GeneratedRegexAttribute\'.")]
-internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
+internal class SpdxWrapperConverter<T> : JsonConverter<T>
 {
+    
+    // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
+    // hashtable into an SpdxBaseClass object from the model
+    private Dictionary<string, object>? _hashTable;
+
+    // As we read the object properties, first we read the name, then we read the value.  This is the name and
+    // the key into the hashtable that we're about to set.
+    private string _currentHashTableKey = string.Empty;
+    
+    // This array is for when the value of a hashTable entry is an array of values
+    private List<object>? _currentValueArray;
+    
     public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        if (typeof(T) != typeof(PhysicalSerialization))
+        if (typeToConvert != typeof(PhysicalSerialization))
         {
             throw new Spdx3SerializationException($"Can only read classes of type {typeof(PhysicalSerialization)} ");
         }
 
-        var result = (T?)Activator.CreateInstance(typeToConvert, true) 
-                     ?? throw new Spdx3SerializationException($"Could not create instance of {typeToConvert}");
-
-        // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
-        // hashtable into an SpdxBaseClass object from the model
-        Dictionary<string, object>? hashTable = null;
-
-        // As we read the object properties, first we read the name, then we read the value.  This is the name and
-        // the key into the hashtable that we're about to set.
-        var hashTableKey = string.Empty;
-
-        // This is whatever array we happen to be in the middle of populating
-        List<object>? currentArray = null;
+        PhysicalSerialization result = new PhysicalSerialization(); 
 
         while (reader.Read())
+        {
+            // The outer layers are not of interest, so just keep going until we get deeper in the structure
+            if (reader.CurrentDepth < 2)
+            {
+                continue;
+            }
+
             switch (reader.TokenType)
             {
                 case JsonTokenType.PropertyName:
-                    var propertyName = reader.GetString();
-                    if (reader.CurrentDepth < 2)
-                    {
-                        // Nothing to do at the first level
-                        break;
-                    }
-
-                    hashTableKey = propertyName;
+                    _currentHashTableKey = reader.GetString() ?? throw new Spdx3SerializationException("Property name was null");
                     break;
 
                 case JsonTokenType.String:
                     var strVal = reader.GetString() ?? throw new Spdx3SerializationException("String value is null");
-                    if (reader.CurrentDepth < 2)
-                    {
-                        // This must be the @context or the @graph, in which case there's nothing to do
-                        continue;
-                    }
 
-                    if (currentArray == null)
+                    if (_currentValueArray == null)
                     {
-                        (hashTable ?? throw new Spdx3SerializationException("Hash table is null"))[
-                                hashTableKey ?? throw new Spdx3SerializationException("Hash table key is null")] =
-                            strVal;
+                        // Not in an array, so the string value goes directly into the property
+                        SetHashtableValue(strVal);
                     }
                     else
                     {
-                        currentArray.Add(strVal);
+                        // In an array, so the string value goes into the array
+                        _currentValueArray.Add(strVal);
                     }
 
                     break;
@@ -73,82 +66,54 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 case JsonTokenType.Number:
                     var intVal = reader.GetInt32();
 
-                    if (reader.CurrentDepth < 2)
+                    if (_currentValueArray == null)
                     {
-                        // This must be the @context or the @graph, in which case there's nothing to do
-                        continue;
-                    }
-
-                    if (currentArray == null)
-                    {
-                        (hashTable ?? throw new Spdx3SerializationException("Hash table is null"))[
-                            hashTableKey ?? throw new Spdx3SerializationException("Hash table key is null")] = intVal;
+                        // Not in an array, so the int value goes directly into the property
+                        SetHashtableValue(intVal);
                     }
                     else
                     {
-                        currentArray.Add(intVal);
+                        // We're in an array, so the int value goes in the array
+                        _currentValueArray.Add(intVal);
                     }
 
                     break;
 
 
                 case JsonTokenType.StartArray:
-                    if (reader.CurrentDepth < 2)
-                    {
-                        // We're just starting the @graph array, nothing more to do here
-                        continue;
-                    }
-
-                    if (currentArray != null)
+                    // If we already have an array in progress, we are nesting, and we can't do that (yet?)
+                    if (_currentValueArray != null)
                     {
                         throw new Spdx3SerializationException("Can't process nested array values");
                     }
 
-                    currentArray = [];
+                    // Start the new array
+                    _currentValueArray = [];
                     break;
 
                 case JsonTokenType.EndArray:
-                    if (reader.CurrentDepth < 2)
-                    {
-                        break;
-                    }
-
-                    (hashTable ?? throw new Spdx3SerializationException("Hash table is null"))[
-                            hashTableKey ?? throw new Spdx3SerializationException("Hash table key is null")] =
-                        currentArray ??
-                        throw new Spdx3SerializationException("End of array but no array value available");
-                    currentArray = null;
+                    // The array is over, set the hashtable property to the array value
+                    SetHashtableValue(_currentValueArray);
+                    _currentValueArray = null;  // Get rid of the array buffer
                     break;
 
                 case JsonTokenType.StartObject:
-                    // Start a new hashtable to collect values in for this object
-                    if (reader.CurrentDepth > 1)
+                    // There shouldn't be a hashtable already in progress at the start of a new object
+                    if (_hashTable != null)
                     {
-                        if (hashTable != null)
-                        {
-                            throw new Spdx3SerializationException("Can't process nested object values");
-                        }
-
-                        hashTable = new Dictionary<string, object>();
+                        throw new Spdx3SerializationException("Can't process nested object values");
                     }
+
+                    // Start a new hashtable for holding values -- we'll make a model object out of it when we reach the end of the json object
+                    _hashTable = new Dictionary<string, object>();
 
                     break;
 
                 case JsonTokenType.EndObject:
-                    if (reader.CurrentDepth < 2)
-                    {
-                        break;
-                    }
-
                     // Turn the hashtable into Spdx class
-                    var cls =
-                        GetObjectFromHashTable(hashTable ??
-                                               throw new Spdx3SerializationException("Hash table is null")) ??
-                        throw new Spdx3SerializationException("Class from hash table is null");
-                    (result as PhysicalSerialization 
-                     ?? throw new Spdx3SerializationException($"Result is not a {nameof(PhysicalSerialization)}")
-                     ).Graph.Add(cls);
-                    hashTable = null;
+                    var cls = GetObjectFromHashTable();
+                    result.Graph.Add(cls);
+                    _hashTable = null;  // Get rid of the hashTable so we can safely start a new one
                     break;
 
                 case JsonTokenType.None:
@@ -159,8 +124,16 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 default:
                     throw new Spdx3SerializationException($"Unexpected token type {reader.TokenType}");
             }
+        }
 
-        return result;
+        return (T)Convert.ChangeType(result, typeToConvert);
+    }
+
+    private void SetHashtableValue(object? value)
+    {
+        if (_hashTable == null) throw new Spdx3SerializationException("Hash table is null");
+        if (_currentHashTableKey == null) throw new Spdx3SerializationException("Current hash table key is null");
+        _hashTable[_currentHashTableKey] = value ?? throw new Spdx3SerializationException("Value is null");
     }
 
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
@@ -185,12 +158,11 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                     writer.WriteStartArray();
                     foreach (var spdxClass in spdxClasses)
                     {
-                        if (spdxClass != null)
+                        if (spdxClass != null) 
                         {
                             JsonSerializer.Serialize(writer, spdxClass, options);
                         }
                     }
-
                     writer.WriteEndArray();
 
                     continue;
@@ -204,41 +176,63 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         writer.WriteEndObject();
     }
 
+    /// <summary>
+    ///     Given a property on a Model class, get its json element name (i.e., the value in the JsonPropertyName attribute).
+    /// </summary>
+    /// <param name="prop">The property of an object</param>
+    /// <returns>The string value of the JsonPropertyName for that property</returns>
     private static string GetJsonElementNameFromPropertyAttribute(PropertyInfo prop)
     {
-        var jsonElementName = "";
-        foreach (var propAttr in prop.GetCustomAttributes())
-        {
-            if (propAttr is JsonPropertyNameAttribute)
-            {
-                jsonElementName = (propAttr as dynamic).Name;
-            }
-        }
-
-        return jsonElementName;
+        var jsonPropertyAttribute = prop.GetCustomAttributes().FirstOrDefault(a => a is JsonPropertyNameAttribute);
+        return jsonPropertyAttribute != null ? (string)(jsonPropertyAttribute as dynamic).Name : string.Empty;
     }
 
-    private static PropertyInfo? GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
+    /// <summary>
+    ///     Given a property name from a JSON element, derive the Object property it represents (along with all its type
+    ///     info).
+    ///     These correspond to the JsonPropertyNames of the properties in the Model classes.
+    ///     For example, if the current object is an Annotation, and the json element name is "annotationType", this
+    ///     corresponds to the AnnotationType property on the Annotation object (which is what is returned), and it is of type
+    ///     AnnotationType (the enum).
+    /// </summary>
+    /// <param name="typeToConvert">The object that has the property</param>
+    /// <param name="elementName">The name of the property as found in the JSON file (e.g., "build_buildId")</param>
+    /// <returns>The property info, or null if no match</returns>
+    private static PropertyInfo GetPropertyFromJsonElementName(Type typeToConvert, string elementName)
     {
         var eName = Regex.Replace(elementName, "^spdx:.*/", "");
         foreach (var prop in typeToConvert.GetProperties())
         {
-            foreach (var propAttr in prop.GetCustomAttributes())
+            var jsonPropertyAttribute = prop.GetCustomAttributes().FirstOrDefault(a => a is JsonPropertyNameAttribute);
+            if (jsonPropertyAttribute == null)
             {
-                if (propAttr is JsonPropertyNameAttribute && eName == (propAttr as dynamic).Name)
-                {
-                    return prop;
-                }
+                // This property didn't have
+                continue;
+            }
+            if (eName == (jsonPropertyAttribute as dynamic).Name)
+            {
+                return prop;
             }
         }
 
-        return null;
+        throw new Spdx3SerializationException($"Could not find a property with JsonPropertyNameAttribute matching {{eName}} on {typeToConvert.Name}");
     }
 
-    private static BaseModelClass GetObjectFromHashTable(Dictionary<string, object> hashTable)
+    /// <summary>
+    /// From the hashtable of values in the JSON, construct a model object with those values (for primitives) or placeholders (for objects)
+    /// </summary>
+    /// <returns>A partially constructed object from the hashtable values</returns>
+    /// <exception cref="Spdx3SerializationException"></exception>
+    /// <exception cref="Spdx3Exception"></exception>
+    private BaseModelClass GetObjectFromHashTable()
     {
+        if (_hashTable == null)
+        {
+            throw new Spdx3SerializationException("Hash table is null");
+        }
+        
         // Create the needed object
-        if (!hashTable.TryGetValue("type", out var val))
+        if (!_hashTable.TryGetValue("type", out var val))
         {
             throw new Spdx3Exception("No type found in hash table");
         }
@@ -257,7 +251,7 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                      ?? throw new Spdx3SerializationException($"Unable to instantiate instance of {classTypeName}");
 
         // Populate the object with values
-        foreach (var entry in hashTable)
+        foreach (var entry in _hashTable)
         {
             var key = Regex.Replace(entry.Key, "^spdx:.*/", "");
             if (key == "@id")
@@ -270,13 +264,11 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 key = "type";
             }
 
-            var property = GetPropertyFromJsonElementName(classType, key)
-                           ?? throw new Spdx3SerializationException(
-                               $"Could not get property {key} of type {classType}");
+            var property = GetPropertyFromJsonElementName(classType, key);
             var propType = property.PropertyType;
             if (propType.IsAssignableTo(typeof(BaseModelClass)))
             {
-                var placeHolder = GetPlaceHolder(property, (string)entry.Value);
+                var placeHolder = GetPlaceHolderForProperty(property, (string)entry.Value);
                 property.SetValue(result, placeHolder);
             }
             else if (propType == typeof(string) || propType == typeof(int))
@@ -292,8 +284,10 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
                     propType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
                 {
+                    // The property is a list of classes, but the Json just has a list of references.
+                    // We need to create placeholder objects from the ID's that we will swap out later
                     var l = property.GetValue(result);
-                    if (l is not IList listOfObjects)
+                    if (l is not IList propertyValueListOfObjects)
                     {
                         throw new Spdx3SerializationException($"Could not get list of objects for type {propType}");
                     }
@@ -309,9 +303,9 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                                     throw new Spdx3SerializationException("List of ID's is null");
                     }
 
-                    foreach (var placeholder in listOfIds.Select(id => GetPlaceHolder(property, (string)id)))
+                    foreach (var placeholder in listOfIds.Select(id => GetPlaceHolderForProperty(property, (string)id)))
                     {
-                        listOfObjects.Add(placeholder);
+                        propertyValueListOfObjects.Add(placeholder);
                     }
                 }
                 else if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
@@ -344,7 +338,9 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
                 property.SetValue(result, value);
             }
             else if (propType == typeof(Uri))
+            {
                 property.SetValue(result, new Uri((string)entry.Value));
+            }
             else
             {
                 throw new Spdx3SerializationException("No handler for property");
@@ -354,7 +350,14 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         return result;
     }
 
-    private static BaseModelClass GetPlaceHolder(PropertyInfo property, string spdxId)
+    /// <summary>
+    ///     Create a placeholder object for the current property, with a specific ID - we'll replace the object later
+    /// </summary>
+    /// <param name="property">The property (of some other object) that we need a placeholder for</param>
+    /// <param name="spdxId">The ID to give that placeholder so we can find its replacement later</param>
+    /// <returns>A minimally populated instance of a class that is the type the property needs, with the ID set</returns>
+    /// <exception cref="Spdx3SerializationException">Any of a variety of things went wrong</exception>
+    private static BaseModelClass GetPlaceHolderForProperty(PropertyInfo property, string spdxId)
     {
         var propType = property.PropertyType ??
                        throw new Spdx3SerializationException($"Could not determine type of property {property}");
@@ -368,19 +371,29 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
         if (propType.IsAbstract)
         {
             var placeHolderClassName = Regex.Replace(propType.FullName ??
-                         throw new Spdx3SerializationException(
-                             $"Could not determine full name of property type {propType}"),
-                    @"\.Classes\.",
-                    ".Classes.Placeholder");
+                                                     throw new Spdx3SerializationException(
+                                                         $"Could not determine full name of property type {propType}"),
+                @"\.Classes\.",
+                ".Classes.Placeholder");
             propType = Type.GetType(placeHolderClassName)
                        ?? throw new Spdx3SerializationException($"Could not get type {placeHolderClassName}");
         }
 
-        var placeHolder = NewPlaceHolderWithId(propType, spdxId);
+        var placeHolder = NewPlaceHolderObjectWithId(propType, spdxId);
         return placeHolder;
     }
 
-    private static BaseModelClass NewPlaceHolderWithId(Type propType, string id)
+
+    /// <summary>
+    ///     Factory method to return a placeholder of a specific type, with the required ID.
+    ///     This method differs from using a constructor in that it does not require all the fields required to pass
+    ///     validation, and it also does not add the new item to the Catalog.
+    /// </summary>
+    /// <param name="propType">The type of the placeholder needed</param>
+    /// <param name="id">The ID of the placeholder</param>
+    /// <returns>A new placeholder object of the specified type.</returns>
+    /// <exception cref="Spdx3Exception"></exception>
+    private static BaseModelClass NewPlaceHolderObjectWithId(Type propType, string id)
     {
         if (Activator.CreateInstance(propType, true) is not BaseModelClass placeHolder)
         {
@@ -396,5 +409,4 @@ internal partial class SpdxWrapperConverter<T> : JsonConverter<T>
 
         return placeHolder;
     }
-
 }
