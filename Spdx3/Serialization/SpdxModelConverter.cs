@@ -112,9 +112,18 @@ public class SpdxModelConverter<T> : JsonConverter<T>
 
                     break;
                 case JsonTokenType.Number:
-                    var intVal = reader.GetInt32();
-                    (currentProp ?? throw new Spdx3SerializationException("No current property")).SetValue(result,
-                        intVal);
+                    if (currentProp?.PropertyType == typeof(int))
+                    {
+                        var intVal = reader.GetInt32();
+                        (currentProp ?? throw new Spdx3SerializationException("No current property")).SetValue(result,
+                            intVal);
+                    }
+                    else
+                    {
+                        var dblVal = reader.GetDouble();
+                        (currentProp ?? throw new Spdx3SerializationException("No current property")).SetValue(result,
+                            dblVal);
+                    }
 
                     break;
             }
@@ -184,6 +193,9 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                 writer.WriteString(jsonElementName, Enum.GetName(propVal.GetType(), propVal));
                 break;
             case int val:
+                writer.WriteNumber(jsonElementName, val);
+                break;
+            case double val:
                 writer.WriteNumber(jsonElementName, val);
                 break;
             case string val:

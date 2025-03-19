@@ -60,8 +60,11 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                     }
 
                     break;
+                
 
                 case JsonTokenType.Number:
+                    // TODO - Add something for a decimal number
+                    
                     var intVal = reader.GetInt32();
 
                     if (_currentValueArray == null)
