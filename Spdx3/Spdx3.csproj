@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Model\AI\Classes\"/>
-        <Folder Include="Model\AI\Enums\"/>
         <Folder Include="Model\Build\Enums\"/>
         <Folder Include="Model\Dataset\Classes\"/>
         <Folder Include="Model\Dataset\Enums\"/>

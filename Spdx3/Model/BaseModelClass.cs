@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Serialization;
@@ -43,7 +46,16 @@ public abstract class BaseModelClass
 
     protected void ValidateRequiredProperty(string propertyName)
     {
-        var propertyInfo = GetType().GetProperty(propertyName);
+        var props = GetType().GetProperties().Where(p => p.Name == propertyName).ToList();
+        PropertyInfo? propertyInfo = null;
+        if (props.Count > 1)
+        {
+            propertyInfo = props.Single(p => p.GetCustomAttribute<RequiredMemberAttribute>() != null);
+        }
+        else
+        {
+            propertyInfo = props.FirstOrDefault();
+        }
         if (propertyInfo == null)
         {
             throw new Spdx3ValidationException(this, $"'{propertyName}'", "No such property exists");
