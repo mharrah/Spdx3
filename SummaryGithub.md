@@ -3,34 +3,36 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/19/2025 - 02:20:29 |
-| Coverage date: | 03/19/2025 - 02:20:28 |
+| Generated on: | 03/19/2025 - 21:19:39 |
+| Coverage date: | 03/19/2025 - 21:19:38 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 56 |
-| Files: | 56 |
-| **Line coverage:** | 93.8% (1185 of 1262) |
-| Covered lines: | 1185 |
-| Uncovered lines: | 77 |
-| Coverable lines: | 1262 |
-| Total lines: | 3023 |
-| **Branch coverage:** | 81.9% (313 of 382) |
-| Covered branches: | 313 |
-| Total branches: | 382 |
+| Classes: | 58 |
+| Files: | 58 |
+| **Line coverage:** | 92.9% (1205 of 1296) |
+| Covered lines: | 1205 |
+| Uncovered lines: | 91 |
+| Coverable lines: | 1296 |
+| Total lines: | 3112 |
+| **Branch coverage:** | 80.7% (315 of 390) |
+| Covered branches: | 315 |
+| Total branches: | 390 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 93.8%</summary>
+<details><summary>Spdx3 - 92.9%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**93.8%**|**81.9%**|
+|**Spdx3**|**92.9%**|**80.7%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.AI.Classes.AiPackage|92.3%||
+|Spdx3.Model.AI.Classes.EnergyConsumption|66.6%||
+|Spdx3.Model.AI.Classes.EnergyConsumptionDescription|80%||
 |Spdx3.Model.BaseModelClass|100%|100%|
 |Spdx3.Model.Build.Classes.Build|100%||
 |Spdx3.Model.Core.Classes.Agent|100%||
@@ -74,7 +76,7 @@
 |Spdx3.Model.Software.Classes.Snippet|100%|100%|
 |Spdx3.Model.Software.Classes.SoftwareArtifact|100%||
 |Spdx3.Serialization.Reader|93.3%|75%|
-|Spdx3.Serialization.SpdxModelConverter`1|89.5%|80.4%|
+|Spdx3.Serialization.SpdxModelConverter`1|86.1%|77.3%|
 |Spdx3.Serialization.SpdxModelConverterFactory|100%||
 |Spdx3.Serialization.SpdxWrapper|100%||
 |Spdx3.Serialization.SpdxWrapperConverter`1|87%|77.7%|
