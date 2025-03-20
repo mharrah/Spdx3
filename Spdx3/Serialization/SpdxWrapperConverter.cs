@@ -63,19 +63,18 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 
 
                 case JsonTokenType.Number:
-                    // TODO - Add something for a decimal number
-                    
-                    var intVal = reader.GetInt32();
+                    // Read all numbers as doubles. We will convert to integer when the property being assinged to is one.
+                    var dblVal = reader.GetDouble();
 
                     if (_currentValueArray == null)
                     {
                         // Not in an array, so the int value goes directly into the property
-                        SetHashtableValue(intVal);
+                        SetHashtableValue(dblVal);
                     }
                     else
                     {
                         // We're in an array, so the int value goes in the array
-                        _currentValueArray.Add(intVal);
+                        _currentValueArray.Add(dblVal);
                     }
 
                     break;
@@ -274,9 +273,17 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             }
             else if (propType == typeof(int))
             {
-                if (entry.Value.GetType() != typeof(int))
+                if (entry.Value.GetType() != typeof(double))
                 {
-                    throw new Spdx3Exception($"{propType.Name} expected an integer, but {entry.Value.GetType()} encountered");
+                    throw new Spdx3Exception($"{propType.Name} expected an double, but {entry.Value.GetType()} encountered");
+                }
+                property.SetValue(result, Convert.ToInt32(entry.Value));
+            }
+            else if (propType == typeof(double))
+            {
+                if (entry.Value.GetType() != typeof(double))
+                {
+                    throw new Spdx3Exception($"{propType.Name} expected a double, but {entry.Value.GetType()} encountered");
                 }
                 property.SetValue(result, entry.Value);
             }

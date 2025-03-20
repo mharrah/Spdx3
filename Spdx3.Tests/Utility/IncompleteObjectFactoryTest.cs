@@ -1,5 +1,6 @@
 using Spdx3.Exceptions;
 using Spdx3.Model;
+using Spdx3.Model.AI.Classes;
 using Spdx3.Model.Build.Classes;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Extension.Classes;
@@ -56,7 +57,10 @@ public class IncompleteObjectFactoryTest
             typeof(Package),
             typeof(Sbom),
             typeof(Snippet),
-            typeof(SoftwareArtifact)
+            typeof(SoftwareArtifact),
+            typeof(AiPackage),
+            typeof(EnergyConsumption),
+            typeof(EnergyConsumptionDescription)
         ];
 
         

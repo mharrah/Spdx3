@@ -20,10 +20,11 @@ public class ReaderTest
         var spdxDocument = new Reader(catalog).ReadFileName(jsonFile);
 
         // Assert
-        Assert.Equal(38, catalog.Items.Count);
+        Assert.Equal(42, catalog.Items.Count);
         Assert.Equal(9, catalog.Items.Values.Count(i => i.Type == "Relationship"));
         Assert.Equal(3, catalog.Items.Values.Count(i => i.Type == "Organization"));
-        Assert.Equal(3, catalog.Items.Values.Count(i => i.Type == "Person"));
+        Assert.Equal(4, catalog.Items.Values.Count(i => i.Type == "Person"));
+        Assert.Equal(1, catalog.Items.Values.Count(i => i.Type == "ai_AiPackage"));
 
         Assert.NotNull(spdxDocument);
         Assert.NotEmpty(spdxDocument.Element);

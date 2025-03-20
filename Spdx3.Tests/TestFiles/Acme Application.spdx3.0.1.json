@@ -5,7 +5,10 @@
       "spdxId": "urn:nanoid:5uUlahHiRSRG2c9pTFvqJ",
       "type": "SpdxDocument",
       "creationInfo": "_:b0",
-      "element": "urn:nanoid:iPyS3tVAW0IZ27Hacu490",
+      "element": [
+        "urn:nanoid:iPyS3tVAW0IZ27Hacu490",
+        "urn:AiPackage:140f"
+      ],
       "profileConformance": [
         "core",
         "software"
@@ -286,6 +289,35 @@
       "beginIntegerRange": 1,
       "endIntegerRange": 4,
       "@id": "_:b6"
+    },
+    {
+      "ai_energyQuantity": 5.5,
+      "ai_energyUnit": "kilowattHour",
+      "type": "ai_EnergyConsumptionDescription",
+      "spdxId": "urn:EnergyConsumptionDescription:600"
+    },
+    {
+      "ai_finetuningEnergyConsumption": [
+        "urn:EnergyConsumptionDescription:600"
+      ],
+      "type": "ai_EnergyConsumption",
+      "spdxId": "urn:EnergyConsumption:402"
+    },
+    {
+      "type": "Person",
+      "name": "Shirley Temple",
+      "spdxId": "urn:Person:1402",
+      "creationInfo": "_:b0"
+    },
+    {
+      "releaseTime": "2025-02-22T01:23:45Z",
+      "suppliedBy": "urn:Person:1402",
+      "software_downloadLocation": "https://somewhere.com",
+      "software_packageVersion": "1.0.0",
+      "software_primaryPurpose": "executable",
+      "creationInfo": "_:b0",
+      "type": "ai_AiPackage",
+      "spdxId": "urn:AiPackage:140f"
     }
   ]
 }
