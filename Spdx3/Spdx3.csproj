@@ -9,8 +9,6 @@
     <ItemGroup>
         <Folder Include="Model\ExpandedLicensing\Classes\"/>
         <Folder Include="Model\ExpandedLicensing\Enums\"/>
-        <Folder Include="Model\Security\Classes\"/>
-        <Folder Include="Model\Security\Enums\"/>
     </ItemGroup>
 
 </Project>
