@@ -14,7 +14,7 @@ public class ExternalRefTest : BaseModelTestClass
                                 {
                                   "externalRefType": "license",
                                   "type": "ExternalRef",
-                                  "spdxId": "urn:ExternalRef:402"
+                                  "spdxId": "urn:ExternalRef:40f"
                                 }
                                 """;
 
@@ -46,7 +46,7 @@ public class ExternalRefTest : BaseModelTestClass
                                   "contentType": "some sort of content",
                                   "comment": "Test comment",
                                   "type": "ExternalRef",
-                                  "spdxId": "urn:ExternalRef:402"
+                                  "spdxId": "urn:ExternalRef:40f"
                                 }
                                 """;
 
@@ -71,7 +71,7 @@ public class ExternalRefTest : BaseModelTestClass
                               "contentType": "some sort of content",
                               "comment": "Test comment",
                               "type": "ExternalRef",
-                              "spdxId": "urn:ExternalRef:402"
+                              "spdxId": "urn:ExternalRef:40f"
                             }
                             """;
 
@@ -79,7 +79,7 @@ public class ExternalRefTest : BaseModelTestClass
         Assert.NotNull(externalRef);
         Assert.IsType<ExternalRef>(externalRef);
         Assert.Equal("ExternalRef", externalRef.Type);
-        Assert.Equal("urn:ExternalRef:402", externalRef.SpdxId);
+        Assert.Equal("urn:ExternalRef:40f", externalRef.SpdxId);
         Assert.Equal("some sort of content", externalRef.ContentType);
         Assert.Equal(ExternalRefType.license, externalRef.ExternalRefType);
         Assert.Equal("Test comment", externalRef.Comment);

@@ -13,7 +13,7 @@ public class IndividualElementTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "IndividualElement",
-                                  "spdxId": "urn:IndividualElement:402"
+                                  "spdxId": "urn:IndividualElement:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class IndividualElementTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "IndividualElement",
-                                  "spdxId": "urn:IndividualElement:402"
+                                  "spdxId": "urn:IndividualElement:40f"
                                 }
                                 """;
 

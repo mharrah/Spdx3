@@ -17,7 +17,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                                   "externalIdentifierType": "email",
                                   "identifier": "email@example.com",
                                   "type": "ExternalIdentifier",
-                                  "spdxId": "urn:ExternalIdentifier:402"
+                                  "spdxId": "urn:ExternalIdentifier:40f"
                                 }
                                 """;
 
@@ -50,7 +50,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                                   ],
                                   "issuingAuthority": "testRef",
                                   "type": "ExternalIdentifier",
-                                  "spdxId": "urn:ExternalIdentifier:402"
+                                  "spdxId": "urn:ExternalIdentifier:40f"
                                 }
                                 """;
 

@@ -13,7 +13,7 @@ public class AgentTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Agent",
-                                  "spdxId": "urn:Agent:402"
+                                  "spdxId": "urn:Agent:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class AgentTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Agent",
-                                  "spdxId": "urn:Agent:402"
+                                  "spdxId": "urn:Agent:40f"
                                 }
                                 """;
 

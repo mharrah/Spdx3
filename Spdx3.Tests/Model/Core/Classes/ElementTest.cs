@@ -25,7 +25,7 @@ public class ElementTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "TestElement",
-                                  "spdxId": "urn:TestElement:402"
+                                  "spdxId": "urn:TestElement:40f"
                                 }
                                 """;
 
@@ -34,7 +34,7 @@ public class ElementTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
-        Assert.Equal(2, TestCatalog.Items.Count);
+        Assert.Equal(3, TestCatalog.Items.Count);
     }
 
     [Fact]
@@ -61,21 +61,21 @@ public class ElementTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:40f"
+                                    "urn:TestExtension:41c"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:41c"
+                                    "urn:ExternalIdentifier:429"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:429"
+                                    "urn:ExternalRef:436"
                                   ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:436"
+                                    "urn:TestIntegrityMethod:443"
                                   ],
                                   "type": "TestElement",
-                                  "spdxId": "urn:TestElement:402"
+                                  "spdxId": "urn:TestElement:40f"
                                 }
                                 """;
 
@@ -84,7 +84,7 @@ public class ElementTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
-        Assert.Equal(6, TestCatalog.Items.Count);
+        Assert.Equal(7, TestCatalog.Items.Count);
     }
 
     [Fact]

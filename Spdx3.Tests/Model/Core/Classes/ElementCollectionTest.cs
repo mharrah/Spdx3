@@ -13,7 +13,7 @@ public class ElementCollectionTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:402"
+                                  "spdxId": "urn:TestElementCollection:40f"
                                 }
                                 """;
 
@@ -45,18 +45,18 @@ public class ElementCollectionTest : BaseModelTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:429"
+                                    "urn:TestElement:436"
                                   ],
                                   "element": [
-                                    "urn:TestElement:40f",
-                                    "urn:TestElement:41c"
+                                    "urn:TestElement:41c",
+                                    "urn:TestElement:429"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:402"
+                                  "spdxId": "urn:TestElementCollection:40f"
                                 }
                                 """;
 

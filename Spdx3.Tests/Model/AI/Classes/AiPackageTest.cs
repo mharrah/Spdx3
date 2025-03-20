@@ -19,13 +19,13 @@ public class AiPackageTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "releaseTime": "2025-02-22T01:23:45Z",
-                                  "suppliedBy": "urn:Person:402",
+                                  "suppliedBy": "urn:Person:40f",
                                   "software_downloadLocation": "https://somewhere.com",
                                   "software_packageVersion": "1.0.0",
                                   "software_primaryPurpose": "executable",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "ai_AiPackage",
-                                  "spdxId": "urn:AiPackage:40f"
+                                  "spdxId": "urn:AiPackage:41c"
                                 }
                                 """;
 

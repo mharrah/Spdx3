@@ -16,7 +16,7 @@ public class EnergyConsumptionDescriptionTest : BaseModelTestClass
                                   "ai_energyQuantity": 5.5,
                                   "ai_energyUnit": "kilowattHour",
                                   "type": "ai_EnergyConsumptionDescription",
-                                  "spdxId": "urn:EnergyConsumptionDescription:402"
+                                  "spdxId": "urn:EnergyConsumptionDescription:40f"
                                 }
                                 """;
 
@@ -37,7 +37,7 @@ public class EnergyConsumptionDescriptionTest : BaseModelTestClass
                               "ai_energyQuantity": 5.5,
                               "ai_energyUnit": "kilowattHour",
                               "type": "ai_EnergyConsumptionDescription",
-                              "spdxId": "urn:EnergyConsumptionDescription:402"
+                              "spdxId": "urn:EnergyConsumptionDescription:40f"
                             }
                             """;
 

@@ -13,7 +13,7 @@ public class OrganizationTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Organization",
-                                  "spdxId": "urn:Organization:402"
+                                  "spdxId": "urn:Organization:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class OrganizationTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Organization",
-                                  "spdxId": "urn:Organization:402"
+                                  "spdxId": "urn:Organization:40f"
                                 }
                                 """;
 

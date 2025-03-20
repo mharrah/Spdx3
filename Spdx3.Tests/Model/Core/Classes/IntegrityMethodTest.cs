@@ -12,7 +12,7 @@ public class IntegrityMethodTest : BaseModelTestClass
         Assert.NotNull(integrityMethod);
         Assert.IsType<TestIntegrityMethod>(integrityMethod);
         Assert.Equal("TestIntegrityMethod", integrityMethod.Type);
-        Assert.Equal("urn:TestIntegrityMethod:402", integrityMethod.SpdxId);
+        Assert.Equal("urn:TestIntegrityMethod:40f", integrityMethod.SpdxId);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class IntegrityMethodTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:402"
+                                  "spdxId": "urn:TestIntegrityMethod:40f"
                                 }
                                 """;
 
@@ -48,7 +48,7 @@ public class IntegrityMethodTest : BaseModelTestClass
                                 {
                                   "comment": "Test comment",
                                   "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:402"
+                                  "spdxId": "urn:TestIntegrityMethod:40f"
                                 }
                                 """;
 

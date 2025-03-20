@@ -14,7 +14,7 @@ public class BundleTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Bundle",
-                                  "spdxId": "urn:Bundle:402"
+                                  "spdxId": "urn:Bundle:40f"
                                 }
                                 """;
 
@@ -52,18 +52,18 @@ public class BundleTest : BaseModelTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:429"
+                                    "urn:TestElement:436"
                                   ],
                                   "element": [
-                                    "urn:TestElement:40f",
-                                    "urn:TestElement:41c"
+                                    "urn:TestElement:41c",
+                                    "urn:TestElement:429"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Bundle",
-                                  "spdxId": "urn:Bundle:402"
+                                  "spdxId": "urn:Bundle:40f"
                                 }
                                 """;
 

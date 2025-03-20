@@ -13,7 +13,7 @@ public class NamespaceMapTest : BaseModelTestClass
         Assert.NotNull(namespaceMap);
         Assert.IsType<NamespaceMap>(namespaceMap);
         Assert.Equal("NamespaceMap", namespaceMap.Type);
-        Assert.Equal("urn:NamespaceMap:402", namespaceMap.SpdxId);
+        Assert.Equal("urn:NamespaceMap:40f", namespaceMap.SpdxId);
     }
 
     [Fact]
@@ -30,7 +30,7 @@ public class NamespaceMapTest : BaseModelTestClass
                                   "prefix": "TestPrefix",
                                   "namespace": "TestNamespace",
                                   "type": "NamespaceMap",
-                                  "spdxId": "urn:NamespaceMap:402"
+                                  "spdxId": "urn:NamespaceMap:40f"
                                 }
                                 """;
 

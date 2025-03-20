@@ -15,7 +15,7 @@ public class HashTest : BaseModelTestClass
         Assert.NotNull(hash);
         Assert.IsType<Hash>(hash);
         Assert.Equal("Hash", hash.Type);
-        Assert.Equal("urn:Hash:402", hash.SpdxId);
+        Assert.Equal("urn:Hash:40f", hash.SpdxId);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class HashTest : BaseModelTestClass
                                   "algorithm": "falcon",
                                   "hashValue": "TestHashValue",
                                   "type": "Hash",
-                                  "spdxId": "urn:Hash:402"
+                                  "spdxId": "urn:Hash:40f"
                                 }
                                 """;
 

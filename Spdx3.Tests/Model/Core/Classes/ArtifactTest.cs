@@ -22,7 +22,7 @@ public class ArtifactTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "TestArtifact",
-                                  "spdxId": "urn:TestArtifact:402"
+                                  "spdxId": "urn:TestArtifact:40f"
                                 }
                                 """;
 
@@ -51,7 +51,7 @@ public class ArtifactTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "TestArtifact",
-                                  "spdxId": "urn:TestArtifact:402"
+                                  "spdxId": "urn:TestArtifact:40f"
                                 }
                                 """;
 

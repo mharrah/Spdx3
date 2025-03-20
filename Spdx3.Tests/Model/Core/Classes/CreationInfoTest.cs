@@ -14,7 +14,7 @@ public class CreationInfoTest : BaseModelTestClass
         Assert.NotNull(creationInfo);
         Assert.IsType<CreationInfo>(creationInfo);
         Assert.Equal("CreationInfo", creationInfo.Type);
-        Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
+        Assert.Equal("urn:CreationInfo:40f", creationInfo.SpdxId);
     }
 
 
@@ -33,7 +33,7 @@ public class CreationInfoTest : BaseModelTestClass
         // but created less than 2 sec ago
         Assert.True(DateTimeOffset.Now.Add(new TimeSpan(0, 0, -2)).CompareTo(creationInfo.Created) < 0);
         Assert.Equal("CreationInfo", creationInfo.Type);
-        Assert.Equal("urn:CreationInfo:402", creationInfo.SpdxId);
+        Assert.Equal("urn:CreationInfo:40f", creationInfo.SpdxId);
     }
 
     [Fact]
@@ -49,16 +49,16 @@ public class CreationInfoTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "createdBy": [
-                                    "urn:Agent:40f"
+                                    "urn:Agent:41c"
                                   ],
                                   "comment": "Test comment",
                                   "created": "2025-02-22T01:23:45Z",
                                   "createdUsing": [
-                                    "urn:Tool:41c"
+                                    "urn:Tool:429"
                                   ],
                                   "specVersion": "3.0.1",
                                   "type": "CreationInfo",
-                                  "spdxId": "urn:CreationInfo:402"
+                                  "spdxId": "urn:CreationInfo:40f"
                                 }
                                 """;
 

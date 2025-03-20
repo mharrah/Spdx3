@@ -16,14 +16,14 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
             from, [to]);
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:402",
+                                  "from": "urn:TestElement:40f",
                                   "to": [
-                                    "urn:TestElement:40f"
+                                    "urn:TestElement:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "LifecycleScopedRelationship",
-                                  "spdxId": "urn:LifecycleScopedRelationship:41c"
+                                  "spdxId": "urn:LifecycleScopedRelationship:429"
                                 }
                                 """;
 
@@ -56,9 +56,9 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "scope": "runtime",
-                                  "from": "urn:TestElement:402",
+                                  "from": "urn:TestElement:40f",
                                   "to": [
-                                    "urn:TestElement:40f"
+                                    "urn:TestElement:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "completeness": "complete",
@@ -69,7 +69,7 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "LifecycleScopedRelationship",
-                                  "spdxId": "urn:LifecycleScopedRelationship:41c"
+                                  "spdxId": "urn:LifecycleScopedRelationship:429"
                                 }
                                 """;
 

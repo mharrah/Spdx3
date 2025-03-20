@@ -17,7 +17,7 @@ public class BuildTest : BaseModelTestClass
                                   "build_buildType": "https://github.com/",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "build_Build",
-                                  "spdxId": "urn:Build:402"
+                                  "spdxId": "urn:Build:40f"
                                 }
                                 """;
 
@@ -61,7 +61,7 @@ public class BuildTest : BaseModelTestClass
                                   "build_buildStartTime": "2025-02-22T01:23:45Z",
                                   "build_buildType": "https://github.com/",
                                   "build_configSourceDigest": [
-                                    "urn:Hash:443"
+                                    "urn:Hash:450"
                                   ],
                                   "build_configSourceEntrypoint": [
                                     "TestEntryPoint"
@@ -70,30 +70,30 @@ public class BuildTest : BaseModelTestClass
                                     "https://github.com/"
                                   ],
                                   "build_environment": [
-                                    "urn:DictionaryEntry:450"
+                                    "urn:DictionaryEntry:45d"
                                   ],
                                   "build_parameter": [
-                                    "urn:DictionaryEntry:45d"
+                                    "urn:DictionaryEntry:46a"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:40f"
+                                    "urn:TestExtension:41c"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:41c"
+                                    "urn:ExternalIdentifier:429"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:429"
+                                    "urn:ExternalRef:436"
                                   ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:436"
+                                    "urn:TestIntegrityMethod:443"
                                   ],
                                   "type": "build_Build",
-                                  "spdxId": "urn:Build:402"
+                                  "spdxId": "urn:Build:40f"
                                 }
                                 """;
 

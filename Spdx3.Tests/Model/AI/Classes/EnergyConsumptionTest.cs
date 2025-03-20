@@ -13,7 +13,7 @@ public class EnergyConsumptionTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "type": "ai_EnergyConsumption",
-                                  "spdxId": "urn:EnergyConsumption:402"
+                                  "spdxId": "urn:EnergyConsumption:40f"
                                 }
                                 """;
 
@@ -40,17 +40,17 @@ public class EnergyConsumptionTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "ai_finetuningEnergyConsumption": [
-                                    "urn:EnergyConsumptionDescription:40f"
+                                    "urn:EnergyConsumptionDescription:41c"
                                   ],
                                   "ai_inferenceEnergyConsumption": [
-                                    "urn:EnergyConsumptionDescription:41c",
-                                    "urn:EnergyConsumptionDescription:429"
-                                  ],
-                                  "ai_trainingEnergyConsumption": [
+                                    "urn:EnergyConsumptionDescription:429",
                                     "urn:EnergyConsumptionDescription:436"
                                   ],
+                                  "ai_trainingEnergyConsumption": [
+                                    "urn:EnergyConsumptionDescription:443"
+                                  ],
                                   "type": "ai_EnergyConsumption",
-                                  "spdxId": "urn:EnergyConsumption:402"
+                                  "spdxId": "urn:EnergyConsumption:40f"
                                 }
                                 """;
 

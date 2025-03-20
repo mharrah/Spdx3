@@ -13,7 +13,7 @@ public class DictionaryEntryTest : BaseModelTestClass
         Assert.NotNull(dictionaryEntry);
         Assert.IsType<DictionaryEntry>(dictionaryEntry);
         Assert.Equal("DictionaryEntry", dictionaryEntry.Type);
-        Assert.Equal("urn:DictionaryEntry:402", dictionaryEntry.SpdxId);
+        Assert.Equal("urn:DictionaryEntry:40f", dictionaryEntry.SpdxId);
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public class DictionaryEntryTest : BaseModelTestClass
                                   "key": "TestKey",
                                   "value": "TestValue",
                                   "type": "DictionaryEntry",
-                                  "spdxId": "urn:DictionaryEntry:402"
+                                  "spdxId": "urn:DictionaryEntry:40f"
                                 }
                                 """;
 

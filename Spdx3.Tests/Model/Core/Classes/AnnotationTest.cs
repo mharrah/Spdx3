@@ -26,11 +26,11 @@ public class AnnotationTest : BaseModelTestClass
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:402",
+                                  "subject": "urn:TestElement:40f",
                                   "annotationType": "review",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Annotation",
-                                  "spdxId": "urn:Annotation:40f"
+                                  "spdxId": "urn:Annotation:41c"
                                 }
                                 """;
 
@@ -65,7 +65,7 @@ public class AnnotationTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:402",
+                                  "subject": "urn:TestElement:40f",
                                   "annotationType": "review",
                                   "statement": "TestStatement",
                                   "contentType": "TestMediaType",
@@ -73,21 +73,21 @@ public class AnnotationTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:TestExtension:429"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:429"
+                                    "urn:ExternalIdentifier:436"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:436"
+                                    "urn:ExternalRef:443"
                                   ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:TestIntegrityMethod:450"
                                   ],
                                   "type": "Annotation",
-                                  "spdxId": "urn:Annotation:40f"
+                                  "spdxId": "urn:Annotation:41c"
                                 }
                                 """;
 
@@ -96,7 +96,7 @@ public class AnnotationTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
-        Assert.Equal(7, TestCatalog.Items.Count);
+        Assert.Equal(8, TestCatalog.Items.Count);
     }
 
     [Fact]

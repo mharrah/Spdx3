@@ -15,7 +15,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
         Assert.NotNull(hash);
         Assert.IsType<PackageVerificationCode>(hash);
         Assert.Equal("PackageVerificationCode", hash.Type);
-        Assert.Equal("urn:PackageVerificationCode:402", hash.SpdxId);
+        Assert.Equal("urn:PackageVerificationCode:40f", hash.SpdxId);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
                                   "algorithm": "falcon",
                                   "hashValue": "TestHashValue",
                                   "type": "PackageVerificationCode",
-                                  "spdxId": "urn:PackageVerificationCode:402"
+                                  "spdxId": "urn:PackageVerificationCode:40f"
                                 }
                                 """;
 
@@ -63,7 +63,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
                                     "file2"
                                   ],
                                   "type": "PackageVerificationCode",
-                                  "spdxId": "urn:PackageVerificationCode:402"
+                                  "spdxId": "urn:PackageVerificationCode:40f"
                                 }
                                 """;
 
