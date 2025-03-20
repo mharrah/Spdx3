@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -67,7 +68,9 @@ public abstract class BaseModelClass
             case null:
                 throw new Spdx3ValidationException(this, propertyName, "Field is required");
             case string when propVal.ToString() == string.Empty:
-                throw new Spdx3ValidationException(this, propertyName, "Field is empty");
+                throw new Spdx3ValidationException(this, propertyName, "String field is empty");
+            case IList { Count: 0 }:
+                throw new Spdx3ValidationException(this, propertyName, "List is empty");
         }
     }
 }

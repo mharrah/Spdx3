@@ -79,6 +79,6 @@ public class HashTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object Hash, property HashValue: Field is empty", exception.Message);
+        Assert.Equal("Object Hash, property HashValue: String field is empty", exception.Message);
     }
 }

@@ -74,7 +74,7 @@ public class NamespaceMapTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object NamespaceMap, property Prefix: Field is empty", exception.Message);
+        Assert.Equal("Object NamespaceMap, property Prefix: String field is empty", exception.Message);
     }
 
     [Fact]
@@ -112,6 +112,6 @@ public class NamespaceMapTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object NamespaceMap, property Namespace: Field is empty", exception.Message);
+        Assert.Equal("Object NamespaceMap, property Namespace: String field is empty", exception.Message);
     }
 }

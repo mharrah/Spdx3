@@ -96,6 +96,6 @@ public class ExternalIdentifierTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object ExternalIdentifier, property Identifier: Field is empty", exception.Message);
+        Assert.Equal("Object ExternalIdentifier, property Identifier: String field is empty", exception.Message);
     }
 }

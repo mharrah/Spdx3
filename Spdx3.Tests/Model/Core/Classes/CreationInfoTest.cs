@@ -75,12 +75,16 @@ public class CreationInfoTest : BaseModelTestClass
     {
         // Act
         var creationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
+        creationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, creationInfo) { Name = this.GetType().Name});
         const string expected = """
                                 {
+                                  "createdBy": [
+                                    "urn:SoftwareAgent:41c"
+                                  ],
                                   "created": "2025-02-22T01:23:45Z",
                                   "specVersion": "3.0.1",
                                   "type": "CreationInfo",
-                                  "spdxId": "urn:CreationInfo:402"
+                                  "spdxId": "urn:CreationInfo:40f"
                                 }
                                 """;
 

@@ -101,7 +101,7 @@ public class ElementTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object TestElement, property Type: Field is empty", exception.Message);
+        Assert.Equal("Object TestElement, property Type: String field is empty", exception.Message);
     }
 
 

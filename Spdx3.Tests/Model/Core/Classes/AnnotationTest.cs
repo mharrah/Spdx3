@@ -114,6 +114,6 @@ public class AnnotationTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object Annotation, property Type: Field is empty", exception.Message);
+        Assert.Equal("Object Annotation, property Type: String field is empty", exception.Message);
     }
 }

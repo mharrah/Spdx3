@@ -38,6 +38,7 @@ public class BaseModelTestClass
     protected BaseModelTestClass()
     {
         TestCreationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
+        TestCreationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, TestCreationInfo) { Name = $"{nameof(BaseModelTestClass)} constructor"});
         Options.Converters.Add(new SpdxModelConverterFactory());
     }
 

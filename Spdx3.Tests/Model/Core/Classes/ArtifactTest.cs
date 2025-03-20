@@ -77,6 +77,6 @@ public class ArtifactTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object TestArtifact, property Type: Field is empty", exception.Message);
+        Assert.Equal("Object TestArtifact, property Type: String field is empty", exception.Message);
     }
 }

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using Spdx3.Exceptions;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -47,5 +48,11 @@ public class CreationInfo : BaseModelClass
     public CreationInfo(Catalog catalog, DateTimeOffset created) : base(catalog)
     {
         Created = created;
+    }
+
+    public override void Validate()
+    {
+        base.Validate();
+        ValidateRequiredProperty(nameof(CreatedBy));
     }
 }

@@ -110,6 +110,6 @@ public class PackageVerificationCodeTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object PackageVerificationCode, property HashValue: Field is empty", exception.Message);
+        Assert.Equal("Object PackageVerificationCode, property HashValue: String field is empty", exception.Message);
     }
 }
