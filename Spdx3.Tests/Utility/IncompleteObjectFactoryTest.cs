@@ -63,7 +63,7 @@ public class IncompleteObjectFactoryTest
             typeof(EnergyConsumptionDescription)
         ];
 
-        
+
         foreach (var type in modelClasses.Where(t => !t.IsAbstract))
         {
             // Act
@@ -72,18 +72,17 @@ public class IncompleteObjectFactoryTest
                              $"Could not find {nameof(IncompleteObjectFactory.Create)} method on {typeof(IncompleteObjectFactory)}");
             var generic = method.MakeGenericMethod(type);
             var t = generic.Invoke(null, null) as BaseModelClass;
-            
+
             // Assert
             Assert.NotNull(t);
             Assert.Equal(type, t.GetType());
-            
-            
+
+
             // Act again
-            var exception = Record.Exception(() => t.Validate()); 
+            var exception = Record.Exception(() => t.Validate());
 
             // Assert again
             Assert.NotNull(exception);
         }
-        
     }
 }

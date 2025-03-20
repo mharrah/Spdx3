@@ -13,7 +13,7 @@ namespace Spdx3.Tests.Model;
 ///     less repetitive.
 /// </summary>
 [SuppressMessage("Performance", "SYSLIB1045:Convert to \'GeneratedRegexAttribute\'.")]
-public partial class BaseModelTestClass
+public class BaseModelTestClass
 {
     // What the name says - a predictable datetimeoffset value
     protected static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
@@ -82,5 +82,4 @@ public partial class BaseModelTestClass
         result = Regex.Replace(result, @"(\r|\n)", "", RegexOptions.Multiline);
         return result;
     }
-
 }

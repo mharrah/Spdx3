@@ -9,12 +9,13 @@ namespace Spdx3.Tests.Serialization;
 
 public class WriterTest : BaseModelTestClass
 {
-    static readonly string ExpectedMinimalJson = "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
-                                   "\"@graph\":[{\"created\":\"2025-02-22T01:23:45Z\",\"specVersion\":\"3.0.1\"," +
-                                   "\"type\":\"CreationInfo\",\"spdxId\":\"urn:CreationInfo:3f5\"}," +
-                                   "{\"creationInfo\":\"urn:CreationInfo:3f5\",\"type\":\"SpdxDocument\"," +
-                                   "\"spdxId\":\"urn:SpdxDocument:402\"}]}";
-    
+    private static readonly string ExpectedMinimalJson =
+        "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
+        "\"@graph\":[{\"created\":\"2025-02-22T01:23:45Z\",\"specVersion\":\"3.0.1\"," +
+        "\"type\":\"CreationInfo\",\"spdxId\":\"urn:CreationInfo:3f5\"}," +
+        "{\"creationInfo\":\"urn:CreationInfo:3f5\",\"type\":\"SpdxDocument\"," +
+        "\"spdxId\":\"urn:SpdxDocument:402\"}]}";
+
     [Fact]
     public void Writer_ShouldWrite_Minimal_SpdxDocument_AsString()
     {
@@ -23,7 +24,7 @@ public class WriterTest : BaseModelTestClass
 #pragma warning disable CA1806
         new SpdxDocument(TestCatalog, TestCreationInfo);
 #pragma warning restore CA1806
-        
+
         var writer = new Writer(TestCatalog);
 
         // Act
@@ -145,7 +146,7 @@ public class WriterTest : BaseModelTestClass
         Assert.NotNull(json);
         Assert.Equal(NormalizeJson(expected), json);
     }
-    
+
     [Fact]
     public void Writer_ShouldWrite_Minimal_SpdxDocument_AsFileStream()
     {
@@ -154,9 +155,9 @@ public class WriterTest : BaseModelTestClass
 #pragma warning disable CA1806
         new SpdxDocument(TestCatalog, TestCreationInfo);
 #pragma warning restore CA1806
-        
+
         var writer = new Writer(TestCatalog);
-        
+
         var tempFileName = Path.GetTempFileName();
         var fileStream = new FileStream(tempFileName, FileMode.Create);
 
@@ -169,8 +170,8 @@ public class WriterTest : BaseModelTestClass
         Assert.NotNull(json);
         Assert.Equal(NormalizeJson(ExpectedMinimalJson), json);
     }
-    
-    
+
+
     [Fact]
     public void Writer_ShouldWrite_Minimal_SpdxDocument_WithFileName()
     {
@@ -179,7 +180,7 @@ public class WriterTest : BaseModelTestClass
 #pragma warning disable CA1806
         new SpdxDocument(TestCatalog, TestCreationInfo);
 #pragma warning restore CA1806
-        
+
         var writer = new Writer(TestCatalog);
 
         var tempFileName = Path.GetTempFileName();

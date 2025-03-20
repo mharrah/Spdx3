@@ -28,12 +28,11 @@ public class AiPackageTest : BaseModelTestClass
                                   "spdxId": "urn:AiPackage:40f"
                                 }
                                 """;
-        
+
         // Act
         var json = ToJson(aiPackage);
-        
+
         // Assert
         Assert.Equal(expected, json);
-        
     }
 }

@@ -11,8 +11,7 @@ public class Spdx3SerializationExceptionTest
         var exception = new Spdx3SerializationException("Some message");
 
         // Assert
-        Assert.IsType<Spdx3Exception>(exception, exactMatch: false);
+        Assert.IsType<Spdx3Exception>(exception, false);
         Assert.Equal("Some message", exception.Message);
     }
-
 }

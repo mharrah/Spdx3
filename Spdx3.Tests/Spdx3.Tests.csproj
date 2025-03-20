@@ -14,14 +14,14 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="JunitXml.TestLogger" Version="6.1.0" />
+        <PackageReference Include="JunitXml.TestLogger" Version="6.1.0"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="xunit.v3" Version="1.1.0" />
-        <PackageReference Include="xunit.v3.assert" Version="1.1.0" />
+        <PackageReference Include="xunit.v3" Version="1.1.0"/>
+        <PackageReference Include="xunit.v3.assert" Version="1.1.0"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -39,14 +39,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Model\Software\Individuals\" />
-      <Folder Include="TestFiles\" />
+        <Folder Include="Model\Software\Individuals\"/>
+        <Folder Include="TestFiles\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="TestFiles\Acme Application.spdx3.0.1.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="TestFiles\Acme Application.spdx3.0.1.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

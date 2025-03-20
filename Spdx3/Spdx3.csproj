@@ -7,9 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Model\Build\Enums\"/>
-        <Folder Include="Model\Dataset\Classes\"/>
-        <Folder Include="Model\Dataset\Enums\"/>
         <Folder Include="Model\ExpandedLicensing\Classes\"/>
         <Folder Include="Model\ExpandedLicensing\Enums\"/>
         <Folder Include="Model\Security\Classes\"/>

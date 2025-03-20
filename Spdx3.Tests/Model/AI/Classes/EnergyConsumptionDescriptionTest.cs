@@ -47,6 +47,5 @@ public class EnergyConsumptionDescriptionTest : BaseModelTestClass
         // Assert
         Assert.NotNull(ecd);
         Assert.Equal(5.5, ecd.EnergyQuantity);
-        
     }
 }
