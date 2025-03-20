@@ -19,10 +19,10 @@ public class SnippetTest : BaseModelTestClass
         var snippet = new Snippet(TestCatalog, TestCreationInfo, file);
         const string expected = """
                                 {
-                                  "software_snippetFromFile": "urn:File:402",
+                                  "software_snippetFromFile": "urn:File:40f",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_Snippet",
-                                  "spdxId": "urn:Snippet:40f"
+                                  "spdxId": "urn:Snippet:41c"
                                 }
                                 """;
 
@@ -68,22 +68,22 @@ public class SnippetTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "software_byteRange": "urn:PositiveIntegerRange:41c",
-                                  "software_lineRange": "urn:PositiveIntegerRange:429",
-                                  "software_snippetFromFile": "urn:File:402",
+                                  "software_byteRange": "urn:PositiveIntegerRange:429",
+                                  "software_lineRange": "urn:PositiveIntegerRange:436",
+                                  "software_snippetFromFile": "urn:File:40f",
                                   "software_additionalPurpose": [
                                     "archive",
                                     "other"
                                   ],
                                   "software_contentIdentifier": [
-                                    "urn:ContentIdentifier:450"
+                                    "urn:ContentIdentifier:45d"
                                   ],
                                   "software_attributionText": [
                                     "Some attribution text"
                                   ],
                                   "builtTime": "2025-02-22T01:23:45Z",
                                   "originatedBy": [
-                                    "urn:Agent:443"
+                                    "urn:Agent:450"
                                   ],
                                   "releaseTime": "2025-02-22T01:23:45Z",
                                   "standardName": "Some standard name",
@@ -95,21 +95,21 @@ public class SnippetTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:477"
+                                    "urn:TestExtension:484"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:46a"
+                                    "urn:ExternalIdentifier:477"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:45d"
+                                    "urn:ExternalRef:46a"
                                   ],
                                   "name": "Some name",
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:436"
+                                    "urn:TestIntegrityMethod:443"
                                   ],
                                   "type": "software_Snippet",
-                                  "spdxId": "urn:Snippet:40f"
+                                  "spdxId": "urn:Snippet:41c"
                                 }
                                 """;
 

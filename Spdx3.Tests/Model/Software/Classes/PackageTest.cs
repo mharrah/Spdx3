@@ -13,7 +13,7 @@ public class PackageTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_Package",
-                                  "spdxId": "urn:Package:402"
+                                  "spdxId": "urn:Package:40f"
                                 }
                                 """;
 

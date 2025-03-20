@@ -15,14 +15,14 @@ public class RelationshipTest : BaseModelTestClass
             from, [to]);
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:402",
+                                  "from": "urn:TestElement:40f",
                                   "to": [
-                                    "urn:TestElement:40f"
+                                    "urn:TestElement:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Relationship",
-                                  "spdxId": "urn:Relationship:41c"
+                                  "spdxId": "urn:Relationship:429"
                                 }
                                 """;
 
@@ -52,9 +52,9 @@ public class RelationshipTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:402",
+                                  "from": "urn:TestElement:40f",
                                   "to": [
-                                    "urn:TestElement:40f"
+                                    "urn:TestElement:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "completeness": "complete",
@@ -65,7 +65,7 @@ public class RelationshipTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Relationship",
-                                  "spdxId": "urn:Relationship:41c"
+                                  "spdxId": "urn:Relationship:429"
                                 }
                                 """;
 

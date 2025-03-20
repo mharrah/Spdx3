@@ -18,7 +18,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_TestSoftwareArtifact",
-                                  "spdxId": "urn:TestSoftwareArtifact:402"
+                                  "spdxId": "urn:TestSoftwareArtifact:40f"
                                 }
                                 """;
 
@@ -67,7 +67,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                     "other"
                                   ],
                                   "software_contentIdentifier": [
-                                    "urn:ContentIdentifier:436"
+                                    "urn:ContentIdentifier:443"
                                   ],
                                   "software_primaryPurpose": "application",
                                   "software_attributionText": [
@@ -75,11 +75,11 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                   ],
                                   "builtTime": "2025-02-22T01:23:45Z",
                                   "originatedBy": [
-                                    "urn:Agent:429"
+                                    "urn:Agent:436"
                                   ],
                                   "releaseTime": "2025-02-22T01:23:45Z",
                                   "standardName": "Some standard name",
-                                  "suppliedBy": "urn:Agent:40f",
+                                  "suppliedBy": "urn:Agent:41c",
                                   "supportLevel": [
                                     "noAssertion"
                                   ],
@@ -88,21 +88,21 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:45d"
+                                    "urn:TestExtension:46a"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:450"
+                                    "urn:ExternalIdentifier:45d"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:443"
+                                    "urn:ExternalRef:450"
                                   ],
                                   "name": "Some name",
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:41c"
+                                    "urn:TestIntegrityMethod:429"
                                   ],
                                   "type": "software_TestSoftwareArtifact",
-                                  "spdxId": "urn:TestSoftwareArtifact:402"
+                                  "spdxId": "urn:TestSoftwareArtifact:40f"
                                 }
                                 """;
 

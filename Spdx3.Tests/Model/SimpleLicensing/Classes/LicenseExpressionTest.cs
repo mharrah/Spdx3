@@ -18,7 +18,7 @@ public class LicenseExpressionTest : BaseModelTestClass
                                   "simplelicensing_licenseExpression": "MIT",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "simplelicensing_LicenseExpression",
-                                  "spdxId": "urn:LicenseExpression:402"
+                                  "spdxId": "urn:LicenseExpression:40f"
                                 }
                                 """;
 
@@ -49,26 +49,26 @@ public class LicenseExpressionTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "simplelicensing_licenseExpression": "MIT",
-                                  "simplelicensing_customIdToUri": "urn:DictionaryEntry:40f",
+                                  "simplelicensing_customIdToUri": "urn:DictionaryEntry:41c",
                                   "simplelicensing_licenseListVersion": "1.0.0",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:TestExtension:429"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:429"
+                                    "urn:ExternalIdentifier:436"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:436"
+                                    "urn:ExternalRef:443"
                                   ],
                                   "name": "TestName",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:TestIntegrityMethod:450"
                                   ],
                                   "type": "simplelicensing_LicenseExpression",
-                                  "spdxId": "urn:LicenseExpression:402"
+                                  "spdxId": "urn:LicenseExpression:40f"
                                 }
                                 """;
 

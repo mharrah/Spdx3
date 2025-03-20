@@ -13,7 +13,7 @@ public class SoftwareAgentTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "SoftwareAgent",
-                                  "spdxId": "urn:SoftwareAgent:402"
+                                  "spdxId": "urn:SoftwareAgent:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class SoftwareAgentTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "SoftwareAgent",
-                                  "spdxId": "urn:SoftwareAgent:402"
+                                  "spdxId": "urn:SoftwareAgent:40f"
                                 }
                                 """;
 

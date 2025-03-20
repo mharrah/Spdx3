@@ -18,7 +18,7 @@ public class SbomTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_Sbom",
-                                  "spdxId": "urn:Sbom:402"
+                                  "spdxId": "urn:Sbom:40f"
                                 }
                                 """;
 
@@ -58,28 +58,28 @@ public class SbomTest : BaseModelTestClass
                                     "Some context"
                                   ],
                                   "element": [
-                                    "urn:TestElement:443"
+                                    "urn:TestElement:450"
                                   ],
                                   "comment": "Some comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:41c",
-                                    "urn:TestExtension:450"
+                                    "urn:TestExtension:429",
+                                    "urn:TestExtension:45d"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:40f"
+                                    "urn:ExternalIdentifier:41c"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:429"
+                                    "urn:ExternalRef:436"
                                   ],
                                   "name": "Some name",
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:Hash:436"
+                                    "urn:Hash:443"
                                   ],
                                   "type": "software_Sbom",
-                                  "spdxId": "urn:Sbom:402"
+                                  "spdxId": "urn:Sbom:40f"
                                 }
                                 """;
 

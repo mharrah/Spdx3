@@ -13,7 +13,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
                                 {
                                   "extension_cdxPropName": "TestPropertyName",
                                   "type": "extension_CdxPropertyEntry",
-                                  "spdxId": "urn:CdxPropertyEntry:402"
+                                  "spdxId": "urn:CdxPropertyEntry:40f"
                                 }
                                 """;
 
@@ -35,7 +35,7 @@ public class CdxPropertyEntryTest : BaseModelTestClass
                                   "extension_cdxPropName": "TestPropertyName",
                                   "extension_cdxPropValue": "test value",
                                   "type": "extension_CdxPropertyEntry",
-                                  "spdxId": "urn:CdxPropertyEntry:402"
+                                  "spdxId": "urn:CdxPropertyEntry:40f"
                                 }
                                 """;
 

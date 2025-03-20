@@ -13,7 +13,7 @@ public class PersonTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Person",
-                                  "spdxId": "urn:Person:402"
+                                  "spdxId": "urn:Person:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class PersonTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Person",
-                                  "spdxId": "urn:Person:402"
+                                  "spdxId": "urn:Person:40f"
                                 }
                                 """;
 

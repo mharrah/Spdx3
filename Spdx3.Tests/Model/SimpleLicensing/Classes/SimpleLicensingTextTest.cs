@@ -19,7 +19,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "simplelicensing_licenseText": "MIT",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "simplelicensing_SimpleLicensingText",
-                                  "spdxId": "urn:SimpleLicensingText:402"
+                                  "spdxId": "urn:SimpleLicensingText:40f"
                                 }
                                 """;
 
@@ -54,21 +54,21 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:40f"
+                                    "urn:TestExtension:41c"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:41c"
+                                    "urn:ExternalIdentifier:429"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:429"
+                                    "urn:ExternalRef:436"
                                   ],
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:436"
+                                    "urn:TestIntegrityMethod:443"
                                   ],
                                   "type": "simplelicensing_SimpleLicensingText",
-                                  "spdxId": "urn:SimpleLicensingText:402"
+                                  "spdxId": "urn:SimpleLicensingText:40f"
                                 }
                                 """;
 

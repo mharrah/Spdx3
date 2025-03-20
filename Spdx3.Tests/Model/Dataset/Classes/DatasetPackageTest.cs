@@ -17,7 +17,7 @@ public class DatasetPackageTest : BaseModelTestClass
                                   ],
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "dataset_DatasetPackage",
-                                  "spdxId": "urn:DatasetPackage:402"
+                                  "spdxId": "urn:DatasetPackage:40f"
                                 }
                                 """;
 

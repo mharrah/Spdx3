@@ -10,7 +10,7 @@ public class ExtensionTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "type": "extension_TestExtension",
-                                  "spdxId": "urn:TestExtension:402"
+                                  "spdxId": "urn:TestExtension:40f"
                                 }
                                 """;
 

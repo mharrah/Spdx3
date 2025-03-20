@@ -13,7 +13,7 @@ public class ToolTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Tool",
-                                  "spdxId": "urn:Tool:402"
+                                  "spdxId": "urn:Tool:40f"
                                 }
                                 """;
 
@@ -42,7 +42,7 @@ public class ToolTest : BaseModelTestClass
                                   "description": "TestDescription",
                                   "name": "TestName",
                                   "type": "Tool",
-                                  "spdxId": "urn:Tool:402"
+                                  "spdxId": "urn:Tool:40f"
                                 }
                                 """;
 

@@ -16,7 +16,7 @@ public class ContentIdentifierTest : BaseModelTestClass
                                   "software_contentIdentifierType": "gitoid",
                                   "software_contentIdentifierValue": "some gitoid value",
                                   "type": "software_ContentIdentifier",
-                                  "spdxId": "urn:ContentIdentifier:402"
+                                  "spdxId": "urn:ContentIdentifier:40f"
                                 }
                                 """;
 
@@ -41,7 +41,7 @@ public class ContentIdentifierTest : BaseModelTestClass
                                   "software_contentIdentifierValue": "some gitoid value",
                                   "comment": "test comment",
                                   "type": "software_ContentIdentifier",
-                                  "spdxId": "urn:ContentIdentifier:402"
+                                  "spdxId": "urn:ContentIdentifier:40f"
                                 }
                                 """;
 

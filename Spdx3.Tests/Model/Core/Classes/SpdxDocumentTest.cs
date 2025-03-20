@@ -24,7 +24,7 @@ public class SpdxDocumentTest : BaseModelTestClass
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "SpdxDocument",
-                                  "spdxId": "urn:SpdxDocument:402"
+                                  "spdxId": "urn:SpdxDocument:40f"
                                 }
                                 """;
 
@@ -62,41 +62,41 @@ public class SpdxDocumentTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "import": [
-                                    "urn:ExternalMap:45d"
+                                    "urn:ExternalMap:46a"
                                   ],
-                                  "dataLicense": "urn:TestAnyLicenseInfo:40f",
+                                  "dataLicense": "urn:TestAnyLicenseInfo:41c",
                                   "namespaceMap": [
-                                    "urn:NamespaceMap:46a"
+                                    "urn:NamespaceMap:477"
                                   ],
                                   "profileConformance": [
                                     "ai",
                                     "build"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:436"
+                                    "urn:TestElement:443"
                                   ],
                                   "element": [
-                                    "urn:TestElement:450"
+                                    "urn:TestElement:45d"
                                   ],
                                   "comment": "Test Comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Test Description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:TestExtension:450"
                                   ],
                                   "externalIdentifier": [
-                                    "urn:ExternalIdentifier:429"
+                                    "urn:ExternalIdentifier:436"
                                   ],
                                   "externalRef": [
-                                    "urn:ExternalRef:41c"
+                                    "urn:ExternalRef:429"
                                   ],
                                   "name": "Test Name",
                                   "summary": "Test Summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:477"
+                                    "urn:TestIntegrityMethod:484"
                                   ],
                                   "type": "SpdxDocument",
-                                  "spdxId": "urn:SpdxDocument:402"
+                                  "spdxId": "urn:SpdxDocument:40f"
                                 }
                                 """;
 

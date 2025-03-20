@@ -15,11 +15,11 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "extension_cdxProperty": [
-                                    "urn:CdxPropertyEntry:402",
-                                    "urn:CdxPropertyEntry:41c"
+                                    "urn:CdxPropertyEntry:40f",
+                                    "urn:CdxPropertyEntry:429"
                                   ],
                                   "type": "extension_CdxPropertiesExtension",
-                                  "spdxId": "urn:CdxPropertiesExtension:40f"
+                                  "spdxId": "urn:CdxPropertiesExtension:41c"
                                 }
                                 """;
 

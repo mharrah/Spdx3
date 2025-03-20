@@ -13,7 +13,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
         Assert.NotNull(positiveIntegerRange);
         Assert.IsType<PositiveIntegerRange>(positiveIntegerRange);
         Assert.Equal("PositiveIntegerRange", positiveIntegerRange.Type);
-        Assert.Equal("urn:PositiveIntegerRange:402", positiveIntegerRange.SpdxId);
+        Assert.Equal("urn:PositiveIntegerRange:40f", positiveIntegerRange.SpdxId);
     }
 
     [Fact]
@@ -26,7 +26,7 @@ public class PositiveIntegerRangeTest : BaseModelTestClass
                                   "beginIntegerRange": 1,
                                   "endIntegerRange": 5,
                                   "type": "PositiveIntegerRange",
-                                  "spdxId": "urn:PositiveIntegerRange:402"
+                                  "spdxId": "urn:PositiveIntegerRange:40f"
                                 }
                                 """;
 
