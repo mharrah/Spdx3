@@ -1,17 +1,27 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Classes;
+using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Software.Classes;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
 namespace Spdx3.Model.Security.Classes;
 
-public class Vulnerability : Artifact
+public class VulnAssessmentRelationship : Relationship
 {
+    [JsonPropertyName("security_suppliedBy")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public Agent? SuppliedBy { get; set; }
+    
+    [JsonPropertyName("security_assessedElement")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public SoftwareArtifact? AssessedElement { get; set; }
+    
     [JsonPropertyName("security_modifiedTime")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DateTimeOffset? ModifiedTime { get; set; }
-        
+    
     [JsonPropertyName("security_publishedTime")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DateTimeOffset? PublishedTime { get; set; }
@@ -23,13 +33,15 @@ public class Vulnerability : Artifact
     
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
-    protected internal Vulnerability()
+    protected internal VulnAssessmentRelationship()
     {
     }
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public Vulnerability(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
+    public VulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo,
+        RelationshipType relationshipType, Element from, List<Element> to) : base(catalog, creationInfo, relationshipType, from, to)
     {
-    }
+    }    
+    
 }
