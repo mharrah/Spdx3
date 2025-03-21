@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/21/2025 - 00:20:42 |
-| Coverage date: | 03/21/2025 - 00:20:41 |
+| Generated on: | 03/21/2025 - 01:28:25 |
+| Coverage date: | 03/21/2025 - 01:28:25 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 61 |
-| Files: | 61 |
-| **Line coverage:** | 93.1% (1273 of 1367) |
-| Covered lines: | 1273 |
-| Uncovered lines: | 94 |
-| Coverable lines: | 1367 |
-| Total lines: | 3328 |
-| **Branch coverage:** | 80.3% (328 of 408) |
-| Covered branches: | 328 |
-| Total branches: | 408 |
+| Classes: | 64 |
+| Files: | 64 |
+| **Line coverage:** | 92.9% (1327 of 1427) |
+| Covered lines: | 1327 |
+| Uncovered lines: | 100 |
+| Coverable lines: | 1427 |
+| Total lines: | 3486 |
+| **Branch coverage:** | 79.9% (331 of 414) |
+| Covered branches: | 331 |
+| Total branches: | 414 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 93.1%</summary>
+<details><summary>Spdx3 - 92.9%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**93.1%**|**80.3%**|
+|**Spdx3**|**92.9%**|**79.9%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -67,6 +67,9 @@
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
+|Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|88.8%|50%|
+|Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|90.4%|50%|
+|Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|90.4%|50%|
 |Spdx3.Model.Security.Classes.VulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.Vulnerability|100%||
 |Spdx3.Model.SimpleLicensing.Classes.AnyLicenseInfo|100%||
