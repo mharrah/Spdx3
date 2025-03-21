@@ -1,9 +1,11 @@
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Software.Classes;
 using Spdx3.Model.Software.Enums;
 using Spdx3.Tests.Model.Core.Classes;
 using Spdx3.Tests.Model.Extension.Classes;
+using Spdx3.Utility;
 using File = Spdx3.Model.Software.Classes.File;
 
 namespace Spdx3.Tests.Model.Software.Classes;
@@ -151,4 +153,16 @@ public class FileTest : BaseModelTestClass
         // Assert
         Assert.NotNull(exception);
     }
+    
+            
+    [Fact]
+    public void Validation_FailsWhen_Name_NullOrEmpty()
+    {
+        // Arrange
+        var file = IncompleteObjectFactory.Create<File>();
+        
+        // Act and Assert
+        Assert.Throws<Spdx3ValidationException>(() => file.Validate());
+    }
+    
 }

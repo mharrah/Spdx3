@@ -1,8 +1,10 @@
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Security.Classes;
 using Spdx3.Model.Security.Enums;
 using Spdx3.Tests.Model.Extension.Classes;
+using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
@@ -132,4 +134,17 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
         Assert.Equal(expected, json);
     }
     
+    
+    
+    [Fact]
+    public void Validation_FailsWhen_RelationshipType_WrongValue()
+    {
+        // Arrange
+        var cvssV3VulnAssessmentRelationship = IncompleteObjectFactory.Create<CvssV3VulnAssessmentRelationship>();
+        cvssV3VulnAssessmentRelationship.RelationshipType = RelationshipType.other;
+        
+        // Act and Assert
+        Assert.Throws<Spdx3ValidationException>(() => cvssV3VulnAssessmentRelationship.Validate());
+    }
+
 }
