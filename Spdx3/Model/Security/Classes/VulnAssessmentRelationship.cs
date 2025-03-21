@@ -8,7 +8,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Security.Classes;
 
-public class VulnAssessmentRelationship : Relationship
+public abstract class VulnAssessmentRelationship : Relationship
 {
     [JsonPropertyName("security_suppliedBy")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
