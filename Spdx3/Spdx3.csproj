@@ -7,7 +7,7 @@
         <Title>Spdx3</Title>
         <Authors>Matt Harrah</Authors>
         <Description>A NuGet library to represent Spdx3 data as an object graph, and to serialize/deserialize the data as JSON-LD files.  Lets you write code to read, manipulate, create, and write SPDX 3.0.1 compliant Software Bills of Materials from C# 8.0 and later code.</Description>
-        <Copyright>Unpublished work (c) 2025 Matthew Harrah</Copyright>
+        <Copyright>Copyright (c) Matthew Harrah 2025</Copyright>
         <PackageProjectUrl>https://github.com/mharrah/Spdx3</PackageProjectUrl>
         <PackageLicenseUrl>https://mit-license.org</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/mharrah/Spdx3</RepositoryUrl>

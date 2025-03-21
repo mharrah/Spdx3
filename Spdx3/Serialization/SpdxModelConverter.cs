@@ -42,10 +42,18 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                     {
                         currentProp.SetValue(result, DateTimeOffset.Parse(strVal));
                     }
+                    else if (currentPropertyType.IsEnum)
+                    {
+                        currentProp.SetValue(result, Enum.Parse(currentPropertyType, strVal));
+                    }
                     else if (currentPropertyType.IsGenericType)
                     {
                         var genericType = currentPropertyType.GetGenericArguments()[0];
-                        if (genericType == typeof(string))
+                        if (genericType.IsEnum)
+                        {
+                            currentProp.SetValue(result, Enum.Parse(genericType, strVal));
+                        }
+                        else if (genericType == typeof(string))
                         {
                             if (currentProp.GetValue(result) is not IList listVal)
                             {

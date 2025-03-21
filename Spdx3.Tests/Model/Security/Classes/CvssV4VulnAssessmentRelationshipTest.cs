@@ -14,6 +14,9 @@ public class CvssV4VulnAssessmentRelationshipTest : BaseModelTestClass
         // Arrange
         const string json = """
                             {
+                              "security_score": 1.5,
+                              "security_severity": "high",
+                              "security_vectorString": "SQL injection",
                               "creationInfo": "urn:CreationInfo:3f5",
                               "type": "security_CvssV4VulnAssessmentRelationship",
                               "spdxId": "urn:CvssV4VulnAssessmentRelationship:402"

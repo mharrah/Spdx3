@@ -6,72 +6,66 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
+public class SsvcVulnAssessmentRelationshipTest : BaseModelTestClass
 {
     [Fact]
-    public void CvssV3VulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
+    public void SsvcVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
     {
         // Arrange
         const string json = """
                             {
-                              "security_score": 1.5,
-                              "security_severity": "high",
-                              "security_vectorString": "SQL injection",
                               "creationInfo": "urn:CreationInfo:3f5",
-                              "type": "security_CvssV3VulnAssessmentRelationship",
-                              "spdxId": "urn:CvssV3VulnAssessmentRelationship:402"
+                              "type": "security_SsvcVulnAssessmentRelationship",
+                              "spdxId": "urn:SsvcVulnAssessmentRelationship:402"
                             }
                             """;
 
         // Act
-        var cvssV3VulnAssessmentRelationship = FromJson<CvssV3VulnAssessmentRelationship>(json);
+        var ssvcVulnAssessmentRelationship = FromJson<SsvcVulnAssessmentRelationship>(json);
 
         // Assert
-        Assert.NotNull(cvssV3VulnAssessmentRelationship);
-        Assert.Equal("urn:CvssV3VulnAssessmentRelationship:402", cvssV3VulnAssessmentRelationship.SpdxId);
+        Assert.NotNull(ssvcVulnAssessmentRelationship);
+        Assert.Equal("urn:SsvcVulnAssessmentRelationship:402", ssvcVulnAssessmentRelationship.SpdxId);
     }
 
 
     [Fact]
-    public void CvssV3VulnAssessmentRelationship_MinimalObject_ShouldSerialize()
+    public void SsvcVulnAssessmentRelationship_MinimalObject_ShouldSerialize()
     {
         // Arrange
         var person = new Person(TestCatalog, TestCreationInfo);
         var agents = new List<Element> { new Agent(TestCatalog, TestCreationInfo) };
-        var cvssV3VulnAssessmentRelationship = new CvssV3VulnAssessmentRelationship(TestCatalog, TestCreationInfo,
-            person, agents, 1.5,   CvssSeverityType.high, "SQL injection");
+        var ssvcVulnAssessmentRelationship = new SsvcVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
+            person, agents, SsvcDecisionType.track);
         const string expected = """
                                 {
-                                  "security_score": 1.5,
-                                  "security_severity": "high",
-                                  "security_vectorString": "SQL injection",
+                                  "security_decisionType": "track",
                                   "from": "urn:Person:40f",
                                   "to": [
                                     "urn:Agent:41c"
                                   ],
                                   "relationshipType": "hasAssessmentFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "security_CvssV3VulnAssessmentRelationship",
-                                  "spdxId": "urn:CvssV3VulnAssessmentRelationship:429"
+                                  "type": "security_SsvcVulnAssessmentRelationship",
+                                  "spdxId": "urn:SsvcVulnAssessmentRelationship:429"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(cvssV3VulnAssessmentRelationship);
+        var json = ToJson(ssvcVulnAssessmentRelationship);
 
         // Assert
         Assert.Equal(expected, json);
     }
 
     [Fact]
-    public void CvssV3VulnAssessmentRelationship_PopulatedObject_ShouldSerialize()
+    public void SsvcVulnAssessmentRelationship_PopulatedObject_ShouldSerialize()
     {
         // Arrange
         var person = new Person(TestCatalog, TestCreationInfo);
         var agents = new List<Element> { new Agent(TestCatalog, TestCreationInfo) };
-        var cvssV3VulnAssessmentRelationship =
-            new CvssV3VulnAssessmentRelationship(TestCatalog, TestCreationInfo, person, agents, 1.5, 
-                CvssSeverityType.high, "SQL injection")
+        var ssvcVulnAssessmentRelationship =
+            new SsvcVulnAssessmentRelationship(TestCatalog, TestCreationInfo, person, agents, SsvcDecisionType.track)
             {
                 ModifiedTime = PredictableDateTime.AddDays(1),
                 PublishedTime = PredictableDateTime.AddDays(2),
@@ -82,17 +76,15 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
                 Summary = "a summary",
                 Name = "a name"
             };
-        cvssV3VulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
-        cvssV3VulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
+        ssvcVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        ssvcVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
-        cvssV3VulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
-        cvssV3VulnAssessmentRelationship.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.md2, "123"));
+        ssvcVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
+        ssvcVulnAssessmentRelationship.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.md2, "123"));
 
         const string expected = """
                                 {
-                                  "security_score": 1.5,
-                                  "security_severity": "high",
-                                  "security_vectorString": "SQL injection",
+                                  "security_decisionType": "track",
                                   "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
@@ -119,13 +111,13 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
                                   "verifiedUsing": [
                                     "urn:Hash:46a"
                                   ],
-                                  "type": "security_CvssV3VulnAssessmentRelationship",
-                                  "spdxId": "urn:CvssV3VulnAssessmentRelationship:429"
+                                  "type": "security_SsvcVulnAssessmentRelationship",
+                                  "spdxId": "urn:SsvcVulnAssessmentRelationship:429"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(cvssV3VulnAssessmentRelationship);
+        var json = ToJson(ssvcVulnAssessmentRelationship);
 
         // Assert
         Assert.Equal(expected, json);
