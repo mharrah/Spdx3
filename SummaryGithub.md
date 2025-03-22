@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/22/2025 - 01:22:19 |
-| Coverage date: | 03/22/2025 - 01:22:18 |
+| Generated on: | 03/22/2025 - 22:48:05 |
+| Coverage date: | 03/22/2025 - 22:48:04 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 68 |
-| Files: | 68 |
-| **Line coverage:** | 93.4% (1414 of 1513) |
-| Covered lines: | 1414 |
+| Classes: | 72 |
+| Files: | 72 |
+| **Line coverage:** | 93.6% (1458 of 1557) |
+| Covered lines: | 1458 |
 | Uncovered lines: | 99 |
-| Coverable lines: | 1513 |
-| Total lines: | 3722 |
-| **Branch coverage:** | 81.4% (360 of 442) |
-| Covered branches: | 360 |
-| Total branches: | 442 |
+| Coverable lines: | 1557 |
+| Total lines: | 3882 |
+| **Branch coverage:** | 81.6% (364 of 446) |
+| Covered branches: | 364 |
+| Total branches: | 446 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 93.4%</summary>
+<details><summary>Spdx3 - 93.6%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**93.4%**|**81.4%**|
+|**Spdx3**|**93.6%**|**81.6%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -73,6 +73,10 @@
 |Spdx3.Model.Security.Classes.EpssVulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.ExploitCatalogVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.SsvcVulnAssessmentRelationship|100%||
+|Spdx3.Model.Security.Classes.VexAffectedVulnAssessmentRelationship|100%||
+|Spdx3.Model.Security.Classes.VexFixedVulnAssessmentRelationship|100%||
+|Spdx3.Model.Security.Classes.VexNotAffectedVulnAssessmentRelationship|100%|100%|
+|Spdx3.Model.Security.Classes.VexUnderInvestigationVulnAssessmentRelationshi<br/>p|100%||
 |Spdx3.Model.Security.Classes.VexVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.VulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.Vulnerability|100%||
