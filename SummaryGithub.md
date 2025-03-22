@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/22/2025 - 00:35:21 |
-| Coverage date: | 03/22/2025 - 00:35:20 |
+| Generated on: | 03/22/2025 - 01:22:19 |
+| Coverage date: | 03/22/2025 - 01:22:18 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 67 |
-| Files: | 67 |
-| **Line coverage:** | 92.8% (1394 of 1502) |
-| Covered lines: | 1394 |
-| Uncovered lines: | 108 |
-| Coverable lines: | 1502 |
-| Total lines: | 3663 |
-| **Branch coverage:** | 80.5% (356 of 442) |
-| Covered branches: | 356 |
+| Classes: | 68 |
+| Files: | 68 |
+| **Line coverage:** | 93.4% (1414 of 1513) |
+| Covered lines: | 1414 |
+| Uncovered lines: | 99 |
+| Coverable lines: | 1513 |
+| Total lines: | 3722 |
+| **Branch coverage:** | 81.4% (360 of 442) |
+| Covered branches: | 360 |
 | Total branches: | 442 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 92.8%</summary>
+<details><summary>Spdx3 - 93.4%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**92.8%**|**80.5%**|
+|**Spdx3**|**93.4%**|**81.4%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -63,7 +63,7 @@
 |Spdx3.Model.Core.Individuals.NoAssertionElement|57.1%||
 |Spdx3.Model.Core.Individuals.NoneElement|57.1%||
 |Spdx3.Model.Core.Individuals.SpdxOrganization|57.1%||
-|Spdx3.Model.Dataset.Classes.DatasetPackage|58.9%|30%|
+|Spdx3.Model.Dataset.Classes.DatasetPackage|82%|70%|
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
@@ -73,6 +73,7 @@
 |Spdx3.Model.Security.Classes.EpssVulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.ExploitCatalogVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.SsvcVulnAssessmentRelationship|100%||
+|Spdx3.Model.Security.Classes.VexVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.VulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.Vulnerability|100%||
 |Spdx3.Model.SimpleLicensing.Classes.AnyLicenseInfo|100%||
