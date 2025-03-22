@@ -7,39 +7,39 @@ using Spdx3.Tests.Model.Extension.Classes;
 namespace Spdx3.Tests.Model.Security.Classes;
 
 /// <summary>
-/// Test for the abstract VulnAssessmentRelationship class, using TestVulnAssessmentRelationship as the concret
-/// implementation for testing.
+/// Test for the VexVulnAssessmentRelationship abstract class, using TestVexVulnAssessmentRelationship as the concrete
+/// implementation.
 /// </summary>
-public class VulnAssessmentRelationshipTest : BaseModelTestClass
+public class VexVulnAssessmentRelationshipTest: BaseModelTestClass
 {
-    [Fact]
-    public void VulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
+        [Fact]
+    public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
     {
         // Arrange
         const string json = """
                             {
                               "creationInfo": "urn:CreationInfo:3f5",
-                              "type": "security_VulnAssessmentRelationship",
-                              "spdxId": "urn:VulnAssessmentRelationship:402"
+                              "type": "security_VexVulnAssessmentRelationship",
+                              "spdxId": "urn:VexVulnAssessmentRelationship:402"
                             }
                             """;
 
         // Act
-        var vulnAssessmentRelationship = FromJson<TestVulnAssessmentRelationship>(json);
+        var vexVulnAssessmentRelationship = FromJson<TestVexVulnAssessmentRelationship>(json);
 
         // Assert
-        Assert.NotNull(vulnAssessmentRelationship);
-        Assert.Equal(new Uri("urn:VulnAssessmentRelationship:402"), vulnAssessmentRelationship.SpdxId);
+        Assert.NotNull(vexVulnAssessmentRelationship);
+        Assert.Equal(new Uri("urn:VexVulnAssessmentRelationship:402"), vexVulnAssessmentRelationship.SpdxId);
     }
 
 
     [Fact]
-    public void VulnAssessmentRelationship_MinimalObject_ShouldSerialize()
+    public void VexVulnAssessmenRelationship_MinimalObject_ShouldSerialize()
     {
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vulnAssessmentRelationship = new TestVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
+        var vexVulnAssessmentRelationship = new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
             RelationshipType.affects, vulnerability, packages);
         const string expected = """
                                 {
@@ -49,26 +49,26 @@ public class VulnAssessmentRelationshipTest : BaseModelTestClass
                                   ],
                                   "relationshipType": "affects",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "security_TestVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVulnAssessmentRelationship:429"
+                                  "type": "security_TestVexVulnAssessmentRelationship",
+                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(vulnAssessmentRelationship);
+        var json = ToJson(vexVulnAssessmentRelationship);
 
         // Assert
         Assert.Equal(expected, json);
     }
 
     [Fact]
-    public void VulnAssessmentRelationship_PopulatedObject_ShouldSerialize()
+    public void VexVulnAssessmenRelationship_PopulatedObject_ShouldSerialize()
     {
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vulnAssessmentRelationship =
-            new TestVulnAssessmentRelationship(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability, packages)
+        var vexVulnAssessmentRelationship =
+            new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability, packages)
             {
                 ModifiedTime = PredictableDateTime.AddDays(1),
                 PublishedTime = PredictableDateTime.AddDays(2),
@@ -79,11 +79,11 @@ public class VulnAssessmentRelationshipTest : BaseModelTestClass
                 Summary = "a summary",
                 Name = "a name"
             };
-        vulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
-        vulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
+        vexVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        vexVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
-        vulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
-        vulnAssessmentRelationship.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.md2, "123"));
+        vexVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
+        vexVulnAssessmentRelationship.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.md2, "123"));
 
         const string expected = """
                                 {
@@ -113,13 +113,13 @@ public class VulnAssessmentRelationshipTest : BaseModelTestClass
                                   "verifiedUsing": [
                                     "urn:Hash:46a"
                                   ],
-                                  "type": "security_TestVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVulnAssessmentRelationship:429"
+                                  "type": "security_TestVexVulnAssessmentRelationship",
+                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(vulnAssessmentRelationship);
+        var json = ToJson(vexVulnAssessmentRelationship);
 
         // Assert
         Assert.Equal(expected, json);

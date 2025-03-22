@@ -9,6 +9,10 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Security.Classes;
 
+/// <summary>
+/// Provides a CVSS version 4 assessment for a vulnerability.
+/// See https://spdx.github.io/spdx-spec/v3.0.1/model/Security/Classes/CvssV4VulnAssessmentRelationship/
+/// </summary>
 public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
 {
     [JsonPropertyName("security_score")]

@@ -3,6 +3,7 @@ using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Security.Classes;
 using Spdx3.Model.Security.Enums;
+using Spdx3.Model.Software.Classes;
 using Spdx3.Tests.Model.Extension.Classes;
 using Spdx3.Utility;
 
@@ -38,18 +39,18 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
     public void CvssV3VulnAssessmentRelationship_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var person = new Person(TestCatalog, TestCreationInfo);
-        var agents = new List<Element> { new Agent(TestCatalog, TestCreationInfo) };
+        var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
+        var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
         var cvssV3VulnAssessmentRelationship = new CvssV3VulnAssessmentRelationship(TestCatalog, TestCreationInfo,
-            person, agents, 1.5,   CvssSeverityType.high, "SQL injection");
+            vulnerability, packages, 1.5,   CvssSeverityType.high, "SQL injection");
         const string expected = """
                                 {
                                   "security_score": 1.5,
                                   "security_severity": "high",
                                   "security_vectorString": "SQL injection",
-                                  "from": "urn:Person:40f",
+                                  "from": "urn:Vulnerability:40f",
                                   "to": [
-                                    "urn:Agent:41c"
+                                    "urn:Package:41c"
                                   ],
                                   "relationshipType": "hasAssessmentFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -69,10 +70,10 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
     public void CvssV3VulnAssessmentRelationship_PopulatedObject_ShouldSerialize()
     {
         // Arrange
-        var person = new Person(TestCatalog, TestCreationInfo);
-        var agents = new List<Element> { new Agent(TestCatalog, TestCreationInfo) };
+        var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
+        var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
         var cvssV3VulnAssessmentRelationship =
-            new CvssV3VulnAssessmentRelationship(TestCatalog, TestCreationInfo, person, agents, 1.5, 
+            new CvssV3VulnAssessmentRelationship(TestCatalog, TestCreationInfo, vulnerability, packages, 1.5, 
                 CvssSeverityType.high, "SQL injection")
             {
                 ModifiedTime = PredictableDateTime.AddDays(1),
@@ -99,9 +100,9 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
-                                  "from": "urn:Person:40f",
+                                  "from": "urn:Vulnerability:40f",
                                   "to": [
-                                    "urn:Agent:41c"
+                                    "urn:Package:41c"
                                   ],
                                   "relationshipType": "hasAssessmentFor",
                                   "comment": "a comment",

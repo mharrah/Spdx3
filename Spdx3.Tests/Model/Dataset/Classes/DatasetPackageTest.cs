@@ -1,3 +1,4 @@
+using Spdx3.Exceptions;
 using Spdx3.Model.Dataset.Classes;
 using Spdx3.Model.Dataset.Enums;
 
@@ -26,5 +27,32 @@ public class DatasetPackageTest : BaseModelTestClass
 
         // Assert
         Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void DatasetPackage_ThrowsWhen_DatasetSize_LessThanZero()
+    {
+        // Arrange
+        var datasetPackage = new DatasetPackage(TestCatalog, TestCreationInfo, [DatasetType.audio]);
+
+        // Act and Assert
+        Assert.Throws<Spdx3Exception>(() => datasetPackage.DatasetSize = -1);
+    }
+    
+    
+    [Fact]
+    public void DatasetPackage_AllowsSetting_DatasetSize_Null()
+    {
+        // Arrange
+        var datasetPackage = new DatasetPackage(TestCatalog, TestCreationInfo, [DatasetType.audio]);
+
+        // Act and Assert
+        Assert.Null(datasetPackage.DatasetSize);
+        
+        datasetPackage.DatasetSize = 1;
+        Assert.NotNull(datasetPackage.DatasetSize);
+        
+        datasetPackage.DatasetSize = null;
+        Assert.Null(datasetPackage.DatasetSize);
     }
 }
