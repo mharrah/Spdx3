@@ -7,10 +7,10 @@ namespace Spdx3.Tests.Model.Core.Classes;
 /// <summary>
 ///     Concrete implementation of the abstract BaseModelClass class, so it can be tested
 /// </summary>
-public class TestBaseModelClassBadValidator : BaseModelClass
+public class BaseModelClassConcreteTestFixtureBadValidator : BaseModelClass
 {
     [SetsRequiredMembers]
-    public TestBaseModelClassBadValidator(Catalog catalog) : base(catalog)
+    public BaseModelClassConcreteTestFixtureBadValidator(Catalog catalog) : base(catalog)
     {
     }
 

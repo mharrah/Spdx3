@@ -7,10 +7,10 @@ using Spdx3.Tests.Model.Extension.Classes;
 namespace Spdx3.Tests.Model.Security.Classes;
 
 /// <summary>
-///     Test for the VexVulnAssessmentRelationship abstract class, using TestVexVulnAssessmentRelationship as the concrete
+///     Test for the VexVulnAssessmentRelationship abstract class, using VexVulnAssessmentRelationshipConcreteTestFixture as the concrete
 ///     implementation.
 /// </summary>
-public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
+public class VexVulnAssessmentRelationshipTest : BaseModelTest
 {
     [Fact]
     public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -25,7 +25,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                             """;
 
         // Act
-        var vexVulnAssessmentRelationship = FromJson<TestVexVulnAssessmentRelationship>(json);
+        var vexVulnAssessmentRelationship = FromJson<VexVulnAssessmentRelationshipConcreteTestFixture>(json);
 
         // Assert
         Assert.NotNull(vexVulnAssessmentRelationship);
@@ -39,7 +39,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vexVulnAssessmentRelationship = new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
+        var vexVulnAssessmentRelationship = new VexVulnAssessmentRelationshipConcreteTestFixture(TestCatalog, TestCreationInfo,
             RelationshipType.affects, vulnerability, packages);
         const string expected = """
                                 {
@@ -49,8 +49,8 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                                   ],
                                   "relationshipType": "affects",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "security_TestVexVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
+                                  "type": "security_VexVulnAssessmentRelationshipConcreteTestFixture",
+                                  "spdxId": "urn:VexVulnAssessmentRelationshipConcreteTestFixture:429"
                                 }
                                 """;
 
@@ -68,7 +68,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
         var vexVulnAssessmentRelationship =
-            new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability,
+            new VexVulnAssessmentRelationshipConcreteTestFixture(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability,
                 packages)
             {
                 ModifiedTime = PredictableDateTime.AddDays(1),
@@ -80,7 +80,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                 Summary = "a summary",
                 Name = "a name"
             };
-        vexVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        vexVulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         vexVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
         vexVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
@@ -101,7 +101,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:ExtensionConcreteTestFixture:443"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:450"
@@ -114,8 +114,8 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "verifiedUsing": [
                                     "urn:Hash:46a"
                                   ],
-                                  "type": "security_TestVexVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
+                                  "type": "security_VexVulnAssessmentRelationshipConcreteTestFixture",
+                                  "spdxId": "urn:VexVulnAssessmentRelationshipConcreteTestFixture:429"
                                 }
                                 """;
 

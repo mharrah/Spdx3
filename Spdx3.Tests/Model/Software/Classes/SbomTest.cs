@@ -7,7 +7,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class SbomTest : BaseModelTestClass
+public class SbomTest : BaseModelTest
 {
     [Fact]
     public void Sbom_MinimalObject_ShouldSerialize()
@@ -42,12 +42,12 @@ public class SbomTest : BaseModelTestClass
         };
         sbom.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
             "example@example.com"));
-        sbom.Extension.Add(new TestExtension(TestCatalog));
+        sbom.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         sbom.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.other));
         sbom.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.sha1, "test hashvalue"));
-        sbom.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        sbom.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
         sbom.Context.Add("Some context");
-        sbom.Extension.Add(new TestExtension(TestCatalog));
+        sbom.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         sbom.SbomType.Add(SbomType.build);
         const string expected = """
                                 {
@@ -58,14 +58,14 @@ public class SbomTest : BaseModelTestClass
                                     "Some context"
                                   ],
                                   "element": [
-                                    "urn:TestElement:450"
+                                    "urn:ElementConcreteTestFixture:450"
                                   ],
                                   "comment": "Some comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:429",
-                                    "urn:TestExtension:45d"
+                                    "urn:ExtensionConcreteTestFixture:429",
+                                    "urn:ExtensionConcreteTestFixture:45d"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:41c"

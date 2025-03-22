@@ -3,7 +3,7 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ExternalIdentifierTest : BaseModelTestClass
+public class ExternalIdentifierTest : BaseModelTest
 {
     [Fact]
     public void ExternalIdentifier_MinimallyPopulated_SerializesAsExpected()

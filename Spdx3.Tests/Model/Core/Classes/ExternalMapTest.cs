@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ExternalMapTest : BaseModelTestClass
+public class ExternalMapTest : BaseModelTest
 {
     [Fact]
     public void ExternalMap_Basics()
@@ -45,18 +45,18 @@ public class ExternalMapTest : BaseModelTestClass
         {
             ExternalSpdxId = "testref",
             LocationHint = new Uri("https://somewhere"),
-            DefiningArtifact = new TestArtifact(TestCatalog, TestCreationInfo)
+            DefiningArtifact = new ArtifactConcreteTestFixture(TestCatalog, TestCreationInfo)
         };
-        externalMap.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        externalMap.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
 
         const string expected = """
                                 {
-                                  "definingArtifact": "urn:TestArtifact:41c",
+                                  "definingArtifact": "urn:ArtifactConcreteTestFixture:41c",
                                   "externalSpdxId": "testref",
                                   "locationHint": "https://somewhere/",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:429"
+                                    "urn:IntegrityMethodConcreteTestFixture:429"
                                   ],
                                   "type": "ExternalMap",
                                   "spdxId": "urn:ExternalMap:40f"

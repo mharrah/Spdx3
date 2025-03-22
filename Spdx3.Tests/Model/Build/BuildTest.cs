@@ -5,7 +5,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Build;
 
-public class BuildTest : BaseModelTestClass
+public class BuildTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Element_SerializesProperly()
@@ -42,11 +42,11 @@ public class BuildTest : BaseModelTestClass
             BuildEndTime = PredictableDateTime,
             BuildId = "TestBuildId"
         };
-        build.Extension.Add(new TestExtension(TestCatalog));
+        build.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         build.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
         build.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
-        build.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        build.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         build.ConfigSourceDigest.Add(new Hash(TestCatalog, HashAlgorithm.adler32, "hashval"));
         build.ConfigSourceEntrypoint.Add("TestEntryPoint");
         build.ConfigSourceUri.Add(new Uri("https://github.com"));
@@ -79,7 +79,7 @@ public class BuildTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:ExtensionConcreteTestFixture:41c"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:429"
@@ -90,7 +90,7 @@ public class BuildTest : BaseModelTestClass
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
                                   "type": "build_Build",
                                   "spdxId": "urn:Build:40f"

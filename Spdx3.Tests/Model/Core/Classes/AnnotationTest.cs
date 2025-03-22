@@ -4,13 +4,13 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class AnnotationTest : BaseModelTestClass
+public class AnnotationTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Element_HasRequiredFields()
     {
         // Arrange
-        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var subject = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
 
         // Assert
@@ -22,11 +22,11 @@ public class AnnotationTest : BaseModelTestClass
     public void BrandNew_Element_SerializesProperly()
     {
         // Arrange
-        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var subject = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject);
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:40f",
+                                  "subject": "urn:ElementConcreteTestFixture:40f",
                                   "annotationType": "review",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Annotation",
@@ -45,7 +45,7 @@ public class AnnotationTest : BaseModelTestClass
     public void FullyPopulated_Element_SerializesProperly()
     {
         // Arrange
-        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var subject = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.other, subject)
         {
             Comment = "TestComment",
@@ -57,15 +57,15 @@ public class AnnotationTest : BaseModelTestClass
             Subject = subject,
             AnnotationType = AnnotationType.review
         };
-        annotation.Extension.Add(new TestExtension(TestCatalog));
+        annotation.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         annotation.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
         annotation.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.other));
-        annotation.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        annotation.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
         const string expected = """
                                 {
-                                  "subject": "urn:TestElement:40f",
+                                  "subject": "urn:ElementConcreteTestFixture:40f",
                                   "annotationType": "review",
                                   "statement": "TestStatement",
                                   "contentType": "TestMediaType",
@@ -73,7 +73,7 @@ public class AnnotationTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:429"
+                                    "urn:ExtensionConcreteTestFixture:429"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:436"
@@ -84,7 +84,7 @@ public class AnnotationTest : BaseModelTestClass
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:450"
+                                    "urn:IntegrityMethodConcreteTestFixture:450"
                                   ],
                                   "type": "Annotation",
                                   "spdxId": "urn:Annotation:41c"
@@ -103,7 +103,7 @@ public class AnnotationTest : BaseModelTestClass
     public void TypeNew_Element_FailsValidation_Empty_Type()
     {
         // Arrange
-        var subject = new TestElement(TestCatalog, TestCreationInfo);
+        var subject = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var annotation = new Annotation(TestCatalog, TestCreationInfo, AnnotationType.review, subject)
         {
             Type = string.Empty

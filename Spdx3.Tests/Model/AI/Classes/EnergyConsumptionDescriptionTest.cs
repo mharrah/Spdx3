@@ -3,7 +3,7 @@ using Spdx3.Model.AI.Enums;
 
 namespace Spdx3.Tests.Model.AI.Classes;
 
-public class EnergyConsumptionDescriptionTest : BaseModelTestClass
+public class EnergyConsumptionDescriptionTest : BaseModelTest
 {
     [Fact]
     public void EnergyConsumptionDescription_MinimalObject_Serializes()

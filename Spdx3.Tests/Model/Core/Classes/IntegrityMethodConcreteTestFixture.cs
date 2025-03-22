@@ -7,10 +7,10 @@ namespace Spdx3.Tests.Model.Core.Classes;
 /// <summary>
 ///     A concrete implementation of the abstract IntegrityMethod class to be used for testing
 /// </summary>
-public class TestIntegrityMethod : IntegrityMethod
+public class IntegrityMethodConcreteTestFixture : IntegrityMethod
 {
     [SetsRequiredMembers]
-    public TestIntegrityMethod(Catalog catalog) : base(catalog)
+    public IntegrityMethodConcreteTestFixture(Catalog catalog) : base(catalog)
     {
     }
 }

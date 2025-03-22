@@ -1,28 +1,28 @@
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ArtifactTest : BaseModelTestClass
+public class ArtifactTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Artifact_HasRequiredFields()
     {
         // Arrange
-        var element = new TestArtifact(TestCatalog, TestCreationInfo);
+        var element = new ArtifactConcreteTestFixture(TestCatalog, TestCreationInfo);
 
         // Assert
         Assert.Null(Record.Exception(() => element.Validate()));
-        Assert.Equal("TestArtifact", element.Type);
+        Assert.Equal("ArtifactConcreteTestFixture", element.Type);
     }
 
     [Fact]
     public void BrandNew_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = new TestArtifact(TestCatalog, TestCreationInfo);
+        var element = new ArtifactConcreteTestFixture(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "TestArtifact",
-                                  "spdxId": "urn:TestArtifact:40f"
+                                  "type": "ArtifactConcreteTestFixture",
+                                  "spdxId": "urn:ArtifactConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -37,7 +37,7 @@ public class ArtifactTest : BaseModelTestClass
     public void FullyPopulated_Artifact_SerializesProperly()
     {
         // Arrange
-        var element = new TestArtifact(TestCatalog, TestCreationInfo)
+        var element = new ArtifactConcreteTestFixture(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -50,8 +50,8 @@ public class ArtifactTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
-                                  "type": "TestArtifact",
-                                  "spdxId": "urn:TestArtifact:40f"
+                                  "type": "ArtifactConcreteTestFixture",
+                                  "spdxId": "urn:ArtifactConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -67,7 +67,7 @@ public class ArtifactTest : BaseModelTestClass
     public void TypeNew_Artifact_FailsValidation_Empty_Type()
     {
         // Arrange
-        var element = new TestArtifact(TestCatalog, TestCreationInfo)
+        var element = new ArtifactConcreteTestFixture(TestCatalog, TestCreationInfo)
         {
             Type = string.Empty
         };
@@ -77,6 +77,6 @@ public class ArtifactTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(exception);
-        Assert.Equal("Object TestArtifact, property Type: String field is empty", exception.Message);
+        Assert.Equal("Object ArtifactConcreteTestFixture, property Type: String field is empty", exception.Message);
     }
 }

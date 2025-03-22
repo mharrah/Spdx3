@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class IndividualElementTest : BaseModelTestClass
+public class IndividualElementTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_IndividualElement_SerializesProperly()

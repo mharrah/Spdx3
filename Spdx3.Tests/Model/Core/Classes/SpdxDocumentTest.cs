@@ -5,7 +5,7 @@ using Spdx3.Tests.Model.SimpleLicensing.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class SpdxDocumentTest : BaseModelTestClass
+public class SpdxDocumentTest : BaseModelTest
 {
     [Fact]
     public void SpdxDocument_NewElement_ShouldValidate()
@@ -42,7 +42,7 @@ public class SpdxDocumentTest : BaseModelTestClass
         // Arrange
         var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo)
         {
-            DataLicense = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo),
+            DataLicense = new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo),
             Comment = "Test Comment",
             Description = "Test Description",
             Name = "Test Name",
@@ -53,18 +53,18 @@ public class SpdxDocumentTest : BaseModelTestClass
             "email@amail.com"));
         spdxDocument.ProfileConformance.Add(ProfileIdentifierType.ai);
         spdxDocument.ProfileConformance.Add(ProfileIdentifierType.build);
-        spdxDocument.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
-        spdxDocument.Extension.Add(new TestExtension(TestCatalog));
-        spdxDocument.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
+        spdxDocument.RootElement.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
+        spdxDocument.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
+        spdxDocument.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
         spdxDocument.Import.Add(new ExternalMap(TestCatalog, "some-external-spdxid"));
         spdxDocument.NamespaceMap.Add(new NamespaceMap(TestCatalog, "some-prefix", new Uri("urn:some-namespace")));
-        spdxDocument.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        spdxDocument.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         const string expected = """
                                 {
                                   "import": [
                                     "urn:ExternalMap:46a"
                                   ],
-                                  "dataLicense": "urn:TestAnyLicenseInfo:41c",
+                                  "dataLicense": "urn:AnyLicenseInfoConcreteTestFixture:41c",
                                   "namespaceMap": [
                                     "urn:NamespaceMap:477"
                                   ],
@@ -73,16 +73,16 @@ public class SpdxDocumentTest : BaseModelTestClass
                                     "build"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:443"
+                                    "urn:ElementConcreteTestFixture:443"
                                   ],
                                   "element": [
-                                    "urn:TestElement:45d"
+                                    "urn:ElementConcreteTestFixture:45d"
                                   ],
                                   "comment": "Test Comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Test Description",
                                   "extension": [
-                                    "urn:TestExtension:450"
+                                    "urn:ExtensionConcreteTestFixture:450"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:436"
@@ -93,7 +93,7 @@ public class SpdxDocumentTest : BaseModelTestClass
                                   "name": "Test Name",
                                   "summary": "Test Summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:484"
+                                    "urn:IntegrityMethodConcreteTestFixture:484"
                                   ],
                                   "type": "SpdxDocument",
                                   "spdxId": "urn:SpdxDocument:40f"

@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class NamespaceMapTest : BaseModelTestClass
+public class NamespaceMapTest : BaseModelTest
 {
     [Fact]
     public void NamespaceMap_Basics()

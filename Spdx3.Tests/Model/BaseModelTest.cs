@@ -13,7 +13,7 @@ namespace Spdx3.Tests.Model;
 ///     less repetitive.
 /// </summary>
 [SuppressMessage("Performance", "SYSLIB1045:Convert to \'GeneratedRegexAttribute\'.")]
-public class BaseModelTestClass
+public class BaseModelTest
 {
     // What the name says - a predictable datetimeoffset value
     protected static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
@@ -35,10 +35,10 @@ public class BaseModelTestClass
 
 
     // Constructor
-    protected BaseModelTestClass()
+    protected BaseModelTest()
     {
         TestCreationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
-        TestCreationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, TestCreationInfo) { Name = $"{nameof(BaseModelTestClass)} constructor"});
+        TestCreationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, TestCreationInfo) { Name = $"{nameof(BaseModelTest)} constructor"});
         Options.Converters.Add(new SpdxModelConverterFactory());
     }
 

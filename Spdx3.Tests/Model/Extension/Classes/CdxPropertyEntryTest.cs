@@ -2,7 +2,7 @@ using Spdx3.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Extension.Classes;
 
-public class CdxPropertyEntryTest : BaseModelTestClass
+public class CdxPropertyEntryTest : BaseModelTest
 {
     [Fact]
     public void Extension_MinimalObject_Serializes()

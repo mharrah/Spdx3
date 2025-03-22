@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class PositiveIntegerRangeTest : BaseModelTestClass
+public class PositiveIntegerRangeTest : BaseModelTest
 {
     [Fact]
     public void PositiveIntegerRange_Basics()

@@ -8,7 +8,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-public class CvssV2VulnAssessmentRelationshipTest : BaseModelTestClass
+public class CvssV2VulnAssessmentRelationshipTest : BaseModelTest
 {
     [Fact]
     public void CvssV2VulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -82,7 +82,7 @@ public class CvssV2VulnAssessmentRelationshipTest : BaseModelTestClass
                 Summary = "a summary",
                 Name = "a name"
             };
-        cvssV2VulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        cvssV2VulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         cvssV2VulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
         cvssV2VulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
@@ -105,7 +105,7 @@ public class CvssV2VulnAssessmentRelationshipTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:ExtensionConcreteTestFixture:443"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:450"

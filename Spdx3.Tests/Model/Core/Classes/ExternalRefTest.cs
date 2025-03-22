@@ -3,7 +3,7 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ExternalRefTest : BaseModelTestClass
+public class ExternalRefTest : BaseModelTest
 {
     [Fact]
     public void ExternalRef_MinimalObject_Serializes()

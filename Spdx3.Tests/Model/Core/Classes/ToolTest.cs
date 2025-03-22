@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ToolTest : BaseModelTestClass
+public class ToolTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Tool_SerializesProperly()

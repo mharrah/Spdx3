@@ -3,7 +3,7 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class PackageVerificationCodeTest : BaseModelTestClass
+public class PackageVerificationCodeTest : BaseModelTest
 {
     [Fact]
     public void PackageVerificationCode_Basics()

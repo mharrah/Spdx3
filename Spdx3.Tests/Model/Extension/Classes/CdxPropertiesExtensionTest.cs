@@ -3,7 +3,7 @@ using Xunit.Internal;
 
 namespace Spdx3.Tests.Model.Extension.Classes;
 
-public class CdxPropertiesExtensionTest : BaseModelTestClass
+public class CdxPropertiesExtensionTest : BaseModelTest
 {
     [Fact]
     public void CdxPropertiesExtension_MinimalObject_Serializes()

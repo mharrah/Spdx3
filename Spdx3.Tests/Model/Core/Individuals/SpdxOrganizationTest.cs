@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Individuals;
 
 namespace Spdx3.Tests.Model.Core.Individuals;
 
-public class SpdxOrganizationTest : BaseModelTestClass
+public class SpdxOrganizationTest : BaseModelTest
 {
     [Fact]
     public void SpdxOrganization_SpdxId_IsConstant()

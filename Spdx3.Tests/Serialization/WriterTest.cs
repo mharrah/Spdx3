@@ -7,7 +7,7 @@ using Spdx3.Tests.Model.SimpleLicensing.Classes;
 
 namespace Spdx3.Tests.Serialization;
 
-public class WriterTest : BaseModelTestClass
+public class WriterTest : BaseModelTest
 {
     private static readonly string ExpectedMinimalJson =
         "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
@@ -18,7 +18,7 @@ public class WriterTest : BaseModelTestClass
         "\"type\":\"CreationInfo\"," +
         "\"spdxId\":\"urn:CreationInfo:3f5\"}," +
         "{\"creationInfo\":\"urn:CreationInfo:3f5\"," +
-        "\"name\":\"BaseModelTestClass constructor\"," +
+        "\"name\":\"BaseModelTest constructor\"," +
         "\"type\":\"SoftwareAgent\"," +
         "\"spdxId\":\"urn:SoftwareAgent:402\"}," +
         "{\"creationInfo\":\"urn:CreationInfo:3f5\"," +
@@ -54,7 +54,7 @@ public class WriterTest : BaseModelTestClass
             Comment = "This is a comment",
             Description = "This is a description",
             Name = "This is a name",
-            DataLicense = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo)
+            DataLicense = new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)
         };
         spdxDocument.CreationInfo.CreatedBy.Add(new Person(TestCatalog, TestCreationInfo)
         {
@@ -95,12 +95,12 @@ public class WriterTest : BaseModelTestClass
                                         },
                                         {
                                             "creationInfo":"urn:CreationInfo:3f5",
-                                            "name":"BaseModelTestClass constructor",
+                                            "name":"BaseModelTest constructor",
                                             "type":"SoftwareAgent",
                                             "spdxId":"urn:SoftwareAgent:402"
                                         },
                                         {
-                                            "dataLicense":"urn:TestAnyLicenseInfo:41c",
+                                            "dataLicense":"urn:AnyLicenseInfoConcreteTestFixture:41c",
                                             "element":[
                                                 "urn:Package:436",
                                                 "urn:Package:443",
@@ -115,8 +115,8 @@ public class WriterTest : BaseModelTestClass
                                         },
                                         {
                                             "creationInfo":"urn:CreationInfo:3f5",
-                                            "type":"simplelicensing_TestAnyLicenseInfo",
-                                            "spdxId":"urn:TestAnyLicenseInfo:41c"
+                                            "type":"simplelicensing_AnyLicenseInfoConcreteTestFixture",
+                                            "spdxId":"urn:AnyLicenseInfoConcreteTestFixture:41c"
                                         },
                                         {
                                             "comment":"But he owes me money",

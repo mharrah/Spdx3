@@ -9,9 +9,9 @@ public class CatalogTest
     public void SpdxIdFactory_NewGeneratesId()
     {
         var spdxIdFactory = new Catalog();
-        var id = spdxIdFactory.NewId(typeof(TestBaseModelClass));
+        var id = spdxIdFactory.NewId(typeof(BaseModelClassConcreteTestFixture));
         Assert.NotNull(id);
-        Assert.Matches("urn:TestBaseModelClass:[0-9a-f]{3}", id.ToString());
+        Assert.Matches("urn:BaseModelClassConcreteTestFixture:[0-9a-f]{3}", id.ToString());
     }
 
     [Fact]
@@ -27,8 +27,8 @@ public class CatalogTest
     public void SpdxIdFactory_NewGeneratesDifferentIdsEachTime()
     {
         var spdxIdFactory = new Catalog();
-        var id1 = spdxIdFactory.NewId(typeof(TestBaseModelClass));
-        var id2 = spdxIdFactory.NewId(typeof(TestBaseModelClass));
+        var id1 = spdxIdFactory.NewId(typeof(BaseModelClassConcreteTestFixture));
+        var id2 = spdxIdFactory.NewId(typeof(BaseModelClassConcreteTestFixture));
         Assert.NotEqual(id1, id2);
     }
 }

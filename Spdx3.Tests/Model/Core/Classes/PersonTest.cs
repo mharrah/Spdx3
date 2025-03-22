@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class PersonTest : BaseModelTestClass
+public class PersonTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Person_SerializesProperly()

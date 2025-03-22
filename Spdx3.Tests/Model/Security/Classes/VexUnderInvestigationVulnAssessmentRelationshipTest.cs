@@ -6,7 +6,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-public class VexUnderInvestigationVulnAssessmentRelationshipTest : BaseModelTestClass
+public class VexUnderInvestigationVulnAssessmentRelationshipTest : BaseModelTest
 {
     [Fact]
     public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -76,7 +76,7 @@ public class VexUnderInvestigationVulnAssessmentRelationshipTest : BaseModelTest
                 Summary = "a summary",
                 Name = "a name"
             };
-        vexVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        vexVulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         vexVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
         vexVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
@@ -97,7 +97,7 @@ public class VexUnderInvestigationVulnAssessmentRelationshipTest : BaseModelTest
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:ExtensionConcreteTestFixture:443"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:450"

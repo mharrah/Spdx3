@@ -8,10 +8,10 @@ namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 /// <summary>
 ///     Concrete implementation of the abstract class AnyClassInfo, so it can be tested
 /// </summary>
-public class TestAnyLicenseInfo : AnyLicenseInfo
+public class AnyLicenseInfoConcreteTestFixture : AnyLicenseInfo
 {
     [SetsRequiredMembers]
-    public TestAnyLicenseInfo(Catalog catalog, CreationInfo creationInfo) : base(catalog,
+    public AnyLicenseInfoConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog,
         creationInfo)
     {
     }

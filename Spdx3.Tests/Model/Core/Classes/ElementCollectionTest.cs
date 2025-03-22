@@ -2,18 +2,18 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class ElementCollectionTest : BaseModelTestClass
+public class ElementCollectionTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = new TestElementCollection(TestCatalog, TestCreationInfo);
+        var elementCollection = new ElementCollectionConcreteTestFixture(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:40f"
+                                  "type": "ElementCollectionConcreteTestFixture",
+                                  "spdxId": "urn:ElementCollectionConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -28,15 +28,15 @@ public class ElementCollectionTest : BaseModelTestClass
     public void FullyPopulated_ElementCollection_SerializesProperly()
     {
         // Arrange
-        var elementCollection = new TestElementCollection(TestCatalog, TestCreationInfo)
+        var elementCollection = new ElementCollectionConcreteTestFixture(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName"
         };
-        elementCollection.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
-        elementCollection.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
-        elementCollection.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
+        elementCollection.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
+        elementCollection.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
+        elementCollection.RootElement.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
         elementCollection.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """
@@ -45,18 +45,18 @@ public class ElementCollectionTest : BaseModelTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:436"
+                                    "urn:ElementConcreteTestFixture:436"
                                   ],
                                   "element": [
-                                    "urn:TestElement:41c",
-                                    "urn:TestElement:429"
+                                    "urn:ElementConcreteTestFixture:41c",
+                                    "urn:ElementConcreteTestFixture:429"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "name": "TestName",
-                                  "type": "TestElementCollection",
-                                  "spdxId": "urn:TestElementCollection:40f"
+                                  "type": "ElementCollectionConcreteTestFixture",
+                                  "spdxId": "urn:ElementCollectionConcreteTestFixture:40f"
                                 }
                                 """;
 

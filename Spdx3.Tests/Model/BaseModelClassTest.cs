@@ -5,13 +5,13 @@ namespace Spdx3.Tests.Model;
 /// <summary>
 /// Test for the abstract BaseModelClass type, using the TestBaseModelClass as the concrete implementation.
 /// </summary>
-public class BaseModelClassTest : BaseModelTestClass
+public class BaseModelClassTest : BaseModelTest
 {
     [Fact]
     public void Validate_WorksWhen_PropertiesAreSet()
     {
         // Arrange
-        var testBaseModelClass = new TestBaseModelClass()
+        var testBaseModelClass = new BaseModelClassConcreteTestFixture()
         {
             Type = "Test",
             SpdxId = new Uri("test:id"),
@@ -30,7 +30,7 @@ public class BaseModelClassTest : BaseModelTestClass
     public void Validate_ThrowsWhen_StringProperty_NullValue()
     {
         // Arrange
-        var testBaseModelClass = new TestBaseModelClass()
+        var testBaseModelClass = new BaseModelClassConcreteTestFixture()
         {
             Type = "Test",
             SpdxId = new Uri("test:id"),
@@ -49,7 +49,7 @@ public class BaseModelClassTest : BaseModelTestClass
     public void Validate_ThrowsWhen_ListProperty_NullValue()
     {
         // Arrange
-        var testBaseModelClass = new TestBaseModelClass()
+        var testBaseModelClass = new BaseModelClassConcreteTestFixture()
         {
             Type = "Test",
             SpdxId = new Uri("test:id"),
@@ -67,7 +67,7 @@ public class BaseModelClassTest : BaseModelTestClass
     public void Validate_ThrowsWhen_StringProperty_Empty()
     {
         // Arrange
-        var testBaseModelClass = new TestBaseModelClass()
+        var testBaseModelClass = new BaseModelClassConcreteTestFixture()
         {
             Type = "Test",
             SpdxId = new Uri("test:id"),
@@ -85,7 +85,7 @@ public class BaseModelClassTest : BaseModelTestClass
     public void Validate_ThrowsWhen_StringListProperty_Empty()
     {
         // Arrange
-        var testBaseModelClass = new TestBaseModelClass()
+        var testBaseModelClass = new BaseModelClassConcreteTestFixture()
         {
             Type = "Test",
             SpdxId = new Uri("test:id"),

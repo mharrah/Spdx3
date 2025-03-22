@@ -6,7 +6,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 
-public class SimpleLicensingTextTest : BaseModelTestClass
+public class SimpleLicensingTextTest : BaseModelTest
 {
     [Fact]
     public void SimpleLicensingText_MinimallyPopulated_ShouldSerialize()
@@ -41,11 +41,11 @@ public class SimpleLicensingTextTest : BaseModelTestClass
             Name = "TestName",
             Summary = "TestSummary"
         };
-        simpleLicensingText.Extension.Add(new TestExtension(TestCatalog));
+        simpleLicensingText.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         simpleLicensingText.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
         simpleLicensingText.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
-        simpleLicensingText.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        simpleLicensingText.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
         const string expected = """
                                 {
@@ -54,7 +54,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:ExtensionConcreteTestFixture:41c"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:429"
@@ -65,7 +65,7 @@ public class SimpleLicensingTextTest : BaseModelTestClass
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
                                   "type": "simplelicensing_SimpleLicensingText",
                                   "spdxId": "urn:SimpleLicensingText:40f"

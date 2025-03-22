@@ -3,7 +3,7 @@ using Spdx3.Model.Software.Enums;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class ContentIdentifierTest : BaseModelTestClass
+public class ContentIdentifierTest : BaseModelTest
 {
     [Fact]
     public void ContentIdentifier_MinimalObject_ShouldSerialize()

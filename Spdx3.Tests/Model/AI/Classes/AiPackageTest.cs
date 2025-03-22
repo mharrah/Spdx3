@@ -4,7 +4,7 @@ using Spdx3.Model.Software.Enums;
 
 namespace Spdx3.Tests.Model.AI.Classes;
 
-public class AiPackageTest : BaseModelTestClass
+public class AiPackageTest : BaseModelTest
 {
     [Fact]
     public void AiPackage_MinimalObject_Serializes()

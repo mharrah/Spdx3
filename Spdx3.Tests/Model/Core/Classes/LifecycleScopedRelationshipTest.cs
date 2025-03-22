@@ -3,22 +3,22 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class LifecycleScopedRelationshipTest : BaseModelTestClass
+public class LifecycleScopedRelationshipTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
-        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
+        var to = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new LifecycleScopedRelationship(TestCatalog, TestCreationInfo,
             RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:40f",
+                                  "from": "urn:ElementConcreteTestFixture:40f",
                                   "to": [
-                                    "urn:TestElement:41c"
+                                    "urn:ElementConcreteTestFixture:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -38,8 +38,8 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
     public void FullyPopulated_LifecycleScopedRelationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
-        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
+        var to = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new LifecycleScopedRelationship(TestCatalog, TestCreationInfo,
             RelationshipType.describes,
             from, [to])
@@ -56,9 +56,9 @@ public class LifecycleScopedRelationshipTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "scope": "runtime",
-                                  "from": "urn:TestElement:40f",
+                                  "from": "urn:ElementConcreteTestFixture:40f",
                                   "to": [
-                                    "urn:TestElement:41c"
+                                    "urn:ElementConcreteTestFixture:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "completeness": "complete",

@@ -9,7 +9,7 @@ using File = Spdx3.Model.Software.Classes.File;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class SnippetTest : BaseModelTestClass
+public class SnippetTest : BaseModelTest
 {
     [Fact]
     public void Snippet_MinimalObject_SerializesCorrectly()
@@ -53,7 +53,7 @@ public class SnippetTest : BaseModelTestClass
             LineRange = new PositiveIntegerRange(TestCatalog, 7, 15)
         };
         snippet.SupportLevel.Add(SupportType.noAssertion);
-        snippet.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        snippet.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         snippet.AdditionalPurpose.Add(SoftwarePurpose.archive);
         snippet.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         snippet.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
@@ -63,7 +63,7 @@ public class SnippetTest : BaseModelTestClass
         snippet.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));
         snippet.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        snippet.Extension.Add(new TestExtension(TestCatalog));
+        snippet.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
 
 
         const string expected = """
@@ -95,7 +95,7 @@ public class SnippetTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:484"
+                                    "urn:ExtensionConcreteTestFixture:484"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:477"
@@ -106,7 +106,7 @@ public class SnippetTest : BaseModelTestClass
                                   "name": "Some name",
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
                                   "type": "software_Snippet",
                                   "spdxId": "urn:Snippet:41c"

@@ -10,7 +10,7 @@ using File = Spdx3.Model.Software.Classes.File;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class FileTest : BaseModelTestClass
+public class FileTest : BaseModelTest
 {
     [Fact]
     public void File_MinimalObject_SerializesCorrectly()
@@ -53,7 +53,7 @@ public class FileTest : BaseModelTestClass
             SuppliedBy = new Agent(TestCatalog, TestCreationInfo)
         };
         file.SupportLevel.Add(SupportType.noAssertion);
-        file.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        file.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         file.AdditionalPurpose.Add(SoftwarePurpose.archive);
         file.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         file.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
@@ -63,7 +63,7 @@ public class FileTest : BaseModelTestClass
         file.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));
         file.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        file.Extension.Add(new TestExtension(TestCatalog));
+        file.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
 
         const string expected = """
                                 {
@@ -94,7 +94,7 @@ public class FileTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:46a"
+                                    "urn:ExtensionConcreteTestFixture:46a"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:45d"
@@ -104,7 +104,7 @@ public class FileTest : BaseModelTestClass
                                   ],
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:429"
+                                    "urn:IntegrityMethodConcreteTestFixture:429"
                                   ],
                                   "type": "software_File",
                                   "spdxId": "urn:File:40f"

@@ -9,7 +9,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
+public class EpssVulnAssessmentRelationshipTest : BaseModelTest
 { 
     [Fact]
     public void EpssVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -81,7 +81,7 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
                 Summary = "a summary",
                 Name = "a name"
             };
-        epssVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        epssVulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         epssVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
         epssVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
@@ -104,7 +104,7 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:ExtensionConcreteTestFixture:443"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:450"

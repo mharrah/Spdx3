@@ -4,7 +4,7 @@ using Spdx3.Model.Dataset.Enums;
 
 namespace Spdx3.Tests.Model.Dataset.Classes;
 
-public class DatasetPackageTest : BaseModelTestClass
+public class DatasetPackageTest : BaseModelTest
 {
     [Fact]
     public void DatasetPackage_MinimalObject_Serializes()

@@ -7,7 +7,7 @@ namespace Spdx3.Tests.Model;
 /// <summary>
 /// A concrete implementation of the abstract BaseModelClass class, for testing
 /// </summary>
-public class TestBaseModelClass : BaseModelClass
+public class BaseModelClassConcreteTestFixture : BaseModelClass
 {
     public string? StringProperty { get; set; }
     public IList<string>? StringListProperty { get; set; }

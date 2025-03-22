@@ -10,12 +10,12 @@ public class Spdx3ValidationExceptionTest
     public void Constructor_ShouldSetMessage()
     {
         // Arrange
-        var cut = new TestBaseModelClass(new Catalog());
+        var cut = new BaseModelClassConcreteTestFixture(new Catalog());
 
         // Act
         var exception = new Spdx3ValidationException(cut, nameof(cut.SpdxId), "Some message");
 
         // Assert
-        Assert.Equal("Object TestBaseModelClass, property SpdxId: Some message", exception.Message);
+        Assert.Equal("Object BaseModelClassConcreteTestFixture, property SpdxId: Some message", exception.Message);
     }
 }

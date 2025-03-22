@@ -8,10 +8,10 @@ namespace Spdx3.Tests.Model.Core.Classes;
 ///     Concrete implementation of the abstract Artifact class for use in testing
 /// </summary>
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public class TestArtifact : Artifact
+public class ArtifactConcreteTestFixture : Artifact
 {
     [SetsRequiredMembers]
-    public TestArtifact(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
+    public ArtifactConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

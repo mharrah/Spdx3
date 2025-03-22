@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Individuals;
 
 namespace Spdx3.Tests.Model.Core.Individuals;
 
-public class NoAssertionElementTest : BaseModelTestClass
+public class NoAssertionElementTest : BaseModelTest
 {
     [Fact]
     public void NoAssertionElement_Spdx_IsConstant()

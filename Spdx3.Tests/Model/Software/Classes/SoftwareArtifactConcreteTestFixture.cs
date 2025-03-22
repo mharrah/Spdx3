@@ -6,12 +6,12 @@ using Spdx3.Utility;
 namespace Spdx3.Tests.Model.Software.Classes;
 
 /// <summary>
-///     Concrete implementation of the abstrace SoftwareArtifact class, for testing
+///     Concrete implementation of the abstract SoftwareArtifact class, for testing
 /// </summary>
-public class TestSoftwareArtifact : SoftwareArtifact
+public class SoftwareArtifactConcreteTestFixture : SoftwareArtifact
 {
     [SetsRequiredMembers]
-    public TestSoftwareArtifact(Catalog catalog, CreationInfo creationInfo) : base(catalog,
+    public SoftwareArtifactConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog,
         creationInfo)
     {
     }

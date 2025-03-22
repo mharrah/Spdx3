@@ -1,30 +1,30 @@
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class IntegrityMethodTest : BaseModelTestClass
+public class IntegrityMethodTest : BaseModelTest
 {
     [Fact]
     public void IntegrityMethod_Basics()
     {
         // Act
-        var integrityMethod = new TestIntegrityMethod(TestCatalog);
+        var integrityMethod = new IntegrityMethodConcreteTestFixture(TestCatalog);
 
         // Assert
         Assert.NotNull(integrityMethod);
-        Assert.IsType<TestIntegrityMethod>(integrityMethod);
-        Assert.Equal("TestIntegrityMethod", integrityMethod.Type);
-        Assert.Equal(new Uri("urn:TestIntegrityMethod:40f"), integrityMethod.SpdxId);
+        Assert.IsType<IntegrityMethodConcreteTestFixture>(integrityMethod);
+        Assert.Equal("IntegrityMethodConcreteTestFixture", integrityMethod.Type);
+        Assert.Equal(new Uri("urn:IntegrityMethodConcreteTestFixture:40f"), integrityMethod.SpdxId);
     }
 
     [Fact]
     public void IntegrityMethod_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var integrityMethod = new TestIntegrityMethod(TestCatalog);
+        var integrityMethod = new IntegrityMethodConcreteTestFixture(TestCatalog);
 
         const string expected = """
                                 {
-                                  "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:40f"
+                                  "type": "IntegrityMethodConcreteTestFixture",
+                                  "spdxId": "urn:IntegrityMethodConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -39,7 +39,7 @@ public class IntegrityMethodTest : BaseModelTestClass
     public void IntegrityMethod_FullyPopulated_SerializesAsExpected()
     {
         // Arrange
-        var integrityMethod = new TestIntegrityMethod(TestCatalog)
+        var integrityMethod = new IntegrityMethodConcreteTestFixture(TestCatalog)
         {
             Comment = "Test comment"
         };
@@ -47,8 +47,8 @@ public class IntegrityMethodTest : BaseModelTestClass
         const string expected = """
                                 {
                                   "comment": "Test comment",
-                                  "type": "TestIntegrityMethod",
-                                  "spdxId": "urn:TestIntegrityMethod:40f"
+                                  "type": "IntegrityMethodConcreteTestFixture",
+                                  "spdxId": "urn:IntegrityMethodConcreteTestFixture:40f"
                                 }
                                 """;
 

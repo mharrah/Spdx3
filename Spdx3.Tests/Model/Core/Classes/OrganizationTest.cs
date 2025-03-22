@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class OrganizationTest : BaseModelTestClass
+public class OrganizationTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Organization_SerializesProperly()

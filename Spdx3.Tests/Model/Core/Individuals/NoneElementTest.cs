@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Individuals;
 
 namespace Spdx3.Tests.Model.Core.Individuals;
 
-public class NoneElementTest : BaseModelTestClass
+public class NoneElementTest : BaseModelTest
 {
     [Fact]
     public void NoneElement_Spdx_IsConstant()

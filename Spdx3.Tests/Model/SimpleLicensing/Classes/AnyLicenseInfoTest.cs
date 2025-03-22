@@ -5,18 +5,18 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 
-public class AnyLicenseInfoTest : BaseModelTestClass
+public class AnyLicenseInfoTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo);
+        var anyLicenseInfo = new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "simplelicensing_TestAnyLicenseInfo",
-                                  "spdxId": "urn:TestAnyLicenseInfo:40f"
+                                  "type": "simplelicensing_AnyLicenseInfoConcreteTestFixture",
+                                  "spdxId": "urn:AnyLicenseInfoConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -31,18 +31,18 @@ public class AnyLicenseInfoTest : BaseModelTestClass
     public void FullyPopulated_AnyLicenseInfo_SerializesProperly()
     {
         // Arrange
-        var anyLicenseInfo = new TestAnyLicenseInfo(TestCatalog, TestCreationInfo)
+        var anyLicenseInfo = new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)
         {
             Comment = "TestComment",
             Description = "TestDescription",
             Name = "TestName",
             Summary = "TestSummary"
         };
-        anyLicenseInfo.Extension.Add(new TestExtension(TestCatalog));
+        anyLicenseInfo.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         anyLicenseInfo.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
         anyLicenseInfo.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
-        anyLicenseInfo.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        anyLicenseInfo.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
 
         const string expected = """
@@ -51,7 +51,7 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:41c"
+                                    "urn:ExtensionConcreteTestFixture:41c"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:429"
@@ -62,10 +62,10 @@ public class AnyLicenseInfoTest : BaseModelTestClass
                                   "name": "TestName",
                                   "summary": "TestSummary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:443"
+                                    "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
-                                  "type": "simplelicensing_TestAnyLicenseInfo",
-                                  "spdxId": "urn:TestAnyLicenseInfo:40f"
+                                  "type": "simplelicensing_AnyLicenseInfoConcreteTestFixture",
+                                  "spdxId": "urn:AnyLicenseInfoConcreteTestFixture:40f"
                                 }
                                 """;
 

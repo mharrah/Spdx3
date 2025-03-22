@@ -3,7 +3,7 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class BundleTest : BaseModelTestClass
+public class BundleTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Bundle_SerializesProperly()
@@ -37,9 +37,9 @@ public class BundleTest : BaseModelTestClass
         };
         bundle.Context.Add("Some context");
         bundle.Context.Add("More context");
-        bundle.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
-        bundle.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
-        bundle.RootElement.Add(new TestElement(TestCatalog, TestCreationInfo));
+        bundle.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
+        bundle.Element.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
+        bundle.RootElement.Add(new ElementConcreteTestFixture(TestCatalog, TestCreationInfo));
         bundle.ProfileConformance.Add(ProfileIdentifierType.security);
 
         const string expected = """
@@ -52,11 +52,11 @@ public class BundleTest : BaseModelTestClass
                                     "security"
                                   ],
                                   "rootElement": [
-                                    "urn:TestElement:436"
+                                    "urn:ElementConcreteTestFixture:436"
                                   ],
                                   "element": [
-                                    "urn:TestElement:41c",
-                                    "urn:TestElement:429"
+                                    "urn:ElementConcreteTestFixture:41c",
+                                    "urn:ElementConcreteTestFixture:429"
                                   ],
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",

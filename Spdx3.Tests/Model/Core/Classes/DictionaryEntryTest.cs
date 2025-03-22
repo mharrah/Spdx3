@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class DictionaryEntryTest : BaseModelTestClass
+public class DictionaryEntryTest : BaseModelTest
 {
     [Fact]
     public void DictionaryEntry_Basics()

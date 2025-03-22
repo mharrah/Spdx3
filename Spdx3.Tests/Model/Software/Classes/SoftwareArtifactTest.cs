@@ -7,18 +7,18 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class SoftwareArtifactTest : BaseModelTestClass
+public class SoftwareArtifactTest : BaseModelTest
 {
     [Fact]
     public void SoftwareArtifact_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var softwareArtifact = new TestSoftwareArtifact(TestCatalog, TestCreationInfo);
+        var softwareArtifact = new SoftwareArtifactConcreteTestFixture(TestCatalog, TestCreationInfo);
         const string expected = """
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "software_TestSoftwareArtifact",
-                                  "spdxId": "urn:TestSoftwareArtifact:40f"
+                                  "type": "software_SoftwareArtifactConcreteTestFixture",
+                                  "spdxId": "urn:SoftwareArtifactConcreteTestFixture:40f"
                                 }
                                 """;
 
@@ -34,7 +34,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
     public void SoftwareArtifact_FullyPopulated_ShouldSerialize()
     {
         // Arrange
-        var softwareArtifact = new TestSoftwareArtifact(TestCatalog, TestCreationInfo)
+        var softwareArtifact = new SoftwareArtifactConcreteTestFixture(TestCatalog, TestCreationInfo)
         {
             Comment = "Some comment",
             Description = "Some description",
@@ -49,7 +49,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
             SuppliedBy = new Agent(TestCatalog, TestCreationInfo)
         };
         softwareArtifact.SupportLevel.Add(SupportType.noAssertion);
-        softwareArtifact.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        softwareArtifact.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.archive);
         softwareArtifact.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
@@ -59,7 +59,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
         softwareArtifact.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));
         softwareArtifact.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.cpe23,
             "cpe23 identifier"));
-        softwareArtifact.Extension.Add(new TestExtension(TestCatalog));
+        softwareArtifact.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         const string expected = """
                                 {
                                   "software_additionalPurpose": [
@@ -88,7 +88,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "Some description",
                                   "extension": [
-                                    "urn:TestExtension:46a"
+                                    "urn:ExtensionConcreteTestFixture:46a"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:45d"
@@ -99,10 +99,10 @@ public class SoftwareArtifactTest : BaseModelTestClass
                                   "name": "Some name",
                                   "summary": "Some summary",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:429"
+                                    "urn:IntegrityMethodConcreteTestFixture:429"
                                   ],
-                                  "type": "software_TestSoftwareArtifact",
-                                  "spdxId": "urn:TestSoftwareArtifact:40f"
+                                  "type": "software_SoftwareArtifactConcreteTestFixture",
+                                  "spdxId": "urn:SoftwareArtifactConcreteTestFixture:40f"
                                 }
                                 """;
 

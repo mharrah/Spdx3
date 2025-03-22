@@ -2,7 +2,7 @@ using Spdx3.Model.Software.Classes;
 
 namespace Spdx3.Tests.Model.Software.Classes;
 
-public class PackageTest : BaseModelTestClass
+public class PackageTest : BaseModelTest
 {
     [Fact]
     public void Package_MinimalObject_ShouldSerialize()

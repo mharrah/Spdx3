@@ -8,15 +8,15 @@ namespace Spdx3.Tests.Model.Core.Classes;
 ///     A concrete subclass of Element that can be used for testing purposes
 /// </summary>
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
-public class TestElement : Element
+public class ElementConcreteTestFixture : Element
 {
     // protected internal no-parm constructor required for deserialization
-    protected internal TestElement()
+    protected internal ElementConcreteTestFixture()
     {
     }
 
     [SetsRequiredMembers]
-    public TestElement(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
+    public ElementConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

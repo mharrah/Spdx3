@@ -3,21 +3,21 @@ using Spdx3.Model.Core.Enums;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class RelationshipTest : BaseModelTestClass
+public class RelationshipTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
-        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
+        var to = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to]);
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:40f",
+                                  "from": "urn:ElementConcreteTestFixture:40f",
                                   "to": [
-                                    "urn:TestElement:41c"
+                                    "urn:ElementConcreteTestFixture:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -37,8 +37,8 @@ public class RelationshipTest : BaseModelTestClass
     public void FullyPopulated_Relationship_SerializesProperly()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
-        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
+        var to = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to])
         {
@@ -52,9 +52,9 @@ public class RelationshipTest : BaseModelTestClass
 
         const string expected = """
                                 {
-                                  "from": "urn:TestElement:40f",
+                                  "from": "urn:ElementConcreteTestFixture:40f",
                                   "to": [
-                                    "urn:TestElement:41c"
+                                    "urn:ElementConcreteTestFixture:41c"
                                   ],
                                   "relationshipType": "describes",
                                   "completeness": "complete",
@@ -80,7 +80,7 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_AtLeastOne_To()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.describes,
             from, []); // Note that the to array is empty
 
@@ -96,8 +96,8 @@ public class RelationshipTest : BaseModelTestClass
     public void Relationship_Requires_From()
     {
         // Arrange
-        var from = new TestElement(TestCatalog, TestCreationInfo);
-        var to = new TestElement(TestCatalog, TestCreationInfo);
+        var from = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
+        var to = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo);
         var relationship = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.describes,
             from, [to]);
 

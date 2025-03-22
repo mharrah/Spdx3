@@ -6,7 +6,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 
-public class LicenseExpressionTest : BaseModelTestClass
+public class LicenseExpressionTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_LicenseExpression_SerializesProperly()
@@ -41,11 +41,11 @@ public class LicenseExpressionTest : BaseModelTestClass
             LicenseListVersion = "1.0.0",
             CustomIdToUri = new DictionaryEntry(TestCatalog, "some key", "some value")
         };
-        licenseExpression.Extension.Add(new TestExtension(TestCatalog));
+        licenseExpression.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         licenseExpression.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
         licenseExpression.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
-        licenseExpression.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
+        licenseExpression.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         const string expected = """
                                 {
                                   "simplelicensing_licenseExpression": "MIT",
@@ -55,7 +55,7 @@ public class LicenseExpressionTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",
                                   "extension": [
-                                    "urn:TestExtension:429"
+                                    "urn:ExtensionConcreteTestFixture:429"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:436"
@@ -65,7 +65,7 @@ public class LicenseExpressionTest : BaseModelTestClass
                                   ],
                                   "name": "TestName",
                                   "verifiedUsing": [
-                                    "urn:TestIntegrityMethod:450"
+                                    "urn:IntegrityMethodConcreteTestFixture:450"
                                   ],
                                   "type": "simplelicensing_LicenseExpression",
                                   "spdxId": "urn:LicenseExpression:40f"

@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class CreationInfoTest : BaseModelTestClass
+public class CreationInfoTest : BaseModelTest
 {
     [Fact]
     public void CreationInfo_Basics()

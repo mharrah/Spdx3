@@ -1,16 +1,16 @@
 namespace Spdx3.Tests.Model.Extension.Classes;
 
-public class ExtensionTest : BaseModelTestClass
+public class ExtensionTest : BaseModelTest
 {
     [Fact]
     public void Extension_MinimalObject_Serializes()
     {
         // Arrange
-        var extension = new TestExtension(TestCatalog);
+        var extension = new ExtensionConcreteTestFixture(TestCatalog);
         const string expected = """
                                 {
-                                  "type": "extension_TestExtension",
-                                  "spdxId": "urn:TestExtension:40f"
+                                  "type": "extension_ExtensionConcreteTestFixture",
+                                  "spdxId": "urn:ExtensionConcreteTestFixture:40f"
                                 }
                                 """;
 

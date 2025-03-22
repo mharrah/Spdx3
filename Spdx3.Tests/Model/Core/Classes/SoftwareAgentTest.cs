@@ -2,7 +2,7 @@ using Spdx3.Model.Core.Classes;
 
 namespace Spdx3.Tests.Model.Core.Classes;
 
-public class SoftwareAgentTest : BaseModelTestClass
+public class SoftwareAgentTest : BaseModelTest
 {
     [Fact]
     public void BrandNew_SoftwareAgent_SerializesProperly()

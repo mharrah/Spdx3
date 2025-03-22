@@ -8,7 +8,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTestClass
+public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTest
 {
     [Fact]
     public void VexNotAffectedVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -112,7 +112,7 @@ public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTestClass
                 JustificationType = VexJustificationType.vulnerableCodeNotPresent,
                 ImpactStatement = "Wam! Bam! Oof!"
             };
-        vexVulnAssessmentRelationship.Extension.Add(new TestExtension(TestCatalog));
+        vexVulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         vexVulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
         vexVulnAssessmentRelationship.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.documentation));
@@ -135,7 +135,7 @@ public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
                                   "extension": [
-                                    "urn:TestExtension:443"
+                                    "urn:ExtensionConcreteTestFixture:443"
                                   ],
                                   "externalIdentifier": [
                                     "urn:ExternalIdentifier:450"
