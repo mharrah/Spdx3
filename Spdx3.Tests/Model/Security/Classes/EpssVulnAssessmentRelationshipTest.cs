@@ -32,7 +32,6 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
         Assert.Equal(new Uri("urn:EpssVulnAssessmentRelationship:402"), epssVulnAssessmentRelationship.SpdxId);
     }
 
-
     [Fact]
     public void EpssVulnAssessmentRelationship_MinimalObject_ShouldSerialize()
     {
@@ -185,12 +184,6 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
         
     }
 
-
-    
-    
-    
-    
-    
     [Fact]
     public void EpssVulnAssessmentRelationship_Probability_ConstrainedToRange()
     {

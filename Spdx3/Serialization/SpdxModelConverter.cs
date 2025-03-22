@@ -58,6 +58,10 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                         {
                             currentProp.SetValue(result, Enum.Parse(genericType, strVal));
                         }
+                        else if (genericType == typeof(bool))
+                        {
+                            currentProp.SetValue(result, bool.Parse(strVal));
+                        }
                         else if (genericType == typeof(string))
                         {
                             if (currentProp.GetValue(result) is not IList listVal)
@@ -210,6 +214,9 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                 break;
             case double val:
                 writer.WriteNumber(jsonElementName, val);
+                break;
+            case bool val:
+                writer.WriteBoolean(jsonElementName, val);
                 break;
             case Uri val:
                 writer.WriteString(jsonElementName, val.ToString());
