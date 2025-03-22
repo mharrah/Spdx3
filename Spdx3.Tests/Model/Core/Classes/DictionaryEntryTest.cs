@@ -13,7 +13,7 @@ public class DictionaryEntryTest : BaseModelTestClass
         Assert.NotNull(dictionaryEntry);
         Assert.IsType<DictionaryEntry>(dictionaryEntry);
         Assert.Equal("DictionaryEntry", dictionaryEntry.Type);
-        Assert.Equal("urn:DictionaryEntry:40f", dictionaryEntry.SpdxId);
+        Assert.Equal(new Uri("urn:DictionaryEntry:40f"), dictionaryEntry.SpdxId);
     }
 
     [Fact]

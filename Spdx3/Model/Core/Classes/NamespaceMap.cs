@@ -17,7 +17,7 @@ public class NamespaceMap : BaseModelClass
 
     [JsonPropertyName("namespace")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public required string Namespace { get; set; }
+    public required Uri Namespace { get; set; }
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global
@@ -26,7 +26,7 @@ public class NamespaceMap : BaseModelClass
     }
 
     [SetsRequiredMembers]
-    public NamespaceMap(Catalog catalog, string prefix, string @namespace) : base(catalog)
+    public NamespaceMap(Catalog catalog, string prefix, Uri @namespace) : base(catalog)
     {
         Prefix = prefix;
         Namespace = @namespace;

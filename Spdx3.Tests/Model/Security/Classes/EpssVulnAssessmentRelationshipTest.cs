@@ -29,7 +29,7 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(epssVulnAssessmentRelationship);
-        Assert.Equal("urn:EpssVulnAssessmentRelationship:402", epssVulnAssessmentRelationship.SpdxId);
+        Assert.Equal(new Uri("urn:EpssVulnAssessmentRelationship:402"), epssVulnAssessmentRelationship.SpdxId);
     }
 
 

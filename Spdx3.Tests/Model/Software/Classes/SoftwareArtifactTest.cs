@@ -53,7 +53,7 @@ public class SoftwareArtifactTest : BaseModelTestClass
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.archive);
         softwareArtifact.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
-            "some gitoid value"));
+          new Uri("urn:some-gitoid-value")));
         softwareArtifact.AttributionText.Add("Some attribution text");
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.other);
         softwareArtifact.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));

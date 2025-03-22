@@ -19,6 +19,6 @@ public class NoAssertionElement : IndividualElement
     [SetsRequiredMembers]
     public NoAssertionElement(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
-        SpdxId = "https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement";
+        SpdxId = new Uri("https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement");
     }
 }

@@ -14,7 +14,7 @@ public class BaseModelClassTest : BaseModelTestClass
         var testBaseModelClass = new TestBaseModelClass()
         {
             Type = "Test",
-            SpdxId = "TestSpdxId",
+            SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
             StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
         };
@@ -33,7 +33,7 @@ public class BaseModelClassTest : BaseModelTestClass
         var testBaseModelClass = new TestBaseModelClass()
         {
             Type = "Test",
-            SpdxId = "TestSpdxId",
+            SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
             StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
         };
@@ -52,7 +52,7 @@ public class BaseModelClassTest : BaseModelTestClass
         var testBaseModelClass = new TestBaseModelClass()
         {
             Type = "Test",
-            SpdxId = "TestSpdxId",
+            SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
             StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
         };
@@ -70,7 +70,7 @@ public class BaseModelClassTest : BaseModelTestClass
         var testBaseModelClass = new TestBaseModelClass()
         {
             Type = "Test",
-            SpdxId = "TestSpdxId",
+            SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
             StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
         };
@@ -88,7 +88,7 @@ public class BaseModelClassTest : BaseModelTestClass
         var testBaseModelClass = new TestBaseModelClass()
         {
             Type = "Test",
-            SpdxId = "TestSpdxId",
+            SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
             StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
         };

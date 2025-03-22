@@ -25,7 +25,7 @@ public class SsvcVulnAssessmentRelationshipTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(ssvcVulnAssessmentRelationship);
-        Assert.Equal("urn:SsvcVulnAssessmentRelationship:402", ssvcVulnAssessmentRelationship.SpdxId);
+        Assert.Equal(new Uri("urn:SsvcVulnAssessmentRelationship:402"), ssvcVulnAssessmentRelationship.SpdxId);
     }
 
 

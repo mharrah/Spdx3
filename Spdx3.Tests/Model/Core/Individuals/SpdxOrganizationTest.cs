@@ -8,7 +8,7 @@ public class SpdxOrganizationTest : BaseModelTestClass
     public void SpdxOrganization_SpdxId_IsConstant()
     {
         // Arrange
-        const string spdxId = "https://spdx.org/";
+        var spdxId = new Uri("https://spdx.org/");
 
         // Act
         var spdxOrg = new SpdxOrganization(TestCatalog, TestCreationInfo);

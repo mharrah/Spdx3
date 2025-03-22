@@ -38,7 +38,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                 Comment = "Test comment",
                 IssuingAuthority = "testRef"
             };
-        externalIdentifier.IdentifierLocator.Add("testref");
+        externalIdentifier.IdentifierLocator.Add(new Uri("ftp://ftp.example.com/foo"));
 
         const string expected = """
                                 {
@@ -46,7 +46,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
                                   "externalIdentifierType": "gitoid",
                                   "identifier": "TestIdentity",
                                   "identifierLocator": [
-                                    "testref"
+                                    "ftp://ftp.example.com/foo"
                                   ],
                                   "issuingAuthority": "testRef",
                                   "type": "ExternalIdentifier",
@@ -69,7 +69,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
         var externalIdentifier = new ExternalIdentifier(TestCatalog, ExternalIdentifierType.gitoid, null);
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         externalIdentifier.Comment = "Test comment";
-        externalIdentifier.IdentifierLocator.Add("testref");
+        externalIdentifier.IdentifierLocator.Add(new Uri("ftp://ftp.example.com/foo"));
         externalIdentifier.IssuingAuthority = "testRef";
 
         //  Act
@@ -89,7 +89,7 @@ public class ExternalIdentifierTest : BaseModelTestClass
             Comment = "Test comment",
             IssuingAuthority = "testRef"
         };
-        externalIdentifier.IdentifierLocator.Add("testref");
+        externalIdentifier.IdentifierLocator.Add(new Uri("ftp://ftp.example.com/foo"));
 
         //  Act
         var exception = Record.Exception(() => externalIdentifier.Validate());

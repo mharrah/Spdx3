@@ -57,7 +57,7 @@ public class SpdxDocumentTest : BaseModelTestClass
         spdxDocument.Extension.Add(new TestExtension(TestCatalog));
         spdxDocument.Element.Add(new TestElement(TestCatalog, TestCreationInfo));
         spdxDocument.Import.Add(new ExternalMap(TestCatalog, "some-external-spdxid"));
-        spdxDocument.NamespaceMap.Add(new NamespaceMap(TestCatalog, "some-prefix", "some-namespace"));
+        spdxDocument.NamespaceMap.Add(new NamespaceMap(TestCatalog, "some-prefix", new Uri("urn:some-namespace")));
         spdxDocument.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
         const string expected = """
                                 {

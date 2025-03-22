@@ -23,7 +23,7 @@ public class AiPackage : Package
 
     [JsonPropertyName("software_downloadLocation")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public new required string DownloadLocation { get; set; }
+    public new required Uri DownloadLocation { get; set; }
 
     [JsonPropertyName("software_packageVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -105,7 +105,7 @@ public class AiPackage : Package
         CreationInfo creationInfo, 
         DateTimeOffset releaseTime, 
         Agent suppliedBy,
-        string downloadLocation, 
+        Uri downloadLocation, 
         string packageVersion, 
         SoftwarePurpose primaryPurpose) : base(catalog, creationInfo)
     {

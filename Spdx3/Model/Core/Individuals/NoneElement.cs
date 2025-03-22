@@ -19,6 +19,6 @@ public class NoneElement : IndividualElement
     [SetsRequiredMembers]
     public NoneElement(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
-        SpdxId = "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement";
+        SpdxId = new Uri("https://spdx.org/rdf/3.0.1/terms/Core/NoneElement");
     }
 }

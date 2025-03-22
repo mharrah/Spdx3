@@ -21,7 +21,7 @@ public class ExternalMap : BaseModelClass
 
     [JsonPropertyName("locationHint")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public string? LocationHint { get; set; }
+    public Uri? LocationHint { get; set; }
 
     [JsonPropertyName("verifiedUsing")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]

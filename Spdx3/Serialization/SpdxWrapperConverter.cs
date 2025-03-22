@@ -295,6 +295,14 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
                 }
                 property.SetValue(result, entry.Value);
             }
+            else if (propType == typeof(Uri))
+            {
+                if (entry.Value.GetType() != typeof(string))
+                {
+                    throw new Spdx3Exception($"{propType.Name} expected a string, but {entry.Value.GetType()} encountered");
+                }
+                property.SetValue(result, new Uri((string)entry.Value));
+            }
             else if (propType == typeof(DateTimeOffset))
             {
                 if (entry.Value.GetType() != typeof(string))
@@ -429,8 +437,9 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             throw new Spdx3Exception($"Could not create placeholder for {propType.FullName}");
         }
 
-        placeHolder.Type = Naming.SpdxTypeForClass(propType);
-        placeHolder.SpdxId = id;
+        placeHolder.Type = Naming.SpdxTypeForClass(propType); 
+        placeHolder.SpdxId = new Uri(id);
+
         if (placeHolder is Element element)
         {
             element.Comment = "***Placeholder***";

@@ -79,7 +79,7 @@ public class ExternalRefTest : BaseModelTestClass
         Assert.NotNull(externalRef);
         Assert.IsType<ExternalRef>(externalRef);
         Assert.Equal("ExternalRef", externalRef.Type);
-        Assert.Equal("urn:ExternalRef:40f", externalRef.SpdxId);
+        Assert.Equal(new Uri("urn:ExternalRef:40f"), externalRef.SpdxId);
         Assert.Equal("some sort of content", externalRef.ContentType);
         Assert.Equal(ExternalRefType.license, externalRef.ExternalRefType);
         Assert.Equal("Test comment", externalRef.Comment);

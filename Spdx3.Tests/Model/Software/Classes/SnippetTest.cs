@@ -57,7 +57,7 @@ public class SnippetTest : BaseModelTestClass
         snippet.AdditionalPurpose.Add(SoftwarePurpose.archive);
         snippet.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         snippet.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
-            "some gitoid value"));
+          new Uri("urn:some-gitoid-value")));
         snippet.AttributionText.Add("Some attribution text");
         snippet.AdditionalPurpose.Add(SoftwarePurpose.other);
         snippet.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));

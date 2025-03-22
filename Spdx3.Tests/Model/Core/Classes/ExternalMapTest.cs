@@ -13,7 +13,7 @@ public class ExternalMapTest : BaseModelTestClass
         Assert.NotNull(externalMap);
         Assert.IsType<ExternalMap>(externalMap);
         Assert.Equal("ExternalMap", externalMap.Type);
-        Assert.Equal("urn:ExternalMap:40f", externalMap.SpdxId);
+        Assert.Equal(new Uri("urn:ExternalMap:40f"), externalMap.SpdxId);
     }
 
     [Fact]
@@ -44,7 +44,7 @@ public class ExternalMapTest : BaseModelTestClass
         var externalMap = new ExternalMap(TestCatalog, "some-external-spdx-id")
         {
             ExternalSpdxId = "testref",
-            LocationHint = "Test Location Hint",
+            LocationHint = new Uri("https://somewhere"),
             DefiningArtifact = new TestArtifact(TestCatalog, TestCreationInfo)
         };
         externalMap.VerifiedUsing.Add(new TestIntegrityMethod(TestCatalog));
@@ -54,7 +54,7 @@ public class ExternalMapTest : BaseModelTestClass
                                 {
                                   "definingArtifact": "urn:TestArtifact:41c",
                                   "externalSpdxId": "testref",
-                                  "locationHint": "Test Location Hint",
+                                  "locationHint": "https://somewhere/",
                                   "verifiedUsing": [
                                     "urn:TestIntegrityMethod:429"
                                   ],

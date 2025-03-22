@@ -75,13 +75,13 @@ public class CdxPropertiesExtensionTest : BaseModelTestClass
         var cdxPropExt = FromJson<CdxPropertiesExtension>(json);
 
         Assert.NotNull(cdxPropExt);
-        Assert.Equal("urn:CdxPropertiesExtension:40f", cdxPropExt.SpdxId);
+        Assert.Equal(new Uri("urn:CdxPropertiesExtension:40f"), cdxPropExt.SpdxId);
         Assert.Equal("extension_CdxPropertiesExtension", cdxPropExt.Type);
         var propList = cdxPropExt.CdxProperty.CastOrToList();
         Assert.Equal(2, propList.Count);
-        Assert.Equal("urn:CdxPropertyEntry:402", propList[0].SpdxId);
+        Assert.Equal(new Uri("urn:CdxPropertyEntry:402"), propList[0].SpdxId);
         Assert.Equal("extension_CdxPropertyEntry", propList[0].Type);
-        Assert.Equal("urn:CdxPropertyEntry:41c", propList[1].SpdxId);
+        Assert.Equal(new Uri("urn:CdxPropertyEntry:41c"), propList[1].SpdxId);
         Assert.Equal("extension_CdxPropertyEntry", propList[1].Type);
     }
 }

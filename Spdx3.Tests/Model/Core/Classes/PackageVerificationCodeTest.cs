@@ -15,7 +15,7 @@ public class PackageVerificationCodeTest : BaseModelTestClass
         Assert.NotNull(hash);
         Assert.IsType<PackageVerificationCode>(hash);
         Assert.Equal("PackageVerificationCode", hash.Type);
-        Assert.Equal("urn:PackageVerificationCode:40f", hash.SpdxId);
+        Assert.Equal(new Uri("urn:PackageVerificationCode:40f"), hash.SpdxId);
     }
 
     [Fact]

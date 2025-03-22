@@ -12,7 +12,7 @@ public class IntegrityMethodTest : BaseModelTestClass
         Assert.NotNull(integrityMethod);
         Assert.IsType<TestIntegrityMethod>(integrityMethod);
         Assert.Equal("TestIntegrityMethod", integrityMethod.Type);
-        Assert.Equal("urn:TestIntegrityMethod:40f", integrityMethod.SpdxId);
+        Assert.Equal(new Uri("urn:TestIntegrityMethod:40f"), integrityMethod.SpdxId);
     }
 
     [Fact]

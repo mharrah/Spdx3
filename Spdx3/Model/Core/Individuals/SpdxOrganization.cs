@@ -19,6 +19,6 @@ public class SpdxOrganization : IndividualElement
     [SetsRequiredMembers]
     public SpdxOrganization(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
-        SpdxId = "https://spdx.org/";
+        SpdxId = new Uri("https://spdx.org/");
     }
 }

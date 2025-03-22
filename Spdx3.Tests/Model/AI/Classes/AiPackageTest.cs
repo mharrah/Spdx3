@@ -15,12 +15,12 @@ public class AiPackageTest : BaseModelTestClass
             Name = "The supplier"
         };
         var aiPackage = new AiPackage(TestCatalog, TestCreationInfo, PredictableDateTime, supplier,
-            "https://somewhere.com", "1.0.0", SoftwarePurpose.executable);
+            new Uri("https://somewhere.com"), "1.0.0", SoftwarePurpose.executable);
         const string expected = """
                                 {
                                   "releaseTime": "2025-02-22T01:23:45Z",
                                   "suppliedBy": "urn:Person:40f",
-                                  "software_downloadLocation": "https://somewhere.com",
+                                  "software_downloadLocation": "https://somewhere.com/",
                                   "software_packageVersion": "1.0.0",
                                   "software_primaryPurpose": "executable",
                                   "creationInfo": "urn:CreationInfo:3f5",

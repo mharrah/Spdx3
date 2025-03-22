@@ -18,11 +18,11 @@ public class Package : SoftwareArtifact
 
     [JsonPropertyName("software_packageUrl")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public string? PackageUrl { get; set; }
+    public Uri? PackageUrl { get; set; }
 
     [JsonPropertyName("software_homePage")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public string? HomePage { get; set; }
+    public Uri? HomePage { get; set; }
 
     [JsonPropertyName("software_sourceInfo")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]

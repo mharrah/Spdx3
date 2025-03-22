@@ -120,9 +120,9 @@ public class ElementTest : BaseModelTestClass
         Assert.NotNull(testElement);
         Assert.IsType<TestElement>(testElement);
         Assert.Equal("TestElement", testElement.Type);
-        Assert.Equal("urn:TestElement:402", testElement.SpdxId);
+        Assert.Equal(new Uri("urn:TestElement:402"), testElement.SpdxId);
         Assert.NotNull(testElement.CreationInfo);
-        Assert.Equal("urn:CreationInfo:3f5", testElement.CreationInfo.SpdxId);
+        Assert.Equal(new Uri("urn:CreationInfo:3f5"), testElement.CreationInfo.SpdxId);
         Assert.Equal("CreationInfo", testElement.CreationInfo.Type);
     }
 }

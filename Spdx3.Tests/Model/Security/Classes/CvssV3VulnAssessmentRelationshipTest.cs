@@ -30,7 +30,7 @@ public class CvssV3VulnAssessmentRelationshipTest : BaseModelTestClass
 
         // Assert
         Assert.NotNull(cvssV3VulnAssessmentRelationship);
-        Assert.Equal("urn:CvssV3VulnAssessmentRelationship:402", cvssV3VulnAssessmentRelationship.SpdxId);
+        Assert.Equal(new Uri("urn:CvssV3VulnAssessmentRelationship:402"), cvssV3VulnAssessmentRelationship.SpdxId);
     }
 
 

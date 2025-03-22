@@ -4,7 +4,7 @@
     {
       "spdxId": "urn:nanoid:5uUlahHiRSRG2c9pTFvqJ",
       "type": "SpdxDocument",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "element": [
         "urn:nanoid:iPyS3tVAW0IZ27Hacu490",
         "urn:AiPackage:140f"
@@ -23,13 +23,13 @@
         "urn:nanoid:m_6pT9znU7RsQcYBOYC19"
       ],
       "specVersion": "3.0.1",
-      "@id": "_:b0"
+      "@id": "urn:local:b0"
     },
     {
       "spdxId": "urn:nanoid:iPyS3tVAW0IZ27Hacu490",
       "type": "Bundle",
       "context": "Illustraative Purposes",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "element": "urn:nanoid:IlKqCNai4QL1GHlweY1H8",
       "name": "Fan Information",
       "rootElement": "urn:nanoid:v1uDdNayGBhHIz-xh5R5o"
@@ -37,7 +37,7 @@
     {
       "spdxId": "urn:nanoid:kMuuWYeSugx5xUhWrqXiI",
       "type": "software_Sbom",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "profileConformance": [
         "core",
         "software"
@@ -47,42 +47,42 @@
     {
       "spdxId": "urn:nanoid:N4nXnJ_aV-906oMFoFrId",
       "type": "Person",
-      "creationInfo": "_:b0",
-      "externalIdentifier": "_:b1",
+      "creationInfo": "urn:local:b0",
+      "externalIdentifier": "urn:local:b1",
       "name": "Application Owner Jane Doe"
     },
     {
       "spdxId": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
       "type": "Organization",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Acme Company"
     },
     {
       "spdxId": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
       "type": "software_Package",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Acme Application",
       "suppliedBy": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
-      "verifiedUsing": "_:b2",
+      "verifiedUsing": "urn:local:b2",
       "software_primaryPurpose": "application"
     },
     {
       "spdxId": "urn:nanoid:IlKqCNai4QL1GHlweY1H8",
       "type": "IndividualElement",
-      "creationInfo": "_:b0",
-      "externalIdentifier": "_:b3",
+      "creationInfo": "urn:local:b0",
+      "externalIdentifier": "urn:local:b3",
       "name": "Mailing List"
     },
     {
       "spdxId": "urn:nanoid:v1uDdNayGBhHIz-xh5R5o",
       "type": "Organization",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Acme Fan Club"
     },
     {
       "spdxId": "urn:nanoid:3pURq3N5XINd-sdaeGut5",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
       "relationshipType": "dependsOn",
       "to": "urn:nanoid:hxTv3IJG-iPd3yC-dUZt8"
@@ -90,7 +90,7 @@
     {
       "spdxId": "urn:nanoid:hxTv3IJG-iPd3yC-dUZt8",
       "type": "software_Package",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "alpine:latest",
       "suppliedBy": "urn:nanoid:6gKIXh9cLk4rWUZORZXaT",
       "software_primaryPurpose": "container"
@@ -98,14 +98,14 @@
     {
       "spdxId": "urn:nanoid:6gKIXh9cLk4rWUZORZXaT",
       "type": "Organization",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Alpine Linux"
     },
     {
       "spdxId": "urn:nanoid:IMd4vuVPjeKmtBWktKC7C",
       "type": "software_Package",
-      "creationInfo": "_:b0",
-      "externalIdentifier": "_:b4",
+      "creationInfo": "urn:local:b0",
+      "externalIdentifier": "urn:local:b4",
       "name": "npm-elliptic",
       "suppliedBy": "urn:nanoid:pYSbiXvatb4p9JyOt66Ds",
       "software_primaryPurpose": "library"
@@ -113,14 +113,14 @@
     {
       "spdxId": "urn:nanoid:pYSbiXvatb4p9JyOt66Ds",
       "type": "Person",
-      "creationInfo": "_:b0",
-      "externalIdentifier": "_:b5",
+      "creationInfo": "urn:local:b0",
+      "externalIdentifier": "urn:local:b5",
       "name": "Fedor Indutny"
     },
     {
       "spdxId": "urn:nanoid:Ndt_OTFB4Vd1XKzEnvn5a",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
       "relationshipType": "availableFrom",
       "to": "urn:nanoid:N4nXnJ_aV-906oMFoFrId"
@@ -128,7 +128,7 @@
     {
       "spdxId": "urn:nanoid:X27d1TZJBmSHtLehHDqYo",
       "type": "software_Package",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "openssl",
       "originatedBy": "urn:nanoid:BgdlPKPoDBedLPNdKFkRO",
       "software_primaryPurpose": "library"
@@ -136,13 +136,13 @@
     {
       "spdxId": "urn:nanoid:BgdlPKPoDBedLPNdKFkRO",
       "type": "Agent",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "The OpenSSL Project"
     },
     {
       "spdxId": "urn:nanoid:mws9te1FB4d3yDJzR6GIf",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:hxTv3IJG-iPd3yC-dUZt8",
       "relationshipType": "contains",
       "to": "urn:nanoid:X27d1TZJBmSHtLehHDqYo"
@@ -150,7 +150,7 @@
     {
       "spdxId": "urn:nanoid:r2XGfmhiqXAFIIossCKCQ",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
       "relationshipType": "contains",
       "to": "urn:nanoid:IMd4vuVPjeKmtBWktKC7C"
@@ -160,7 +160,7 @@
       "type": "Annotation",
       "annotationType": "other",
       "contentType": "multipart/mixed",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "statement": "Endorsed by Wile E Coyote",
       "subject": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq"
     },
@@ -169,12 +169,12 @@
       "type": "build_Build",
       "build_buildId": "123",
       "build_buildType": "https://github.com",
-      "creationInfo": "_:b0"
+      "creationInfo": "urn:local:b0"
     },
     {
       "spdxId": "urn:nanoid:cQSYKHRT6t54_NCwbUGLj",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:EdvskwL1OodMjRqge7_BZ",
       "relationshipType": "generates",
       "to": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq"
@@ -182,13 +182,13 @@
     {
       "spdxId": "urn:nanoid:ggZ7FWryexnj5ZvdRoWwt",
       "type": "Person",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Wile E. Coyote"
     },
     {
       "spdxId": "urn:nanoid:C3dGLXMOY-eclLmbHlzW4",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:v1uDdNayGBhHIz-xh5R5o",
       "relationshipType": "contains",
       "to": "urn:nanoid:ggZ7FWryexnj5ZvdRoWwt"
@@ -196,7 +196,7 @@
     {
       "spdxId": "urn:nanoid:U3PuWXp24x02werL0OOE2",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:v1uDdNayGBhHIz-xh5R5o",
       "relationshipType": "generates",
       "to": "urn:nanoid:IlKqCNai4QL1GHlweY1H8"
@@ -204,27 +204,27 @@
     {
       "spdxId": "urn:nanoid:YWl4wA7MHAL0y5tMPsvBt",
       "type": "Tool",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Git"
     },
     {
       "spdxId": "urn:nanoid:Zs6K5A74DDSRGeG-A6cLg",
       "type": "software_Snippet",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "First 5 lines",
-      "software_lineRange": "_:b6",
+      "software_lineRange": "urn:local:b6",
       "software_snippetFromFile": "urn:nanoid:yt6QnbrrQIQu5qaiZZnsj"
     },
     {
       "spdxId": "urn:nanoid:yt6QnbrrQIQu5qaiZZnsj",
       "type": "software_File",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "autoexec.bat"
     },
     {
       "spdxId": "urn:nanoid:CK2dyQdwfEsqUd8vd06kP",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
       "relationshipType": "availableFrom",
       "to": "urn:nanoid:yt6QnbrrQIQu5qaiZZnsj"
@@ -232,13 +232,13 @@
     {
       "spdxId": "urn:nanoid:ME8F3hs6fv566Ul-kwJWm",
       "type": "SoftwareAgent",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "name": "Jenkins"
     },
     {
       "spdxId": "urn:nanoid:GTkWj0xy7kedKzHDOJ0iZ",
       "type": "LifecycleScopedRelationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
       "relationshipType": "usesTool",
       "to": [
@@ -249,7 +249,7 @@
     {
       "spdxId": "urn:nanoid:9MMYWTZxDhYjLjCyvcoVb",
       "type": "Relationship",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "from": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
       "relationshipType": "hasRequirement",
       "to": "urn:nanoid:ME8F3hs6fv566Ul-kwJWm"
@@ -258,37 +258,37 @@
       "type": "ExternalIdentifier",
       "externalIdentifierType": "email",
       "identifier": "jane-doe-1@acme.com",
-      "@id": "_:b1"
+      "@id": "urn:local:b1"
     },
     {
       "type": "PackageVerificationCode",
       "algorithm": "md2",
       "hashValue": "d2078adce71e387bb1b9d12c3e578622",
-      "@id": "_:b2"
+      "@id": "urn:local:b2"
     },
     {
       "type": "ExternalIdentifier",
       "externalIdentifierType": "email",
       "identifier": "example@example.com",
-      "@id": "_:b3"
+      "@id": "urn:local:b3"
     },
     {
       "type": "ExternalIdentifier",
       "externalIdentifierType": "other",
       "identifier": "https://github.com/indutny/elliptic/releases/tag/v6.5.2",
-      "@id": "_:b4"
+      "@id": "urn:local:b4"
     },
     {
       "type": "ExternalIdentifier",
       "externalIdentifierType": "other",
       "identifier": "https://github.com/indutny",
-      "@id": "_:b5"
+      "@id": "urn:local:b5"
     },
     {
       "type": "PositiveIntegerRange",
       "beginIntegerRange": 1,
       "endIntegerRange": 4,
-      "@id": "_:b6"
+      "@id": "urn:local:b6"
     },
     {
       "ai_energyQuantity": 5.5,
@@ -307,7 +307,7 @@
       "type": "Person",
       "name": "Shirley Temple",
       "spdxId": "urn:Person:1402",
-      "creationInfo": "_:b0"
+      "creationInfo": "urn:local:b0"
     },
     {
       "releaseTime": "2025-02-22T01:23:45Z",
@@ -315,7 +315,7 @@
       "software_downloadLocation": "https://somewhere.com",
       "software_packageVersion": "1.0.0",
       "software_primaryPurpose": "executable",
-      "creationInfo": "_:b0",
+      "creationInfo": "urn:local:b0",
       "type": "ai_AiPackage",
       "spdxId": "urn:AiPackage:140f"
     }

@@ -15,7 +15,7 @@ public class HashTest : BaseModelTestClass
         Assert.NotNull(hash);
         Assert.IsType<Hash>(hash);
         Assert.Equal("Hash", hash.Type);
-        Assert.Equal("urn:Hash:40f", hash.SpdxId);
+        Assert.Equal(new Uri("urn:Hash:40f"), hash.SpdxId);
     }
 
     [Fact]

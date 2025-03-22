@@ -57,7 +57,7 @@ public class FileTest : BaseModelTestClass
         file.AdditionalPurpose.Add(SoftwarePurpose.archive);
         file.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         file.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
-            "some gitoid value"));
+            new Uri("urn:some-gitoid-value")));
         file.AttributionText.Add("Some attribution text");
         file.AdditionalPurpose.Add(SoftwarePurpose.other);
         file.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));

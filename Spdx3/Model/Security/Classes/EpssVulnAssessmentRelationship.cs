@@ -59,33 +59,8 @@ public class EpssVulnAssessmentRelationship : VulnAssessmentRelationship
     public EpssVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to, double percentile, double probability) 
         : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
     {
-        if (percentile is < 0.0 or > 1.0)
-        {
-            throw new Spdx3Exception("Illegal value for Percentile", 
-                new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
-        }
-        _percentile = percentile;
-        if (probability is < 0.0 or > 1.0)
-        {
-            throw new Spdx3Exception("Illegal value for Probability", 
-                new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
-        }
-        _probability = probability;
+        Percentile = percentile;
+        Probability = probability;
     }
 
-    public override void Validate()
-    {
-        base.Validate();
-        if (_percentile is < 0.0 or > 1.0)
-        {
-            throw new Spdx3Exception("Illegal value for Percentile", 
-                new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
-        }
-        if (_probability is < 0.0 or > 1.0)
-        {
-            throw new Spdx3Exception("Illegal value for Percentile", 
-                new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
-        }
-        
-    }
 }

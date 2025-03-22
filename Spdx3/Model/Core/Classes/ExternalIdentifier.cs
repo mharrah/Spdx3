@@ -29,7 +29,7 @@ public class ExternalIdentifier : BaseModelClass
 
     [JsonPropertyName("identifierLocator")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<string> IdentifierLocator { get; } = new List<string>();
+    public IList<Uri> IdentifierLocator { get; } = new List<Uri>();
 
     [JsonPropertyName("issuingAuthority")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]

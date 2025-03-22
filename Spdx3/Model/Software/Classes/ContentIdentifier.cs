@@ -15,7 +15,7 @@ public class ContentIdentifier : IntegrityMethod
 
     [JsonPropertyName("software_contentIdentifierValue")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public string? ContentIdentifierValue { get; set; }
+    public Uri? ContentIdentifierValue { get; set; }
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global
@@ -25,7 +25,7 @@ public class ContentIdentifier : IntegrityMethod
 
     [SetsRequiredMembers]
     public ContentIdentifier(Catalog catalog, ContentIdentifierType contentIdentifierType,
-        string contentIdentifierValue) : base(catalog)
+        Uri contentIdentifierValue) : base(catalog)
     {
         ContentIdentifierType = contentIdentifierType;
         ContentIdentifierValue = contentIdentifierValue;

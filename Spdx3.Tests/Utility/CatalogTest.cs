@@ -11,7 +11,7 @@ public class CatalogTest
         var spdxIdFactory = new Catalog();
         var id = spdxIdFactory.NewId(typeof(TestBaseModelClass));
         Assert.NotNull(id);
-        Assert.Matches("urn:TestBaseModelClass:[0-9a-f]{3}", id);
+        Assert.Matches("urn:TestBaseModelClass:[0-9a-f]{3}", id.ToString());
     }
 
     [Fact]
@@ -20,7 +20,7 @@ public class CatalogTest
         var spdxIdFactory = new Catalog();
         var id = spdxIdFactory.NewId(typeof(string));
         Assert.NotNull(id);
-        Assert.Matches("urn:String:[0-9a-f]{3}", id);
+        Assert.Matches("urn:String:[0-9a-f]{3}", id.ToString());
     }
 
     [Fact]

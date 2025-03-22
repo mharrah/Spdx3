@@ -8,7 +8,7 @@ public class NoneElementTest : BaseModelTestClass
     public void NoneElement_Spdx_IsConstant()
     {
         // Arrange
-        const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement";
+        var expected = new Uri("https://spdx.org/rdf/3.0.1/terms/Core/NoneElement");
 
         // Act
         var noneElement = new NoneElement(TestCatalog, TestCreationInfo);

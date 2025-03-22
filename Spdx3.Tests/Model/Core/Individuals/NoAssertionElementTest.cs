@@ -8,7 +8,7 @@ public class NoAssertionElementTest : BaseModelTestClass
     public void NoAssertionElement_Spdx_IsConstant()
     {
         // Arrange
-        const string expected = "https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement";
+        var expected = new Uri("https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement");
 
         // Act
         var noAssertion = new NoAssertionElement(TestCatalog, TestCreationInfo);

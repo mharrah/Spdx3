@@ -14,7 +14,7 @@ public class Catalog
     private int _idCounter = 1000;
 
     // A running list of all the objects created 
-    public IDictionary<string, BaseModelClass> Items { get; } = new Dictionary<string, BaseModelClass>();
+    public IDictionary<Uri, BaseModelClass> Items { get; } = new Dictionary<Uri, BaseModelClass>();
 
     /// <summary>
     ///     There's no semantic meaning to an SPDX ID, and no real correspondence to real life objects.
@@ -22,9 +22,9 @@ public class Catalog
     /// </summary>
     /// <param name="type">The type of object to create an ID for</param>
     /// <returns>A URN that can be used as a node identifier (spdxId)</returns>
-    public string NewId(Type type)
+    public Uri NewId(Type type)
     {
-        return $"urn:{type.Name}:{GetShortUid()}";
+        return new Uri($"urn:{type.Name}:{GetShortUid()}");
     }
 
     private string GetShortUid()

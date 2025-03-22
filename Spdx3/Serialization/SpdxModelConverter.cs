@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Utility;
+using Uri = System.Uri;
 
 namespace Spdx3.Serialization;
 
@@ -37,6 +38,10 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                     if (currentPropertyType == typeof(string))
                     {
                         currentProp.SetValue(result, strVal);
+                    }
+                    else if (currentPropertyType == typeof(Uri))
+                    {
+                        currentProp.SetValue(result, new Uri(strVal));
                     }
                     else if (currentPropertyType == typeof(DateTimeOffset))
                     {
@@ -76,7 +81,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                             var type = placeHolder.GetType();
                             var spdxIdProperty = type.GetProperty("SpdxId") ??
                                                  throw new Spdx3SerializationException("Could not get spdxId property");
-                            spdxIdProperty.SetValue(placeHolder, strVal);
+                            spdxIdProperty.SetValue(placeHolder, new Uri(strVal));
 
                             var typeProperty = type.GetProperty("Type") ??
                                                throw new Spdx3SerializationException("Could not get type property");
@@ -107,7 +112,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                          */
                         var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentPropertyType, true),
                             currentPropertyType);
-                        currentPropertyType.GetProperty("SpdxId")?.SetValue(placeHolder, strVal);
+                        currentPropertyType.GetProperty("SpdxId")?.SetValue(placeHolder, new Uri(strVal));
                         currentPropertyType.GetProperty("Type")?.SetValue(placeHolder,
                             Naming.SpdxTypeForClass(currentPropertyType));
                         currentProp.SetValue(result, placeHolder);
@@ -206,14 +211,17 @@ public class SpdxModelConverter<T> : JsonConverter<T>
             case double val:
                 writer.WriteNumber(jsonElementName, val);
                 break;
-            case string val:
-                writer.WriteString(jsonElementName, val);
+            case Uri val:
+                writer.WriteString(jsonElementName, val.ToString());
                 break;
             case DateTimeOffset val:
                 writer.WriteString(jsonElementName, val.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ssZ"));
                 break;
+            case string val:
+                writer.WriteString(jsonElementName, val);
+                break;
             case BaseModelClass:
-                writer.WriteString(jsonElementName, (string)(propVal as dynamic).SpdxId);
+                writer.WriteString(jsonElementName, (string)(propVal as dynamic).SpdxId.ToString());
                 break;
             case List<string> list:
                 if (list.Count > 0)
@@ -235,9 +243,6 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                 }
 
                 break;
-            case Uri:
-                writer.WriteString(jsonElementName, propVal.ToString());
-                break;
             default:
                 throw new Spdx3Exception($"Unhandled class type {propVal?.GetType().FullName}");
         }
@@ -251,7 +256,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         {
             if (spdxClass != null)
             {
-                writer.WriteStringValue((spdxClass as BaseModelClass)?.SpdxId);
+                writer.WriteStringValue((spdxClass as BaseModelClass)?.SpdxId.ToString());
             }
         }
 
