@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 03/22/2025 - 00:12:57 |
-| Coverage date: | 03/22/2025 - 00:12:56 |
+| Generated on: | 03/22/2025 - 00:35:21 |
+| Coverage date: | 03/22/2025 - 00:35:20 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 67 |
 | Files: | 67 |
-| **Line coverage:** | 92.1% (1376 of 1493) |
-| Covered lines: | 1376 |
-| Uncovered lines: | 117 |
-| Coverable lines: | 1493 |
-| Total lines: | 3654 |
-| **Branch coverage:** | 80.3% (352 of 438) |
-| Covered branches: | 352 |
-| Total branches: | 438 |
+| **Line coverage:** | 92.8% (1394 of 1502) |
+| Covered lines: | 1394 |
+| Uncovered lines: | 108 |
+| Coverable lines: | 1502 |
+| Total lines: | 3663 |
+| **Branch coverage:** | 80.5% (356 of 442) |
+| Covered branches: | 356 |
+| Total branches: | 442 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 92.1%</summary>
+<details><summary>Spdx3 - 92.8%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**92.1%**|**80.3%**|
+|**Spdx3**|**92.8%**|**80.5%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -71,7 +71,7 @@
 |Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|90.4%|50%|
 |Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|90.4%|50%|
 |Spdx3.Model.Security.Classes.EpssVulnAssessmentRelationship|100%|100%|
-|Spdx3.Model.Security.Classes.ExploitCatalogVulnAssessmentRelationship|0%||
+|Spdx3.Model.Security.Classes.ExploitCatalogVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.SsvcVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.VulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.Vulnerability|100%||
@@ -85,7 +85,7 @@
 |Spdx3.Model.Software.Classes.Snippet|100%|100%|
 |Spdx3.Model.Software.Classes.SoftwareArtifact|100%||
 |Spdx3.Serialization.Reader|93.3%|75%|
-|Spdx3.Serialization.SpdxModelConverter`1|88.7%|80.5%|
+|Spdx3.Serialization.SpdxModelConverter`1|89%|81%|
 |Spdx3.Serialization.SpdxModelConverterFactory|100%||
 |Spdx3.Serialization.SpdxWrapper|100%||
 |Spdx3.Serialization.SpdxWrapperConverter`1|84.7%|76.3%|
