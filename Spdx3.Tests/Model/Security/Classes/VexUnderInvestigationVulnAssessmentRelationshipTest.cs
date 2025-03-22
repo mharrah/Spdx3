@@ -6,11 +6,7 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.Security.Classes;
 
-/// <summary>
-///     Test for the VexVulnAssessmentRelationship abstract class, using TestVexVulnAssessmentRelationship as the concrete
-///     implementation.
-/// </summary>
-public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
+public class VexUnderInvestigationVulnAssessmentRelationshipTest : BaseModelTestClass
 {
     [Fact]
     public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
@@ -20,16 +16,16 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                             {
                               "creationInfo": "urn:CreationInfo:3f5",
                               "type": "security_VexVulnAssessmentRelationship",
-                              "spdxId": "urn:VexVulnAssessmentRelationship:402"
+                              "spdxId": "urn:VexUnderInvestigationVulnAssessmentRelationship:402"
                             }
                             """;
 
         // Act
-        var vexVulnAssessmentRelationship = FromJson<TestVexVulnAssessmentRelationship>(json);
+        var vexVulnAssessmentRelationship = FromJson<VexUnderInvestigationVulnAssessmentRelationship>(json);
 
         // Assert
         Assert.NotNull(vexVulnAssessmentRelationship);
-        Assert.Equal(new Uri("urn:VexVulnAssessmentRelationship:402"), vexVulnAssessmentRelationship.SpdxId);
+        Assert.Equal(new Uri("urn:VexUnderInvestigationVulnAssessmentRelationship:402"), vexVulnAssessmentRelationship.SpdxId);
     }
 
 
@@ -39,18 +35,18 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vexVulnAssessmentRelationship = new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
-            RelationshipType.affects, vulnerability, packages);
+        var vexVulnAssessmentRelationship = new VexUnderInvestigationVulnAssessmentRelationship(TestCatalog, TestCreationInfo,
+            vulnerability, packages);
         const string expected = """
                                 {
                                   "from": "urn:Vulnerability:40f",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "affects",
+                                  "relationshipType": "underInvestigationFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "security_TestVexVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
+                                  "type": "security_VexUnderInvestigationVulnAssessmentRelationship",
+                                  "spdxId": "urn:VexUnderInvestigationVulnAssessmentRelationship:429"
                                 }
                                 """;
 
@@ -68,8 +64,8 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
         var vexVulnAssessmentRelationship =
-            new TestVexVulnAssessmentRelationship(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability,
-                packages)
+            new VexUnderInvestigationVulnAssessmentRelationship(TestCatalog, TestCreationInfo, 
+                vulnerability, packages)
             {
                 ModifiedTime = PredictableDateTime.AddDays(1),
                 PublishedTime = PredictableDateTime.AddDays(2),
@@ -96,7 +92,7 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "other",
+                                  "relationshipType": "underInvestigationFor",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",
@@ -114,8 +110,8 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
                                   "verifiedUsing": [
                                     "urn:Hash:46a"
                                   ],
-                                  "type": "security_TestVexVulnAssessmentRelationship",
-                                  "spdxId": "urn:TestVexVulnAssessmentRelationship:429"
+                                  "type": "security_VexUnderInvestigationVulnAssessmentRelationship",
+                                  "spdxId": "urn:VexUnderInvestigationVulnAssessmentRelationship:429"
                                 }
                                 """;
 
@@ -125,4 +121,5 @@ public class VexVulnAssessmentRelationshipTest : BaseModelTestClass
         // Assert
         Assert.Equal(expected, json);
     }
+    
 }

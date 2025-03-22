@@ -1,6 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Security.Enums;
+using Spdx3.Serialization;
 using Spdx3.Utility;
 
 namespace Spdx3.Model.Security.Classes;
@@ -11,11 +15,17 @@ namespace Spdx3.Model.Security.Classes;
 /// </summary>
 public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelationship
 {
-    /*    
-    impactStatement	xsd:string	0	1
-    impactStatementTime	/Core/DateTime	0	1
-    justificationType	VexJustificationType	0	1
-    */
+    [JsonPropertyName("security_impactStatement")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public string? ImpactStatement { get; set; }
+    
+    [JsonPropertyName("security_impactStatementTime")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public DateTimeOffset? ImpactStatementTime { get; set; }
+
+    [JsonPropertyName("security_justificationType")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public VexJustificationType? JustificationType { get; set; }
     
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
@@ -39,5 +49,9 @@ public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelatio
          Nevertheless, to produce a valid VEX not_affected statement, one of them MUST be defined. 
          This is specified in the Minimum Elements for VEX.
          */
+        if (ImpactStatement == null && JustificationType == null)
+        {
+            throw new Spdx3ValidationException("At least one of ImpactStatement and/or JustificationType must be specified.");
+        }
     }
 }

@@ -11,7 +11,6 @@ namespace Spdx3.Model.Security.Classes;
 /// </summary>
 public class VexFixedVulnAssessmentRelationship : VexVulnAssessmentRelationship
 {
-    
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
     protected internal VexFixedVulnAssessmentRelationship()

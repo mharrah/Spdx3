@@ -11,7 +11,6 @@ namespace Spdx3.Model.Security.Classes;
 /// </summary>
 public class VexUnderInvestigationVulnAssessmentRelationship : VexVulnAssessmentRelationship
 {
-    
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
     protected internal VexUnderInvestigationVulnAssessmentRelationship()
@@ -20,7 +19,9 @@ public class VexUnderInvestigationVulnAssessmentRelationship : VexVulnAssessment
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VexUnderInvestigationVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, RelationshipType relationshipType, Vulnerability from, List<Element> to) : base(catalog, creationInfo, relationshipType, from, to)
+    public VexUnderInvestigationVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, 
+         Vulnerability from, List<Element> to) 
+        : base(catalog, creationInfo, RelationshipType.underInvestigationFor, from, to)
     {
     }
 }
