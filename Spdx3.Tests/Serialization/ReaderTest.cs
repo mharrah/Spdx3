@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.Json;
 using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Serialization;
@@ -136,7 +137,8 @@ public class ReaderTest
 
         // Assert
         Assert.NotNull(exception);
-        Assert.IsType<Spdx3Exception>(exception);
+        Assert.IsType<Spdx3SerializationException>(exception);
+        Assert.IsType<InvalidCastException>(exception.InnerException);
     }
 
 
@@ -172,6 +174,8 @@ public class ReaderTest
         // Assert
         Assert.NotNull(exception);
         Assert.IsType<Spdx3Exception>(exception);
+        Assert.Contains("Could not find catalog item with ID", exception.Message);
+        Assert.Null(exception.InnerException);
     }
 
 
@@ -206,6 +210,8 @@ public class ReaderTest
         // Assert
         Assert.NotNull(exception);
         Assert.IsType<Spdx3SerializationException>(exception);
+        Assert.Contains("nested object", exception.Message);
+        Assert.Null(exception.InnerException);
     }
 
     [Fact]
@@ -217,12 +223,7 @@ public class ReaderTest
                               "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
                               "@graph": [
                                 {
-                                  "creationInfo": {
-                                    "created": "2025-02-22T01:23:45Z",
-                                    "specVersion": "3.0.1",
-                                    "type": "CreationInfo",
-                                    "spdxId": "urn:CreationInfo:3f5"
-                                  },
+                                  "creationInfo": "urn:CreationInfo:3f5",
                                   "type": ,
                                   "spdxId": "urn:SpdxDocument:402"
                                 }
@@ -238,7 +239,9 @@ public class ReaderTest
 
         // Assert
         Assert.NotNull(exception);
-        Assert.IsType<Spdx3SerializationException>(exception);
+        Assert.IsType<JsonException>(exception);
+        Assert.Contains("',' is an invalid start of a value", exception.Message);
+        Assert.NotNull(exception.InnerException);
     }
 
 
@@ -251,12 +254,7 @@ public class ReaderTest
                               "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
                               "@graph": [
                                 {
-                                  "creationInfo": {
-                                    "created": "2025-02-22T01:23:45Z",
-                                    "specVersion": "3.0.1",
-                                    "type": "CreationInfo",
-                                    "spdxId": "urn:CreationInfo:3f5"
-                                  },
+                                  "creationInfo": "urn:CreationInfo:3f5",
                                   : "Value",
                                   "spdxId": "urn:SpdxDocument:402"
                                 }
@@ -272,7 +270,8 @@ public class ReaderTest
 
         // Assert
         Assert.NotNull(exception);
-        Assert.IsType<Spdx3SerializationException>(exception);
+        Assert.IsType<JsonException>(exception);
+        Assert.Contains("':' is an invalid start of a property name", exception.Message);
     }
 
 

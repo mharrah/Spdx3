@@ -18,7 +18,10 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 {
     // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
     // hashtable into an SpdxBaseClass object from the model
-    private Dictionary<string, object>? _hashTable;
+    private Dictionary<string, object> _hashTable = new Dictionary<string, object>();
+    
+    // Are we already working on a hashtable?  Because we don't process nested objects
+    private bool _hashtableInProgress = false;
 
     // As we read the object properties, first we read the name, then we read the value.  This is the name and
     // the key into the hashtable that we're about to set.
@@ -99,21 +102,22 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
                 case JsonTokenType.StartObject:
                     // There shouldn't be a hashtable already in progress at the start of a new object
-                    if (_hashTable != null)
+                    if (_hashtableInProgress)
                     {
                         throw new Spdx3SerializationException("Can't process nested object values");
                     }
 
                     // Start a new hashtable for holding values -- we'll make a model object out of it when we reach the end of the json object
                     _hashTable = new Dictionary<string, object>();
-
+                    _hashtableInProgress = true;
                     break;
 
                 case JsonTokenType.EndObject:
                     // Turn the hashtable into Spdx class
                     var cls = GetObjectFromHashTable();
                     result.Graph.Add(cls);
-                    _hashTable = null;  // Get rid of the hashTable so we can safely start a new one
+                    _hashTable.Clear();       // Get rid of the hashTable contents so we can safely start a new one
+                    _hashtableInProgress = false;
                     break;
 
                 case JsonTokenType.None:
@@ -226,43 +230,21 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
     /// <exception cref="Spdx3Exception"></exception>
     private BaseModelClass GetObjectFromHashTable()
     {
-        if (_hashTable == null)
-        {
-            throw new Spdx3SerializationException("Hash table is null");
-        }
-        
-        // Create the needed object
-        if (!_hashTable.TryGetValue("type", out var val))
-        {
-            throw new Spdx3Exception("No type found in hash table");
-        }
-
-        var t = (string)val;
-        var classTypeName = Naming.ClassNameForSpdxType(t);
+        // Get the type of object to create
+        var classTypeName = Naming.ClassNameForSpdxType(_hashTable);
         var classType = Type.GetType(classTypeName) ??
                         throw new Spdx3SerializationException($"Could not get type {classTypeName}");
 
-        if (classType.IsAbstract)
+        var result = Activator.CreateInstance(classType, true) as BaseModelClass;
+        if (result == null)
         {
-            throw new Spdx3Exception($"{classTypeName} is an abstract class and cannot be instantiated");
+            throw new Spdx3SerializationException($"Could not create an instance of type {classType}");
         }
-
-        var result = Activator.CreateInstance(classType, true) as BaseModelClass
-                     ?? throw new Spdx3SerializationException($"Unable to instantiate instance of {classTypeName}");
 
         // Populate the object with values
         foreach (var entry in _hashTable)
         {
-            var key = Regex.Replace(entry.Key, "^spdx:.*/", "");
-            if (key == "@id")
-            {
-                key = "spdxId";
-            }
-
-            if (key == "@type")
-            {
-                key = "type";
-            }
+            var key = NormalizeKey(entry.Key);
 
             var property = GetPropertyFromJsonElementName(classType, key);
             var propType = property.PropertyType;
@@ -273,48 +255,23 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             }
             else if (propType == typeof(int))
             {
-                if (entry.Value.GetType() != typeof(double))
-                {
-                    throw new Spdx3Exception($"{propType.Name} expected an double, but {entry.Value.GetType()} encountered");
-                }
-                property.SetValue(result, Convert.ToInt32(entry.Value));
+                SetPropertyValue(property, result, entry.Value);
             }
             else if (propType == typeof(double))
             {
-                if (entry.Value.GetType() != typeof(double))
-                {
-                    throw new Spdx3Exception($"{propType.Name} expected a double, but {entry.Value.GetType()} encountered");
-                }
-                property.SetValue(result, entry.Value);
+                SetPropertyValue(property, result, entry.Value);
             }
             else if (propType == typeof(string))
             {
-                if (entry.Value.GetType() != typeof(string))
-                {
-                    throw new Spdx3Exception($"{propType.Name} expected a string, but {entry.Value.GetType()} encountered");
-                }
-                property.SetValue(result, entry.Value);
+                SetPropertyValue(property, result, entry.Value);
             }
             else if (propType == typeof(Uri))
             {
-                if (entry.Value.GetType() != typeof(string))
-                {
-                    throw new Spdx3Exception($"{propType.Name} expected a string, but {entry.Value.GetType()} encountered");
-                }
-                property.SetValue(result, new Uri((string)entry.Value));
+                SetPropertyValue(property, result, new Uri((string)entry.Value));
             }
             else if (propType == typeof(DateTimeOffset))
             {
-                if (entry.Value.GetType() != typeof(string))
-                {
-                    throw new Spdx3Exception($"{propType.Name} expected an string, but {entry.Value.GetType()} encountered");
-                }
-
-                if (!DateTimeOffset.TryParse((string)entry.Value, out var dateTimeOffset))
-                {
-                    throw new Spdx3Exception($"{entry.Value} could not be parsed as DateTimeOffset encountered");
-                }
-                property.SetValue(result, dateTimeOffset);
+                SetPropertyValue(property, result, DateTimeOffset.Parse((string)entry.Value));
             }
             else if (propType.IsGenericType)
             {
@@ -385,6 +342,33 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         }
 
         return result;
+    }
+
+    private static string NormalizeKey(string originalKey)
+    {
+        var key = Regex.Replace(originalKey, "^spdx:.*/", "");
+        key = key == "@id" ? "spdxId" : key;
+        key = key == "@type" ? "type" : key;
+        return key;
+    }
+
+    private static void SetPropertyValue(PropertyInfo property, object obj, object hashTableValue)
+    {
+        if (hashTableValue is double && property.PropertyType == typeof(int))
+        {
+            property.SetValue(obj, Convert.ToInt32(hashTableValue));
+            return;
+        }
+        try
+        {
+            property.SetValue(obj, Convert.ChangeType(hashTableValue, property.PropertyType));
+        }
+        catch (Exception e)
+        {
+            var ht = hashTableValue.GetType().FullName;
+            var pt = property.PropertyType.FullName;
+            throw new Spdx3SerializationException($"Property {property.Name} on {property.DeclaringType.FullName} is a {pt} but the value from the JSON was a {ht}", e);
+        }
     }
 
     /// <summary>

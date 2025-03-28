@@ -38,28 +38,20 @@ public static class Naming
         throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
     }
 
-    public static string ClassNameForSpdxType(string spdxType)
+    public static string ClassNameForSpdxType(Dictionary<string, object> hashTable)
     {
-        string? className = null;
+        var spdxType = (string)hashTable[hashTable.ContainsKey("type") ? "type" : "@type"];
         if (!spdxType.Contains('_'))
         {
-            className = $"Spdx3.Model.Core.Classes.{spdxType}";
-        }
-        else
-        {
-            foreach (var prefix in PrefixesForNamespaces.Where(prefix =>
-                         !string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value)))
-            {
-                className = $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
-                break;
-            }
+            return $"Spdx3.Model.Core.Classes.{spdxType}";
         }
 
-        if (className == null)
+        foreach (var prefix in PrefixesForNamespaces.Where(prefix =>
+                     !string.IsNullOrWhiteSpace(prefix.Value) && spdxType.StartsWith(prefix.Value)))
         {
-            throw new Spdx3SerializationException($"Unable to determine class type for node of Type={spdxType}");
+            return $"Spdx3.{prefix.Key}.Classes.{spdxType[prefix.Value.Length..]}";
         }
 
-        return className;
+        throw new Spdx3SerializationException($"Unable to determine class type for node of Type={spdxType}");
     }
 }
