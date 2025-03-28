@@ -14,4 +14,8 @@ public class ArtifactConcreteTestFixture : Artifact
     public ArtifactConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
+
+    public ArtifactConcreteTestFixture()
+    {
+    }
 }

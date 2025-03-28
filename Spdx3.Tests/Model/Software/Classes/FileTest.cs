@@ -52,7 +52,8 @@ public class FileTest : BaseModelTest
             ValidUntilTime = PredictableDateTime,
             SuppliedBy = new Agent(TestCatalog, TestCreationInfo)
         };
-        file.SupportLevel.Add(SupportType.noAssertion);
+        file.SupportLevel.Add(SupportType.deployed);
+        file.SupportLevel.Add(SupportType.support);
         file.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         file.AdditionalPurpose.Add(SoftwarePurpose.archive);
         file.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
@@ -87,7 +88,8 @@ public class FileTest : BaseModelTest
                                   "standardName": "Some standard name",
                                   "suppliedBy": "urn:Agent:41c",
                                   "supportLevel": [
-                                    "noAssertion"
+                                    "deployed",
+                                    "support"
                                   ],
                                   "validUntilTime": "2025-02-22T01:23:45Z",
                                   "comment": "Some comment",

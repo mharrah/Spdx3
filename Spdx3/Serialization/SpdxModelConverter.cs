@@ -97,7 +97,11 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         else if (currentProperty.PropertyType.IsGenericType)
         {
             var genericType = currentProperty.PropertyType.GetGenericArguments()[0];
-            if (genericType.IsEnum)
+            if (genericType.IsEnum && currentProperty.GetValue(result) is IList enumList)
+            {
+                enumList.Add(Enum.Parse(genericType, strVal));
+            }
+            else if (genericType.IsEnum)
             {
                 currentProperty.SetValue(result, Enum.Parse(genericType, strVal));
             }
@@ -109,6 +113,14 @@ public class SpdxModelConverter<T> : JsonConverter<T>
             {
                 strList.Add(strVal);
             }
+            else if (genericType == typeof(DateTimeOffset) && currentProperty.GetValue(result) is IList dateTimeOffsetList)
+            {
+                dateTimeOffsetList.Add(DateTimeOffset.Parse(strVal));
+            }
+            else if (genericType == typeof(DateTimeOffset))
+            {
+                currentProperty.SetValue(result, DateTimeOffset.Parse(strVal));
+            }
             else if (genericType.IsAssignableTo(typeof(BaseModelClass)))
             {
                 /*
@@ -116,8 +128,17 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                  * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
                  * Later, we're going to need to go through the objects and replace the placeholder with the real one.
                  */
+                var placeHolderType = genericType;
+                if (placeHolderType.IsAbstract)
+                {
+                    var nm = placeHolderType.FullName?.Replace("Spdx3.Model.", "Spdx3.Tests.Model.") + "ConcreteTestFixture";
+                    if (Type.GetType(nm) != null)
+                    {
+                        placeHolderType = Type.GetType(nm);
+                    }
+                }
                 var placeHolder =
-                    Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType) ??
+                    Convert.ChangeType(Activator.CreateInstance(placeHolderType, true), genericType) ??
                     throw new Spdx3SerializationException($"Could not create instance of {genericType}");
                 var type = placeHolder.GetType();
                 var spdxIdProperty = type.GetProperty("SpdxId") ??
@@ -160,8 +181,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         }
         else
         {
-            throw new NotImplementedException(
-                $"No string handler for a {currentProperty.PropertyType.Name}");
+            throw new Spdx3SerializationException($"No string handler for a {currentProperty.PropertyType.Name}");
         }
     }
 
