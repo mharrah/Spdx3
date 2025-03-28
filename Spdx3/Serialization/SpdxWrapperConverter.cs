@@ -275,65 +275,12 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
             }
             else if (propType.IsGenericType)
             {
-                if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
-                    propType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass)))
-                {
-                    // The property is a list of classes, but the Json just has a list of references.
-                    // We need to create placeholder objects from the ID's that we will swap out later
-                    var l = property.GetValue(result);
-                    if (l is not IList propertyValueListOfObjects)
-                    {
-                        throw new Spdx3SerializationException($"Could not get list of objects for type {propType}");
-                    }
-
-                    List<object> listOfIds;
-                    if (entry.Value is string)
-                    {
-                        listOfIds = [];
-                    }
-                    else
-                    {
-                        listOfIds = entry.Value as List<object> ??
-                                    throw new Spdx3SerializationException("List of ID's is null");
-                    }
-
-                    foreach (var placeholder in listOfIds.Select(id => GetPlaceHolderForProperty(property, (string)id)))
-                    {
-                        propertyValueListOfObjects.Add(placeholder);
-                    }
-                }
-                else if (propType.GetGenericTypeDefinition() == typeof(IList<>) &&
-                         propType.GetGenericArguments()[0].IsEnum)
-                {
-                    var enumType = propType.GetGenericArguments()[0];
-
-                    if (property.GetValue(result) is not IList listOfEnums)
-                    {
-                        throw new Spdx3SerializationException(
-                            $"Could not get value of type {propType} as a list");
-                    }
-
-                    foreach (var id in (IList<object>)entry.Value)
-                    {
-                        var value = Enum.Parse(enumType, (string)id);
-                        listOfEnums.Add(value);
-                    }
-                }
-                else if (propType.GetGenericTypeDefinition() == typeof(Nullable<>) &&
-                         propType.GetGenericArguments()[0].IsEnum)
-                {
-                    var value = Enum.Parse(propType.GetGenericArguments()[0], (string)entry.Value);
-                    property.SetValue(result, value);
-                }
+                GetGenericPropertyForObjectFromHashtable(property, result, entry);
             }
             else if (propType.IsEnum)
             {
                 var value = Enum.Parse(propType, (string)entry.Value);
                 property.SetValue(result, value);
-            }
-            else if (propType == typeof(Uri))
-            {
-                property.SetValue(result, new Uri((string)entry.Value));
             }
             else
             {
@@ -342,6 +289,67 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
         }
 
         return result;
+    }
+
+    private static void GetGenericPropertyForObjectFromHashtable(PropertyInfo property,
+        BaseModelClass result, KeyValuePair<string, object> entry)
+    {
+        var propType = property.PropertyType;
+        var propIsListOfModelClasses = propType.GetGenericTypeDefinition() == typeof(IList<>) &&
+                             propType.GetGenericArguments()[0].IsAssignableTo(typeof(BaseModelClass));
+        var propIsListOfEnums = propType.GetGenericTypeDefinition() == typeof(IList<>) &&
+                                propType.GetGenericArguments()[0].IsEnum;
+        var propIsNullableEnum = propType.GetGenericTypeDefinition() == typeof(Nullable<>) &&
+                                 propType.GetGenericArguments()[0].IsEnum;
+
+        
+        if (propIsListOfModelClasses)
+        {
+            // The property is a list of classes, but the Json just has a list of references.
+            // We need to create placeholder objects from the ID's that we will swap out later
+            var l = property.GetValue(result);
+            if (l is not IList propertyValueListOfObjects)
+            {
+                throw new Spdx3SerializationException($"Could not get list of objects for type {propType}");
+            }
+
+            List<object> listOfIds;
+            if (entry.Value is string)
+            {
+                listOfIds = [];
+            }
+            else
+            {
+                listOfIds = entry.Value as List<object> ??
+                            throw new Spdx3SerializationException("List of ID's is null");
+            }
+
+            foreach (var placeholder in listOfIds.Select(id => GetPlaceHolderForProperty(property, (string)id)))
+            {
+                propertyValueListOfObjects.Add(placeholder);
+            }
+        }
+        else if (propIsListOfEnums)
+        {
+            var enumType = propType.GetGenericArguments()[0];
+
+            if (property.GetValue(result) is not IList listOfEnums)
+            {
+                throw new Spdx3SerializationException(
+                    $"Could not get value of type {propType} as a list");
+            }
+
+            foreach (var id in (IList<object>)entry.Value)
+            {
+                var value = Enum.Parse(enumType, (string)id);
+                listOfEnums.Add(value);
+            }
+        }
+        else if (propIsNullableEnum)
+        {
+            var value = Enum.Parse(propType.GetGenericArguments()[0], (string)entry.Value);
+            property.SetValue(result, value);
+        }
     }
 
     private static string NormalizeKey(string originalKey)
