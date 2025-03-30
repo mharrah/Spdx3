@@ -170,13 +170,10 @@ public class SpdxModelConverter<T> : JsonConverter<T>
             var typeProperty = type.GetProperty("Type") ??
                                throw new Spdx3SerializationException("Could not get type property");
             typeProperty.SetValue(placeHolder, Naming.SpdxTypeForClass(genericType));
-            if (currentProperty.GetValue(result) is not IList listVal)
-            {
-                throw new Spdx3SerializationException(
-                    $"List property {currentProperty.Name} was not initialized as a list");
-            }
-
-            listVal.Add(placeHolder);
+            
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            (currentProperty.GetValue(result) as IList).Add(placeHolder);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         else
         {

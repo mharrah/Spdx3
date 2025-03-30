@@ -85,8 +85,7 @@ public class SpdxModelConverterTest
         Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
         Assert.Equal(4, obj.Int);
     }
-
-        
+    
     [Fact]
     public void LoadJsonStringIntoProperty_Read_Handles_Double()
     {
@@ -102,6 +101,24 @@ public class SpdxModelConverterTest
         var obj = JsonSerializer.Deserialize<TestClassWithCertainPropertyTypes>(json, opts);
         Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
         Assert.Equal(4.9, obj.Double);
+    }
+
+    
+    [Fact]
+    public void LoadJsonStringIntoProperty_Read_Handles_Enum()
+    {
+        var opts = new JsonSerializerOptions();
+        opts.Converters.Add(new SpdxModelConverterFactory());
+
+        var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
+        var json = """
+                   {
+                     "enum": "other"
+                   }
+                   """;
+        var obj = JsonSerializer.Deserialize<TestClassWithCertainPropertyTypes>(json, opts);
+        Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
+        Assert.Equal(EnergyUnitType.other, obj.Enum);
     }
 
     public class TestClassWithCertainPropertyTypes : BaseModelClass
@@ -125,5 +142,11 @@ public class SpdxModelConverterTest
         [JsonPropertyName("double")]
         [JsonConverter(typeof(SpdxModelConverterFactory))]
         public double Double { get; set; }
+        
+        [JsonPropertyName("enum")]
+        [JsonConverter(typeof(SpdxModelConverterFactory))]
+        public EnergyUnitType Enum { get; set; }
+        
+        
     }
 }
