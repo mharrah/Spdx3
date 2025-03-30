@@ -13,7 +13,7 @@ namespace Spdx3.Serialization;
 public class SpdxModelConverter<T> : JsonConverter<T>
 {
     /// <summary>
-    /// The main Read method implementation for this implementation of a JsonConverter
+    ///     The main Read method implementation for this implementation of a JsonConverter
     /// </summary>
     /// <param name="reader">The JSON reader</param>
     /// <param name="typeToConvert">The type we're trying/expecting to construct from the JSON</param>
@@ -27,6 +27,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         PropertyInfo? currentProperty = null;
 
         while (reader.Read())
+        {
             switch (reader.TokenType)
             {
                 case JsonTokenType.PropertyName:
@@ -63,12 +64,14 @@ public class SpdxModelConverter<T> : JsonConverter<T>
 
                     break;
             }
+        }
 
         return result;
     }
 
     /// <summary>
-    /// Take a given string value just read from the JSON, and load its value into whatever the property is that we're currently reading.
+    ///     Take a given string value just read from the JSON, and load its value into whatever the property is that we're
+    ///     currently reading.
     /// </summary>
     /// <param name="result">The object with the property</param>
     /// <param name="currentProperty">The property of the object that we're loading into</param>
@@ -96,70 +99,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         }
         else if (currentProperty.PropertyType.IsGenericType)
         {
-            var genericType = currentProperty.PropertyType.GetGenericArguments()[0];
-            if (genericType.IsEnum && currentProperty.GetValue(result) is IList enumList)
-            {
-                enumList.Add(Enum.Parse(genericType, strVal));
-            }
-            else if (genericType.IsEnum)
-            {
-                currentProperty.SetValue(result, Enum.Parse(genericType, strVal));
-            }
-            else if (genericType == typeof(bool))
-            {
-                currentProperty.SetValue(result, bool.Parse(strVal));
-            }
-            else if (genericType == typeof(string) && currentProperty.GetValue(result) is IList strList)
-            {
-                strList.Add(strVal);
-            }
-            else if (genericType == typeof(DateTimeOffset) && currentProperty.GetValue(result) is IList dateTimeOffsetList)
-            {
-                dateTimeOffsetList.Add(DateTimeOffset.Parse(strVal));
-            }
-            else if (genericType == typeof(DateTimeOffset))
-            {
-                currentProperty.SetValue(result, DateTimeOffset.Parse(strVal));
-            }
-            else if (genericType.IsAssignableTo(typeof(BaseModelClass)))
-            {
-                /*
-                 * At this point we have a string that is the URN of another Element, which we may or may not
-                 * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
-                 * Later, we're going to need to go through the objects and replace the placeholder with the real one.
-                 */
-                var placeHolderType = genericType;
-                if (placeHolderType.IsAbstract)
-                {
-                    var nm = placeHolderType.FullName?.Replace("Spdx3.Model.", "Spdx3.Tests.Model.") + "ConcreteTestFixture";
-                    if (Type.GetType(nm) != null)
-                    {
-                        placeHolderType = Type.GetType(nm);
-                    }
-                }
-                var placeHolder =
-                    Convert.ChangeType(Activator.CreateInstance(placeHolderType, true), genericType) ??
-                    throw new Spdx3SerializationException($"Could not create instance of {genericType}");
-                var type = placeHolder.GetType();
-                var spdxIdProperty = type.GetProperty("SpdxId") ??
-                                     throw new Spdx3SerializationException("Could not get spdxId property");
-                spdxIdProperty.SetValue(placeHolder, new Uri(strVal));
-
-                var typeProperty = type.GetProperty("Type") ??
-                                   throw new Spdx3SerializationException("Could not get type property");
-                typeProperty.SetValue(placeHolder, Naming.SpdxTypeForClass(genericType));
-                if (currentProperty.GetValue(result) is not IList listVal)
-                {
-                    throw new Spdx3SerializationException(
-                        $"List property {currentProperty.Name} was not initialized as a list");
-                }
-
-                listVal.Add(placeHolder);
-            }
-            else
-            {
-                throw new Spdx3SerializationException($"The type {genericType} is not supported");
-            }
+            LoadJsonStringIntoGenericProperty(result, currentProperty, strVal);
         }
         else if (currentProperty.PropertyType.IsEnum)
         {
@@ -185,8 +125,67 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         }
     }
 
+    private static void LoadJsonStringIntoGenericProperty(object result, PropertyInfo currentProperty, string strVal)
+    {
+        var genericType = currentProperty.PropertyType.GetGenericArguments()[0];
+        if (genericType.IsEnum && currentProperty.GetValue(result) is IList enumList)
+        {
+            enumList.Add(Enum.Parse(genericType, strVal));
+        }
+        else if (genericType.IsEnum)
+        {
+            currentProperty.SetValue(result, Enum.Parse(genericType, strVal));
+        }
+        else if (genericType == typeof(bool))
+        {
+            currentProperty.SetValue(result, bool.Parse(strVal));
+        }
+        else if (genericType == typeof(string) && currentProperty.GetValue(result) is IList strList)
+        {
+            strList.Add(strVal);
+        }
+        else if (genericType == typeof(DateTimeOffset) && currentProperty.GetValue(result) is IList dateTimeOffsetList)
+        {
+            dateTimeOffsetList.Add(DateTimeOffset.Parse(strVal));
+        }
+        else if (genericType == typeof(DateTimeOffset))
+        {
+            currentProperty.SetValue(result, DateTimeOffset.Parse(strVal));
+        }
+        else if (genericType.IsAssignableTo(typeof(BaseModelClass)))
+        {
+            /*
+             * At this point we have a string that is the URN of another Element, which we may or may not
+             * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
+             * Later, we're going to need to go through the objects and replace the placeholder with the real one.
+             */
+            var placeHolder =
+                Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType) ??
+                throw new Spdx3SerializationException($"Could not create instance of {genericType}");
+            var type = placeHolder.GetType();
+            var spdxIdProperty = type.GetProperty("SpdxId") ??
+                                 throw new Spdx3SerializationException("Could not get spdxId property");
+            spdxIdProperty.SetValue(placeHolder, new Uri(strVal));
+
+            var typeProperty = type.GetProperty("Type") ??
+                               throw new Spdx3SerializationException("Could not get type property");
+            typeProperty.SetValue(placeHolder, Naming.SpdxTypeForClass(genericType));
+            if (currentProperty.GetValue(result) is not IList listVal)
+            {
+                throw new Spdx3SerializationException(
+                    $"List property {currentProperty.Name} was not initialized as a list");
+            }
+
+            listVal.Add(placeHolder);
+        }
+        else
+        {
+            throw new Spdx3SerializationException($"The type {genericType} is not supported");
+        }
+    }
+
     /// <summary>
-    /// The main Write operation for this implementation of the JsonConverter
+    ///     The main Write operation for this implementation of the JsonConverter
     /// </summary>
     /// <param name="writer">The writer we are writing to</param>
     /// <param name="value">The value we're writing</param>
@@ -239,7 +238,6 @@ public class SpdxModelConverter<T> : JsonConverter<T>
 
             WriteSimpleProperty(writer, propVal, jsonElementName);
         }
-
 
         writer.WriteEndObject();
     }
