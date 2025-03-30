@@ -276,7 +276,7 @@ var assemblies = [
       { "name": "Spdx3.Model.Software.Classes.Snippet", "rp": "Spdx3_Snippet.html", "cl": 17, "ucl": 0, "cal": 17, "tl": 46, "cb": 2, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Model.Software.Classes.SoftwareArtifact", "rp": "Spdx3_SoftwareArtifact.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 41, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.Reader", "rp": "Spdx3_Reader.html", "cl": 28, "ucl": 2, "cal": 30, "tl": 62, "cb": 3, "tb": 4, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Serialization.SpdxModelConverter<T>", "rp": "Spdx3_SpdxModelConverter_1.html", "cl": 220, "ucl": 18, "cal": 238, "tl": 361, "cb": 136, "tb": 163, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Serialization.SpdxModelConverter<T>", "rp": "Spdx3_SpdxModelConverter_1.html", "cl": 219, "ucl": 15, "cal": 234, "tl": 358, "cb": 135, "tb": 161, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxModelConverterFactory", "rp": "Spdx3_SpdxModelConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 29, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapper", "rp": "Spdx3_SpdxWrapper.html", "cl": 9, "ucl": 0, "cal": 9, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 236, "ucl": 19, "cal": 255, "tl": 442, "cb": 121, "tb": 149, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
@@ -305,7 +305,7 @@ var riskHotspots = [
       { "value": 32, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 246,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 243,
     "metrics": [
       { "value": 32, "exceeded": true },
       { "value": 32, "exceeded": true },
@@ -317,16 +317,16 @@ var riskHotspots = [
       { "value": 29, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "LoadJsonStringIntoGenericProperty(System.Object,System.Reflection.PropertyInfo,System.String)", "methodShortName": "LoadJsonStringIntoGenericProperty(...)", "fileIndex": 0, "line": 129,
-    "metrics": [
-      { "value": 29, "exceeded": false },
-      { "value": 28, "exceeded": true },
-    ]},
-  {
     "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Read(System.Text.Json.Utf8JsonReader&,System.Type,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Read(...)", "fileIndex": 0, "line": 24,
     "metrics": [
       { "value": 28, "exceeded": false },
       { "value": 27, "exceeded": true },
+    ]},
+  {
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "LoadJsonStringIntoGenericProperty(System.Object,System.Reflection.PropertyInfo,System.String)", "methodShortName": "LoadJsonStringIntoGenericProperty(...)", "fileIndex": 0, "line": 129,
+    "metrics": [
+      { "value": 26, "exceeded": false },
+      { "value": 26, "exceeded": true },
     ]},
   {
     "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxWrapperConverter<T>", "reportPath": "Spdx3_SpdxWrapperConverter_1.html", "methodName": "GetGenericPropertyForObjectFromHashtable(System.Reflection.PropertyInfo,Spdx3.Model.BaseModelClass,System.Collections.Generic.KeyValuePair`2<System.String,System.Object>)", "methodShortName": "GetGenericPropertyForObjectFromHashtable(...)", "fileIndex": 0, "line": 296,
@@ -335,7 +335,7 @@ var riskHotspots = [
       { "value": 26, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 194,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "Write(System.Text.Json.Utf8JsonWriter,T,System.Text.Json.JsonSerializerOptions)", "methodShortName": "Write(...)", "fileIndex": 0, "line": 191,
     "metrics": [
       { "value": 22, "exceeded": false },
       { "value": 22, "exceeded": true },
@@ -359,7 +359,7 @@ var riskHotspots = [
       { "value": 18, "exceeded": true },
     ]},
   {
-    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 346,
+    "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "GetPropertyFromJsonElementName(System.Type,System.String)", "methodShortName": "GetPropertyFromJsonElementName(...)", "fileIndex": 0, "line": 343,
     "metrics": [
       { "value": 17, "exceeded": false },
       { "value": 16, "exceeded": true },
