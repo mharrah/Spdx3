@@ -51,9 +51,7 @@ public class SpdxModelConverterTest
         Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
         Assert.Equal(3, obj.ListOfDateTimeOffsets.Count);
     }
-
     
-
     [Fact]
     public void LoadJsonStringIntoProperty_Read_Handles_NullableDateTimeOffset()
     {
@@ -70,8 +68,42 @@ public class SpdxModelConverterTest
         Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
         Assert.NotNull(obj.NullableDateTimeOffset);
     }
-
     
+    [Fact]
+    public void LoadJsonStringIntoProperty_Read_Handles_Int()
+    {
+        var opts = new JsonSerializerOptions();
+        opts.Converters.Add(new SpdxModelConverterFactory());
+
+        var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
+        var json = """
+                   {
+                     "int": 4
+                   }
+                   """;
+        var obj = JsonSerializer.Deserialize<TestClassWithCertainPropertyTypes>(json, opts);
+        Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
+        Assert.Equal(4, obj.Int);
+    }
+
+        
+    [Fact]
+    public void LoadJsonStringIntoProperty_Read_Handles_Double()
+    {
+        var opts = new JsonSerializerOptions();
+        opts.Converters.Add(new SpdxModelConverterFactory());
+
+        var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
+        var json = """
+                   {
+                     "double": 4.9
+                   }
+                   """;
+        var obj = JsonSerializer.Deserialize<TestClassWithCertainPropertyTypes>(json, opts);
+        Assert.IsType<TestClassWithCertainPropertyTypes>(obj);
+        Assert.Equal(4.9, obj.Double);
+    }
+
     public class TestClassWithCertainPropertyTypes : BaseModelClass
     {
         [JsonPropertyName("listOfEnums")]
@@ -85,6 +117,13 @@ public class SpdxModelConverterTest
         [JsonPropertyName("nullableDateTimeOffset")]
         [JsonConverter(typeof(SpdxModelConverterFactory))]
         public DateTimeOffset? NullableDateTimeOffset { get; set; }
-
+        
+        [JsonPropertyName("int")]
+        [JsonConverter(typeof(SpdxModelConverterFactory))]
+        public int Int { get; set; }
+        
+        [JsonPropertyName("double")]
+        [JsonConverter(typeof(SpdxModelConverterFactory))]
+        public double Double { get; set; }
     }
 }
