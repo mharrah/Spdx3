@@ -282,7 +282,7 @@ var assemblies = [
       { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 236, "ucl": 19, "cal": 255, "tl": 442, "cb": 121, "tb": 149, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapperConverterFactory", "rp": "Spdx3_SpdxWrapperConverterFactory.html", "cl": 12, "ucl": 0, "cal": 12, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.Writer", "rp": "Spdx3_Writer.html", "cl": 26, "ucl": 0, "cal": 26, "tl": 70, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 56, "ucl": 19, "cal": 75, "tl": 153, "cb": 18, "tb": 30, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 49, "ucl": 4, "cal": 53, "tl": 125, "cb": 14, "tb": 16, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.IncompleteObjectFactory", "rp": "Spdx3_IncompleteObjectFactory.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 17, "cb": 1, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.Naming", "rp": "Spdx3_Naming.html", "cl": 36, "ucl": 1, "cal": 37, "tl": 57, "cb": 17, "tb": 18, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},
@@ -298,12 +298,6 @@ var riskHotspotMetrics = [
 ];
 
 var riskHotspots = [
-  {
-    "assembly": "Spdx3", "class": "Spdx3.Utility.Catalog", "reportPath": "Spdx3_Catalog.html", "methodName": "RehydratePlaceHolderWithRealItem(System.Reflection.PropertyInfo,Spdx3.Model.BaseModelClass)", "methodShortName": "RehydratePlaceHolderWithRealItem(...)", "fileIndex": 0, "line": 90,
-    "metrics": [
-      { "value": 62, "exceeded": true },
-      { "value": 18, "exceeded": true },
-    ]},
   {
     "assembly": "Spdx3", "class": "Spdx3.Serialization.SpdxModelConverter<T>", "reportPath": "Spdx3_SpdxModelConverter_1.html", "methodName": "WriteSimpleProperty(System.Text.Json.Utf8JsonWriter,System.Object,System.String)", "methodShortName": "WriteSimpleProperty(...)", "fileIndex": 0, "line": 243,
     "metrics": [
