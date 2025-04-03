@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Reflection;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
@@ -40,76 +41,17 @@ public class Catalog
     /// <exception cref="Spdx3SerializationException">If there is not exactly one SpdxDocument element in the catalog</exception>
     public SpdxDocument GetModel()
     {
-        var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
-        if (spdxDocs.Count != 1)
-        {
-            throw new Spdx3Exception($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
-        }
+        ReplacePlaceHoldersWithRealObjects();
+        return AssembleSpdxDocument();
+    }
 
-        var result = (SpdxDocument)spdxDocs.First();
-
-        // Replace all placeholders with their real objects
-        foreach (var item in Items.Values.ToList())
-        {
-            var props = item.GetType().GetProperties();
-            foreach (var prop in props)
-            {
-                if (prop.GetValue(item) == null)
-                {
-                    continue;
-                }
-
-                var isSpdxClass = prop.PropertyType.IsAssignableTo(typeof(BaseModelClass));
-                var isListOfSpdxClass = prop.PropertyType.IsGenericType
-                                        && prop.PropertyType.GetGenericTypeDefinition() == typeof(IList<>)
-                                        && prop.PropertyType.GetGenericArguments()[0]
-                                            .IsAssignableTo(typeof(BaseModelClass));
-
-                if (isSpdxClass)
-                {
-                    if (prop.GetValue(item) is not BaseModelClass placeHolder)
-                    {
-                        continue;
-                    }
-
-                    if (Items.TryGetValue(placeHolder.SpdxId, out var value))
-                    {
-                        prop.SetValue(item, value);
-                    }
-                    else
-                    {
-                        throw new Spdx3Exception($"Could not find catalog item with ID {placeHolder.SpdxId}");
-                    }
-                }
-
-                if (!isListOfSpdxClass)
-                {
-                    continue;
-                }
-
-                if (prop.GetValue(item) is not IList listOfPlaceHolders || listOfPlaceHolders.Count == 0)
-                {
-                    continue;
-                }
-
-                var listOfReplacements = new List<BaseModelClass>();
-                foreach (var ph in listOfPlaceHolders)
-                {
-                    var placeHolder = (BaseModelClass)ph;
-                    if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
-                    {
-                        throw new Spdx3SerializationException(
-                            $"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
-                    }
-
-                    listOfReplacements.Add(value);
-                }
-
-                listOfPlaceHolders.Clear();
-                listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));
-            }
-        }
-
+    /// <summary>
+    /// Take all the rehydrated items in the catalog, and assemble them into an SpdxDocument object
+    /// </summary>
+    /// <returns>The assembled SpdxDocument from the catalog</returns>
+    private SpdxDocument AssembleSpdxDocument()
+    {
+        var result = GetSpdxDocument();
         foreach (var baseModelClass in Items.Values.ToList())
         {
             if (baseModelClass is Element e)
@@ -118,6 +60,94 @@ public class Catalog
             }
         }
 
+        return result;
+    }
+
+    /// <summary>
+    /// Replace all the placeholders in the Catalog items with references to real objects
+    /// </summary>
+    private void ReplacePlaceHoldersWithRealObjects()
+    {
+        foreach (var item in Items.Values.ToList())
+        {
+            // Get the properties that are Spdx Model Class types and are not null
+            var props = item.GetType().GetProperties()
+                .Where(p => p.GetValue(item) != null && p.GetValue(item) is BaseModelClass);
+            foreach (var prop in props)
+            {
+                RehydratePlaceHolderWithRealItem(prop, item);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Rehydrate a specific property (which has a placeholder value) on an object with the real object from the catalog
+    /// </summary>
+    /// <param name="prop">The property that currently has a placeholder that needs replacing</param>
+    /// <param name="itemWithProperty">The item that has the placeholder property</param>
+    /// <exception cref="Spdx3Exception">If </exception>
+    private void RehydratePlaceHolderWithRealItem(PropertyInfo prop, BaseModelClass itemWithProperty)
+    {
+        var isSpdxClass = prop.PropertyType.IsAssignableTo(typeof(BaseModelClass));
+                
+        var isListOfSpdxClass = prop.PropertyType.IsGenericType
+                                && prop.PropertyType.GetGenericTypeDefinition() == typeof(IList<>)
+                                && prop.PropertyType.GetGenericArguments()[0]
+                                    .IsAssignableTo(typeof(BaseModelClass));
+                
+        if (isSpdxClass)
+        {
+            var placeHolder = prop.GetValue(itemWithProperty) as BaseModelClass;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            {
+                throw new Spdx3Exception($"Could not find catalog item with ID {placeHolder.SpdxId}");
+            }
+                    
+            prop.SetValue(itemWithProperty, value);
+        }
+
+        if (isListOfSpdxClass)
+        {
+            if (prop.GetValue(itemWithProperty) is not IList listOfPlaceHolders || listOfPlaceHolders.Count == 0)
+            {
+                return;
+            }
+
+            var listOfReplacements = new List<BaseModelClass>();
+            foreach (var ph in listOfPlaceHolders)
+            {
+                var placeHolder = (BaseModelClass)ph;
+                if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
+                {
+                    throw new Spdx3Exception(
+                        $"Unable to find catalog entry with matching ID {placeHolder.SpdxId}");
+                }
+
+                listOfReplacements.Add(value);
+            }
+
+            listOfPlaceHolders.Clear();
+            listOfReplacements.ForEach(r => listOfPlaceHolders.Add(r));
+        }
+    }
+
+    
+    /// <summary>
+    /// Get the one SpdxDocument object from the catalog
+    /// </summary>
+    /// <returns>The one SpdxDocument</returns>
+    /// <exception cref="Spdx3Exception">If not exactly one SpdxDocument could be found.</exception>
+    private SpdxDocument GetSpdxDocument()
+    {
+        var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
+        if (spdxDocs.Count != 1)
+        {
+            throw new Spdx3Exception($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
+        }
+
+        var result = (SpdxDocument)spdxDocs.First();
         return result;
     }
 }
