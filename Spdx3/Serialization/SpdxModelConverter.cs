@@ -101,10 +101,6 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         {
             LoadJsonStringIntoGenericProperty(result, currentProperty, strVal);
         }
-        else if (currentProperty.PropertyType.IsEnum)
-        {
-            currentProperty.SetValue(result, Enum.Parse(currentProperty.PropertyType, strVal));
-        }
         else if (currentProperty.PropertyType.IsSubclassOf(typeof(BaseModelClass)))
         {
             /*
@@ -114,9 +110,11 @@ public class SpdxModelConverter<T> : JsonConverter<T>
              */
             var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentProperty.PropertyType, true),
                 currentProperty.PropertyType);
-            currentProperty.PropertyType.GetProperty("SpdxId")?.SetValue(placeHolder, new Uri(strVal));
-            currentProperty.PropertyType.GetProperty("Type")?.SetValue(placeHolder,
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            currentProperty.PropertyType.GetProperty("SpdxId").SetValue(placeHolder, new Uri(strVal));
+            currentProperty.PropertyType.GetProperty("Type").SetValue(placeHolder,
                 Naming.SpdxTypeForClass(currentProperty.PropertyType));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             currentProperty.SetValue(result, placeHolder);
         }
         else
@@ -300,7 +298,9 @@ public class SpdxModelConverter<T> : JsonConverter<T>
         {
             if (spdxClass != null)
             {
-                writer.WriteStringValue((spdxClass as BaseModelClass)?.SpdxId.ToString());
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                writer.WriteStringValue((spdxClass as BaseModelClass).SpdxId.ToString());
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             }
         }
 
