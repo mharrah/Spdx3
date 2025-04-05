@@ -24,7 +24,9 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     {
         var result = (T?)Activator.CreateInstance(typeToConvert, true) ??
                      throw new Spdx3SerializationException($"Could not create instance of {typeToConvert}");
-        PropertyInfo? currentProperty = null;
+
+        // Initialize to some throwaway non-null value
+        var currentProperty = result.GetType().GetProperties().First();
 
         while (reader.Read())
         {
@@ -36,30 +38,19 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                     currentProperty = GetPropertyFromJsonElementName(typeToConvert, newPropName);
                     break;
 
-                case JsonTokenType.StartObject:
-                    Debug.Assert(currentProperty == null,
-                        $"There should not be nested objects in {currentProperty?.Name}");
-                    break;
-
                 case JsonTokenType.String:
                     LoadJsonStringIntoProperty(result, currentProperty,
                         reader.GetString() ?? throw new Spdx3SerializationException("Couldn't read string"));
 
                     break;
                 case JsonTokenType.Number:
-                    if (currentProperty?.PropertyType == typeof(int))
+                    if (currentProperty.PropertyType == typeof(int))
                     {
-                        var intVal = reader.GetInt32();
-                        (currentProperty ?? throw new Spdx3SerializationException("No current property")).SetValue(
-                            result,
-                            intVal);
+                        currentProperty.SetValue(result, reader.GetInt32());
                     }
                     else
                     {
-                        var dblVal = reader.GetDouble();
-                        (currentProperty ?? throw new Spdx3SerializationException("No current property")).SetValue(
-                            result,
-                            dblVal);
+                        currentProperty.SetValue(result, reader.GetDouble());
                     }
 
                     break;
@@ -77,7 +68,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     /// <param name="currentProperty">The property of the object that we're loading into</param>
     /// <param name="strVal">The string value</param>
     /// <exception cref="Spdx3SerializationException">If something specific to SPDX3 goes wrong</exception>
-    private void LoadJsonStringIntoProperty(object result, PropertyInfo? currentProperty, string strVal)
+    private void LoadJsonStringIntoProperty(object result, PropertyInfo currentProperty, string strVal)
     {
         Debug.Assert(currentProperty != null, $"There is no current property to receive for value {strVal}");
 
@@ -110,11 +101,12 @@ public class SpdxModelConverter<T> : JsonConverter<T>
              */
             var placeHolder = Convert.ChangeType(Activator.CreateInstance(currentProperty.PropertyType, true),
                 currentProperty.PropertyType);
+
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             currentProperty.PropertyType.GetProperty("SpdxId").SetValue(placeHolder, new Uri(strVal));
             currentProperty.PropertyType.GetProperty("Type").SetValue(placeHolder,
-                Naming.SpdxTypeForClass(currentProperty.PropertyType));
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
+                Naming.SpdxTypeForClass(currentProperty.PropertyType));
             currentProperty.SetValue(result, placeHolder);
         }
         else
@@ -168,7 +160,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
             var typeProperty = type.GetProperty("Type") ??
                                throw new Spdx3SerializationException("Could not get type property");
             typeProperty.SetValue(placeHolder, Naming.SpdxTypeForClass(genericType));
-            
+
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             (currentProperty.GetValue(result) as IList).Add(placeHolder);
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
