@@ -3,17 +3,17 @@
 
 |||
 |:---|:---|
-| Generated on: | 04/05/2025 - 01:23:27 |
-| Coverage date: | 04/05/2025 - 01:23:26 |
+| Generated on: | 04/05/2025 - 19:23:26 |
+| Coverage date: | 04/05/2025 - 19:23:25 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 72 |
-| Files: | 72 |
-| **Line coverage:** | 96.1% (1474 of 1533) |
-| Covered lines: | 1474 |
-| Uncovered lines: | 59 |
-| Coverable lines: | 1533 |
-| Total lines: | 3903 |
+| Classes: | 74 |
+| Files: | 74 |
+| **Line coverage:** | 95.8% (1494 of 1559) |
+| Covered lines: | 1494 |
+| Uncovered lines: | 65 |
+| Coverable lines: | 1559 |
+| Total lines: | 3993 |
 | **Branch coverage:** | 86.5% (348 of 402) |
 | Covered branches: | 348 |
 | Total branches: | 402 |
@@ -22,11 +22,11 @@
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 96.1%</summary>
+<details><summary>Spdx3 - 95.8%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**96.1%**|**86.5%**|
+|**Spdx3**|**95.8%**|**86.5%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -64,6 +64,8 @@
 |Spdx3.Model.Core.Individuals.NoneElement|57.1%||
 |Spdx3.Model.Core.Individuals.SpdxOrganization|57.1%||
 |Spdx3.Model.Dataset.Classes.DatasetPackage|82%|70%|
+|Spdx3.Model.ExpandedLicensing.Classes.ExtendableLicense|50%||
+|Spdx3.Model.ExpandedLicensing.Classes.License|85%||
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
