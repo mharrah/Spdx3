@@ -11,7 +11,7 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 public abstract class AnyLicenseInfo : Element
 {
     // protected internal no-parm constructor required for deserialization
-    protected internal AnyLicenseInfo()
+    protected internal AnyLicenseInfo() : base()
     {
     }
 
