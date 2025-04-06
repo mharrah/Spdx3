@@ -6,34 +6,34 @@ using Spdx3.Tests.Model.Extension.Classes;
 
 namespace Spdx3.Tests.Model.ExpandedLicensing.Classes;
 
-public class CustomLicenseTest : BaseModelTest
+public class ListedLicenseTest : BaseModelTest
 {
     [Fact]
-    public void BrandNew_CustomLicense_SerializesProperly()
+    public void BrandNew_ListedLicense_SerializesProperly()
     {
         // Arrange
-        var customLicense = new CustomLicense(TestCatalog, TestCreationInfo, "test license text");
+        var listedLicense = new ListedLicense(TestCatalog, TestCreationInfo, "test license text");
         const string expected = """
                                 {
                                   "simplelicensing_licenseText": "test license text",
                                   "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "expandedlicensing_CustomLicense",
-                                  "spdxId": "urn:CustomLicense:40f"
+                                  "type": "expandedlicensing_ListedLicense",
+                                  "spdxId": "urn:ListedLicense:40f"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(customLicense);
+        var json = ToJson(listedLicense);
 
         // Assert
         Assert.Equal(expected, json);
     }
 
     [Fact]
-    public void FullyPopulated_CustomLicense_SerializesProperly()
+    public void FullyPopulated_ListedLicense_SerializesProperly()
     {
         // Arrange
-        var customLicense = new CustomLicense(TestCatalog, TestCreationInfo, "TestLicenseText")
+        var listedLicense = new ListedLicense(TestCatalog, TestCreationInfo, "TestLicenseText")
         {
             Comment = "TestComment",
             Description = "TestDescription",
@@ -47,13 +47,13 @@ public class CustomLicenseTest : BaseModelTest
             StandardLicenseHeader = "TestStandardLicenseHeader",
             StandardLicenseTemplate = "TestStandardLicenseTemplate"
         };
-        customLicense.SeeAlso.Add(new Uri("https://something.com"));
-        customLicense.SeeAlso.Add(new Uri("https://somethingelse.com"));
-        customLicense.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        customLicense.ExternalIdentifier.Add(
+        listedLicense.SeeAlso.Add(new Uri("https://something.com"));
+        listedLicense.SeeAlso.Add(new Uri("https://somethingelse.com"));
+        listedLicense.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
+        listedLicense.ExternalIdentifier.Add(
             new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
-        customLicense.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
-        customLicense.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
+        listedLicense.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
+        listedLicense.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
 
         const string expected = """
@@ -87,13 +87,13 @@ public class CustomLicenseTest : BaseModelTest
                                   "verifiedUsing": [
                                     "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
-                                  "type": "expandedlicensing_CustomLicense",
-                                  "spdxId": "urn:CustomLicense:40f"
+                                  "type": "expandedlicensing_ListedLicense",
+                                  "spdxId": "urn:ListedLicense:40f"
                                 }
                                 """;
 
         // Act
-        var json = ToJson(customLicense);
+        var json = ToJson(listedLicense);
 
         // Assert
         Assert.Equal(expected, json);
