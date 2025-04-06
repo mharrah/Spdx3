@@ -23,6 +23,9 @@ public class ListedLicense : License
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ListVersionAdded { get; set; }
 
+    /// <summary>
+    /// No-arg constructor required for serialization/deserialization
+    /// </summary>
     protected internal ListedLicense()
     {
     }

@@ -22,7 +22,10 @@ public class ListedLicenseException : LicenseAddition
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ListVersionAdded { get; set; }
 
-    internal ListedLicenseException()
+    /// <summary>
+    /// No-arg constructor required for serialization/deserialization
+    /// </summary>
+    protected internal ListedLicenseException()
     {
     }
 

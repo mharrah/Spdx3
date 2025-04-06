@@ -11,6 +11,9 @@ namespace Spdx3.Model.ExpandedLicensing.Classes;
 /// </summary>
 public class IndividualLicensingInfo : AnyLicenseInfo
 {
+    /// <summary>
+    /// No-arg constructor required for serialization/deserialization
+    /// </summary>
     protected internal IndividualLicensingInfo()
     {
     }

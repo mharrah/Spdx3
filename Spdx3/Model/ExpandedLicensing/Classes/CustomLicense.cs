@@ -10,6 +10,9 @@ namespace Spdx3.Model.ExpandedLicensing.Classes;
 /// </summary>
 public class CustomLicense : License
 {
+    /// <summary>
+    /// No-arg constructor required for serialization/deserialization
+    /// </summary>
     protected internal CustomLicense()
     {
     }

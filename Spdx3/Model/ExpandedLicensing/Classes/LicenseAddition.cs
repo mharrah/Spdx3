@@ -36,6 +36,9 @@ public abstract class LicenseAddition : Element
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? StandardAdditionTemplate { get; set; }
 
+    /// <summary>
+    /// No-arg constructor required for serialization/deserialization
+    /// </summary>
     protected internal LicenseAddition()
     {
     }

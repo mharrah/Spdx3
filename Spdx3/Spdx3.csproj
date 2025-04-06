@@ -17,6 +17,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="Docs\" />
         <Folder Include="Model\ExpandedLicensing\Enums\"/>
     </ItemGroup>
 
