@@ -14,7 +14,7 @@ public abstract class ExtendableLicense : AnyLicenseInfo
     /// <summary>
     /// No-arg constructor required for serialization/deserialization
     /// </summary>
-    protected ExtendableLicense() : base()
+    protected internal ExtendableLicense()
     {
     }
 

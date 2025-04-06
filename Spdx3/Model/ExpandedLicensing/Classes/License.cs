@@ -47,7 +47,7 @@ public abstract class License : ExtendableLicense
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? StandardLicenseTemplate { get; set; }
     
-    protected License()
+    protected internal License()
     {
     }
 
