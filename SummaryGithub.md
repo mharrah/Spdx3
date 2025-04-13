@@ -3,15 +3,15 @@
 
 |||
 |:---|:---|
-| Generated on: | 04/06/2025 - 23:05:44 |
-| Coverage date: | 04/06/2025 - 23:05:43 |
+| Generated on: | 04/13/2025 - 00:36:15 |
+| Coverage date: | 04/13/2025 - 00:36:14 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 86 |
 | Files: | 86 |
-| **Line coverage:** | 93% (1575 of 1692) |
-| Covered lines: | 1575 |
-| Uncovered lines: | 117 |
+| **Line coverage:** | 93.7% (1587 of 1692) |
+| Covered lines: | 1587 |
+| Uncovered lines: | 105 |
 | Coverable lines: | 1692 |
 | Total lines: | 4414 |
 | **Branch coverage:** | 86.4% (358 of 414) |
@@ -22,11 +22,11 @@
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 93%</summary>
+<details><summary>Spdx3 - 93.7%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**93%**|**86.4%**|
+|**Spdx3**|**93.7%**|**86.4%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -75,7 +75,7 @@
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicense|62.5%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicenseException|62.5%||
 |Spdx3.Model.ExpandedLicensing.Classes.OrLaterOperator|75%||
-|Spdx3.Model.ExpandedLicensing.Classes.WithAdditionOperator|0%||
+|Spdx3.Model.ExpandedLicensing.Classes.WithAdditionOperator|80%||
 |Spdx3.Model.ExpandedLicensing.Individuals.NoAssertionLicense|57.1%||
 |Spdx3.Model.ExpandedLicensing.Individuals.NoneLicense|57.1%||
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
