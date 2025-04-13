@@ -15,7 +15,7 @@ namespace Spdx3.Model;
 ///     class.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/annexes/rdf-model/
 /// </summary>
-public abstract class BaseModelClass
+public abstract class BaseModelClass : IModelClass
 {
     [JsonPropertyName("type")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -43,6 +43,11 @@ public abstract class BaseModelClass
     {
         ValidateRequiredProperty(nameof(SpdxId));
         ValidateRequiredProperty(nameof(Type));
+    }
+
+    public void Accept(IModelVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 
     protected void ValidateRequiredProperty(string propertyName)

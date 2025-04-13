@@ -362,6 +362,10 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
     private static void SetPropertyValue(PropertyInfo property, object obj, object hashTableValue)
     {
+        if (property.DeclaringType is null)
+        {
+            throw new Spdx3SerializationException($"Could not determine declaring type of property {property.Name}");
+        }
         if (hashTableValue is double && property.PropertyType == typeof(int))
         {
             property.SetValue(obj, Convert.ToInt32(hashTableValue));
