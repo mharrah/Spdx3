@@ -8,7 +8,7 @@ namespace Spdx3.Tests.Model.ExpandedLicensing.Classes;
 
 public class OrLaterOperatorTest : BaseModelTest
 {
-        [Fact]
+    [Fact]
     public void BrandNew_OrLaterOperator_SerializesProperly()
     {
         // Arrange
