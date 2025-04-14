@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -10,7 +11,7 @@ namespace Spdx3.Model.Core.Classes;
 ///     Provides information about the creation of the Element.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/CreationInfo/
 /// </summary>
-public class CreationInfo : BaseModelClass
+public class CreationInfo : BaseModelClass, ILiteDomainCompliantElement
 {
     [JsonPropertyName("createdBy")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -54,5 +55,10 @@ public class CreationInfo : BaseModelClass
     {
         base.Validate();
         ValidateRequiredProperty(nameof(CreatedBy));
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

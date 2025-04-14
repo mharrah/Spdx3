@@ -1,10 +1,8 @@
-using Spdx3.Model;
+namespace Spdx3.Model.Lite;
 
-namespace Spdx3.Utility;
-
-public class LiteDomainComplianceProblem(IModelClass obj, string propertyName, string description)
+public class LiteDomainComplianceProblem(BaseModelClass obj, string propertyName, string description)
 {
-    public readonly IModelClass Obj = obj;
+    public readonly BaseModelClass Obj = obj;
     public readonly string PropertyName = propertyName;
     public readonly string Description = description;
 

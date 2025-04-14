@@ -1,12 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Classes;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
 namespace Spdx3.Model.Software.Classes;
 
-public class Package : SoftwareArtifact
+public class Package : SoftwareArtifact, ILiteDomainCompliantElement
 {
     [JsonPropertyName("software_packageVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -38,5 +39,10 @@ public class Package : SoftwareArtifact
     [SetsRequiredMembers]
     public Package(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using Spdx3.Model.Lite;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Serialization;
 using Spdx3.Utility;
@@ -10,7 +11,7 @@ namespace Spdx3.Model.Core.Classes;
 ///     A collection of SPDX Elements that could potentially be serialized.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/SpdxDocument/
 /// </summary>
-public class SpdxDocument : ElementCollection
+public class SpdxDocument : ElementCollection, ILiteDomainCompliantElement
 {
     [JsonPropertyName("import")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -33,5 +34,10 @@ public class SpdxDocument : ElementCollection
     [SetsRequiredMembers]
     public SpdxDocument(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -13,7 +14,7 @@ namespace Spdx3.Model.Core.Classes;
 ///     Element.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/ExternalIdentifier/
 /// </summary>
-public class ExternalIdentifier : BaseModelClass
+public class ExternalIdentifier : BaseModelClass, ILiteDomainCompliantElement
 {
     [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -53,5 +54,10 @@ public class ExternalIdentifier : BaseModelClass
         base.Validate();
         ValidateRequiredProperty(nameof(Identifier));
         ValidateRequiredProperty(nameof(ExternalIdentifierType));
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -10,7 +11,7 @@ namespace Spdx3.Model.Core.Classes;
 ///     A mathematically calculated representation of a grouping of data.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Hash/
 /// </summary>
-public class Hash : IntegrityMethod
+public class Hash : IntegrityMethod, ILiteDomainCompliantElement
 {
     [JsonPropertyName("algorithm")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -38,5 +39,10 @@ public class Hash : IntegrityMethod
         base.Validate();
         ValidateRequiredProperty(nameof(Algorithm));
         ValidateRequiredProperty(nameof(HashValue));
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

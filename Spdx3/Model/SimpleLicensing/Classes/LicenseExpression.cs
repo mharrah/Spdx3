@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Classes;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -10,7 +11,7 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 ///     An SPDX Element containing an SPDX license expression string.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/SimpleLicensing/Classes/LicenseExpression/
 /// </summary>
-public class LicenseExpression : AnyLicenseInfo
+public class LicenseExpression : AnyLicenseInfo, ILiteDomainCompliantElement
 {
     [JsonPropertyName("simplelicensing_licenseExpression")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -35,5 +36,10 @@ public class LicenseExpression : AnyLicenseInfo
         creationInfo)
     {
         LicenseExpressionText = licenseExpression;
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

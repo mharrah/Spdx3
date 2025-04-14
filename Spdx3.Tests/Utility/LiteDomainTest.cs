@@ -1,4 +1,5 @@
 using Spdx3.Model.Core.Classes;
+using Spdx3.Model.Lite;
 using Spdx3.Tests.Model;
 using Spdx3.Utility;
 
@@ -11,7 +12,7 @@ public class LiteDomainTest : BaseModelTest
     {
         var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
         
-        var problems = LiteDomain.GetComplianceProblems(spdxDocument);
+        var problems = LiteDomain.GetComplianceProblems(TestCatalog);
         
         Assert.NotEmpty(problems);
     }
