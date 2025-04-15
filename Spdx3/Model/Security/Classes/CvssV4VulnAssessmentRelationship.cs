@@ -33,9 +33,9 @@ public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
         ValidateRequiredProperty(nameof(Score));
         ValidateRequiredProperty(nameof(VectorString));
         ValidateRequiredProperty(nameof(Severity));
-        if (RelationshipType.hasAssessmentFor != this.RelationshipType)
+        if (RelationshipType.hasAssessmentFor != RelationshipType)
         {
-            throw new Spdx3ValidationException(this, nameof(this.RelationshipType), "Must be 'hasAssessmentFor'");
+            throw new Spdx3ValidationException(this, nameof(RelationshipType), "Must be 'hasAssessmentFor'");
         }
     }
 
@@ -51,9 +51,9 @@ public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
         Element from, List<Element> to, double score, CvssSeverityType severity, string vectorString) 
         : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
     {
-        this.Score = score;
-        this.Severity = severity;
-        this.VectorString = vectorString;
+        Score = score;
+        Severity = severity;
+        VectorString = vectorString;
     }    
 
 }

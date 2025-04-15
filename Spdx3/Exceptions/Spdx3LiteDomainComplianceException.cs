@@ -1,5 +1,3 @@
-using Spdx3.Model;
-
 namespace Spdx3.Exceptions;
 
 public class Spdx3LiteDomainComplianceException : Spdx3ValidationException

@@ -18,7 +18,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 {
     // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
     // hashtable into an SpdxBaseClass object from the model
-    private Dictionary<string, object> _hashTable = new Dictionary<string, object>();
+    private Dictionary<string, object> _hashTable = new();
     
     // Are we already working on a hashtable?  Because we don't process nested objects
     private bool _hashtableInProgress = false;

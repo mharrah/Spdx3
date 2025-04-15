@@ -68,7 +68,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     /// <param name="currentProperty">The property of the object that we're loading into</param>
     /// <param name="strVal">The string value</param>
     /// <exception cref="Spdx3SerializationException">If something specific to SPDX3 goes wrong</exception>
-    private void LoadJsonStringIntoProperty(object result, PropertyInfo currentProperty, string strVal)
+    private static void LoadJsonStringIntoProperty(object result, PropertyInfo currentProperty, string strVal)
     {
         Debug.Assert(currentProperty != null, $"There is no current property to receive for value {strVal}");
 

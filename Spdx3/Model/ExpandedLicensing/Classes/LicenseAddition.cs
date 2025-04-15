@@ -44,7 +44,7 @@ public abstract class LicenseAddition : Element
     }
 
     [SetsRequiredMembers]
-    public LicenseAddition(Catalog catalog, CreationInfo creationInfo, string additionText) : base(catalog,
+    protected LicenseAddition(Catalog catalog, CreationInfo creationInfo, string additionText) : base(catalog,
         creationInfo)
     {
         AdditionText = additionText;

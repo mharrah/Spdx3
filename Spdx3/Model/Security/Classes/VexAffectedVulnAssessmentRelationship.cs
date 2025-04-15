@@ -33,7 +33,7 @@ public class VexAffectedVulnAssessmentRelationship : VexVulnAssessmentRelationsh
         List<Element> to, string actionStatement) 
         : base(catalog, creationInfo, RelationshipType.affects, from, to)
     {
-        this.ActionStatement = actionStatement;
+        ActionStatement = actionStatement;
     }
 
     public override void Validate()

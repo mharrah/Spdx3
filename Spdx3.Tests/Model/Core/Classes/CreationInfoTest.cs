@@ -75,7 +75,7 @@ public class CreationInfoTest : BaseModelTest
     {
         // Act
         var creationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
-        creationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, creationInfo) { Name = this.GetType().Name});
+        creationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, creationInfo) { Name = GetType().Name});
         const string expected = """
                                 {
                                   "createdBy": [

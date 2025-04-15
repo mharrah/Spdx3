@@ -1,6 +1,7 @@
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
+using Spdx3.Utility;
 
 namespace Spdx3.Model.Lite;
 

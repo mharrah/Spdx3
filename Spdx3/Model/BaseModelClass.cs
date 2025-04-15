@@ -23,6 +23,9 @@ public abstract class BaseModelClass
     [JsonPropertyName("spdxId")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required Uri SpdxId { get; set; }
+    
+    // A back-link to the catalog that was used to created this item and now contains it
+    public Catalog? Catalog { get; internal set; }
 
     // protected internal no-parm constructor required for deserialization
     protected internal BaseModelClass()
@@ -32,6 +35,7 @@ public abstract class BaseModelClass
     [SetsRequiredMembers]
     protected BaseModelClass(Catalog catalog)
     {
+        Catalog = catalog;
         Type = Naming.SpdxTypeForClass(GetType());
         SpdxId = catalog.NewId(GetType());
         catalog.Items[SpdxId] = this;

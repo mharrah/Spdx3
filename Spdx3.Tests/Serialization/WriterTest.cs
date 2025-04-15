@@ -9,7 +9,7 @@ namespace Spdx3.Tests.Serialization;
 
 public class WriterTest : BaseModelTest
 {
-    private static readonly string ExpectedMinimalJson =
+    private const string ExpectedMinimalJson =
         "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
         "\"@graph\":[" +
         "{\"createdBy\":[\"urn:SoftwareAgent:402\"]," +

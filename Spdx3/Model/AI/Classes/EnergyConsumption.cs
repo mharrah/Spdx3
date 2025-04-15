@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
-using Spdx3.Model.Core.Classes;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 

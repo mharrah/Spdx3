@@ -26,8 +26,8 @@ public class EnergyConsumptionDescription : BaseModelClass
     [SetsRequiredMembers]
     public EnergyConsumptionDescription(Catalog catalog, double energyQuantity, EnergyUnitType energyUnit) : base(catalog)
     {
-        this.EnergyQuantity = energyQuantity;
-        this.EnergyUnit = energyUnit;
+        EnergyQuantity = energyQuantity;
+        EnergyUnit = energyUnit;
     }
 
     public override void Validate()

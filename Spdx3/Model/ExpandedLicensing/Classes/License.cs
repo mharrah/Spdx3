@@ -57,7 +57,7 @@ public abstract class License : ExtendableLicense
     [SetsRequiredMembers]
     protected License(Catalog catalog, CreationInfo creationInfo, string licenseText) : base(catalog, creationInfo)
     {
-        this.LicenseText = licenseText;
+        LicenseText = licenseText;
     }
 
     public override void Validate()

@@ -17,7 +17,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "listOfEnums": [
                         "kilowattHour",
@@ -38,7 +38,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "listOfDateTimeOffsets": [
                         "2025-04-01T00:00:00Z",
@@ -59,7 +59,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "nullableDateTimeOffset": "2025-04-01T00:00:00Z"
                    }
@@ -76,7 +76,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "int": 4
                    }
@@ -93,7 +93,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "double": 4.9
                    }
@@ -111,7 +111,7 @@ public class SpdxModelConverterTest
         opts.Converters.Add(new SpdxModelConverterFactory());
 
         var c = new SpdxModelConverterFactory().CreateConverter(typeof(TestClassWithCertainPropertyTypes), opts);
-        var json = """
+        const string json = """
                    {
                      "enum": "other"
                    }
@@ -125,11 +125,11 @@ public class SpdxModelConverterTest
     {
         [JsonPropertyName("listOfEnums")]
         [JsonConverter(typeof(SpdxModelConverterFactory))]
-        public List<EnergyUnitType> ListOfEnums { get; init; } = new();
+        public List<EnergyUnitType> ListOfEnums { get; init; } = [];
 
         [JsonPropertyName("listOfDateTimeOffsets")]
         [JsonConverter(typeof(SpdxModelConverterFactory))]
-        public List<DateTimeOffset> ListOfDateTimeOffsets { get; init; } = new();
+        public List<DateTimeOffset> ListOfDateTimeOffsets { get; init; } = [];
 
         [JsonPropertyName("nullableDateTimeOffset")]
         [JsonConverter(typeof(SpdxModelConverterFactory))]

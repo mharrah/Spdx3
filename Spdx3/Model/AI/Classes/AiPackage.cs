@@ -109,11 +109,11 @@ public class AiPackage : Package
         string packageVersion, 
         SoftwarePurpose primaryPurpose) : base(catalog, creationInfo)
     {
-        this.ReleaseTime = releaseTime;
-        this.SuppliedBy = suppliedBy;
-        this.DownloadLocation = downloadLocation;
-        this.PackageVersion = packageVersion;
-        this.PrimaryPurpose = primaryPurpose;
+        ReleaseTime = releaseTime;
+        SuppliedBy = suppliedBy;
+        DownloadLocation = downloadLocation;
+        PackageVersion = packageVersion;
+        PrimaryPurpose = primaryPurpose;
     }
 
     public override void Validate()

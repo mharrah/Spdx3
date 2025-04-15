@@ -1,6 +1,6 @@
 namespace Spdx3.Model.Lite;
 
-public interface ILiteDomainCompliantElement
+internal interface ILiteDomainCompliantElement
 {
-    public void Accept(ILiteDomainComplianceVisitor visitor);
+    internal void Accept(ILiteDomainComplianceVisitor visitor);
 }

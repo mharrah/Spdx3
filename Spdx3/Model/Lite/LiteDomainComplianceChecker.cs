@@ -3,9 +3,13 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.Lite;
 
-public class LiteDomain
+public class LiteDomainComplianceChecker
 {
-    public static ReadOnlyCollection<LiteDomainComplianceProblem> GetComplianceProblems(Catalog catalog)
+    public ReadOnlyCollection<LiteDomainComplianceFinding> Findings { get;}
+    
+    public bool IsCompliant => Findings.All(x => x.FindingType != LiteDomainComplianceFindingType.problem);
+
+    public LiteDomainComplianceChecker(Catalog catalog)
     {
         var v = new LiteDomainComplianceVisitor();
         foreach (var baseModelClass in catalog.Items.Values)
@@ -15,6 +19,7 @@ public class LiteDomain
                 liteClass.Accept(v);
             }
         }
-        return new ReadOnlyCollection<LiteDomainComplianceProblem>(v.Problems);
+
+        Findings = new ReadOnlyCollection<LiteDomainComplianceFinding>(v.Findings);
     }
 }

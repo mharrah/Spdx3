@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Reflection;
+﻿using System.Reflection;
 using Spdx3.Exceptions;
 using Spdx3.Model;
 using Spdx3.Model.Core.Classes;
