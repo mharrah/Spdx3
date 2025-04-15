@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
-using Spdx3.Utility;
 
 namespace Spdx3.Model.Lite;
 
@@ -44,17 +43,22 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
 
     public void Visit(ExternalIdentifier externalIdentifier)
     {
-        throw new NotImplementedException();
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, externalIdentifier, nameof(externalIdentifier.ExternalIdentifierType), externalIdentifier.ExternalIdentifierType);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, externalIdentifier, nameof(externalIdentifier.Identifier), externalIdentifier .Identifier);
     }
 
     public void Visit(Hash hash)
     {
-        throw new NotImplementedException();
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, hash, nameof(hash.Algorithm), hash.Algorithm);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, hash, nameof(hash.HashValue), hash.HashValue);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.recommendation, hash, nameof(hash.Comment), hash.Comment);
     }
 
     public void Visit(NamespaceMap namespaceMap)
     {
-        throw new NotImplementedException();
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, namespaceMap, nameof(namespaceMap.Prefix), namespaceMap.Prefix);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, namespaceMap, nameof(namespaceMap.Namespace), namespaceMap.Namespace);
+
     }
 
     public void Visit(Relationship relationship)
@@ -97,6 +101,12 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
             Findings.Add(new LiteDomainComplianceFinding(LiteDomainComplianceFindingType.problem, package, "N/A", 
                 $"Either {nameof(package.DownloadLocation)} or {nameof(package.PackageUrl)} is required"));
         }
+
+        if (package.Catalog is null)
+        {
+            return;
+        }
+        
     }
 
     public void Visit(Sbom sbom)

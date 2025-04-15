@@ -34,7 +34,7 @@ public class Catalog
     /// <exception cref="Spdx3Exception">If not exactly one SpdxDocument could be found.</exception>
     public SpdxDocument GetSpdxDocument()
     {
-        var spdxDocs = Items.Values.ToList().Where(x => x.Type == "SpdxDocument").ToList();
+        var spdxDocs = GetItems<SpdxDocument>();
         if (spdxDocs.Count != 1)
         {
             throw new Spdx3Exception($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
@@ -120,5 +120,15 @@ public class Catalog
         }
 
         prop.SetValue(itemWithProperty, value);
+    }
+
+    /// <summary>
+    /// Get all the items in the catalog of type T
+    /// </summary>
+    /// <typeparam name="T">The type of items in the catalog you want</typeparam>
+    /// <returns>The items in the catalog of type T as a List</returns>
+    public List<T> GetItems<T>()
+    {
+        return Items.Values.ToList().Where(x => x.GetType() == typeof(T)).Cast<T>().ToList();
     }
 }
