@@ -44,9 +44,9 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         };
 
         new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
-            [new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)]); 
+            [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
         new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
-            [new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)]); 
+            [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
 
         var sbom = new Sbom(TestCatalog, TestCreationInfo);
         sbom.Element.Add(package);
@@ -63,7 +63,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         Assert.NotNull(checker);
         Assert.NotEmpty(checker.Findings);
         Assert.True(checker.IsCompliant);
-        Assert.Equal(19, checker.Findings.Count);
+        Assert.Equal(21, checker.Findings.Count);
         Assert.Equal(0, checker.Findings.Count(x => x.FindingType == LiteDomainComplianceFindingType.problem));
     }
 

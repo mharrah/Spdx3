@@ -119,7 +119,15 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
 
     public void Visit(SimpleLicensingText simpleLicensingText)
     {
-        throw new NotImplementedException();
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.CreationInfo),
+            simpleLicensingText.CreationInfo);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.LicenseText),
+            simpleLicensingText.LicenseText);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.SpdxId),
+            simpleLicensingText.SpdxId);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.recommendation, simpleLicensingText, nameof(simpleLicensingText.Comment),
+            simpleLicensingText.Comment);
+
     }
 
     public void Visit(Package package)
@@ -192,7 +200,7 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
             }
             else
             {
-                if (relationshipsOfType.First().To.First() is not AnyLicenseInfo)
+                if (!relationshipsOfType.First().To.First().GetType().IsAssignableTo(typeof(AnyLicenseInfo)))
                 {
                     Findings.Add(new LiteDomainComplianceFinding(LiteDomainComplianceFindingType.problem, package,
                         $"{nameof(Relationship)} from {nameof(Package)} of type '{RelationshipType.hasConcludedLicense}' " +
