@@ -2,7 +2,9 @@ using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.ExpandedLicensing.Individuals;
 using Spdx3.Model.Lite;
+using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
+using Spdx3.Tests.Model.SimpleLicensing.Classes;
 using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Lite;
@@ -41,6 +43,11 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
             DownloadLocation = @"C:\Users\Acme\Downloads\"
         };
 
+        new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
+            [new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)]); 
+        new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
+            [new AnyLicenseInfoConcreteTestFixture(TestCatalog, TestCreationInfo)]); 
+
         var sbom = new Sbom(TestCatalog, TestCreationInfo);
         sbom.Element.Add(package);
         sbom.RootElement.Add(package);
@@ -63,6 +70,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
     [Fact]
     public void Test_MinimallyRecommended_Catalog()
     {
+        // Arrange
         TestCreationInfo.Comment = "Comment goes here";
         TestCreationInfo.CreatedBy.First().ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.other, "externalId"));
         var supplier = new Organization(TestCatalog, TestCreationInfo)
@@ -110,7 +118,16 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         spdxDocument.VerifiedUsing.Add(new Hash(TestCatalog, HashAlgorithm.sha1, "99999")
             { Comment = "Hash comment goes here" });
 
+        var license = new LicenseExpression(TestCatalog, TestCreationInfo, "it's a license")
+        {
+            LicenseListVersion = "1.1.1"
+        };
+        new Relationship(TestCatalog, TestCreationInfo, RelationshipType.hasConcludedLicense, package, [license]);
+        
+        // Act
         var checker = new LiteDomainComplianceChecker(TestCatalog);
+        
+        // Assert
         Assert.NotNull(checker);
         Assert.Empty(checker.Findings);
         Assert.True(checker.IsCompliant);
