@@ -39,7 +39,7 @@ public abstract class VulnAssessmentRelationship : Relationship
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo,
+    protected VulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo,
         RelationshipType relationshipType, Element from, List<Element> to) : base(catalog, creationInfo, relationshipType, from, to)
     {
     }    

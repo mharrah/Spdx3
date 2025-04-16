@@ -29,7 +29,7 @@ public class SsvcVulnAssessmentRelationship : VulnAssessmentRelationship
     public SsvcVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to, SsvcDecisionType decisionType) 
         : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
     {
-        this.DecisionType = decisionType;
+        DecisionType = decisionType;
     }
 
     public override void Validate()

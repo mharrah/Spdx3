@@ -27,9 +27,9 @@ public class CvssV2VulnAssessmentRelationship : VulnAssessmentRelationship
         base.Validate();
         ValidateRequiredProperty(nameof(Score));
         ValidateRequiredProperty(nameof(VectorString));
-        if (RelationshipType.hasAssessmentFor != this.RelationshipType)
+        if (RelationshipType.hasAssessmentFor != RelationshipType)
         {
-            throw new Spdx3ValidationException(this, nameof(this.RelationshipType), "Must be 'hasAssessmentFor'");
+            throw new Spdx3ValidationException(this, nameof(RelationshipType), "Must be 'hasAssessmentFor'");
         }
     }
 
@@ -45,8 +45,8 @@ public class CvssV2VulnAssessmentRelationship : VulnAssessmentRelationship
         Element from, List<Element> to, double score, string vectorString) 
         : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
     {
-        this.Score = score;
-        this.VectorString = vectorString;
+        Score = score;
+        VectorString = vectorString;
     }    
 
 }

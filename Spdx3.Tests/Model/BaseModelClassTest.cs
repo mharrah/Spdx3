@@ -16,7 +16,7 @@ public class BaseModelClassTest : BaseModelTest
             Type = "Test",
             SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
-            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
+            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"]
         };
         
         // Act
@@ -35,7 +35,7 @@ public class BaseModelClassTest : BaseModelTest
             Type = "Test",
             SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
-            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
+            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"]
         };
         
         testBaseModelClass.StringProperty = null;  // Set the bad value
@@ -54,7 +54,7 @@ public class BaseModelClassTest : BaseModelTest
             Type = "Test",
             SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
-            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
+            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"]
         };
         
         testBaseModelClass.StringListProperty = null;  // Set the bad value
@@ -72,7 +72,7 @@ public class BaseModelClassTest : BaseModelTest
             Type = "Test",
             SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
-            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
+            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"]
         };
         
         testBaseModelClass.StringProperty = "";  // Set the bad value
@@ -90,7 +90,7 @@ public class BaseModelClassTest : BaseModelTest
             Type = "Test",
             SpdxId = new Uri("test:id"),
             StringProperty = "TestStringProperty",
-            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"],
+            StringListProperty = ["TestStringListProperty", "TestStringListProperty2"]
         };
         
         testBaseModelClass.StringListProperty.Clear();  // Set the bad value

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Model.Core.Classes;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -10,7 +11,7 @@ namespace Spdx3.Model.SimpleLicensing.Classes;
 ///     A license or addition that is not listed on the SPDX License List.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/SimpleLicensing/Classes/SimpleLicensingText/
 /// </summary>
-public class SimpleLicensingText : Element
+public class SimpleLicensingText : Element, ILiteDomainCompliantElement
 {
     [JsonPropertyName("simplelicensing_licenseText")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -33,5 +34,10 @@ public class SimpleLicensingText : Element
     {
         base.Validate();
         ValidateRequiredProperty(nameof(LicenseText));
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

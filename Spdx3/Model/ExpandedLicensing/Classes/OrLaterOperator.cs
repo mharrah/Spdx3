@@ -23,7 +23,7 @@ public class OrLaterOperator : ExtendableLicense
     [SetsRequiredMembers]
     public OrLaterOperator(Catalog catalog, CreationInfo creationInfo, License subjectLicense) : base(catalog, creationInfo)
     {
-        this.SubjectLicense = subjectLicense;
+        SubjectLicense = subjectLicense;
     }
 
     public override void Validate()

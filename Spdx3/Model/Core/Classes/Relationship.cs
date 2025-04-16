@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using Spdx3.Exceptions;
 using Spdx3.Model.Core.Enums;
+using Spdx3.Model.Lite;
 using Spdx3.Serialization;
 using Spdx3.Utility;
 
@@ -11,7 +12,7 @@ namespace Spdx3.Model.Core.Classes;
 ///     Describes a relationship between one or more elements.
 ///     See https://spdx.github.io/spdx-spec/v3.0.1/model/Core/Classes/Relationship/
 /// </summary>
-public class Relationship : Element
+public class Relationship : Element, ILiteDomainCompliantElement
 {
     [JsonPropertyName("from")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -70,5 +71,10 @@ public class Relationship : Element
         }
 
         ValidateRequiredProperty(nameof(RelationshipType));
+    }
+
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
     }
 }

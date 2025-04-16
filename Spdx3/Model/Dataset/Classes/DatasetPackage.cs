@@ -109,7 +109,7 @@ public class DatasetPackage : Package
     public override void Validate()
     {
         base.Validate();
-        if (this.DatasetType?.Count == 0)
+        if (DatasetType?.Count == 0)
         {
             throw new Spdx3ValidationException(this, nameof(DatasetType), "List is empty");
         }

@@ -18,7 +18,7 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 {
     // We keep a hashtable of values of objects in the @graph array as we read them, and then turn each 
     // hashtable into an SpdxBaseClass object from the model
-    private Dictionary<string, object> _hashTable = new Dictionary<string, object>();
+    private Dictionary<string, object> _hashTable = new();
     
     // Are we already working on a hashtable?  Because we don't process nested objects
     private bool _hashtableInProgress = false;
@@ -362,6 +362,10 @@ internal class SpdxWrapperConverter<T> : JsonConverter<T>
 
     private static void SetPropertyValue(PropertyInfo property, object obj, object hashTableValue)
     {
+        if (property.DeclaringType is null)
+        {
+            throw new Spdx3SerializationException($"Could not determine declaring type of property {property.Name}");
+        }
         if (hashTableValue is double && property.PropertyType == typeof(int))
         {
             property.SetValue(obj, Convert.ToInt32(hashTableValue));
