@@ -3,31 +3,32 @@
 
 |||
 |:---|:---|
-| Generated on: | 04/13/2025 - 00:36:15 |
-| Coverage date: | 04/13/2025 - 00:36:14 |
+| Generated on: | 04/16/2025 - 01:21:10 |
+| Coverage date: | 04/16/2025 - 01:21:09 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 86 |
-| Files: | 86 |
-| **Line coverage:** | 93.7% (1587 of 1692) |
-| Covered lines: | 1587 |
-| Uncovered lines: | 105 |
-| Coverable lines: | 1692 |
-| Total lines: | 4414 |
-| **Branch coverage:** | 86.4% (358 of 414) |
-| Covered branches: | 358 |
-| Total branches: | 414 |
+| Classes: | 90 |
+| Files: | 90 |
+| **Line coverage:** | 91.6% (1888 of 2061) |
+| Covered lines: | 1888 |
+| Uncovered lines: | 173 |
+| Coverable lines: | 2061 |
+| Total lines: | 4949 |
+| **Branch coverage:** | 84.2% (416 of 494) |
+| Covered branches: | 416 |
+| Total branches: | 494 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 93.7%</summary>
+<details><summary>Spdx3 - 91.6%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**93.7%**|**86.4%**|
+|**Spdx3**|**91.6%**|**84.2%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
+|Spdx3.Exceptions.Spdx3LiteDomainComplianceException|0%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.AI.Classes.AiPackage|100%||
@@ -81,6 +82,9 @@
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
+|Spdx3.Model.Lite.LiteDomainComplianceChecker|100%|100%|
+|Spdx3.Model.Lite.LiteDomainComplianceFinding|33.3%|0%|
+|Spdx3.Model.Lite.LiteDomainComplianceVisitor|80.7%|61.5%|
 |Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|88.8%|50%|
 |Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|90.4%|50%|
 |Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|90.4%|50%|
@@ -96,7 +100,7 @@
 |Spdx3.Model.Security.Classes.Vulnerability|100%||
 |Spdx3.Model.SimpleLicensing.Classes.AnyLicenseInfo|100%||
 |Spdx3.Model.SimpleLicensing.Classes.LicenseExpression|100%||
-|Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText|100%||
+|Spdx3.Model.SimpleLicensing.Classes.SimpleLicensingText|81.2%||
 |Spdx3.Model.Software.Classes.ContentIdentifier|100%||
 |Spdx3.Model.Software.Classes.File|92%|83.3%|
 |Spdx3.Model.Software.Classes.Package|100%||
@@ -107,10 +111,10 @@
 |Spdx3.Serialization.SpdxModelConverter`1|95.9%|90%|
 |Spdx3.Serialization.SpdxModelConverterFactory|100%||
 |Spdx3.Serialization.SpdxWrapper|100%||
-|Spdx3.Serialization.SpdxWrapperConverter`1|92.5%|81.2%|
+|Spdx3.Serialization.SpdxWrapperConverter`1|92.6%|81.4%|
 |Spdx3.Serialization.SpdxWrapperConverterFactory|100%||
 |Spdx3.Serialization.Writer|100%||
-|Spdx3.Utility.Catalog|92.4%|87.5%|
+|Spdx3.Utility.Catalog|96%|94.4%|
 |Spdx3.Utility.IncompleteObjectFactory|100%|50%|
 |Spdx3.Utility.Naming|97.2%|94.4%|
 
