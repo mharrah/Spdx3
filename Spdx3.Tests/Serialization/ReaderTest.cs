@@ -20,7 +20,7 @@ public class ReaderTest
         var spdxDocument = new Reader(catalog).ReadFileName(jsonFile);
 
         // Assert
-        Assert.Equal(42, catalog.Items.Count);
+        Assert.Equal(47, catalog.Items.Count);
         Assert.Equal(9, catalog.Items.Values.Count(i => i.Type == "Relationship"));
         Assert.Equal(3, catalog.Items.Values.Count(i => i.Type == "Organization"));
         Assert.Equal(4, catalog.Items.Values.Count(i => i.Type == "Person"));
