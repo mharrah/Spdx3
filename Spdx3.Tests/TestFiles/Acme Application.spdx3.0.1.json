@@ -318,6 +318,26 @@
       "creationInfo": "urn:local:b0",
       "type": "ai_AiPackage",
       "spdxId": "urn:AiPackage:140f"
+    },
+    {
+      "type": "NoAssertionElement",
+      "spdxId": "https://spdx.org/rdf/3.0.1/terms/Core/NoAssertionElement"
+    },
+    {
+      "type": "NoneElement",
+      "spdxId": "https://spdx.org/rdf/3.0.1/terms/Core/NoneElement"
+    },
+    {
+      "type": "SpdxOrganization",
+      "spdxId": "https://spdx.org/"
+    },
+    {
+      "type": "NoAssertionLicense",
+      "spdxId": "https://spdx.org/rdf/3.0.1/terms/Licensing/NoAssertion"
+    },
+    {
+      "type": "NoneLicense",
+      "spdxId": "hhttps://spdx.org/rdf/3.0.1/terms/Licensing/None"
     }
   ]
 }

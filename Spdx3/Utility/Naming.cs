@@ -41,7 +41,15 @@ public static class Naming
     public static string ClassNameForSpdxType(Dictionary<string, object> hashTable)
     {
         var spdxType = (string)hashTable[hashTable.ContainsKey("type") ? "type" : "@type"];
-        if (!spdxType.Contains('_'))
+        if (spdxType == "NoAssertionElement" || spdxType == "NoneElement" || spdxType == "SpdxOrganization")
+        {
+            return $"Spdx3.Model.Core.Individuals.{spdxType}";
+        }
+        else if (spdxType == "NoneLicense" || spdxType == "NoAssertionLicense" )
+        {
+            return $"Spdx3.Model.ExpandedLicensing.Individuals.{spdxType}";
+        }
+        else if (!spdxType.Contains('_'))
         {
             return $"Spdx3.Model.Core.Classes.{spdxType}";
         }
