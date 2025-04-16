@@ -153,7 +153,7 @@ public class Catalog
     public List<Relationship> GetRelationshipsFromTo(Element fromElement, Element toElement)
     {
         return GetItems<Relationship>().Where(
-            r => r.SpdxId == fromElement.SpdxId
+            r => r.From.SpdxId == fromElement.SpdxId
                  && r.To.Any(t => t.SpdxId == toElement.SpdxId)
         ).ToList();
     }
