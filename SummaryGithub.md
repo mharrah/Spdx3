@@ -3,32 +3,31 @@
 
 |||
 |:---|:---|
-| Generated on: | 04/16/2025 - 01:21:10 |
-| Coverage date: | 04/16/2025 - 01:21:09 |
+| Generated on: | 04/16/2025 - 04:04:47 |
+| Coverage date: | 04/16/2025 - 04:04:46 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
-| Classes: | 90 |
-| Files: | 90 |
-| **Line coverage:** | 91.6% (1888 of 2061) |
-| Covered lines: | 1888 |
-| Uncovered lines: | 173 |
-| Coverable lines: | 2061 |
-| Total lines: | 4949 |
-| **Branch coverage:** | 84.2% (416 of 494) |
-| Covered branches: | 416 |
-| Total branches: | 494 |
+| Classes: | 89 |
+| Files: | 89 |
+| **Line coverage:** | 93% (1919 of 2063) |
+| Covered lines: | 1919 |
+| Uncovered lines: | 144 |
+| Coverable lines: | 2063 |
+| Total lines: | 4947 |
+| **Branch coverage:** | 84.7% (427 of 504) |
+| Covered branches: | 427 |
+| Total branches: | 504 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 91.6%</summary>
+<details><summary>Spdx3 - 93%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**91.6%**|**84.2%**|
+|**Spdx3**|**93%**|**84.7%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
-|Spdx3.Exceptions.Spdx3LiteDomainComplianceException|0%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
 |Spdx3.Model.AI.Classes.AiPackage|100%||
@@ -61,29 +60,29 @@
 |Spdx3.Model.Core.Classes.SoftwareAgent|100%||
 |Spdx3.Model.Core.Classes.SpdxDocument|100%||
 |Spdx3.Model.Core.Classes.Tool|100%||
-|Spdx3.Model.Core.Individuals.NoAssertionElement|57.1%||
-|Spdx3.Model.Core.Individuals.NoneElement|57.1%||
-|Spdx3.Model.Core.Individuals.SpdxOrganization|57.1%||
+|Spdx3.Model.Core.Individuals.NoAssertionElement|100%||
+|Spdx3.Model.Core.Individuals.NoneElement|100%||
+|Spdx3.Model.Core.Individuals.SpdxOrganization|100%||
 |Spdx3.Model.Dataset.Classes.DatasetPackage|82%|70%|
 |Spdx3.Model.ExpandedLicensing.Classes.ConjunctiveLicenseSet|75%|83.3%|
 |Spdx3.Model.ExpandedLicensing.Classes.CustomLicense|50%||
 |Spdx3.Model.ExpandedLicensing.Classes.CustomLicenseAddition|50%||
 |Spdx3.Model.ExpandedLicensing.Classes.DisjunctiveLicenseSet|75%|83.3%|
 |Spdx3.Model.ExpandedLicensing.Classes.ExtendableLicense|50%||
-|Spdx3.Model.ExpandedLicensing.Classes.IndividualLicensingInfo|50%||
+|Spdx3.Model.ExpandedLicensing.Classes.IndividualLicensingInfo|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.License|85%||
 |Spdx3.Model.ExpandedLicensing.Classes.LicenseAddition|83.3%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicense|62.5%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicenseException|62.5%||
 |Spdx3.Model.ExpandedLicensing.Classes.OrLaterOperator|75%||
 |Spdx3.Model.ExpandedLicensing.Classes.WithAdditionOperator|80%||
-|Spdx3.Model.ExpandedLicensing.Individuals.NoAssertionLicense|57.1%||
-|Spdx3.Model.ExpandedLicensing.Individuals.NoneLicense|57.1%||
+|Spdx3.Model.ExpandedLicensing.Individuals.NoAssertionLicense|100%||
+|Spdx3.Model.ExpandedLicensing.Individuals.NoneLicense|100%||
 |Spdx3.Model.Extension.Classes.CdxPropertiesExtension|100%|100%|
 |Spdx3.Model.Extension.Classes.CdxPropertyEntry|100%||
 |Spdx3.Model.Extension.Classes.Extension|100%||
 |Spdx3.Model.Lite.LiteDomainComplianceChecker|100%|100%|
-|Spdx3.Model.Lite.LiteDomainComplianceFinding|33.3%|0%|
+|Spdx3.Model.Lite.LiteDomainComplianceFinding|66.6%|50%|
 |Spdx3.Model.Lite.LiteDomainComplianceVisitor|80.7%|61.5%|
 |Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|88.8%|50%|
 |Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|90.4%|50%|
@@ -116,6 +115,6 @@
 |Spdx3.Serialization.Writer|100%||
 |Spdx3.Utility.Catalog|96%|94.4%|
 |Spdx3.Utility.IncompleteObjectFactory|100%|50%|
-|Spdx3.Utility.Naming|97.2%|94.4%|
+|Spdx3.Utility.Naming|97.6%|96.4%|
 
 </details>
