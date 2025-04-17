@@ -46,7 +46,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
             [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
         new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
-            [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
+            [new SimpleLicensingText(TestCatalog, TestCreationInfo, "this is a license")]); 
 
         var sbom = new Sbom(TestCatalog, TestCreationInfo);
         sbom.Element.Add(package);

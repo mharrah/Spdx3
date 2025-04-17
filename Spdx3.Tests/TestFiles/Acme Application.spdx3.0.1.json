@@ -338,6 +338,18 @@
     {
       "type": "NoneLicense",
       "spdxId": "hhttps://spdx.org/rdf/3.0.1/terms/Licensing/None"
+    },
+    {
+      "type": "expandedlicensing_CustomLicense",
+      "spdxId": "urn:CustomLicense:abc"
+    },
+    {
+      "type": "expandedlicensing_ListedLicense",
+      "spdxId": "urn:ListedLicense:ae0"
+    },
+    {
+      "type": "expandedlicensing_OrLaterOperator",
+      "spdxId": "urn:OrLaterOperator:fff"
     }
   ]
 }
