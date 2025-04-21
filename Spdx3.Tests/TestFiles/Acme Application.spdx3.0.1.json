@@ -350,6 +350,10 @@
     {
       "type": "expandedlicensing_OrLaterOperator",
       "spdxId": "urn:OrLaterOperator:fff"
+    },
+    {
+      "type": "expandedlicensing_CustomLicenseAddition",
+      "spdxId": "urn:CustomLicenseAddition:eee"
     }
   ]
 }

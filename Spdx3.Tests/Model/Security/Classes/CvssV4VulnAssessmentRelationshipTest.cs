@@ -140,10 +140,24 @@ public class CvssV4VulnAssessmentRelationshipTest : BaseModelTest
     {
         // Arrange
         var cvssV4VulnAssessmentRelationship = IncompleteObjectFactory.Create<CvssV4VulnAssessmentRelationship>();
+        cvssV4VulnAssessmentRelationship.Type = "CvssV4VulnAssessmentRelationship";
+        cvssV4VulnAssessmentRelationship.SpdxId = new Uri("urn:CvssV4VulnAssessmentRelationship:429a");
         cvssV4VulnAssessmentRelationship.RelationshipType = RelationshipType.other;
+        cvssV4VulnAssessmentRelationship.CreationInfo = TestCreationInfo;
+        cvssV4VulnAssessmentRelationship.From = IncompleteObjectFactory.Create<Package>();
+        cvssV4VulnAssessmentRelationship.To = [IncompleteObjectFactory.Create<Package>()];
+        cvssV4VulnAssessmentRelationship.RelationshipType = RelationshipType.other;
+        cvssV4VulnAssessmentRelationship.Score = 1.0;
+        cvssV4VulnAssessmentRelationship.Severity = CvssSeverityType.low;
+        cvssV4VulnAssessmentRelationship.VectorString = "vector";
+
+        // Act
+        var exc = Record.Exception(() => cvssV4VulnAssessmentRelationship.Validate());
         
-        // Act and Assert
-        Assert.Throws<Spdx3ValidationException>(() => cvssV4VulnAssessmentRelationship.Validate());
+        // Assert
+        Assert.NotNull(exc);
+        Assert.IsType<Spdx3ValidationException>(exc);
+        Assert.Contains("Must be 'hasAssessmentFor'", exc.Message);
     }
     
 }
