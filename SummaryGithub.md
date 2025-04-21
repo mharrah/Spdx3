@@ -3,30 +3,30 @@
 
 |||
 |:---|:---|
-| Generated on: | 04/17/2025 - 00:30:44 |
-| Coverage date: | 04/17/2025 - 00:30:43 |
+| Generated on: | 04/21/2025 - 00:34:04 |
+| Coverage date: | 04/21/2025 - 00:34:03 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 89 |
 | Files: | 89 |
-| **Line coverage:** | 94.7% (1954 of 2063) |
-| Covered lines: | 1954 |
-| Uncovered lines: | 109 |
+| **Line coverage:** | 95.2% (1966 of 2063) |
+| Covered lines: | 1966 |
+| Uncovered lines: | 97 |
 | Coverable lines: | 2063 |
 | Total lines: | 4947 |
-| **Branch coverage:** | 84.9% (428 of 504) |
-| Covered branches: | 428 |
+| **Branch coverage:** | 85.5% (431 of 504) |
+| Covered branches: | 431 |
 | Total branches: | 504 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
 
 ## Coverage
-<details><summary>Spdx3 - 94.7%</summary>
+<details><summary>Spdx3 - 95.2%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**94.7%**|**84.9%**|
+|**Spdx3**|**95.2%**|**85.5%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -66,12 +66,12 @@
 |Spdx3.Model.Dataset.Classes.DatasetPackage|82%|70%|
 |Spdx3.Model.ExpandedLicensing.Classes.ConjunctiveLicenseSet|75%|83.3%|
 |Spdx3.Model.ExpandedLicensing.Classes.CustomLicense|100%||
-|Spdx3.Model.ExpandedLicensing.Classes.CustomLicenseAddition|50%||
+|Spdx3.Model.ExpandedLicensing.Classes.CustomLicenseAddition|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.DisjunctiveLicenseSet|75%|83.3%|
 |Spdx3.Model.ExpandedLicensing.Classes.ExtendableLicense|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.IndividualLicensingInfo|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.License|100%||
-|Spdx3.Model.ExpandedLicensing.Classes.LicenseAddition|83.3%||
+|Spdx3.Model.ExpandedLicensing.Classes.LicenseAddition|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicense|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicenseException|62.5%||
 |Spdx3.Model.ExpandedLicensing.Classes.OrLaterOperator|100%||
@@ -84,9 +84,9 @@
 |Spdx3.Model.Lite.LiteDomainComplianceChecker|100%|100%|
 |Spdx3.Model.Lite.LiteDomainComplianceFinding|100%|100%|
 |Spdx3.Model.Lite.LiteDomainComplianceVisitor|84.8%|61.5%|
-|Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|88.8%|50%|
-|Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|90.4%|50%|
-|Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|90.4%|50%|
+|Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|100%|100%|
+|Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|100%|100%|
+|Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.EpssVulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.ExploitCatalogVulnAssessmentRelationship|100%||
 |Spdx3.Model.Security.Classes.SsvcVulnAssessmentRelationship|100%||
