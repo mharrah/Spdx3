@@ -3,17 +3,17 @@
 
 |||
 |:---|:---|
-| Generated on: | 05/13/2025 - 23:56:34 |
-| Coverage date: | 05/13/2025 - 23:56:33 |
+| Generated on: | 05/14/2025 - 00:08:35 |
+| Coverage date: | 05/14/2025 - 00:08:34 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 89 |
 | Files: | 89 |
-| **Line coverage:** | 95.2% (1966 of 2063) |
-| Covered lines: | 1966 |
+| **Line coverage:** | 95.2% (1960 of 2057) |
+| Covered lines: | 1960 |
 | Uncovered lines: | 97 |
-| Coverable lines: | 2063 |
-| Total lines: | 4947 |
+| Coverable lines: | 2057 |
+| Total lines: | 4940 |
 | **Branch coverage:** | 85.5% (431 of 504) |
 | Covered branches: | 431 |
 | Total branches: | 504 |
@@ -83,7 +83,7 @@
 |Spdx3.Model.Extension.Classes.Extension|100%||
 |Spdx3.Model.Lite.LiteDomainComplianceChecker|100%|100%|
 |Spdx3.Model.Lite.LiteDomainComplianceFinding|100%|100%|
-|Spdx3.Model.Lite.LiteDomainComplianceVisitor|84.8%|61.5%|
+|Spdx3.Model.Lite.LiteDomainComplianceVisitor|84.4%|61.5%|
 |Spdx3.Model.Security.Classes.CvssV2VulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.CvssV3VulnAssessmentRelationship|100%|100%|
 |Spdx3.Model.Security.Classes.CvssV4VulnAssessmentRelationship|100%|100%|
