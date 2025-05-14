@@ -4,8 +4,6 @@ using Spdx3.Model.ExpandedLicensing.Individuals;
 using Spdx3.Model.Lite;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
-using Spdx3.Tests.Model.SimpleLicensing.Classes;
-using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model.Lite;
 
@@ -14,7 +12,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
     [Fact]
     public void NewSpdxDocuments_AreNot_LiteDomainCompliant()
     {
-        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
+        _ = new SpdxDocument(TestCatalog, TestCreationInfo);
 
         var checker = new LiteDomainComplianceChecker(TestCatalog);
 
@@ -43,9 +41,9 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
             DownloadLocation = @"C:\Users\Acme\Downloads\"
         };
 
-        new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
+        _ = new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
             [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
-        new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
+        _ = new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
             [new SimpleLicensingText(TestCatalog, TestCreationInfo, "this is a license")]); 
 
         var sbom = new Sbom(TestCatalog, TestCreationInfo);
@@ -122,7 +120,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         {
             LicenseListVersion = "1.1.1"
         };
-        new Relationship(TestCatalog, TestCreationInfo, RelationshipType.hasConcludedLicense, package, [license]);
+        _ = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.hasConcludedLicense, package, [license]);
         
         // Act
         var checker = new LiteDomainComplianceChecker(TestCatalog);

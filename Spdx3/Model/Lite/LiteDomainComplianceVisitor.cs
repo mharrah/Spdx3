@@ -5,7 +5,6 @@ using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
-using Spdx3.Utility;
 
 namespace Spdx3.Model.Lite;
 
@@ -175,14 +174,8 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         {
             throw new Spdx3Exception($"Cannot find catalog from Package '{package.SpdxId}'");
         }
-
-        var relationshipsFromThisPackage =
-            package.Catalog.GetItems<Relationship>().Where(r => r.From.SpdxId == package.SpdxId);
-        var relationshipsToThisPackage = package.Catalog.GetItems<Relationship>()
-            .Where(r => r.To.Select(t => t.SpdxId).Contains(package.SpdxId));
-
-        var relationships = relationshipsFromThisPackage;
-        var relType = RelationshipType.hasConcludedLicense;
+        
+        const RelationshipType relType = RelationshipType.hasConcludedLicense;
         var relationshipsOfType = package.Catalog.GetRelationshipsOfType(relType);
 
         if (relationshipsOfType.Count() != 1)
