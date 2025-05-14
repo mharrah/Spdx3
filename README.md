@@ -68,6 +68,7 @@ namespace Core {
     class Sbom { }
 }
 
+Sbom --|> Bom : "is"
 Bom --|> Bundle : "is"
 Bundle --|> ElementCollection : "is"
 ElementCollection --o Element : "contains"
@@ -80,12 +81,11 @@ IndividualElement --|> Element : "is"
 Agent --|> Element : "is"        
 Person --|> Agent : "is"    
 Organization --|> Agent : "is"    
-LifeScopedRelationship --|> Relationship : "is"
+SoftwareAgent --|> Agent : "is"  
 Relationship --|> Element : "is"
 Relationship --o Element : "to"
 Relationship -- Element : "from"
-SoftwareAgent --|> Agent : "is"  
-Sbom --|> Bom : "is"
+LifeScopedRelationship --|> Relationship : "is"
 
 
 namespace Software {
