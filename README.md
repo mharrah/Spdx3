@@ -66,6 +66,7 @@ namespace Core {
     class Relationship { }
     class SoftwareAgent { }
     class Sbom { }
+    class CreationInfo { }
 }
 
 Sbom --|> Bom : "is"
@@ -86,6 +87,7 @@ Relationship --|> Element : "is"
 Relationship --o Element : "to"
 Relationship -- Element : "from"
 LifeScopedRelationship --|> Relationship : "is"
+Element --o CreationInfo : "has" 
 
 
 namespace Software {
