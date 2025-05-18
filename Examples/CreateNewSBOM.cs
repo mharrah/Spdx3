@@ -2,6 +2,7 @@ using Spdx3.Model.Core.Classes;
 using Spdx3.Model.ExpandedLicensing.Classes;
 using Spdx3.Model.ExpandedLicensing.Individuals;
 using Spdx3.Model.SimpleLicensing.Classes;
+using Spdx3.Model.Software.Classes;
 using Spdx3.Utility;
 
 namespace Examples;
@@ -27,5 +28,7 @@ public class Example1_CreateNewSpdxDocument
             Summary = "This is a sample SPDX document.",
             DataLicense = ListedLicenses.MIT
         };
+        var sbom = new Sbom(_catalog, _creationInfo);
+        spdxDocument.Element.Add(sbom);
     }
 }
