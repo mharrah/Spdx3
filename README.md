@@ -4,12 +4,12 @@ A NuGet library (.NET 8) for creating, reading, and
 writing [Software Bills of Materials](https://www.ntia.gov/page/software-bill-materials) files
 in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
 
-[![.NET 8](https://img.shields.io/badge/.NET-8.0.x-blue)]()
-[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)]()
+[![.NET 8](https://img.shields.io/badge/.NET-8-blue)]()
+[![C#](https://img.shields.io/badge/C%23-lightgreen.svg?logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHBhdGggc3R5bGU9ImxpbmUtaGVpZ2h0Om5vcm1hbDt0ZXh0LWluZGVudDowO3RleHQtYWxpZ246c3RhcnQ7dGV4dC1kZWNvcmF0aW9uLWxpbmU6bm9uZTt0ZXh0LWRlY29yYXRpb24tc3R5bGU6c29saWQ7dGV4dC10cmFuc2Zvcm06bm9uZTtibG9jay1wcm9ncmVzc2lvbjp0Yjtpc29sYXRpb246YXV0bzttaXgtYmxlbmQtbW9kZTpub3JtYWwiIGQ9Ik0gMTYgMi44ODI4MTI1IEwgMyA5LjM4MjgxMjUgTCAzIDIyLjYxNzE4OCBMIDE2IDI5LjExNzE4OCBMIDI5IDIyLjYxNzE4OCBMIDI5IDIyIEwgMjkgOS4zODI4MTI1IEwgMTYgMi44ODI4MTI1IHogTSAxNiA1LjExNzE4NzUgTCAyNyAxMC42MTcxODggTCAyNyAyMS4zODI4MTIgTCAxNiAyNi44ODI4MTIgTCA1IDIxLjM4MjgxMiBMIDUgMTAuNjE3MTg4IEwgMTYgNS4xMTcxODc1IHogTSAxMyAxMCBDIDkuNyAxMCA3IDEyLjcgNyAxNiBDIDcgMTkuMyA5LjcgMjIgMTMgMjIgQyAxNC41IDIyIDE1LjkwMDM5MSAyMS40IDE2LjkwMDM5MSAyMC41IEwgMTUuMTk5MjE5IDE5LjMwMDc4MSBDIDE0LjU5OTIxOSAxOS43MDA3ODEgMTMuOCAyMCAxMyAyMCBDIDEwLjggMjAgOSAxOC4yIDkgMTYgQyA5IDEzLjggMTAuOCAxMiAxMyAxMiBDIDEzLjggMTIgMTQuNTk5MjE5IDEyLjI5OTIxOSAxNS4xOTkyMTkgMTIuNjk5MjE5IEwgMTYuOTAwMzkxIDExLjUgQyAxNS45MDAzOTEgMTAuNiAxNC41IDEwIDEzIDEwIHogTSAxOCAxMiBMIDE4IDEzIEwgMTcgMTMgTCAxNyAxNSBMIDE4IDE1IEwgMTggMTcgTCAxNyAxNyBMIDE3IDE5IEwgMTggMTkgTCAxOCAyMCBMIDIwIDIwIEwgMjAgMTkgTCAyMiAxOSBMIDIyIDIwIEwgMjQgMjAgTCAyNCAxOSBMIDI1IDE5IEwgMjUgMTcgTCAyNCAxNyBMIDI0IDE1IEwgMjUgMTUgTCAyNSAxMyBMIDI0IDEzIEwgMjQgMTIgTCAyMiAxMiBMIDIyIDEzIEwgMjAgMTMgTCAyMCAxMiBMIDE4IDEyIHogTSAyMCAxNSBMIDIyIDE1IEwgMjIgMTcgTCAyMCAxNyBMIDIwIDE1IHoiIGZvbnQtd2VpZ2h0PSI0MDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiB3aGl0ZS1zcGFjZT0ibm9ybWFsIiBvdmVyZmxvdz0idmlzaWJsZSIvPjwvc3ZnPgo=)]()
 [![NuGet](https://img.shields.io/badge/NuGet-004880?logo=nuget&logoColor=fff)]()
 [![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)]()
 [![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)]()
-[![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)]()
+[![Windows](https://img.shields.io/badge/Windows-blue.svg?logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJub25lIj48cGF0aCBmaWxsPSIjRjM1MzI1IiBkPSJNMSAxaDYuNXY2LjVIMVYxeiIvPjxwYXRoIGZpbGw9IiM4MUJDMDYiIGQ9Ik04LjUgMUgxNXY2LjVIOC41VjF6Ii8+PHBhdGggZmlsbD0iIzA1QTZGMCIgZD0iTTEgOC41aDYuNVYxNUgxVjguNXoiLz48cGF0aCBmaWxsPSIjRkZCQTA4IiBkPSJNOC41IDguNUgxNVYxNUg4LjVWOC41eiIvPjwvc3ZnPg==)]()
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)]()
 
 [![license](https://img.shields.io/github/license/mharrah/Spdx3?style=flat-square)](https://github.com/mharrah/Spdx3/tree/main?tab=MIT-1-ov-file#)
@@ -18,98 +18,36 @@ in [SPDX 3](https://spdx.github.io/spdx-spec/v3.0.1/) format.
 [![coverage](https://img.shields.io/endpoint?style=flat-square&url=https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/Spdx3-cobertura-coverage.json)](https://mharrah.github.io/Spdx3/)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/mharrah/Spdx3)](https://github.com/mharrah/Spdx3/issues)
 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
 ---
 
 # Installation
-Install like you would any other NuGet package.
+Install into your project like you would any other NuGet package.
+See [here](https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-using-the-dotnet-cli) for more.
 
-# Catalogs and SpdxDocuments
-The Spdx3 package uses a "Catalog" which contains all the various elements and 
-objects in the document.  Every object you create is added to the Catalog (in fact,
-the Catalog you're adding to is a parameter to the constructor for each object). Thus,
-the Catalog is an object that relates very closely to the SpdxDocument, but is part
-of the Spdx3 library implementation and not part of the Spdx 3 model.
+# Usage
 
-SBOM's are one particular type of object in the Catalog - and is one of the most central
-in the Catalog - but it's by no means the main one, and not even where you start.
-
-The following is a *simplified* class diagram of some of the objects you're likely to 
-work with -- ALL of which will be kept in the Catalog:
-```mermaid
----
-  config:
-    class:
-      hideEmptyMembersBox: true
----
-classDiagram
-direction RL
-
-namespace Core {
-    class ElementCollection {
-        <<Abstract>>
-    }
-    class Element {
-        <<Abstract>>
-    }
-    class Artifact {
-        <<Abstract>>
-    }
-    class Bom { }
-    class Bundle { }
-    class SpdxDocument { }
-    class Tool { }
-    class IndividualElement { }
-    class Agent { }
-    class Person { }
-    class Organization { }
-    class LifeScopedRelationship { }
-    class Relationship { }
-    class SoftwareAgent { }
-    class Sbom { }
-    class CreationInfo { }
-}
-
-Sbom --|> Bom : "is"
-Bom --|> Bundle : "is"
-Bundle --|> ElementCollection : "is"
-ElementCollection --o Element : "contains"
-ElementCollection --o Element : "has root"
-ElementCollection --|> Element : "is"
-SpdxDocument --|> ElementCollection : "is"
-Artifact --|> Element : "is"        
-Tool --|> Element : "is"        
-IndividualElement --|> Element : "is"        
-Agent --|> Element : "is"        
-Person --|> Agent : "is"    
-Organization --|> Agent : "is"    
-SoftwareAgent --|> Agent : "is"  
-Relationship --|> Element : "is"
-Relationship --o Element : "to"
-Relationship -- Element : "from"
-LifeScopedRelationship --|> Relationship : "is"
-Element --o CreationInfo : "has" 
+## Create a new SBOM from scratch
 
 
-namespace Software {
-    class SoftwareArtifact {
-        <<Abstract>>
-    }
-    class Package { }
-    class Snippet { }
-    class File { }
-}
 
-SoftwareArtifact --|> Artifact : "is"
-Package --|> SoftwareArtifact : "is"
-File --|> SoftwareArtifact : "is"
-Snippet --|> SoftwareArtifact : "is"
+## Reading an SBOM (in SPDX 3.* format)
 
-namespace Build {
-    class BuildClass["Build"]  {  } 
-}
 
-BuildClass --|> Element : "is"
+## Writing an SBOM (in SPDX 3.* format)
 
-```
+
+
+# Contributing
+If you would like to contribute to SPDX 3, email me at ```github``` at ```mharrah.simplelogin.com```.
+
+# License
+SPDX 3 is released under the [MIT License](https://github.com/mharrah/Spdx3/blob/main/LICENSE).
+
 
 
