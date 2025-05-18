@@ -23,6 +23,12 @@ This library provides:
 [![Windows](https://img.shields.io/badge/Windows-blue.svg?logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJub25lIj48cGF0aCBmaWxsPSIjRjM1MzI1IiBkPSJNMSAxaDYuNXY2LjVIMVYxeiIvPjxwYXRoIGZpbGw9IiM4MUJDMDYiIGQ9Ik04LjUgMUgxNXY2LjVIOC41VjF6Ii8+PHBhdGggZmlsbD0iIzA1QTZGMCIgZD0iTTEgOC41aDYuNVYxNUgxVjguNXoiLz48cGF0aCBmaWxsPSIjRkZCQTA4IiBkPSJNOC41IDguNUgxNVYxNUg4LjVWOC41eiIvPjwvc3ZnPg==)]()
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)]()
 
+[![license](https://img.shields.io/github/license/mharrah/Spdx3?style=flat-square)](https://github.com/mharrah/Spdx3/tree/main?tab=MIT-1-ov-file#)
+[![build](https://img.shields.io/github/actions/workflow/status/mharrah/Spdx3/ci.yml?branch=main&style=flat-square)](https://github.com/mharrah/Spdx3/actions/workflows/ci.yml)
+[![tests](https://img.shields.io/endpoint?style=flat-square&url=https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/Spdx3-junit-tests.json)](https://github.com/mharrah/Spdx3/actions/workflows/ci.yml)
+[![coverage](https://img.shields.io/endpoint?style=flat-square&url=https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/Spdx3-cobertura-coverage.json)](https://mharrah.github.io/Spdx3/)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/mharrah/Spdx3)](https://github.com/mharrah/Spdx3/issues)
+
 
 # Documentation
 [Please see here](Spdx3/README.md)
