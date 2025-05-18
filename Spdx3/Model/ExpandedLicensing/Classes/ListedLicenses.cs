@@ -1,4 +1,5 @@
 using System.Globalization;
+using Spdx3.Exceptions;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Utility;
 
@@ -11340,10 +11341,10 @@ public class ListedLicenses
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();
         string resourcePath = name;
         
-        var resources = assembly.GetManifestResourceNames();
+        var resources = assembly.GetManifestResourceNames() ?? throw new Spdx3Exception("Could not get resource names from manifest");
         resourcePath = resources.Single(str => str == $"Spdx3.LicenseData.{name}");
 
-        using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
+        using (Stream stream = assembly.GetManifestResourceStream(resourcePath) ?? throw new Spdx3Exception($"Unable to read {resourcePath} from assembly"))
         using (StreamReader reader = new StreamReader(stream))
         {
             return reader.ReadToEnd();

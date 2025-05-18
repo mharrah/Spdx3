@@ -9,20 +9,33 @@
         <Description>A NuGet library to represent Spdx3 data as an object graph, and to serialize/deserialize the data as JSON-LD files.  Lets you write code to read, manipulate, create, and write SPDX 3.0.1 compliant Software Bills of Materials from C# 8.0 and later code.</Description>
         <Copyright>Copyright (c) Matthew Harrah 2025</Copyright>
         <PackageProjectUrl>https://github.com/mharrah/Spdx3</PackageProjectUrl>
-        <PackageLicenseUrl>https://mit-license.org</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/mharrah/Spdx3</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>sbom bill-of-materials software-bill-of-materials  </PackageTags>
-        <Version>0.1.0-preview</Version>
+        <PackageTags>sbom bill-of-materials software-bill-of-materials</PackageTags>
+        <Version>0.9.0-preview</Version>
+        <LangVersion>12</LangVersion>
+        <PackageIcon>spdx3.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <Folder Include="LicenseData\" />
-        <Folder Include="Model\ExpandedLicensing\Enums\"/>
+        <Folder Include="LICENSES.ThirdParty\coverlet.collector\" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Include="LicenseData\*.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="spdx3.png" Pack="true" PackagePath="\"/>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="**\.DS_Store" />
     </ItemGroup>
 
 
