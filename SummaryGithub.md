@@ -3,8 +3,8 @@
 
 |||
 |:---|:---|
-| Generated on: | 05/18/2025 - 13:56:28 |
-| Coverage date: | 05/18/2025 - 13:56:27 |
+| Generated on: | 05/18/2025 - 14:37:50 |
+| Coverage date: | 05/18/2025 - 14:37:49 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 90 |
@@ -13,10 +13,10 @@
 | Covered lines: | 12600 |
 | Uncovered lines: | 97 |
 | Coverable lines: | 12697 |
-| Total lines: | 16292 |
-| **Branch coverage:** | 85.5% (431 of 504) |
-| Covered branches: | 431 |
-| Total branches: | 504 |
+| Total lines: | 16293 |
+| **Branch coverage:** | 85.2% (433 of 508) |
+| Covered branches: | 433 |
+| Total branches: | 508 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
 
 </details>
@@ -26,7 +26,7 @@
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Spdx3**|**99.2%**|**85.5%**|
+|**Spdx3**|**99.2%**|**85.2%**|
 |Spdx3.Exceptions.Spdx3Exception|100%||
 |Spdx3.Exceptions.Spdx3SerializationException|100%||
 |Spdx3.Exceptions.Spdx3ValidationException|100%||
@@ -74,7 +74,7 @@
 |Spdx3.Model.ExpandedLicensing.Classes.LicenseAddition|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicense|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.ListedLicenseException|62.5%||
-|Spdx3.Model.ExpandedLicensing.Classes.ListedLicenses|100%||
+|Spdx3.Model.ExpandedLicensing.Classes.ListedLicenses|100%|50%|
 |Spdx3.Model.ExpandedLicensing.Classes.OrLaterOperator|100%||
 |Spdx3.Model.ExpandedLicensing.Classes.WithAdditionOperator|80%||
 |Spdx3.Model.ExpandedLicensing.Individuals.NoAssertionLicense|100%||
