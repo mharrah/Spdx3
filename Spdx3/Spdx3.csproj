@@ -22,7 +22,7 @@
 
     <ItemGroup>
         <Folder Include="LicenseData\" />
-        <Folder Include="LICENSES.ThirdParty\coverlet.collector\" />
+        <Folder Include="LICENSES.ThirdParty\**" />
     </ItemGroup>
 
     <ItemGroup>
