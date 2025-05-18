@@ -12,7 +12,7 @@ namespace Spdx3.Model.ExpandedLicensing.Classes;
 ///
 /// The SPDX License List can be found here: https://spdx.org/licenses/
 /// </summary>
-public class ListedLicense : License
+public partial class ListedLicense : License
 {
     
     [JsonPropertyName("expandedlicensing_deprecatedVersion")]

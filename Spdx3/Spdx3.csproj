@@ -17,7 +17,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="LicenseData\" />
         <Folder Include="Model\ExpandedLicensing\Enums\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="LicenseData\*.txt" />
     </ItemGroup>
 
 
