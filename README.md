@@ -33,13 +33,48 @@ See [here](https://learn.microsoft.com/en-us/nuget/quickstart/install-and-use-a-
 # Usage
 
 ## Create a new SBOM from scratch
+The idea is that you need to do the following:
+1. Create a ```Catalog``` object
+2. Create a ```CreationInfo``` object
+3. Start making objects, passing the ```Catalog``` and ```CreationInfo``` object on the constructors.
+4. Add those objects to the appropriate places in the collections on the objects.  This is all dependent on the content that you want to create.
+
+```csharp
+using Spdx3.Model.Core.Classes;
+using Spdx3.Model.ExpandedLicensing.Classes;
+using Spdx3.Model.Software.Classes;
+using Spdx3.Utility;
+
+namespace Examples;
+
+public class Example1CreateNewSpdxDocument
+{
+    public void CreateNewSpdxDocumentWithSbom()
+    {
+        var catalog = new Catalog();
+        var creationInfo = new CreationInfo(catalog);
+
+        var spdxDocument = new SpdxDocument(catalog, creationInfo)
+        {
+            Comment = "This is my new Spdx document.",
+            Description = "This is an example of how to create a new SPDX document and put an SBOM in it.",
+            Name = "Example1",
+            Summary = "This is a sample SPDX document.",
+            DataLicense = ListedLicenses.MIT
+        };
+        var sbom = new Sbom(catalog, creationInfo);
+        spdxDocument.Element.Add(sbom);
+
+        // Add items to the sbom (most likely to the Element or Relationship lists) 
+    }
+}
+```
+It's highly recommended that you ***not*** make changes to the values of the SpdxId or Type properties on any object unless you know for sure what you're doing.
+
+## Reading an SPDX document
 
 
-
-## Reading an SBOM (in SPDX 3.* format)
-
-
-## Writing an SBOM (in SPDX 3.* format)
+## Writing an SPDX document
 
 
 
