@@ -4,6 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -16,8 +17,7 @@
         <RepositoryUrl>https://github.com/mharrah/Spdx3</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>sbom bill-of-materials software-bill-of-materials spdx spdx-3</PackageTags>
-        <Version>0.9.1-preview</Version>
-        <LangVersion>12</LangVersion>
+        <Version>0.9.2-preview</Version>
         <PackageIcon>spdx3.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

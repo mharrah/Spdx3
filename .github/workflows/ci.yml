@@ -38,10 +38,10 @@ jobs:
         run: dotnet tool restore
 
       - name: Build solution
-        run: dotnet build -c Debug
+        run: dotnet build -c Release
 
       - name: Run tests
-        run: dotnet test -c Debug --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage
+        run: dotnet test -c Release --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage
           
       - name: Generate coverage report
         run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub,Html
@@ -76,3 +76,7 @@ jobs:
         with:
           files: ${{ github.workspace }}/dotnet-test-result.xml
 
+      - name: Publish
+        if: startsWith(github.ref, 'refs/heads/release')
+        run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+        
