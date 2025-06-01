@@ -23,9 +23,9 @@ public abstract class BaseModelClass
     [JsonPropertyName("spdxId")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required Uri SpdxId { get; set; }
-    
+
     // A back-link to the catalog that was used to created this item and now contains it
-    public Catalog? Catalog { get; internal set; }
+    public Catalog Catalog { get; internal set; }
 
     // protected internal no-parm constructor required for deserialization
     protected internal BaseModelClass()
@@ -52,6 +52,7 @@ public abstract class BaseModelClass
     {
         var props = GetType().GetProperties().Where(p => p.Name == propertyName).ToList();
         PropertyInfo? propertyInfo = null;
+
         if (props.Count > 1)
         {
             propertyInfo = props.Single(p => p.GetCustomAttribute<RequiredMemberAttribute>() != null);
@@ -60,12 +61,14 @@ public abstract class BaseModelClass
         {
             propertyInfo = props.FirstOrDefault();
         }
+
         if (propertyInfo == null)
         {
             throw new Spdx3ValidationException(this, $"'{propertyName}'", "No such property exists");
         }
 
         var propVal = propertyInfo.GetValue(this);
+
         switch (propVal)
         {
             case null:

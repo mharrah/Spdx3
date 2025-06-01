@@ -36,12 +36,13 @@ public class Catalog
     public SpdxDocument GetSpdxDocument()
     {
         var spdxDocs = GetItems<SpdxDocument>();
+
         if (spdxDocs.Count != 1)
         {
             throw new Spdx3Exception($"Expected exactly one SpdxDocument, but got {spdxDocs.Count}.");
         }
 
-        var result = (SpdxDocument)spdxDocs.First();
+        var result = spdxDocs.First();
         return result;
     }
 
@@ -70,6 +71,7 @@ public class Catalog
     private SpdxDocument AssembleSpdxDocument()
     {
         var result = GetSpdxDocument();
+
         foreach (var baseModelClass in Items.Values.ToList())
         {
             if (baseModelClass is Element e)
@@ -91,6 +93,7 @@ public class Catalog
             // Get the properties that are Spdx Model Class types and are not null
             var props = item.GetType().GetProperties()
                 .Where(p => p.GetValue(item) != null && p.GetValue(item) is BaseModelClass);
+
             foreach (var prop in props)
             {
                 RehydratePlaceHolderWithRealItem(prop, item);
@@ -107,6 +110,7 @@ public class Catalog
     private void RehydratePlaceHolderWithRealItem(PropertyInfo prop, BaseModelClass itemWithProperty)
     {
         var isSpdxClass = prop.PropertyType.IsAssignableTo(typeof(BaseModelClass));
+
         if (!isSpdxClass)
         {
             return;
@@ -130,15 +134,14 @@ public class Catalog
     /// <returns>The items in the catalog of type T as a List</returns>
     public List<T> GetItems<T>()
     {
-        return Items.Values.ToList().Where(
-            x => x.GetType() == typeof(T)
-        ).Cast<T>().ToList();
+        return Items.Values.ToList().Where(x => x.GetType() == typeof(T)).Cast<T>().ToList();
     }
 
     public List<Relationship> GetRelationshipsFromTo<TF, TT>()
     {
         var relationships = GetItems<Relationship>();
         var result = new List<Relationship>();
+
         foreach (var r in relationships.Where(r => r.From.GetType().IsAssignableTo(typeof(TF))))
         {
             if (r.To.Any(t => t.GetType().IsAssignableFrom(typeof(TT))))
@@ -152,44 +155,32 @@ public class Catalog
 
     public List<Relationship> GetRelationshipsFromTo(Element fromElement, Element toElement)
     {
-        return GetItems<Relationship>().Where(
-            r => r.From.SpdxId == fromElement.SpdxId
-                 && r.To.Any(t => t.SpdxId == toElement.SpdxId)
-        ).ToList();
+        return GetItems<Relationship>()
+            .Where(r => r.From.SpdxId == fromElement.SpdxId && r.To.Any(t => t.SpdxId == toElement.SpdxId)).ToList();
     }
 
     public List<Relationship> GetRelationshipsFrom(Element fromElement)
     {
-        return GetItems<Relationship>().Where(
-            r => r.From.SpdxId == fromElement.SpdxId
-        ).ToList();
+        return GetItems<Relationship>().Where(r => r.From.SpdxId == fromElement.SpdxId).ToList();
     }
 
     public List<Relationship> GetRelationshipsFrom<T>()
     {
-        return GetItems<Relationship>().Where(
-            r => r.From.GetType().IsAssignableTo(typeof(T))
-        ).ToList();
+        return GetItems<Relationship>().Where(r => r.From.GetType().IsAssignableTo(typeof(T))).ToList();
     }
 
     public List<Relationship> GetRelationshipsTo(Element toElement)
     {
-        return GetItems<Relationship>().Where(
-            r => r.To.Select(x => x.SpdxId).Contains(toElement.SpdxId)
-        ).ToList();
+        return GetItems<Relationship>().Where(r => r.To.Select(x => x.SpdxId).Contains(toElement.SpdxId)).ToList();
     }
 
     public List<Relationship> GetRelationshipsTo<T>()
     {
-        return GetItems<Relationship>().Where(
-            r => r.To.Any(x => x.GetType() == typeof(T))
-        ).ToList();
+        return GetItems<Relationship>().Where(r => r.To.Any(x => x.GetType() == typeof(T))).ToList();
     }
 
     public List<Relationship> GetRelationshipsOfType(RelationshipType relType)
     {
-        return GetItems<Relationship>().Where(
-            r => r.RelationshipType == relType
-        ).ToList();
+        return GetItems<Relationship>().Where(r => r.RelationshipType == relType).ToList();
     }
 }

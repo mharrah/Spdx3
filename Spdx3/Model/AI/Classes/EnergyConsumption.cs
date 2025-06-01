@@ -9,15 +9,18 @@ public class EnergyConsumption : BaseModelClass
 {
     [JsonPropertyName("ai_finetuningEnergyConsumption")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<EnergyConsumptionDescription> FinetuningEnergyConsumption { get; set; } = new List<EnergyConsumptionDescription>();
+    public IList<EnergyConsumptionDescription> FinetuningEnergyConsumption { get; set; } =
+        new List<EnergyConsumptionDescription>();
 
     [JsonPropertyName("ai_inferenceEnergyConsumption")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<EnergyConsumptionDescription> InferenceEnergyConsumption { get; set; } = new List<EnergyConsumptionDescription>();
+    public IList<EnergyConsumptionDescription> InferenceEnergyConsumption { get; set; } =
+        new List<EnergyConsumptionDescription>();
 
     [JsonPropertyName("ai_trainingEnergyConsumption")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<EnergyConsumptionDescription> TrainingEnergyConsumption { get; set; } = new List<EnergyConsumptionDescription>();
+    public IList<EnergyConsumptionDescription> TrainingEnergyConsumption { get; set; } =
+        new List<EnergyConsumptionDescription>();
 
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
@@ -30,5 +33,4 @@ public class EnergyConsumption : BaseModelClass
     public EnergyConsumption(Catalog catalog) : base(catalog)
     {
     }
-    
 }

@@ -9,28 +9,6 @@ namespace Spdx3.Tests.Model.SimpleLicensing.Classes;
 public class SimpleLicensingTextTest : BaseModelTest
 {
     [Fact]
-    public void SimpleLicensingText_MinimallyPopulated_ShouldSerialize()
-    {
-        // Arrange
-        var simpleLicensingText = new SimpleLicensingText(TestCatalog, TestCreationInfo, "MIT");
-
-        const string expected = """
-                                {
-                                  "simplelicensing_licenseText": "MIT",
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "simplelicensing_SimpleLicensingText",
-                                  "spdxId": "urn:SimpleLicensingText:40f"
-                                }
-                                """;
-
-        // Act
-        var json = ToJson(simpleLicensingText);
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
-
-    [Fact]
     public void SimpleLicensingText_FullyPopulated_ShouldSerialize()
     {
         // Arrange
@@ -42,8 +20,8 @@ public class SimpleLicensingTextTest : BaseModelTest
             Summary = "TestSummary"
         };
         simpleLicensingText.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        simpleLicensingText.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        simpleLicensingText.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         simpleLicensingText.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         simpleLicensingText.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
 
@@ -67,6 +45,28 @@ public class SimpleLicensingTextTest : BaseModelTest
                                   "verifiedUsing": [
                                     "urn:IntegrityMethodConcreteTestFixture:443"
                                   ],
+                                  "type": "simplelicensing_SimpleLicensingText",
+                                  "spdxId": "urn:SimpleLicensingText:40f"
+                                }
+                                """;
+
+        // Act
+        var json = ToJson(simpleLicensingText);
+
+        // Assert
+        Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void SimpleLicensingText_MinimallyPopulated_ShouldSerialize()
+    {
+        // Arrange
+        var simpleLicensingText = new SimpleLicensingText(TestCatalog, TestCreationInfo, "MIT");
+
+        const string expected = """
+                                {
+                                  "simplelicensing_licenseText": "MIT",
+                                  "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "simplelicensing_SimpleLicensingText",
                                   "spdxId": "urn:SimpleLicensingText:40f"
                                 }

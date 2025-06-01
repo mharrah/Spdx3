@@ -11,7 +11,8 @@ public class LicenseAdditionTest : BaseModelTest
     public void BrandNew_LicenseAddition_SerializesProperly()
     {
         // Arrange
-        var licenseAddition = new LicenseAdditionConcreteTestFixture(TestCatalog, TestCreationInfo, "Test Addition Text");
+        var licenseAddition =
+            new LicenseAdditionConcreteTestFixture(TestCatalog, TestCreationInfo, "Test Addition Text");
         const string expected = """
                                 {
                                   "expandedlicensing_additionText": "Test Addition Text",
@@ -32,19 +33,19 @@ public class LicenseAdditionTest : BaseModelTest
     public void FullyPopulated_LicenseAddition_SerializesProperly()
     {
         // Arrange
-        var licenseAddition = new LicenseAdditionConcreteTestFixture(TestCatalog, TestCreationInfo, "Test Addition Text")
-        {
-            Comment = "TestComment",
-            Description = "TestDescription",
-            Name = "TestName",
-            Summary = "TestSummary"
-        };
+        var licenseAddition =
+            new LicenseAdditionConcreteTestFixture(TestCatalog, TestCreationInfo, "Test Addition Text")
+            {
+                Comment = "TestComment",
+                Description = "TestDescription",
+                Name = "TestName",
+                Summary = "TestSummary"
+            };
         licenseAddition.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        licenseAddition.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        licenseAddition.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         licenseAddition.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         licenseAddition.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

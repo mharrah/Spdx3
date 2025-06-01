@@ -5,13 +5,21 @@ namespace Spdx3.Model.Lite;
 
 public class LiteDomainComplianceChecker
 {
-    public ReadOnlyCollection<LiteDomainComplianceFinding> Findings { get;}
-    
-    public bool IsCompliant => Findings.All(x => x.FindingType != LiteDomainComplianceFindingType.problem);
+    private readonly List<LiteDomainComplianceFinding> _findings;
+    public ReadOnlyCollection<LiteDomainComplianceFinding> Findings => _findings.AsReadOnly();
+
+    public bool IsCompliant => Problems.Count == 0;
+
+    public ReadOnlyCollection<LiteDomainComplianceFinding> Problems =>
+        _findings.Where(f => f.FindingType == LiteDomainComplianceFindingType.problem).ToList().AsReadOnly();
+
+    public ReadOnlyCollection<LiteDomainComplianceFinding> Recommendations =>
+        _findings.Where(f => f.FindingType == LiteDomainComplianceFindingType.recommendation).ToList().AsReadOnly();
 
     public LiteDomainComplianceChecker(Catalog catalog)
     {
         var v = new LiteDomainComplianceVisitor();
+
         foreach (var baseModelClass in catalog.Items.Values)
         {
             if (baseModelClass is ILiteDomainCompliantElement liteClass)
@@ -20,6 +28,6 @@ public class LiteDomainComplianceChecker
             }
         }
 
-        Findings = new ReadOnlyCollection<LiteDomainComplianceFinding>(v.Findings);
+        _findings = v.Findings;
     }
 }

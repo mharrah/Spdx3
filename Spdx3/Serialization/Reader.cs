@@ -32,9 +32,22 @@ public class Reader
         Options.Converters.Add(new SpdxWrapperConverterFactory());
     }
 
+    public SpdxDocument ReadFileName(string fileName)
+    {
+        var fileStream = new FileStream(fileName, FileMode.Open);
+        return ReadFileStream(fileStream);
+    }
+
+    public SpdxDocument ReadFileStream(FileStream fileStream)
+    {
+        var json = new StreamReader(fileStream).ReadToEnd();
+        return ReadString(json);
+    }
+
     public SpdxDocument ReadString(string json)
     {
         var fileWithWrapper = JsonSerializer.Deserialize<SpdxWrapper>(json, Options);
+
         if (fileWithWrapper == null)
         {
             throw new Spdx3SerializationException("Could not deserialize JSON in expected format.");
@@ -46,17 +59,5 @@ public class Reader
         }
 
         return _catalog.GetModel();
-    }
-
-    public SpdxDocument ReadFileStream(FileStream fileStream)
-    {
-        var json = new StreamReader(fileStream).ReadToEnd();
-        return ReadString(json);
-    }
-
-    public SpdxDocument ReadFileName(string fileName)
-    {
-        var fileStream = new FileStream(fileName, FileMode.Open);
-        return ReadFileStream(fileStream);
     }
 }

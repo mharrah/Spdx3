@@ -4,12 +4,13 @@ namespace Spdx3.Model.Lite;
 
 public class LiteDomainComplianceFinding
 {
-    public readonly BaseModelClass Obj;
-    public readonly string? PropertyName;
     public readonly string Description;
     public readonly LiteDomainComplianceFindingType FindingType;
+    public readonly BaseModelClass Obj;
+    public readonly string? PropertyName;
 
-    public LiteDomainComplianceFinding(LiteDomainComplianceFindingType findingType, BaseModelClass obj, string propertyName, string description)
+    public LiteDomainComplianceFinding(LiteDomainComplianceFindingType findingType, BaseModelClass obj,
+        string propertyName, string description)
     {
         Obj = obj;
         PropertyName = propertyName;
@@ -17,7 +18,8 @@ public class LiteDomainComplianceFinding
         FindingType = findingType;
     }
 
-    public LiteDomainComplianceFinding(LiteDomainComplianceFindingType findingType, BaseModelClass obj, string description)
+    public LiteDomainComplianceFinding(LiteDomainComplianceFindingType findingType, BaseModelClass obj,
+        string description)
     {
         Obj = obj;
         PropertyName = null;
@@ -25,7 +27,7 @@ public class LiteDomainComplianceFinding
         FindingType = findingType;
     }
 
-    
+
     public override string ToString()
     {
         var objType = Obj.GetType().Name;

@@ -9,27 +9,6 @@ namespace Spdx3.Tests.Model.Security.Classes;
 public class VexFixedVulnAssessmentRelationshipTest : BaseModelTest
 {
     [Fact]
-    public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
-    {
-        // Arrange
-        const string json = """
-                            {
-                              "creationInfo": "urn:CreationInfo:3f5",
-                              "type": "security_VexVulnAssessmentRelationship",
-                              "spdxId": "urn:VexFixedVulnAssessmentRelationship:402"
-                            }
-                            """;
-
-        // Act
-        var vexVulnAssessmentRelationship = FromJson<VexFixedVulnAssessmentRelationship>(json);
-
-        // Assert
-        Assert.NotNull(vexVulnAssessmentRelationship);
-        Assert.Equal(new Uri("urn:VexFixedVulnAssessmentRelationship:402"), vexVulnAssessmentRelationship.SpdxId);
-    }
-
-
-    [Fact]
     public void VexVulnAssessmenRelationship_MinimalObject_ShouldSerialize()
     {
         // Arrange
@@ -121,4 +100,23 @@ public class VexFixedVulnAssessmentRelationshipTest : BaseModelTest
         Assert.Equal(expected, json);
     }
 
+    [Fact]
+    public void VexVulnAssessmentRelationship_MinimalObject_ShouldDeserialize()
+    {
+        // Arrange
+        const string json = """
+                            {
+                              "creationInfo": "urn:CreationInfo:3f5",
+                              "type": "security_VexVulnAssessmentRelationship",
+                              "spdxId": "urn:VexFixedVulnAssessmentRelationship:402"
+                            }
+                            """;
+
+        // Act
+        var vexVulnAssessmentRelationship = FromJson<VexFixedVulnAssessmentRelationship>(json);
+
+        // Assert
+        Assert.NotNull(vexVulnAssessmentRelationship);
+        Assert.Equal(new Uri("urn:VexFixedVulnAssessmentRelationship:402"), vexVulnAssessmentRelationship.SpdxId);
+    }
 }

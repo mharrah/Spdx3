@@ -24,10 +24,10 @@ public class SsvcVulnAssessmentRelationship : VulnAssessmentRelationship
     {
     }
 #pragma warning restore CS8618, CS9264
-    
+
     [SetsRequiredMembers]
-    public SsvcVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to, SsvcDecisionType decisionType) 
-        : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
+    public SsvcVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to,
+        SsvcDecisionType decisionType) : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
     {
         DecisionType = decisionType;
     }

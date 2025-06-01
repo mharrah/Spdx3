@@ -3,7 +3,6 @@ using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.Security.Classes;
 using Spdx3.Model.Software.Classes;
-using Spdx3.Tests.Model.Core.Classes;
 using Spdx3.Tests.Model.Extension.Classes;
 using Spdx3.Utility;
 
@@ -70,19 +69,18 @@ public class CvssV2VulnAssessmentRelationshipTest : BaseModelTest
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var cvssV2VulnAssessmentRelationship =
-            new CvssV2VulnAssessmentRelationship(TestCatalog, TestCreationInfo, vulnerability, packages, 
-                1.5, "SQL injection")
-            {
-                ModifiedTime = PredictableDateTime.AddDays(1),
-                PublishedTime = PredictableDateTime.AddDays(2),
-                WithdrawnTime = PredictableDateTime.AddDays(3),
-                SuppliedBy = new Person(TestCatalog, TestCreationInfo),
-                Comment = "a comment",
-                Description = "a description",
-                Summary = "a summary",
-                Name = "a name"
-            };
+        var cvssV2VulnAssessmentRelationship = new CvssV2VulnAssessmentRelationship(TestCatalog, TestCreationInfo,
+            vulnerability, packages, 1.5, "SQL injection")
+        {
+            ModifiedTime = PredictableDateTime.AddDays(1),
+            PublishedTime = PredictableDateTime.AddDays(2),
+            WithdrawnTime = PredictableDateTime.AddDays(3),
+            SuppliedBy = new Person(TestCatalog, TestCreationInfo),
+            Comment = "a comment",
+            Description = "a description",
+            Summary = "a summary",
+            Name = "a name"
+        };
         cvssV2VulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         cvssV2VulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
@@ -130,8 +128,8 @@ public class CvssV2VulnAssessmentRelationshipTest : BaseModelTest
         // Assert
         Assert.Equal(expected, json);
     }
- 
-        
+
+
     [Fact]
     public void Validation_FailsWhen_RelationshipType_WrongValue()
     {
@@ -145,14 +143,13 @@ public class CvssV2VulnAssessmentRelationshipTest : BaseModelTest
         cvssV2VulnAssessmentRelationship.RelationshipType = RelationshipType.other;
         cvssV2VulnAssessmentRelationship.Score = 1.0;
         cvssV2VulnAssessmentRelationship.VectorString = "vector";
-        
+
         // Act
         var exc = Record.Exception(() => cvssV2VulnAssessmentRelationship.Validate());
-        
+
         // Assert
         Assert.NotNull(exc);
         Assert.IsType<Spdx3ValidationException>(exc);
         Assert.Contains("Must be 'hasAssessmentFor'", exc.Message);
     }
-    
 }

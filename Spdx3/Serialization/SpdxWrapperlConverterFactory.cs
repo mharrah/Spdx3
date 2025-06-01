@@ -20,8 +20,8 @@ internal class SpdxWrapperConverterFactory : JsonConverterFactory
         Type[] typeArgs = [typeToConvert];
         var constructedType = converterGenericType.MakeGenericType(typeArgs);
 
-        var converter = Activator.CreateInstance(constructedType,
-            BindingFlags.Instance | BindingFlags.Public, null, null, null);
+        var converter = Activator.CreateInstance(constructedType, BindingFlags.Instance | BindingFlags.Public, null,
+            null, null);
 
         return converter as JsonConverter;
     }

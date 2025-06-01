@@ -19,9 +19,9 @@ public class VexUnderInvestigationVulnAssessmentRelationship : VexVulnAssessment
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VexUnderInvestigationVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, 
-         Vulnerability from, List<Element> to) 
-        : base(catalog, creationInfo, RelationshipType.underInvestigationFor, from, to)
+    public VexUnderInvestigationVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo,
+        Vulnerability from, List<Element> to) : base(catalog, creationInfo, RelationshipType.underInvestigationFor,
+        from, to)
     {
     }
 }

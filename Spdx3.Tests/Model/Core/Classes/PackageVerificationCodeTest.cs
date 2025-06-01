@@ -19,28 +19,42 @@ public class PackageVerificationCodeTest : BaseModelTest
     }
 
     [Fact]
-    public void PackageVerificationCode_MinimallyPopulated_SerializesAsExpected()
+    public void PackageVerificationCode_FailsValidation_WhenEmpty_HashValue()
     {
         // Arrange
         var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
-            Algorithm = HashAlgorithm.falcon,
-            HashValue = "TestHashValue"
+            Algorithm = HashAlgorithm.md5,
+            HashValue = ""
         };
-        const string expected = """
-                                {
-                                  "algorithm": "falcon",
-                                  "hashValue": "TestHashValue",
-                                  "type": "PackageVerificationCode",
-                                  "spdxId": "urn:PackageVerificationCode:40f"
-                                }
-                                """;
 
-        // Act
-        var json = ToJson(hash);
+        //  Act
+        var exception = Record.Exception(() => hash.Validate());
 
         // Assert
-        Assert.Equal(expected, json);
+        Assert.NotNull(exception);
+        Assert.Equal("Object PackageVerificationCode, property HashValue: String field is empty", exception.Message);
+    }
+
+
+    [Fact]
+    public void PackageVerificationCode_FailsValidation_WhenMissing_HashValue()
+    {
+        // Arrange
+        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
+        {
+            Algorithm = HashAlgorithm.falcon
+        };
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        hash.HashValue = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+
+        //  Act
+        var exception = Record.Exception(() => hash.Validate());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object PackageVerificationCode, property HashValue: Field is required", exception.Message);
     }
 
     [Fact]
@@ -74,42 +88,28 @@ public class PackageVerificationCodeTest : BaseModelTest
         Assert.Equal(expected, json);
     }
 
-
     [Fact]
-    public void PackageVerificationCode_FailsValidation_WhenMissing_HashValue()
+    public void PackageVerificationCode_MinimallyPopulated_SerializesAsExpected()
     {
         // Arrange
         var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
         {
-            Algorithm = HashAlgorithm.falcon
+            Algorithm = HashAlgorithm.falcon,
+            HashValue = "TestHashValue"
         };
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        hash.HashValue = null;
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        const string expected = """
+                                {
+                                  "algorithm": "falcon",
+                                  "hashValue": "TestHashValue",
+                                  "type": "PackageVerificationCode",
+                                  "spdxId": "urn:PackageVerificationCode:40f"
+                                }
+                                """;
 
-        //  Act
-        var exception = Record.Exception(() => hash.Validate());
+        // Act
+        var json = ToJson(hash);
 
         // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object PackageVerificationCode, property HashValue: Field is required", exception.Message);
-    }
-
-    [Fact]
-    public void PackageVerificationCode_FailsValidation_WhenEmpty_HashValue()
-    {
-        // Arrange
-        var hash = new PackageVerificationCode(TestCatalog, HashAlgorithm.falcon, "TestHashValue")
-        {
-            Algorithm = HashAlgorithm.md5,
-            HashValue = ""
-        };
-
-        //  Act
-        var exception = Record.Exception(() => hash.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object PackageVerificationCode, property HashValue: String field is empty", exception.Message);
+        Assert.Equal(expected, json);
     }
 }

@@ -14,7 +14,7 @@ namespace Spdx3.Model.Lite;
 /// </summary>
 internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
 {
-    internal IList<LiteDomainComplianceFinding> Findings { get; } = new List<LiteDomainComplianceFinding>();
+    internal List<LiteDomainComplianceFinding> Findings { get; } = [];
 
     public void Visit(SpdxDocument spdxDocument)
     {
@@ -106,27 +106,23 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, licenseExpression,
             nameof(licenseExpression.CreationInfo), licenseExpression.CreationInfo);
         CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, licenseExpression,
-            nameof(licenseExpression.LicenseExpressionText),
-            licenseExpression.LicenseExpressionText);
+            nameof(licenseExpression.LicenseExpressionText), licenseExpression.LicenseExpressionText);
         CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, licenseExpression,
-            nameof(licenseExpression.SpdxId),
-            licenseExpression.SpdxId);
+            nameof(licenseExpression.SpdxId), licenseExpression.SpdxId);
         CheckNotNullOrEmpty(LiteDomainComplianceFindingType.recommendation, licenseExpression,
-            nameof(licenseExpression.LicenseListVersion),
-            licenseExpression.LicenseListVersion);
+            nameof(licenseExpression.LicenseListVersion), licenseExpression.LicenseListVersion);
     }
 
     public void Visit(SimpleLicensingText simpleLicensingText)
     {
-        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.CreationInfo),
-            simpleLicensingText.CreationInfo);
-        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.LicenseText),
-            simpleLicensingText.LicenseText);
-        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText, nameof(simpleLicensingText.SpdxId),
-            simpleLicensingText.SpdxId);
-        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.recommendation, simpleLicensingText, nameof(simpleLicensingText.Comment),
-            simpleLicensingText.Comment);
-
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText,
+            nameof(simpleLicensingText.CreationInfo), simpleLicensingText.CreationInfo);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText,
+            nameof(simpleLicensingText.LicenseText), simpleLicensingText.LicenseText);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.problem, simpleLicensingText,
+            nameof(simpleLicensingText.SpdxId), simpleLicensingText.SpdxId);
+        CheckNotNullOrEmpty(LiteDomainComplianceFindingType.recommendation, simpleLicensingText,
+            nameof(simpleLicensingText.Comment), simpleLicensingText.Comment);
     }
 
     public void Visit(Package package)
@@ -174,8 +170,13 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         {
             throw new Spdx3Exception($"Cannot find catalog from Package '{package.SpdxId}'");
         }
-        
-        const RelationshipType relType = RelationshipType.hasConcludedLicense;
+
+        MustHaveExactlyOneRelationshipOfType(package, RelationshipType.hasDeclaredLicense);
+        MustHaveExactlyOneRelationshipOfType(package, RelationshipType.hasConcludedLicense);
+    }
+
+    private void MustHaveExactlyOneRelationshipOfType(Package package, RelationshipType relType)
+    {
         var relationshipsOfType = package.Catalog.GetRelationshipsOfType(relType);
 
         if (relationshipsOfType.Count() != 1)
@@ -225,6 +226,7 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         string propertyName, IList? listVal)
     {
         var verb = findingType == LiteDomainComplianceFindingType.problem ? "requires" : "should have";
+
         if (listVal is null || listVal.Count < 1)
         {
             Findings.Add(new LiteDomainComplianceFinding(findingType, obj, propertyName,
@@ -237,6 +239,7 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         string propertyName, IList? listVal, Type requiredType)
     {
         var verb = findingType == LiteDomainComplianceFindingType.problem ? "requires" : "should have";
+
         if (listVal is null || listVal.Count < 1)
         {
             Findings.Add(new LiteDomainComplianceFinding(findingType, obj, propertyName,
@@ -260,6 +263,7 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         string propertyName, IList? listVal, Type desiredType)
     {
         var verb = findingType == LiteDomainComplianceFindingType.problem ? "must" : "should";
+
         if (listVal is null)
         {
             return;
@@ -290,6 +294,7 @@ internal class LiteDomainComplianceVisitor : ILiteDomainComplianceVisitor
         string propertyName, object? objVal)
     {
         var verb = findingType == LiteDomainComplianceFindingType.problem ? "required" : "recommended";
+
         if (objVal is null)
         {
             Findings.Add(new LiteDomainComplianceFinding(findingType, obj, propertyName, $"Value {verb}"));

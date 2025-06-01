@@ -49,11 +49,10 @@ public class LicenseTest : BaseModelTest
         license.SeeAlso.Add(new Uri("https://something.com"));
         license.SeeAlso.Add(new Uri("https://somethingelse.com"));
         license.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        license.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        license.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         license.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         license.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

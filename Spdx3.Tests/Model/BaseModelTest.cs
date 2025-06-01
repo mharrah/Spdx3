@@ -18,11 +18,11 @@ public class BaseModelTest
     // What the name says - a predictable datetimeoffset value
     protected static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
 
-    // A premade CreationInfo object to use
-    protected CreationInfo TestCreationInfo { get; }
-
     // A premade SpdxCatalog to use
     protected Catalog TestCatalog { get; } = new();
+
+    // A premade CreationInfo object to use
+    protected CreationInfo TestCreationInfo { get; }
 
     /// <summary>
     ///     Serialization options
@@ -38,8 +38,30 @@ public class BaseModelTest
     protected BaseModelTest()
     {
         TestCreationInfo = new CreationInfo(TestCatalog, PredictableDateTime);
-        TestCreationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, TestCreationInfo) { Name = $"{nameof(BaseModelTest)} constructor"});
+        TestCreationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, TestCreationInfo)
+            { Name = $"{nameof(BaseModelTest)} constructor" });
         Options.Converters.Add(new SpdxModelConverterFactory());
+    }
+
+    /// <summary>
+    ///     Convenience method to remove line breaks and all whitespace at the beginning and end of the line breaks.
+    ///     This makes it easy to use here-strings for JSON literals without having to use ugly escapes and have
+    ///     weird, opaque line wrapping.
+    /// </summary>
+    /// <param name="json">The json you want to normalize</param>
+    /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
+    protected static string NormalizeJson(string json)
+    {
+        var result = Regex.Replace(json, @"^\s*", "", RegexOptions.Multiline);
+        result = Regex.Replace(result, @"\s*$", "", RegexOptions.Multiline);
+        result = Regex.Replace(result, @"(\r|\n)", "", RegexOptions.Multiline);
+        return result;
+    }
+
+    protected T? FromJson<T>(string json)
+    {
+        var result = JsonSerializer.Deserialize<T>(json, Options);
+        return result;
     }
 
     /// <summary>
@@ -61,26 +83,5 @@ public class BaseModelTest
         object plainObject = (object)obj;
         // ReSharper disable once RedundantTypeArgumentsOfMethod
         return JsonSerializer.Serialize<object>(plainObject, Options);
-    }
-
-    protected T? FromJson<T>(string json)
-    {
-        var result = JsonSerializer.Deserialize<T>(json, Options);
-        return result;
-    }
-
-    /// <summary>
-    ///     Convenience method to remove line breaks and all whitespace at the beginning and end of the line breaks.
-    ///     This makes it easy to use here-strings for JSON literals without having to use ugly escapes and have
-    ///     weird, opaque line wrapping.
-    /// </summary>
-    /// <param name="json">The json you want to normalize</param>
-    /// <returns>The json with leading/trailing spaces removed on each line, and the line breaks removed as well</returns>
-    protected static string NormalizeJson(string json)
-    {
-        var result = Regex.Replace(json, @"^\s*", "", RegexOptions.Multiline);
-        result = Regex.Replace(result, @"\s*$", "", RegexOptions.Multiline);
-        result = Regex.Replace(result, @"(\r|\n)", "", RegexOptions.Multiline);
-        return result;
     }
 }

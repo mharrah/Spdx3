@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Spdx3.Utility;
+using File = Spdx3.Model.Software.Classes.File;
 
 namespace Spdx3.Serialization;
 
@@ -61,10 +62,10 @@ public class Writer
     /// </summary>
     /// <param name="fileName">The name of the new JSON file to create</param>
     /// <returns>The file we created and wrote to</returns>
-    public FileStream WriteFileName(string fileName)
+    public FileInfo WriteFileName(string fileName)
     {
         var fileStream = new FileStream(fileName, FileMode.Create);
         WriteFileStream(fileStream);
-        return fileStream;
+        return new FileInfo(fileName);
     }
 }

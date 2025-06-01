@@ -10,7 +10,7 @@
     <PropertyGroup>
         <Title>Spdx3</Title>
         <Authors>Matt Harrah</Authors>
-        <Description>A NuGet library to represent Spdx3 data as an object graph, and to serialize/deserialize the data as JSON-LD files.  Lets you write code to read, manipulate, create, and write SPDX 3.0.1 compliant Software Bills of Materials from C# 8.0 and later code.</Description>
+        <Description>A NuGet library to represent Spdx3 data as an object graph, and to serialize/deserialize the data as JSON-LD files. Lets you write code to read, manipulate, create, and write SPDX 3.0.1 compliant Software Bills of Materials from C# 8.0 and later code.</Description>
         <Copyright>Copyright (c) Matthew Harrah 2025</Copyright>
         <PackageProjectUrl>https://github.com/mharrah/Spdx3</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -27,12 +27,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="LicenseData\" />
-        <Folder Include="LICENSES.ThirdParty\**" />
+        <Folder Include="LicenseData\"/>
+        <Folder Include="LICENSES.ThirdParty\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="LicenseData\*.txt" />
+        <EmbeddedResource Include="LicenseData\*.txt"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -41,7 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="**\.DS_Store" />
+        <Content Remove="**\.DS_Store"/>
     </ItemGroup>
 
 

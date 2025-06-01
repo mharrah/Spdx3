@@ -21,7 +21,8 @@ public class OrLaterOperator : ExtendableLicense
     }
 
     [SetsRequiredMembers]
-    public OrLaterOperator(Catalog catalog, CreationInfo creationInfo, License subjectLicense) : base(catalog, creationInfo)
+    public OrLaterOperator(Catalog catalog, CreationInfo creationInfo, License subjectLicense) : base(catalog,
+        creationInfo)
     {
         SubjectLicense = subjectLicense;
     }

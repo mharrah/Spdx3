@@ -39,11 +39,10 @@ public class ExtendableLicenseTest : BaseModelTest
             Summary = "TestSummary"
         };
         anyLicense.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        anyLicense.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        anyLicense.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         anyLicense.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         anyLicense.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

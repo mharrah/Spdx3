@@ -19,37 +19,21 @@ public static class Naming
         { "Model.Extension", "extension_" }
     };
 
-    public static string SpdxTypeForClass(Type classType)
-    {
-        if (classType.Namespace == null)
-        {
-            throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
-        }
-
-        foreach (var prefix in PrefixesForNamespaces.Keys.Where(
-                     prefix => classType.Namespace.StartsWith($"Spdx3.{prefix}")
-                               || classType.Namespace.StartsWith($"Spdx3.Tests.{prefix}")
-                 )
-                )
-        {
-            return $"{PrefixesForNamespaces[prefix]}{classType.Name}";
-        }
-
-        throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
-    }
-
     public static string ClassNameForSpdxType(Dictionary<string, object> hashTable)
     {
         var spdxType = (string)hashTable[hashTable.ContainsKey("type") ? "type" : "@type"];
+
         if (spdxType == "NoAssertionElement" || spdxType == "NoneElement" || spdxType == "SpdxOrganization")
         {
             return $"Spdx3.Model.Core.Individuals.{spdxType}";
         }
-        else if (spdxType == "NoneLicense" || spdxType == "NoAssertionLicense" )
+
+        if (spdxType == "NoneLicense" || spdxType == "NoAssertionLicense")
         {
             return $"Spdx3.Model.ExpandedLicensing.Individuals.{spdxType}";
         }
-        else if (!spdxType.Contains('_'))
+
+        if (!spdxType.Contains('_'))
         {
             return $"Spdx3.Model.Core.Classes.{spdxType}";
         }
@@ -61,5 +45,22 @@ public static class Naming
         }
 
         throw new Spdx3SerializationException($"Unable to determine class type for node of Type={spdxType}");
+    }
+
+    public static string SpdxTypeForClass(Type classType)
+    {
+        if (classType.Namespace == null)
+        {
+            throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
+        }
+
+        foreach (var prefix in PrefixesForNamespaces.Keys.Where(prefix =>
+                     classType.Namespace.StartsWith($"Spdx3.{prefix}") ||
+                     classType.Namespace.StartsWith($"Spdx3.Tests.{prefix}")))
+        {
+            return $"{PrefixesForNamespaces[prefix]}{classType.Name}";
+        }
+
+        throw new Spdx3Exception($"Unable to determine SPDX3 node type value for {classType.FullName}");
     }
 }

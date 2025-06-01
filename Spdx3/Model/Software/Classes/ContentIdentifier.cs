@@ -24,8 +24,8 @@ public class ContentIdentifier : IntegrityMethod
     }
 
     [SetsRequiredMembers]
-    public ContentIdentifier(Catalog catalog, ContentIdentifierType contentIdentifierType,
-        Uri contentIdentifierValue) : base(catalog)
+    public ContentIdentifier(Catalog catalog, ContentIdentifierType contentIdentifierType, Uri contentIdentifierValue) :
+        base(catalog)
     {
         ContentIdentifierType = contentIdentifierType;
         ContentIdentifierValue = contentIdentifierValue;

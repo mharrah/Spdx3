@@ -1,6 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
 using Spdx3.Model;
-using Spdx3.Utility;
 
 namespace Spdx3.Tests.Model;
 
@@ -9,8 +7,8 @@ namespace Spdx3.Tests.Model;
 /// </summary>
 public class BaseModelClassConcreteTestFixture : BaseModelClass
 {
-    public string? StringProperty { get; set; }
     public IList<string>? StringListProperty { get; set; }
+    public string? StringProperty { get; set; }
 
     public override void Validate()
     {

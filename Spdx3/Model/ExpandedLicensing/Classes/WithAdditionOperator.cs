@@ -16,7 +16,7 @@ public class WithAdditionOperator : AnyLicenseInfo
     [JsonPropertyName("expandedlicensing_subjectAddition")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required LicenseAddition SubjectAddition { get; set; }
-    
+
     [JsonPropertyName("expandedlicensing_subjectExtendableLicense")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required ExtendableLicense SubjectExtendableLicense { get; set; }
@@ -26,8 +26,8 @@ public class WithAdditionOperator : AnyLicenseInfo
     }
 
     [SetsRequiredMembers]
-    public WithAdditionOperator(Catalog catalog, CreationInfo creationInfo, 
-        ExtendableLicense subjectExtendableLicense, LicenseAddition subjectAddition) : base(catalog, creationInfo)
+    public WithAdditionOperator(Catalog catalog, CreationInfo creationInfo, ExtendableLicense subjectExtendableLicense,
+        LicenseAddition subjectAddition) : base(catalog, creationInfo)
     {
         SubjectAddition = subjectAddition;
         SubjectExtendableLicense = subjectExtendableLicense;

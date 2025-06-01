@@ -19,8 +19,8 @@ public class VexFixedVulnAssessmentRelationship : VexVulnAssessmentRelationship
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VexFixedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from, List<Element> to) 
-        : base(catalog, creationInfo, RelationshipType.fixedIn, from, to)
+    public VexFixedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from,
+        List<Element> to) : base(catalog, creationInfo, RelationshipType.fixedIn, from, to)
     {
     }
 }

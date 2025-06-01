@@ -33,8 +33,7 @@ public abstract class ElementCollection : Element
 
 
     [SetsRequiredMembers]
-    protected ElementCollection(Catalog catalog, CreationInfo creationInfo) : base(catalog,
-        creationInfo)
+    protected ElementCollection(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

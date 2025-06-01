@@ -17,7 +17,7 @@ public class ListedLicenseException : LicenseAddition
     [JsonPropertyName("expandedlicensing_deprecatedVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? DeprecatedVersion { get; set; }
-    
+
     [JsonPropertyName("expandedlicensing_listVersionAdded")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ListVersionAdded { get; set; }
@@ -30,7 +30,8 @@ public class ListedLicenseException : LicenseAddition
     }
 
     [SetsRequiredMembers]
-    public ListedLicenseException(Catalog catalog, CreationInfo creationInfo, string additionText) : base(catalog, creationInfo, additionText)
+    public ListedLicenseException(Catalog catalog, CreationInfo creationInfo, string additionText) : base(catalog,
+        creationInfo, additionText)
     {
     }
 }

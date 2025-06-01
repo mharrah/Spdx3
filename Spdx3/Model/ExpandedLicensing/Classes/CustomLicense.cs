@@ -18,7 +18,8 @@ public class CustomLicense : License
     }
 
     [SetsRequiredMembers]
-    public CustomLicense(Catalog catalog, CreationInfo creationInfo, string licenseText) : base(catalog, creationInfo, licenseText)
+    public CustomLicense(Catalog catalog, CreationInfo creationInfo, string licenseText) : base(catalog, creationInfo,
+        licenseText)
     {
     }
 }

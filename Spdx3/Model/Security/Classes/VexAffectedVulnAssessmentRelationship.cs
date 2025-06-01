@@ -16,11 +16,11 @@ public class VexAffectedVulnAssessmentRelationship : VexVulnAssessmentRelationsh
     [JsonPropertyName("security_actionStatement")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string ActionStatement { get; set; }
-    
+
     [JsonPropertyName("security_actionStatementTime")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DateTimeOffset? ActionStatementTime { get; set; }
-    
+
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
     protected internal VexAffectedVulnAssessmentRelationship()
@@ -29,9 +29,8 @@ public class VexAffectedVulnAssessmentRelationship : VexVulnAssessmentRelationsh
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VexAffectedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from, 
-        List<Element> to, string actionStatement) 
-        : base(catalog, creationInfo, RelationshipType.affects, from, to)
+    public VexAffectedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from,
+        List<Element> to, string actionStatement) : base(catalog, creationInfo, RelationshipType.affects, from, to)
     {
         ActionStatement = actionStatement;
     }

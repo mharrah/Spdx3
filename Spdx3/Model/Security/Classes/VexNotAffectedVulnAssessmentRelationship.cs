@@ -18,7 +18,7 @@ public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelatio
     [JsonPropertyName("security_impactStatement")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ImpactStatement { get; set; }
-    
+
     [JsonPropertyName("security_impactStatementTime")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public DateTimeOffset? ImpactStatementTime { get; set; }
@@ -26,7 +26,7 @@ public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelatio
     [JsonPropertyName("security_justificationType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public VexJustificationType? JustificationType { get; set; }
-    
+
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
     protected internal VexNotAffectedVulnAssessmentRelationship()
@@ -35,8 +35,8 @@ public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelatio
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public VexNotAffectedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from, List<Element> to) 
-        : base(catalog, creationInfo, RelationshipType.doesNotAffect, from, to)
+    public VexNotAffectedVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Vulnerability from,
+        List<Element> to) : base(catalog, creationInfo, RelationshipType.doesNotAffect, from, to)
     {
     }
 
@@ -44,14 +44,16 @@ public class VexNotAffectedVulnAssessmentRelationship : VexVulnAssessmentRelatio
     public override void Validate()
     {
         base.Validate();
+
         /*
          Both impactStatement and justificationType properties have a cardinality of 0..1 making them optional.
-         Nevertheless, to produce a valid VEX not_affected statement, one of them MUST be defined. 
+         Nevertheless, to produce a valid VEX not_affected statement, one of them MUST be defined.
          This is specified in the Minimum Elements for VEX.
          */
         if (ImpactStatement == null && JustificationType == null)
         {
-            throw new Spdx3ValidationException("At least one of ImpactStatement and/or JustificationType must be specified.");
+            throw new Spdx3ValidationException(
+                "At least one of ImpactStatement and/or JustificationType must be specified.");
         }
     }
 }

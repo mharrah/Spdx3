@@ -34,8 +34,7 @@ public abstract class SoftwareArtifact : Artifact
     }
 
     [SetsRequiredMembers]
-    protected SoftwareArtifact(Catalog catalog, CreationInfo creationInfo) : base(catalog,
-        creationInfo)
+    protected SoftwareArtifact(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
     {
     }
 }

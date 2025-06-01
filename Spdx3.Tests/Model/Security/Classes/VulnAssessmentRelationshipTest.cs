@@ -39,8 +39,8 @@ public class VulnAssessmentRelationshipTest : BaseModelTest
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vulnAssessmentRelationship = new VulnAssessmentRelationshipConcreteTestFixture(TestCatalog, TestCreationInfo,
-            RelationshipType.affects, vulnerability, packages);
+        var vulnAssessmentRelationship = new VulnAssessmentRelationshipConcreteTestFixture(TestCatalog,
+            TestCreationInfo, RelationshipType.affects, vulnerability, packages);
         const string expected = """
                                 {
                                   "from": "urn:Vulnerability:40f",
@@ -67,18 +67,18 @@ public class VulnAssessmentRelationshipTest : BaseModelTest
         // Arrange
         var vulnerability = new Vulnerability(TestCatalog, TestCreationInfo);
         var packages = new List<Element> { new Package(TestCatalog, TestCreationInfo) };
-        var vulnAssessmentRelationship =
-            new VulnAssessmentRelationshipConcreteTestFixture(TestCatalog, TestCreationInfo, RelationshipType.other, vulnerability, packages)
-            {
-                ModifiedTime = PredictableDateTime.AddDays(1),
-                PublishedTime = PredictableDateTime.AddDays(2),
-                WithdrawnTime = PredictableDateTime.AddDays(3),
-                SuppliedBy = new Person(TestCatalog, TestCreationInfo),
-                Comment = "a comment",
-                Description = "a description",
-                Summary = "a summary",
-                Name = "a name"
-            };
+        var vulnAssessmentRelationship = new VulnAssessmentRelationshipConcreteTestFixture(TestCatalog,
+            TestCreationInfo, RelationshipType.other, vulnerability, packages)
+        {
+            ModifiedTime = PredictableDateTime.AddDays(1),
+            PublishedTime = PredictableDateTime.AddDays(2),
+            WithdrawnTime = PredictableDateTime.AddDays(3),
+            SuppliedBy = new Person(TestCatalog, TestCreationInfo),
+            Comment = "a comment",
+            Description = "a description",
+            Summary = "a summary",
+            Name = "a name"
+        };
         vulnAssessmentRelationship.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
         vulnAssessmentRelationship.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog,
             ExternalIdentifierType.email, "example@example.com"));
