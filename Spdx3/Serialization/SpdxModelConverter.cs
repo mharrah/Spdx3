@@ -118,6 +118,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     private static void LoadJsonStringIntoGenericProperty(object result, PropertyInfo currentProperty, string strVal)
     {
         var genericType = currentProperty.PropertyType.GetGenericArguments()[0];
+
         if (genericType.IsEnum && currentProperty.GetValue(result) is IList enumList)
         {
             enumList.Add(Enum.Parse(genericType, strVal));
@@ -149,9 +150,8 @@ public class SpdxModelConverter<T> : JsonConverter<T>
              * have read yet.  For now, make a placeholder element of the type needed and the ID in the json.
              * Later, we're going to need to go through the objects and replace the placeholder with the real one.
              */
-            var placeHolder =
-                Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType) ??
-                throw new Spdx3SerializationException($"Could not create instance of {genericType}");
+            var placeHolder = Convert.ChangeType(Activator.CreateInstance(genericType, true), genericType) ??
+                              throw new Spdx3SerializationException($"Could not create instance of {genericType}");
             var type = placeHolder.GetType();
             var spdxIdProperty = type.GetProperty("SpdxId") ??
                                  throw new Spdx3SerializationException("Could not get spdxId property");
@@ -211,8 +211,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
                 }
 
                 // If it's a list of Enum values, serialize the names of the values
-                if (propType.GenericTypeArguments[0].IsEnum &&
-                    propVal is IList enums)
+                if (propType.GenericTypeArguments[0].IsEnum && propVal is IList enums)
                 {
                     if (enums.Count > 0)
                     {
@@ -286,6 +285,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     {
         writer.WritePropertyName(jsonElementName);
         writer.WriteStartArray();
+
         foreach (var spdxClass in spdxClasses)
         {
             if (spdxClass != null)
@@ -304,6 +304,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     {
         writer.WritePropertyName(jsonElementName);
         writer.WriteStartArray();
+
         foreach (var enumValue in enumValues)
         {
             if (enumValue != null)
@@ -319,6 +320,7 @@ public class SpdxModelConverter<T> : JsonConverter<T>
     private static string GetJsonElementNameFromPropertyAttribute(PropertyInfo prop)
     {
         var jsonElementName = "";
+
         foreach (var propAttr in prop.GetCustomAttributes())
         {
             if (propAttr is JsonPropertyNameAttribute)

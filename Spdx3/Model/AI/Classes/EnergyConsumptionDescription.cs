@@ -6,7 +6,7 @@ using Spdx3.Utility;
 
 namespace Spdx3.Model.AI.Classes;
 
-public class EnergyConsumptionDescription : BaseModelClass  
+public class EnergyConsumptionDescription : BaseModelClass
 {
     [JsonPropertyName("ai_energyQuantity")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -15,7 +15,7 @@ public class EnergyConsumptionDescription : BaseModelClass
     [JsonPropertyName("ai_energyUnit")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required EnergyUnitType EnergyUnit { get; set; }
-    
+
     // protected internal no-parm constructor required for deserialization
 #pragma warning disable CS8618, CS9264
     protected internal EnergyConsumptionDescription()
@@ -24,7 +24,8 @@ public class EnergyConsumptionDescription : BaseModelClass
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public EnergyConsumptionDescription(Catalog catalog, double energyQuantity, EnergyUnitType energyUnit) : base(catalog)
+    public EnergyConsumptionDescription(Catalog catalog, double energyQuantity, EnergyUnitType energyUnit) :
+        base(catalog)
     {
         EnergyQuantity = energyQuantity;
         EnergyUnit = energyUnit;

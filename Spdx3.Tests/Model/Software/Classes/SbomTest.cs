@@ -10,26 +10,6 @@ namespace Spdx3.Tests.Model.Software.Classes;
 public class SbomTest : BaseModelTest
 {
     [Fact]
-    public void Sbom_MinimalObject_ShouldSerialize()
-    {
-        // Arrange
-        var sbom = new Sbom(TestCatalog, TestCreationInfo);
-        const string expected = """
-                                {
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "software_Sbom",
-                                  "spdxId": "urn:Sbom:40f"
-                                }
-                                """;
-
-        // Act
-        var json = ToJson(sbom);
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
-
-    [Fact]
     public void Sbom_FullyPopulatedObject_ShouldSerialize()
     {
         // Arrange
@@ -78,6 +58,26 @@ public class SbomTest : BaseModelTest
                                   "verifiedUsing": [
                                     "urn:Hash:443"
                                   ],
+                                  "type": "software_Sbom",
+                                  "spdxId": "urn:Sbom:40f"
+                                }
+                                """;
+
+        // Act
+        var json = ToJson(sbom);
+
+        // Assert
+        Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void Sbom_MinimalObject_ShouldSerialize()
+    {
+        // Arrange
+        var sbom = new Sbom(TestCatalog, TestCreationInfo);
+        const string expected = """
+                                {
+                                  "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_Sbom",
                                   "spdxId": "urn:Sbom:40f"
                                 }

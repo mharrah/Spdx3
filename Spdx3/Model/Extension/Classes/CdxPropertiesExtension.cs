@@ -19,8 +19,7 @@ public class CdxPropertiesExtension : Extension
     }
 
     [SetsRequiredMembers]
-    public CdxPropertiesExtension(Catalog catalog, IList<CdxPropertyEntry> cdxProperties) : base(
-        catalog)
+    public CdxPropertiesExtension(Catalog catalog, IList<CdxPropertyEntry> cdxProperties) : base(catalog)
     {
         if (cdxProperties.Count == 0)
         {
@@ -33,6 +32,7 @@ public class CdxPropertiesExtension : Extension
     public override void Validate()
     {
         base.Validate();
+
         if (CdxProperty.Count == 0)
         {
             throw new Spdx3ValidationException(this, nameof(CdxProperty), "Collection cannot be empty.");

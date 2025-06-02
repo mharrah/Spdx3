@@ -12,11 +12,11 @@ if (-not (Test-Path $fn)) {
 }
 
 
-$classes = @{}
-$classNamesForLicenseIDs = @{}
+$classes = [ordered]@{}
+$classNamesForLicenseIDs = [ordered]@{}
 $licenses = (Get-Content "$fn/license-list-data-main/json/licenses.json") | ConvertFrom-Json 
 $i = 0
-foreach ($license in $licenses.licenses | Sort-Object licenseId) {
+foreach ($license in ($licenses.licenses | Sort-Object licenseId)) {
     $i++
     $pct = 100 * $i / $licenses.licenses.Count
     Write-Progress -Id 0 -Activity "Scanning" -Status "Processing $($license.licenseId)..." -PercentComplete $pct
@@ -26,7 +26,7 @@ foreach ($license in $licenses.licenses | Sort-Object licenseId) {
     $details = $lspec."@graph" | Where-Object type -eq 'expandedlicensing_ListedLicense'
 
     $seeAlsoUrls = @()
-    foreach ($u in $details.expandedlicensing_seeAlso) {
+    foreach ($u in $details.expandedlicensing_seeAlso | Sort-Object -Unique) {
         $seeAlsoUrls += "`n            new Uri(""$u"")"
     }
 
@@ -82,15 +82,9 @@ foreach ($license in $licenses.licenses | Sort-Object licenseId) {
     }
 
 
-    $classCode += @"
-
-        
-        Catalog = _creationInfo.Catalog,
-        CreationInfo = _creationInfo,
-    };
-
-"@
-
+    $classCode += "`n        Catalog = _creationInfo.Catalog,";
+    $classCode += "`n        CreationInfo = _creationInfo";
+    $classCode += "`n    };";
     $classes["$($license.licenseId)"] = $classCode
 
 
@@ -120,12 +114,10 @@ namespace Spdx3.Model.ExpandedLicensing.Classes;
 
 public class ListedLicenses
 {
-    private static readonly CreationInfo _creationInfo = new CreationInfo(
-        new Catalog() ,
-        DateTimeOffset.ParseExact("$([DateTimeOffset]::UtcNow.ToString("o"))", "o", new DateTimeFormatInfo())
-    )
-    { SpdxId = new Uri("https://github.com/mharrah/Spdx3/ListedListedLicenses") }
-    ;
+    private static readonly CreationInfo _creationInfo =
+        new(new Catalog(),
+                DateTimeOffset.ParseExact("$([DateTimeOffset]::UtcNow.ToString("o"))", "o", new DateTimeFormatInfo()))
+            { SpdxId = new Uri("https://github.com/mharrah/Spdx3/ListedListedLicenses") };
 
 $($classes.Values)
 
@@ -138,16 +130,12 @@ $($classes.Values)
     {
         // Determine path
         var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-        string resourcePath = name;
-        
         var resources = assembly.GetManifestResourceNames();
-        resourcePath = resources.Single(str => str == $"Spdx3.LicenseData.{name}");
+        var resourcePath = resources.Single(str => str == $"Spdx3.LicenseData.{name}");
 
-        using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
-        using (StreamReader reader = new StreamReader(stream))
-        {
-            return reader.ReadToEnd();
-        }
+        using var stream = assembly.GetManifestResourceStream(resourcePath);
+        using var reader = new StreamReader(stream);
+        return reader.ReadToEnd();
     }
 }
 "@

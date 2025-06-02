@@ -30,14 +30,14 @@ public class SimpleLicensingText : Element, ILiteDomainCompliantElement
         LicenseText = licenseText;
     }
 
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
+
     public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(LicenseText));
-    }
-
-    public void Accept(ILiteDomainComplianceVisitor visitor)
-    {
-        visitor.Visit(this);
     }
 }

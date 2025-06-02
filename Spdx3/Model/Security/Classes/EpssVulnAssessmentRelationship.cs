@@ -7,15 +7,16 @@ using Spdx3.Serialization;
 using Spdx3.Utility;
 
 namespace Spdx3.Model.Security.Classes;
+
 /// <summary>
 /// Provides an EPSS assessment for a vulnerability.
 /// See https://spdx.github.io/spdx-spec/v3.0.1/model/Security/Classes/EpssVulnAssessmentRelationship/
 /// </summary>
 public class EpssVulnAssessmentRelationship : VulnAssessmentRelationship
 {
-    private double _percentile = 0.0;
-    private double _probability = 0.0;
-    
+    private double _percentile;
+    private double _probability;
+
     [JsonPropertyName("security_percentile")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required double Percentile
@@ -25,7 +26,7 @@ public class EpssVulnAssessmentRelationship : VulnAssessmentRelationship
         {
             if (value is < 0.0 or > 1.0)
             {
-                throw new Spdx3Exception("Illegal value for Percentile", 
+                throw new Spdx3Exception("Illegal value for Percentile",
                     new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
             }
             _percentile = value;
@@ -41,7 +42,7 @@ public class EpssVulnAssessmentRelationship : VulnAssessmentRelationship
         {
             if (value is < 0.0 or > 1.0)
             {
-                throw new Spdx3Exception("Illegal value for Probability", 
+                throw new Spdx3Exception("Illegal value for Probability",
                     new ArgumentException("The value must be between 0.0 and 1.0 (inclusive)"));
             }
             _probability = value;
@@ -54,13 +55,13 @@ public class EpssVulnAssessmentRelationship : VulnAssessmentRelationship
     {
     }
 #pragma warning restore CS8618, CS9264
-    
+
     [SetsRequiredMembers]
-    public EpssVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to, double percentile, double probability) 
-        : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
+    public EpssVulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to,
+        double percentile, double probability) : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from,
+        to)
     {
         Percentile = percentile;
         Probability = probability;
     }
-
 }

@@ -12,11 +12,10 @@ namespace Spdx3.Model.AI.Classes;
 
 public class AiPackage : Package
 {
-    
     [JsonPropertyName("releaseTime")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public new required DateTimeOffset ReleaseTime { get; set; }
-    
+
     [JsonPropertyName("suppliedBy")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public new required Agent SuppliedBy { get; set; }
@@ -32,7 +31,7 @@ public class AiPackage : Package
     [JsonPropertyName("software_primaryPurpose")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public new required SoftwarePurpose PrimaryPurpose { get; set; }
-    
+
     [JsonPropertyName("ai_autonomyType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public PresenceType? AutonomyType { get; set; }
@@ -101,13 +100,8 @@ public class AiPackage : Package
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public AiPackage(Catalog catalog, 
-        CreationInfo creationInfo, 
-        DateTimeOffset releaseTime, 
-        Agent suppliedBy,
-        Uri downloadLocation, 
-        string packageVersion, 
-        SoftwarePurpose primaryPurpose) : base(catalog, creationInfo)
+    public AiPackage(Catalog catalog, CreationInfo creationInfo, DateTimeOffset releaseTime, Agent suppliedBy,
+        Uri downloadLocation, string packageVersion, SoftwarePurpose primaryPurpose) : base(catalog, creationInfo)
     {
         ReleaseTime = releaseTime;
         SuppliedBy = suppliedBy;

@@ -43,11 +43,10 @@ public class OrLaterOperatorTest : BaseModelTest
             Summary = "TestSummary"
         };
         orLaterOperator.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        orLaterOperator.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        orLaterOperator.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         orLaterOperator.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         orLaterOperator.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

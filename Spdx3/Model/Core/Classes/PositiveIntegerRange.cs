@@ -71,8 +71,7 @@ public class PositiveIntegerRange : BaseModelClass
     }
 
     [SetsRequiredMembers]
-    public PositiveIntegerRange(Catalog catalog, int beginIntegerRange, int endIntegerRange) : base(
-        catalog)
+    public PositiveIntegerRange(Catalog catalog, int beginIntegerRange, int endIntegerRange) : base(catalog)
     {
         if (beginIntegerRange < 1)
         {

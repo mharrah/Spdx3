@@ -26,7 +26,8 @@ public class ConjunctiveLicenseSet : AnyLicenseInfo
     }
 
     [SetsRequiredMembers]
-    public ConjunctiveLicenseSet(Catalog catalog, CreationInfo creationInfo, IList<AnyLicenseInfo> licenses) : base(catalog, creationInfo)
+    public ConjunctiveLicenseSet(Catalog catalog, CreationInfo creationInfo, IList<AnyLicenseInfo> licenses) : base(
+        catalog, creationInfo)
     {
         if (licenses.Count < 2)
         {
@@ -42,6 +43,7 @@ public class ConjunctiveLicenseSet : AnyLicenseInfo
     public override void Validate()
     {
         base.Validate();
+
         if (Member.Count < 2)
         {
             throw new Spdx3ValidationException("ConjunctiveLicenseSets must have at least 2 licenses.");

@@ -41,11 +41,10 @@ public class CustomLicenseAdditionTest : BaseModelTest
             Summary = "TestSummary"
         };
         customLicenseAddition.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        customLicenseAddition.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        customLicenseAddition.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         customLicenseAddition.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         customLicenseAddition.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

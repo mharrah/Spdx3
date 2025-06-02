@@ -13,13 +13,13 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class SpdxDocument : ElementCollection, ILiteDomainCompliantElement
 {
-    [JsonPropertyName("import")]
-    [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
-
     [JsonPropertyName("dataLicense")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public AnyLicenseInfo? DataLicense { get; set; }
+
+    [JsonPropertyName("import")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<ExternalMap> Import { get; } = new List<ExternalMap>();
 
     [JsonPropertyName("namespaceMap")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]

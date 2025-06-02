@@ -8,35 +8,6 @@ namespace Spdx3.Tests.Model.Core.Classes;
 public class SpdxDocumentTest : BaseModelTest
 {
     [Fact]
-    public void SpdxDocument_NewElement_ShouldValidate()
-    {
-        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
-        var exception = Record.Exception(() => spdxDocument.Validate());
-        Assert.Null(exception);
-    }
-
-    [Fact]
-    public void SpdxDocument_NewElement_ShouldSerialize()
-    {
-        // Arrange
-        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
-        const string expected = """
-                                {
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "SpdxDocument",
-                                  "spdxId": "urn:SpdxDocument:40f"
-                                }
-                                """;
-
-        // Act
-        var json = ToJson(spdxDocument);
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
-
-
-    [Fact]
     public void SpdxDocument_FullyPopulatedElement_ShouldSerialize()
     {
         // Arrange
@@ -105,5 +76,33 @@ public class SpdxDocumentTest : BaseModelTest
 
         // Assert
         Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void SpdxDocument_NewElement_ShouldSerialize()
+    {
+        // Arrange
+        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
+        const string expected = """
+                                {
+                                  "creationInfo": "urn:CreationInfo:3f5",
+                                  "type": "SpdxDocument",
+                                  "spdxId": "urn:SpdxDocument:40f"
+                                }
+                                """;
+
+        // Act
+        var json = ToJson(spdxDocument);
+
+        // Assert
+        Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void SpdxDocument_NewElement_ShouldValidate()
+    {
+        var spdxDocument = new SpdxDocument(TestCatalog, TestCreationInfo);
+        var exception = Record.Exception(() => spdxDocument.Validate());
+        Assert.Null(exception);
     }
 }

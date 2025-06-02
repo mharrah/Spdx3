@@ -12,10 +12,6 @@ namespace Spdx3.Model.Core.Classes;
 /// </summary>
 public class CreationInfo : BaseModelClass, ILiteDomainCompliantElement
 {
-    [JsonPropertyName("createdBy")]
-    [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<Agent> CreatedBy { get; } = new List<Agent>();
-
     [JsonPropertyName("comment")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? Comment { get; set; }
@@ -23,6 +19,10 @@ public class CreationInfo : BaseModelClass, ILiteDomainCompliantElement
     [JsonPropertyName("created")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required DateTimeOffset Created { get; set; }
+
+    [JsonPropertyName("createdBy")]
+    [JsonConverter(typeof(SpdxModelConverterFactory))]
+    public IList<Agent> CreatedBy { get; } = new List<Agent>();
 
     [JsonPropertyName("createdUsing")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
@@ -50,14 +50,14 @@ public class CreationInfo : BaseModelClass, ILiteDomainCompliantElement
         Created = created;
     }
 
+    public void Accept(ILiteDomainComplianceVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
+
     public override void Validate()
     {
         base.Validate();
         ValidateRequiredProperty(nameof(CreatedBy));
-    }
-
-    public void Accept(ILiteDomainComplianceVisitor visitor)
-    {
-        visitor.Visit(this);
     }
 }

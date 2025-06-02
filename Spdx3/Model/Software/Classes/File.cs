@@ -59,6 +59,7 @@ public class File : SoftwareArtifact
     public override void Validate()
     {
         base.Validate();
+
         if (string.IsNullOrWhiteSpace(Name))
         {
             throw new Spdx3ValidationException(this, nameof(Name), "Cannot be null, empty, or whitespace.");

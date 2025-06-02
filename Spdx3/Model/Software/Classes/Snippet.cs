@@ -29,8 +29,7 @@ public class Snippet : SoftwareArtifact
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public Snippet(Catalog catalog, CreationInfo creationInfo, File snippetFromFile) : base(catalog,
-        creationInfo)
+    public Snippet(Catalog catalog, CreationInfo creationInfo, File snippetFromFile) : base(catalog, creationInfo)
     {
         SnippetFromFile = snippetFromFile;
     }
@@ -38,6 +37,7 @@ public class Snippet : SoftwareArtifact
     public override void Validate()
     {
         base.Validate();
+
         if (SnippetFromFile == null)
         {
             throw new Spdx3ValidationException(this, nameof(SnippetFromFile), "Cannot be null, empty, or whitespace.");

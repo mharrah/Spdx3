@@ -18,11 +18,11 @@ public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
     [JsonPropertyName("security_score")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required double? Score { get; set; }
-        
+
     [JsonPropertyName("security_severity")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required CvssSeverityType? Severity { get; set; }
-        
+
     [JsonPropertyName("security_vectorString")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public required string? VectorString { get; set; }
@@ -33,6 +33,7 @@ public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
         ValidateRequiredProperty(nameof(Score));
         ValidateRequiredProperty(nameof(VectorString));
         ValidateRequiredProperty(nameof(Severity));
+
         if (RelationshipType.hasAssessmentFor != RelationshipType)
         {
             throw new Spdx3ValidationException(this, nameof(RelationshipType), "Must be 'hasAssessmentFor'");
@@ -47,13 +48,12 @@ public class CvssV4VulnAssessmentRelationship : VulnAssessmentRelationship
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public CvssV4VulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo,
-        Element from, List<Element> to, double score, CvssSeverityType severity, string vectorString) 
-        : base(catalog, creationInfo, RelationshipType.hasAssessmentFor, from, to)
+    public CvssV4VulnAssessmentRelationship(Catalog catalog, CreationInfo creationInfo, Element from, List<Element> to,
+        double score, CvssSeverityType severity, string vectorString) : base(catalog, creationInfo,
+        RelationshipType.hasAssessmentFor, from, to)
     {
         Score = score;
         Severity = severity;
         VectorString = vectorString;
-    }    
-
+    }
 }

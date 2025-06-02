@@ -42,8 +42,8 @@ public class ExternalIdentifier : BaseModelClass, ILiteDomainCompliantElement
     }
 
     [SetsRequiredMembers]
-    public ExternalIdentifier(Catalog catalog, ExternalIdentifierType externalIdentifierType,
-        string identifier) : base(catalog)
+    public ExternalIdentifier(Catalog catalog, ExternalIdentifierType externalIdentifierType, string identifier) :
+        base(catalog)
     {
         ExternalIdentifierType = externalIdentifierType;
         Identifier = identifier;

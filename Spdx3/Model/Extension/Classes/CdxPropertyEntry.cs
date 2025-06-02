@@ -26,8 +26,7 @@ public class CdxPropertyEntry : BaseModelClass
     }
 
     [SetsRequiredMembers]
-    public CdxPropertyEntry(Catalog catalog, string cdxPropName, string cdxPropValue) : this(catalog,
-        cdxPropName)
+    public CdxPropertyEntry(Catalog catalog, string cdxPropName, string cdxPropValue) : this(catalog, cdxPropName)
     {
         CdxPropValue = cdxPropValue;
     }

@@ -10,5 +10,5 @@
     <ItemGroup>
         <ProjectReference Include="..\Spdx3\Spdx3.csproj"/>
     </ItemGroup>
-    
+
 </Project>

@@ -50,11 +50,10 @@ public class ListedLicenseTest : BaseModelTest
         listedLicense.SeeAlso.Add(new Uri("https://something.com"));
         listedLicense.SeeAlso.Add(new Uri("https://somethingelse.com"));
         listedLicense.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        listedLicense.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        listedLicense.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         listedLicense.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         listedLicense.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {

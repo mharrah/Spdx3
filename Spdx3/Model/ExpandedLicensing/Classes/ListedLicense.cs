@@ -12,13 +12,12 @@ namespace Spdx3.Model.ExpandedLicensing.Classes;
 ///
 /// The SPDX License List can be found here: https://spdx.org/licenses/
 /// </summary>
-public partial class ListedLicense : License
+public class ListedLicense : License
 {
-    
     [JsonPropertyName("expandedlicensing_deprecatedVersion")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? DeprecatedVersion { get; set; }
-    
+
     [JsonPropertyName("expandedlicensing_listVersionAdded")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
     public string? ListVersionAdded { get; set; }
@@ -31,7 +30,8 @@ public partial class ListedLicense : License
     }
 
     [SetsRequiredMembers]
-    public ListedLicense(Catalog catalog, CreationInfo creationInfo, string licenseText) : base(catalog, creationInfo, licenseText)
+    public ListedLicense(Catalog catalog, CreationInfo creationInfo, string licenseText) : base(catalog, creationInfo,
+        licenseText)
     {
     }
 }

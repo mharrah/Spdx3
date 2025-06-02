@@ -42,8 +42,8 @@ public class LicenseExpressionTest : BaseModelTest
             CustomIdToUri = new DictionaryEntry(TestCatalog, "some key", "some value")
         };
         licenseExpression.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        licenseExpression.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        licenseExpression.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         licenseExpression.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         licenseExpression.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         const string expected = """

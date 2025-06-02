@@ -26,7 +26,8 @@ public class DisjunctiveLicenseSet : AnyLicenseInfo
     }
 
     [SetsRequiredMembers]
-    public DisjunctiveLicenseSet(Catalog catalog, CreationInfo creationInfo, IList<AnyLicenseInfo> licenses) : base(catalog, creationInfo)
+    public DisjunctiveLicenseSet(Catalog catalog, CreationInfo creationInfo, IList<AnyLicenseInfo> licenses) : base(
+        catalog, creationInfo)
     {
         if (licenses.Count < 2)
         {
@@ -42,6 +43,7 @@ public class DisjunctiveLicenseSet : AnyLicenseInfo
     public override void Validate()
     {
         base.Validate();
+
         if (Member.Count < 2)
         {
             throw new Spdx3ValidationException("DisjunctiveLicenseSets must have at least 2 licenses.");

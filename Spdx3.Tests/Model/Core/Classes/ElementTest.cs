@@ -49,11 +49,10 @@ public class ElementTest : BaseModelTest
             Summary = "TestSummary"
         };
         element.Extension.Add(new ExtensionConcreteTestFixture(TestCatalog));
-        element.ExternalIdentifier.Add(
-            new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email, "example@example.com"));
+        element.ExternalIdentifier.Add(new ExternalIdentifier(TestCatalog, ExternalIdentifierType.email,
+            "example@example.com"));
         element.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.altDownloadLocation));
         element.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
-
 
         const string expected = """
                                 {
@@ -87,23 +86,6 @@ public class ElementTest : BaseModelTest
         Assert.Equal(7, TestCatalog.Items.Count);
     }
 
-    [Fact]
-    public void TypeNew_Element_FailsValidation_Empty_Type()
-    {
-        // Arrange
-        var element = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo)
-        {
-            Type = string.Empty
-        };
-
-        // Act
-        var exception = Record.Exception(() => element.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object ElementConcreteTestFixture, property Type: String field is empty", exception.Message);
-    }
-
 
     [Fact]
     public void TestElement_DeserializesAsExpected()
@@ -124,5 +106,22 @@ public class ElementTest : BaseModelTest
         Assert.NotNull(testElement.CreationInfo);
         Assert.Equal(new Uri("urn:CreationInfo:3f5"), testElement.CreationInfo.SpdxId);
         Assert.Equal("CreationInfo", testElement.CreationInfo.Type);
+    }
+
+    [Fact]
+    public void TypeNew_Element_FailsValidation_Empty_Type()
+    {
+        // Arrange
+        var element = new ElementConcreteTestFixture(TestCatalog, TestCreationInfo)
+        {
+            Type = string.Empty
+        };
+
+        // Act
+        var exception = Record.Exception(() => element.Validate());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object ElementConcreteTestFixture, property Type: String field is empty", exception.Message);
     }
 }

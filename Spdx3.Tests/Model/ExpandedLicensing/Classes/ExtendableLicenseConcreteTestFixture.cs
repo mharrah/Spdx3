@@ -15,7 +15,8 @@ public class ExtendableLicenseConcreteTestFixture : ExtendableLicense
     }
 
     [SetsRequiredMembers]
-    public ExtendableLicenseConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog, creationInfo)
+    public ExtendableLicenseConcreteTestFixture(Catalog catalog, CreationInfo creationInfo) : base(catalog,
+        creationInfo)
     {
     }
 }

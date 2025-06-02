@@ -6,15 +6,19 @@ namespace Spdx3.Tests.Model.Software.Classes;
 public class ContentIdentifierTest : BaseModelTest
 {
     [Fact]
-    public void ContentIdentifier_MinimalObject_ShouldSerialize()
+    public void ContentIdentifier_FullyPopulated_ShouldSerialize()
     {
         // Arrange
         var contentIdentifier =
-            new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, new Uri("urn:some-gitoid-value"));
+            new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, new Uri("urn:some-gitoid-value"))
+            {
+                Comment = "test comment"
+            };
         const string expected = """
                                 {
                                   "software_contentIdentifierType": "gitoid",
                                   "software_contentIdentifierValue": "urn:some-gitoid-value",
+                                  "comment": "test comment",
                                   "type": "software_ContentIdentifier",
                                   "spdxId": "urn:ContentIdentifier:40f"
                                 }
@@ -28,18 +32,15 @@ public class ContentIdentifierTest : BaseModelTest
     }
 
     [Fact]
-    public void ContentIdentifier_FullyPopulated_ShouldSerialize()
+    public void ContentIdentifier_MinimalObject_ShouldSerialize()
     {
         // Arrange
-        var contentIdentifier = new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, new Uri("urn:some-gitoid-value"))
-        {
-            Comment = "test comment"
-        };
+        var contentIdentifier =
+            new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid, new Uri("urn:some-gitoid-value"));
         const string expected = """
                                 {
                                   "software_contentIdentifierType": "gitoid",
                                   "software_contentIdentifierValue": "urn:some-gitoid-value",
-                                  "comment": "test comment",
                                   "type": "software_ContentIdentifier",
                                   "spdxId": "urn:ContentIdentifier:40f"
                                 }

@@ -33,8 +33,7 @@ public class PackageVerificationCode : IntegrityMethod
 #pragma warning restore CS8618, CS9264
 
     [SetsRequiredMembers]
-    public PackageVerificationCode(Catalog catalog, HashAlgorithm algorithm, string hashValue) :
-        base(catalog)
+    public PackageVerificationCode(Catalog catalog, HashAlgorithm algorithm, string hashValue) : base(catalog)
     {
         Algorithm = algorithm;
         HashValue = hashValue;

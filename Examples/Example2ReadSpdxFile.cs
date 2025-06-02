@@ -10,7 +10,7 @@ public class Example2ReadSpdxFile
     {
         // Start with Catalog to hold all the objects read from the json file
         var catalog = new Catalog();
-        
+
         // Make a reader for the catalog
         var reader = new Reader(catalog);
 

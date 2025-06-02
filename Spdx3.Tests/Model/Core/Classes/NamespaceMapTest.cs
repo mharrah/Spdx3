@@ -17,49 +17,6 @@ public class NamespaceMapTest : BaseModelTest
     }
 
     [Fact]
-    public void NamespaceMap_MinimallyPopulated_SerializesAsExpected()
-    {
-        // Arrange
-        var namespaceMap = new NamespaceMap(TestCatalog, "TestPrefix", new Uri("urn:TestNamespace"))
-        {
-            Prefix = "TestPrefix",
-            Namespace = new Uri("urn:TestNamespace")
-        };
-        const string expected = """
-                                {
-                                  "prefix": "TestPrefix",
-                                  "namespace": "urn:TestNamespace",
-                                  "type": "NamespaceMap",
-                                  "spdxId": "urn:NamespaceMap:40f"
-                                }
-                                """;
-
-        // Act
-        var json = ToJson(namespaceMap);
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
-
-    [Fact]
-    public void NamespaceMap_FailsValidation_WhenMissing_Prefix()
-    {
-        // Arrange
-        var namespaceMap = new NamespaceMap(TestCatalog, "TestPrefix", new Uri("urn:TestNamespace"));
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        namespaceMap.Prefix = null;
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-        namespaceMap.Namespace = new Uri("urn:TestNamespace");
-
-        //  Act
-        var exception = Record.Exception(() => namespaceMap.Validate());
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.Equal("Object NamespaceMap, property Prefix: Field is required", exception.Message);
-    }
-
-    [Fact]
     public void NamespaceMap_FailsValidation_WhenEmpty_Prefix()
     {
         // Arrange
@@ -97,4 +54,46 @@ public class NamespaceMapTest : BaseModelTest
         Assert.Equal("Object NamespaceMap, property Namespace: Field is required", exception.Message);
     }
 
+    [Fact]
+    public void NamespaceMap_FailsValidation_WhenMissing_Prefix()
+    {
+        // Arrange
+        var namespaceMap = new NamespaceMap(TestCatalog, "TestPrefix", new Uri("urn:TestNamespace"));
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        namespaceMap.Prefix = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        namespaceMap.Namespace = new Uri("urn:TestNamespace");
+
+        //  Act
+        var exception = Record.Exception(() => namespaceMap.Validate());
+
+        // Assert
+        Assert.NotNull(exception);
+        Assert.Equal("Object NamespaceMap, property Prefix: Field is required", exception.Message);
+    }
+
+    [Fact]
+    public void NamespaceMap_MinimallyPopulated_SerializesAsExpected()
+    {
+        // Arrange
+        var namespaceMap = new NamespaceMap(TestCatalog, "TestPrefix", new Uri("urn:TestNamespace"))
+        {
+            Prefix = "TestPrefix",
+            Namespace = new Uri("urn:TestNamespace")
+        };
+        const string expected = """
+                                {
+                                  "prefix": "TestPrefix",
+                                  "namespace": "urn:TestNamespace",
+                                  "type": "NamespaceMap",
+                                  "spdxId": "urn:NamespaceMap:40f"
+                                }
+                                """;
+
+        // Act
+        var json = ToJson(namespaceMap);
+
+        // Assert
+        Assert.Equal(expected, json);
+    }
 }

@@ -23,9 +23,8 @@ public class LifecycleScopedRelationship : Relationship
     }
 
     [SetsRequiredMembers]
-    public LifecycleScopedRelationship(Catalog catalog, CreationInfo creationInfo,
-        RelationshipType relationshipType, Element from, List<Element> to) : base(catalog, creationInfo,
-        relationshipType, from, to)
+    public LifecycleScopedRelationship(Catalog catalog, CreationInfo creationInfo, RelationshipType relationshipType,
+        Element from, List<Element> to) : base(catalog, creationInfo, relationshipType, from, to)
     {
     }
 }

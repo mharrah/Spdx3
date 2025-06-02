@@ -10,7 +10,7 @@ namespace Spdx3.Tests.Serialization;
 public class WriterTest : BaseModelTest
 {
     private const string ExpectedMinimalJson =
-        "{\"@context\":\"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld\"," +
+        "{\"@context\":\"https://spdx.org/rdf/3.0.1/spdx-context.jsonld\"," +
         "\"@graph\":[" +
         "{\"createdBy\":[\"urn:SoftwareAgent:402\"]," +
         "\"created\":\"2025-02-22T01:23:45Z\"," +
@@ -81,7 +81,7 @@ public class WriterTest : BaseModelTest
 
         const string expected = """
                                 {
-                                    "@context":"https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                                    "@context":"https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                                     "@graph":[
                                         {
                                             "createdBy":[

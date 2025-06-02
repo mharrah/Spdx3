@@ -8,6 +8,7 @@ public class Spdx3ValidationException : Spdx3Exception
         propertyName, why))
     {
     }
+
     public Spdx3ValidationException(string message) : base(message)
     {
     }

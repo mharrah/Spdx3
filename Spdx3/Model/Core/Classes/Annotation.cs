@@ -35,8 +35,8 @@ public class Annotation : Element
     }
 
     [SetsRequiredMembers]
-    public Annotation(Catalog catalog, CreationInfo creationInfo, AnnotationType annotationType,
-        Element subject) : base(catalog, creationInfo)
+    public Annotation(Catalog catalog, CreationInfo creationInfo, AnnotationType annotationType, Element subject) :
+        base(catalog, creationInfo)
     {
         AnnotationType = annotationType;
         Subject = subject;

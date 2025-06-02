@@ -10,27 +10,6 @@ namespace Spdx3.Tests.Model.Software.Classes;
 public class SoftwareArtifactTest : BaseModelTest
 {
     [Fact]
-    public void SoftwareArtifact_MinimalObject_ShouldSerialize()
-    {
-        // Arrange
-        var softwareArtifact = new SoftwareArtifactConcreteTestFixture(TestCatalog, TestCreationInfo);
-        const string expected = """
-                                {
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "software_SoftwareArtifactConcreteTestFixture",
-                                  "spdxId": "urn:SoftwareArtifactConcreteTestFixture:40f"
-                                }
-                                """;
-
-        // Act
-        var json = ToJson(softwareArtifact);
-
-        // Assert
-        Assert.Equal(expected, json);
-    }
-
-
-    [Fact]
     public void SoftwareArtifact_FullyPopulated_ShouldSerialize()
     {
         // Arrange
@@ -53,7 +32,7 @@ public class SoftwareArtifactTest : BaseModelTest
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.archive);
         softwareArtifact.OriginatedBy.Add(new Agent(TestCatalog, TestCreationInfo));
         softwareArtifact.ContentIdentifier.Add(new ContentIdentifier(TestCatalog, ContentIdentifierType.gitoid,
-          new Uri("urn:some-gitoid-value")));
+            new Uri("urn:some-gitoid-value")));
         softwareArtifact.AttributionText.Add("Some attribution text");
         softwareArtifact.AdditionalPurpose.Add(SoftwarePurpose.other);
         softwareArtifact.ExternalRef.Add(new ExternalRef(TestCatalog, ExternalRefType.bower));
@@ -101,6 +80,26 @@ public class SoftwareArtifactTest : BaseModelTest
                                   "verifiedUsing": [
                                     "urn:IntegrityMethodConcreteTestFixture:429"
                                   ],
+                                  "type": "software_SoftwareArtifactConcreteTestFixture",
+                                  "spdxId": "urn:SoftwareArtifactConcreteTestFixture:40f"
+                                }
+                                """;
+
+        // Act
+        var json = ToJson(softwareArtifact);
+
+        // Assert
+        Assert.Equal(expected, json);
+    }
+
+    [Fact]
+    public void SoftwareArtifact_MinimalObject_ShouldSerialize()
+    {
+        // Arrange
+        var softwareArtifact = new SoftwareArtifactConcreteTestFixture(TestCatalog, TestCreationInfo);
+        const string expected = """
+                                {
+                                  "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "software_SoftwareArtifactConcreteTestFixture",
                                   "spdxId": "urn:SoftwareArtifactConcreteTestFixture:40f"
                                 }
