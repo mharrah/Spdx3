@@ -11,7 +11,7 @@ internal class SpdxWrapper
 {
     [JsonPropertyName("@context")]
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]
-    public static string Context => "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld";
+    public static string Context => "https://spdx.org/rdf/3.0.1/spdx-context.jsonld";
 
     [JsonPropertyName("@graph")]
     [JsonConverter(typeof(SpdxWrapperConverterFactory))]

@@ -24,7 +24,7 @@ public class ReaderTest
         // Arrange
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "created": "2025-02-22T01:23:45Z",
@@ -64,7 +64,7 @@ public class ReaderTest
         // Arrange - note that the spdxIDs for CreationInfo do not agree
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "created": "2025-02-22T01:23:45Z",
@@ -101,7 +101,7 @@ public class ReaderTest
         // Arrange
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -130,7 +130,7 @@ public class ReaderTest
         // Arrange
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "creationInfo": "urn:CreationInfo:3f5",
@@ -161,7 +161,7 @@ public class ReaderTest
         // Arrange
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "creationInfo": {
@@ -222,7 +222,7 @@ public class ReaderTest
     {
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "created": "2025-02-22T01:23:45Z",
@@ -254,7 +254,7 @@ public class ReaderTest
         // Arrange
         const string json = """
                             {
-                              "@context": "https://spdx.github.io/spdx-spec/v3.0.1/rdf/spdx-context.jsonld",
+                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                               "@graph": [
                                 {
                                   "created": "2025-02-22T01:23:45Z",
