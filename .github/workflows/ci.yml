@@ -29,6 +29,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Get next version
+        uses: reecetech/version-increment@2024.10.1
+        id: version
+        with:
+          scheme: semver
+          increment: patch
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -38,7 +45,7 @@ jobs:
         run: dotnet tool restore
 
       - name: Build solution
-        run: dotnet build -c Release
+        run: dotnet build -c Release /p::${{ steps.version.outputs.version }}"
 
       - name: Run tests
         run: dotnet test -c Release --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage
@@ -76,7 +83,7 @@ jobs:
         with:
           files: ${{ github.workspace }}/dotnet-test-result.xml
 
-      - name: Publish
-        if: startsWith(github.ref, 'refs/heads/main')
-        run: dotnet nuget push **\*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}}
+  #    - name: Publish to NuGet.org
+  #      if: startsWith(github.ref, 'refs/heads/main')
+  #      run: dotnet nuget push **\*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}}
         
