@@ -1,4 +1,5 @@
 using System.Xml;
+using ProduceSourceSbom.NuGetApi;
 using Spdx3.Model.Core.Classes;
 using Spdx3.Model.Core.Enums;
 using Spdx3.Model.ExpandedLicensing.Classes;
@@ -12,44 +13,58 @@ namespace ProduceSourceSbom;
 
 public class SbomBuilder
 {
-    public required FileInfo ProjectPath { get; set; }
-    private Catalog Catalog { get; init; } = new();
-    private CreationInfo CreationInfo { get; set; }
-    private bool LiteDomainComplianceMandatory { get; set; } = true;
-    private bool Verbose { get; set; } = false;
+    private Catalog Catalog { get; } = new();
+    private CreationInfo CreationInfo { get; }
 
     public SbomBuilder()
     {
-        CreationInfo = new CreationInfo(Catalog);
+        CreationInfo = new CreationInfo(Catalog)
+        {
+            Created = DateTimeOffset.UtcNow,
+        };
+        CreationInfo.CreatedUsing.Add(new Tool(Catalog, CreationInfo)
+        {
+            Name = $"{nameof(ProduceSourceSbom)}",
+            Description = "Demonstration project in the SPDX3 source repository"
+        });
     }
 
-    public void ProduceAllTheThings(FileInfo outputDir, string fileName, FileInfo projectPath, bool verbose,
-        bool liteDomainComplianceMandatory)
+    private static void EchoOptions()
     {
-        LiteDomainComplianceMandatory = liteDomainComplianceMandatory;
-        ProjectPath = projectPath;
-        Verbose = verbose;
-        
-        EchoOptions(outputDir, fileName, projectPath, verbose, liteDomainComplianceMandatory);
-
-        if (!projectPath.FullName.EndsWith(".csproj"))
+        if (!Program.Verbose)
         {
-            Console.Error.WriteLine($"Project path {projectPath} is not a .csproj file.");
+            return;
+        }
+        Console.WriteLine("Options in use:");
+        Console.WriteLine($"OutputDir = {Program.OutputDir}");
+        Console.WriteLine($"FileName = {Program.FileName}");
+        Console.WriteLine($"ProjectPath = {Program.ProjectPath}");
+        Console.WriteLine($"LiteDomainComplianceMandatory = {Program.LiteDomainComplianceMandatory}");
+        Console.WriteLine($"Verbose = {Program.Verbose}");
+    }
+
+    public void ProduceAllTheThings()
+    {
+        EchoOptions();
+
+        if (!Program.ProjectPath.EndsWith(".csproj"))
+        {
+            Console.Error.WriteLine($"***ERROR*** Project path {Program.ProjectPath} is not a .csproj file.");
             Environment.Exit(1);
         }
 
-        if (!projectPath.Exists)
+        if (!new FileInfo(Program.ProjectPath).Exists)
         {
-            Console.Error.WriteLine($"Project path {projectPath} does not exist.");
+            Console.Error.WriteLine($"***ERROR*** Project path {Program.ProjectPath} does not exist.");
             Environment.Exit(2);
         }
 
-        var fqOutputFile = Path.Join(outputDir.FullName, fileName);
+        var fqOutputFile = Path.Join(Program.OutputDir, Program.FileName);
         Build();
         var catalog = Catalog;
         var f = new Writer(catalog).WriteFileName(fqOutputFile);
 
-        if (verbose)
+        if (Program.Verbose)
         {
             Console.WriteLine($"Wrote to {f.FullName}.");
         }
@@ -57,9 +72,9 @@ public class SbomBuilder
 
     private void Build()
     {
-        if (!ProjectPath.Exists)
+        if (!new FileInfo(Program.ProjectPath).Exists)
         {
-            Console.Error.WriteLine($"The project file '{ProjectPath.FullName}' does not exist.");
+            Console.Error.WriteLine($"***ERROR*** The project file '{Program.ProjectPath}' does not exist.");
             Environment.Exit(3);
         }
 
@@ -67,7 +82,7 @@ public class SbomBuilder
         var sbom = BuildSbom(author);
         BuildSpdxDocument(sbom);
 
-        if (LiteDomainComplianceMandatory)
+        if (Program.LiteDomainComplianceMandatory)
         {
             CheckLiteDomainCompliance();
         }
@@ -98,9 +113,12 @@ public class SbomBuilder
         sbom.Element.Add(spdx3);
 
         var deps = GetDependencies();
-        deps.ForEach(dep => sbom.Element.Add(dep));
-        sbom.Element.Add(new Relationship(Catalog, CreationInfo, RelationshipType.dependsOn, spdx3,
-            deps.ConvertAll(Element (d) => d)));
+
+        foreach (var dep in deps)
+        {
+            sbom.Element.Add(dep);
+            _ = new Relationship(Catalog, CreationInfo, RelationshipType.dependsOn, spdx3, [dep]);
+        }
 
         return sbom;
     }
@@ -124,29 +142,68 @@ public class SbomBuilder
         {
             Console.WriteLine("Catalog is not Lite domain compliant.");
             lite.Problems.ToList().ForEach(f => Console.WriteLine($"- {f}"));
-            Console.Error.WriteLine("Catalog is not Lite domain compliant.");
+            Console.Error.WriteLine("***ERROR*** Catalog is not Lite domain compliant.");
             Environment.Exit(4);
         }
 
-        if (Verbose)
+        if (Program.Verbose)
         {
             Console.WriteLine("Catalog is Lite domain compliant.");
         }
     }
 
-    private void EchoOptions(FileInfo outputDir, string fileName, FileInfo projectPath, bool verbose,
-        bool liteDomainComplianceMandatory)
+    private void EnrichPackageNodeWithNugetData(Package package)
     {
-        if (!verbose)
+        if (package.Name is null || package.PackageVersion is null)
         {
             return;
         }
-        Console.WriteLine("Options in use:");
-        Console.WriteLine($"OutputDir = {outputDir.FullName}");
-        Console.WriteLine($"FileName = {fileName}");
-        Console.WriteLine($"ProjectPath = {projectPath}");
-        Console.WriteLine($"LiteDomainComplianceMandatory = {liteDomainComplianceMandatory}");
-        Console.WriteLine($"Verbose = {verbose}");
+
+        var client = new Client();
+
+        // Search for the package on nuget.org
+        var nugetSearchResult = client.SearchForPackage(package.Name, package.PackageVersion);
+
+        if (nugetSearchResult is null)
+        {
+            return;
+        }
+        // Go pull the registration for the package found
+        var nugetRegistration =  client.GetPackageRegistration(nugetSearchResult);
+
+        if (nugetRegistration is null)
+        {
+            return;
+        }
+
+        foreach (var catPage in nugetRegistration.CatalogPages ?? [])
+        {
+            foreach (var nugetPackage in catPage.Packages ?? [])
+            {
+                var cat = nugetPackage.CatalogEntry;
+                if (package.Name != cat?.Id  || package.PackageVersion != cat?.Version) continue;
+
+                package.Description = nugetSearchResult.Description;
+
+                if (cat?.ProjectUrl is not null)
+                {
+                    package.HomePage = new Uri(cat.ProjectUrl);
+                }
+
+                if (cat?.LicenseExpression is not null)
+                {
+                    if (ListedLicenses.Licenses.ContainsKey(cat.LicenseExpression))
+                    {
+                        _ = new Relationship(Catalog, CreationInfo, RelationshipType.hasDeclaredLicense, package,
+                            [ListedLicenses.Licenses[cat.LicenseExpression]]);
+                        _ = new Relationship(Catalog, CreationInfo, RelationshipType.hasConcludedLicense, package,
+                            [ListedLicenses.Licenses[cat.LicenseExpression]]);
+                    }
+                }
+
+                package.DownloadLocation = nugetPackage.PackageContent;
+            }
+        }
     }
 
     private List<Package> GetDependencies()
@@ -154,7 +211,7 @@ public class SbomBuilder
         List<Package> result = [];
 
         var doc = new XmlDocument();
-        doc.Load(ProjectPath.FullName);
+        doc.Load(Program.ProjectPath);
 
         if (doc.DocumentElement is null)
         {
@@ -173,46 +230,15 @@ public class SbomBuilder
             {
                 continue;
             }
-            var packageName = packageReference.Attributes?["Include"]?.Value;
-            var packageVersion = packageReference.Attributes?["Version"]?.Value;
+            var package = GetPackageFromPackageReference(packageReference);
+            result.Add(package);
 
-            if (packageName is null || packageVersion is null)
+            if (string.IsNullOrWhiteSpace(package.PackageVersion) || string.IsNullOrWhiteSpace(package.Name))
             {
                 continue;
             }
 
-            // Look up info about each package on Nuget.org
-            // (Invoke-RestMethod -Uri "https://api.nuget.org/v3/registration5-semver1/spdx3/0.9.2-preview.json")
-            // DownloadUrl == 'packageContent'
-            // Get the property 'catalogEntry' and pull that from Nuget.org
-            // Copyright text == 'copyright'
-            // SuppliedBy == author
-            // 
-            
-
-            
-            var package = new Package(Catalog, CreationInfo)
-            {
-                Name = packageName,
-                PackageVersion = packageVersion,
-                Comment = null,
-                Description = null,
-                Summary = null,
-                BuiltTime = null,
-                OriginatedBy = null,
-                ReleaseTime = null,
-                StandardName = null,
-                SuppliedBy = null,
-                SupportLevel = null,
-                ValidUntilTime = null,
-                CopyrightText = null,
-                PrimaryPurpose = null,
-                DownloadLocation = null,
-                PackageUrl = null,
-                HomePage = null,
-                SourceInfo = null, 
-            };
-            result.Add(package);
+            EnrichPackageNodeWithNugetData(package);
         }
 
         return result;
@@ -242,5 +268,17 @@ public class SbomBuilder
             Completeness = RelationshipCompleteness.complete
         };
         return spdx3;
+    }
+
+    private Package GetPackageFromPackageReference(XmlNode packageReference)
+    {
+        var packageName = packageReference.Attributes?["Include"]?.Value;
+        var packageVersion = packageReference.Attributes?["Version"]?.Value;
+
+        return new Package(Catalog, CreationInfo)
+        {
+            Name = packageName,
+            PackageVersion = packageVersion
+        };
     }
 }

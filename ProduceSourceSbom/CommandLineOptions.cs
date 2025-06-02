@@ -4,20 +4,20 @@ namespace ProduceSourceSbom;
 
 public static class CommandLineOptions
 {
-    public static Option<FileInfo> OutputDir { get; } = new (
+    public static Option<string> OutputDir { get; } = new (
         name: "--outputDir", 
         description: "The directory to write the file to",
-        getDefaultValue: () => new FileInfo("."));
+        getDefaultValue: () => new string("."));
 
     public static Option<string> FileName{ get; } = new (
         name: "--fileName", 
         description: "The name of the output file",
         getDefaultValue: () => "spdx3.sbom.source.json");
 
-    public static Option<FileInfo> ProjectPath { get; } = new (
+    public static Option<string> ProjectPath { get; } = new (
         name: "--projectPath", 
         description: "The path of the .csproj file for SPDX3",
-        getDefaultValue: () => new FileInfo("."));
+        getDefaultValue: () => new string("."));
     
     public static Option<bool> LiteDomainComplianceMandatory { get; }= new (
         name: "--liteDomainComplianceMandatory", 
