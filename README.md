@@ -31,7 +31,7 @@ This library provides:
 [![coverage](https://img.shields.io/endpoint?style=flat-square&url=https://gist.githubusercontent.com/mharrah/e434f7b17274a026c153482b64e5cf91/raw/Spdx3-cobertura-coverage.json)](https://mharrah.github.io/Spdx3/)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/mharrah/Spdx3)](https://github.com/mharrah/Spdx3/issues)
 
-[![license](https://img.shields.io/github/license/mharrah/Spdx3?style=flat-square)](https://github.com/mharrah/Spdx3/tree/main?tab=MIT-1-ov-file#)
+[![GitHub License](https://img.shields.io/github/license/mharrah/Spdx3)](https://github.com/mharrah/Spdx3/tree/main?tab=MIT-1-ov-file#)
 [![GitHub Release](https://img.shields.io/github/v/release/mharrah/Spdx3)](https://github.com/mharrah/Spdx3/releases)
 [![NuGet Version](https://img.shields.io/nuget/v/Spdx3)](https://www.nuget.org/packages/Spdx3/)
 
