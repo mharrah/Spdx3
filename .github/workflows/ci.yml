@@ -87,7 +87,17 @@ jobs:
         if: always()
         with:
           files: ${{ github.workspace }}/dotnet-test-result.xml
-
+          
+      - name: Create NuPkg
+        run: dotnet publish -c Release --no-build --no-restore /p:Version=${{ steps.version.outputs.version }}
+          
+      - name: Create Release
+        uses: ncipollo/release-action@v1.16.0
+        with:
+          artifacts: ".Spdx/bin/Release/net8.0/*.nupkg"
+          tag: ${{ steps.version.outputs.version }}
+          commit: main
+        
   #    - name: Publish to NuGet.org
   #      if: startsWith(github.ref, 'refs/heads/main')
   #      run: dotnet nuget push **\*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}}
