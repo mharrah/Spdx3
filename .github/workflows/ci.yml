@@ -36,6 +36,11 @@ jobs:
           scheme: semver
           increment: patch
 
+      - name: Dump version
+        env:
+          BUILD_VERSION: ${{ steps.version.outputs.version }}
+        run: echo "$BUILD_VERSION"
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
