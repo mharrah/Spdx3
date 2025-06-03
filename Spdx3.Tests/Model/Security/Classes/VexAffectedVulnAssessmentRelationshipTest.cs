@@ -41,10 +41,10 @@ public class VexAffectedVulnAssessmentRelationshipTest : BaseModelTest
                                 {
                                   "security_actionStatement": "test action statement",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "affects",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "affects",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "security_VexAffectedVulnAssessmentRelationship",
                                   "spdxId": "urn:VexAffectedVulnAssessmentRelationship:429"
@@ -86,15 +86,15 @@ public class VexAffectedVulnAssessmentRelationshipTest : BaseModelTest
         const string expected = """
                                 {
                                   "security_actionStatement": "test action statement",
-                                  "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
+                                  "security_suppliedBy": "urn:Person:436",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "affects",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "affects",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",

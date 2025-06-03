@@ -48,11 +48,11 @@ public class CreationInfoTest : BaseModelTest
         creationInfo.CreatedUsing.Add(new Tool(TestCatalog, creationInfo));
         const string expected = """
                                 {
+                                  "comment": "Test comment",
+                                  "created": "2025-02-22T01:23:45Z",
                                   "createdBy": [
                                     "urn:Agent:41c"
                                   ],
-                                  "comment": "Test comment",
-                                  "created": "2025-02-22T01:23:45Z",
                                   "createdUsing": [
                                     "urn:Tool:429"
                                   ],
@@ -78,10 +78,10 @@ public class CreationInfoTest : BaseModelTest
         creationInfo.CreatedBy.Add(new SoftwareAgent(TestCatalog, creationInfo) { Name = GetType().Name});
         const string expected = """
                                 {
+                                  "created": "2025-02-22T01:23:45Z",
                                   "createdBy": [
                                     "urn:SoftwareAgent:41c"
                                   ],
-                                  "created": "2025-02-22T01:23:45Z",
                                   "specVersion": "3.0.1",
                                   "type": "CreationInfo",
                                   "spdxId": "urn:CreationInfo:40f"

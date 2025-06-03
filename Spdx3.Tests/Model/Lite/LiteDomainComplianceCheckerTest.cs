@@ -4,6 +4,7 @@ using Spdx3.Model.ExpandedLicensing.Individuals;
 using Spdx3.Model.Lite;
 using Spdx3.Model.SimpleLicensing.Classes;
 using Spdx3.Model.Software.Classes;
+using Xunit.Internal;
 
 namespace Spdx3.Tests.Model.Lite;
 
@@ -44,7 +45,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         _ = new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasConcludedLicense, package,
             [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
         _ = new Relationship(TestCatalog, TestCreationInfo,RelationshipType.hasDeclaredLicense, package,
-            [new SimpleLicensingText(TestCatalog, TestCreationInfo, "this is a license")]); 
+            [new LicenseExpression(TestCatalog, TestCreationInfo, "this is a license")]); 
 
         var sbom = new Sbom(TestCatalog, TestCreationInfo);
         sbom.Element.Add(package);
@@ -60,6 +61,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
         // Assert
         Assert.NotNull(checker);
         Assert.NotEmpty(checker.Findings);
+        checker.Findings.ForEach(Console.WriteLine);
         Assert.True(checker.IsCompliant);
         Assert.Equal(21, checker.Findings.Count);
         Assert.Equal(0, checker.Findings.Count(x => x.FindingType == LiteDomainComplianceFindingType.problem));
@@ -121,6 +123,7 @@ public class LiteDomainComplianceCheckerTest : BaseModelTest
             LicenseListVersion = "1.1.1"
         };
         _ = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.hasConcludedLicense, package, [license]);
+        _ = new Relationship(TestCatalog, TestCreationInfo, RelationshipType.hasDeclaredLicense, package, [license]);
         
         // Act
         var checker = new LiteDomainComplianceChecker(TestCatalog);

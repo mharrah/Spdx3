@@ -46,10 +46,10 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTest
                                   "security_percentile": 0.25,
                                   "security_probability": 0.75,
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "security_EpssVulnAssessmentRelationship",
                                   "spdxId": "urn:EpssVulnAssessmentRelationship:429"
@@ -91,15 +91,15 @@ public class EpssVulnAssessmentRelationshipTest : BaseModelTest
                                 {
                                   "security_percentile": 0.25,
                                   "security_probability": 0.75,
-                                  "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
+                                  "security_suppliedBy": "urn:Person:436",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",

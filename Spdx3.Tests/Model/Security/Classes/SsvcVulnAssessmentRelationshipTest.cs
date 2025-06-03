@@ -42,10 +42,10 @@ public class SsvcVulnAssessmentRelationshipTest : BaseModelTest
                                 {
                                   "security_decisionType": "track",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "security_SsvcVulnAssessmentRelationship",
                                   "spdxId": "urn:SsvcVulnAssessmentRelationship:429"
@@ -86,15 +86,15 @@ public class SsvcVulnAssessmentRelationshipTest : BaseModelTest
         const string expected = """
                                 {
                                   "security_decisionType": "track",
-                                  "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
+                                  "security_suppliedBy": "urn:Person:436",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",

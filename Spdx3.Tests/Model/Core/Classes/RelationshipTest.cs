@@ -16,10 +16,10 @@ public class RelationshipTest : BaseModelTest
         const string expected = """
                                 {
                                   "from": "urn:ElementConcreteTestFixture:40f",
+                                  "relationshipType": "describes",
                                   "to": [
                                     "urn:ElementConcreteTestFixture:41c"
                                   ],
-                                  "relationshipType": "describes",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "Relationship",
                                   "spdxId": "urn:Relationship:429"
@@ -52,14 +52,14 @@ public class RelationshipTest : BaseModelTest
 
         const string expected = """
                                 {
+                                  "completeness": "complete",
+                                  "endTime": "2025-02-22T01:23:45Z",
                                   "from": "urn:ElementConcreteTestFixture:40f",
+                                  "relationshipType": "describes",
+                                  "startTime": "2025-02-22T01:23:45Z",
                                   "to": [
                                     "urn:ElementConcreteTestFixture:41c"
                                   ],
-                                  "relationshipType": "describes",
-                                  "completeness": "complete",
-                                  "startTime": "2025-02-22T01:23:45Z",
-                                  "endTime": "2025-02-22T01:23:45Z",
                                   "comment": "TestComment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "TestDescription",

@@ -32,10 +32,10 @@ public class SpdxDocumentTest : BaseModelTest
         spdxDocument.VerifiedUsing.Add(new IntegrityMethodConcreteTestFixture(TestCatalog));
         const string expected = """
                                 {
+                                  "dataLicense": "urn:AnyLicenseInfoConcreteTestFixture:41c",
                                   "import": [
                                     "urn:ExternalMap:46a"
                                   ],
-                                  "dataLicense": "urn:AnyLicenseInfoConcreteTestFixture:41c",
                                   "namespaceMap": [
                                     "urn:NamespaceMap:477"
                                   ],

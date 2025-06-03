@@ -46,10 +46,10 @@ public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTest
                                 {
                                   "security_justificationType": "inlineMitigationsAlreadyExist",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "doesNotAffect",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "doesNotAffect",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "security_VexNotAffectedVulnAssessmentRelationship",
                                   "spdxId": "urn:VexNotAffectedVulnAssessmentRelationship:429"
@@ -122,15 +122,15 @@ public class VexNotAffectedVulnAssessmentRelationshipTest : BaseModelTest
                                 {
                                   "security_impactStatement": "Wam! Bam! Oof!",
                                   "security_justificationType": "vulnerableCodeNotPresent",
-                                  "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
+                                  "security_suppliedBy": "urn:Person:436",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "doesNotAffect",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "doesNotAffect",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",

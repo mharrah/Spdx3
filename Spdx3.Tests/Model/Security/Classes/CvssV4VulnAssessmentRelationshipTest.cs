@@ -49,10 +49,10 @@ public class CvssV4VulnAssessmentRelationshipTest : BaseModelTest
                                   "security_severity": "high",
                                   "security_vectorString": "SQL injection",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "type": "security_CvssV4VulnAssessmentRelationship",
                                   "spdxId": "urn:CvssV4VulnAssessmentRelationship:429"
@@ -96,15 +96,15 @@ public class CvssV4VulnAssessmentRelationshipTest : BaseModelTest
                                   "security_score": 1.5,
                                   "security_severity": "high",
                                   "security_vectorString": "SQL injection",
-                                  "security_suppliedBy": "urn:Person:436",
                                   "security_modifiedTime": "2025-02-23T01:23:45Z",
                                   "security_publishedTime": "2025-02-24T01:23:45Z",
+                                  "security_suppliedBy": "urn:Person:436",
                                   "security_withdrawnTime": "2025-02-25T01:23:45Z",
                                   "from": "urn:Vulnerability:40f",
+                                  "relationshipType": "hasAssessmentFor",
                                   "to": [
                                     "urn:Package:41c"
                                   ],
-                                  "relationshipType": "hasAssessmentFor",
                                   "comment": "a comment",
                                   "creationInfo": "urn:CreationInfo:3f5",
                                   "description": "a description",

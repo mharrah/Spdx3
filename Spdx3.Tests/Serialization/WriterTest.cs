@@ -12,8 +12,8 @@ public class WriterTest : BaseModelTest
     private const string ExpectedMinimalJson =
         "{\"@context\":\"https://spdx.org/rdf/3.0.1/spdx-context.jsonld\"," +
         "\"@graph\":[" +
-        "{\"createdBy\":[\"urn:SoftwareAgent:402\"]," +
-        "\"created\":\"2025-02-22T01:23:45Z\"," +
+        "{\"created\":\"2025-02-22T01:23:45Z\"," +
+        "\"createdBy\":[\"urn:SoftwareAgent:402\"]," +
         "\"specVersion\":\"3.0.1\"," +
         "\"type\":\"CreationInfo\"," +
         "\"spdxId\":\"urn:CreationInfo:3f5\"}," +
@@ -84,11 +84,11 @@ public class WriterTest : BaseModelTest
                                     "@context":"https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
                                     "@graph":[
                                         {
+                                            "created":"2025-02-22T01:23:45Z",
                                             "createdBy":[
                                                 "urn:SoftwareAgent:402",
                                                 "urn:Person:429"
                                             ],
-                                            "created":"2025-02-22T01:23:45Z",
                                             "specVersion":"3.0.1",
                                             "type":"CreationInfo",
                                             "spdxId":"urn:CreationInfo:3f5"
@@ -143,10 +143,10 @@ public class WriterTest : BaseModelTest
                                         },
                                         {
                                             "from":"urn:Package:443",
+                                            "relationshipType":"dependsOn",
                                             "to":[
                                                 "urn:Package:436"
                                             ],
-                                            "relationshipType":"dependsOn",
                                             "creationInfo":"urn:CreationInfo:3f5",
                                             "type":"Relationship",
                                             "spdxId":"urn:Relationship:450"
