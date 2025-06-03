@@ -50,10 +50,10 @@ jobs:
         run: dotnet tool restore
 
       - name: Build solution
-        run: dotnet build -c Release /p::${{ steps.version.outputs.version }}"
+        run: dotnet build -c Release /p:Version=${{ steps.version.outputs.version }}
 
       - name: Run tests
-        run: dotnet test -c Release --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage
+        run: dotnet test -c Release --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage  /p:Version=${{ steps.version.outputs.version }}
           
       - name: Generate coverage report
         run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub,Html

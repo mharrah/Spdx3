@@ -17,7 +17,6 @@
         <RepositoryUrl>https://github.com/mharrah/Spdx3</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>sbom bill-of-materials software-bill-of-materials spdx spdx-3</PackageTags>
-        <Version>0.9.2-preview</Version>
         <PackageIcon>spdx3.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
