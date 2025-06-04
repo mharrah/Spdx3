@@ -11,8 +11,17 @@ namespace Spdx3.Utility;
 /// </summary>
 public class Catalog
 {
-    // start at 1000 so the generated numbers are at least 3 characters long and will usually look like hex numbers when rendered
-    private int _idCounter = 1000;
+    private long _idCounter = DateTime.Now.Ticks;    
+
+    public Catalog(int startCounterAt)
+    {
+        _idCounter = startCounterAt;
+    }
+
+    public Catalog()
+    {
+    }
+    
 
     // A running list of all the objects created 
     public IDictionary<Uri, BaseModelClass> Items { get; } = new Dictionary<Uri, BaseModelClass>();

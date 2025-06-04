@@ -18,8 +18,8 @@ public class BaseModelTest
     // What the name says - a predictable datetimeoffset value
     protected static readonly DateTimeOffset PredictableDateTime = new(2025, 02, 22, 1, 23, 45, TimeSpan.Zero);
 
-    // A premade SpdxCatalog to use
-    protected Catalog TestCatalog { get; } = new();
+    // A premade SpdxCatalog to use. Always start the catalog id counter at the same value so ID's are predictable.
+    protected Catalog TestCatalog { get; } = new(1000);
 
     // A premade CreationInfo object to use
     protected CreationInfo TestCreationInfo { get; }
