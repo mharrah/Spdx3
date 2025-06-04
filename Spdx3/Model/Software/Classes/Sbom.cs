@@ -12,7 +12,7 @@ public class Sbom : Bom, ILiteDomainCompliantElement
 {
     [JsonPropertyName("software_sbomType")]
     [JsonConverter(typeof(SpdxModelConverterFactory))]
-    public IList<SbomType> SbomType { get; } = new List<SbomType>();
+    public List<SbomType> SbomType { get; } = new ();
 
     // protected internal no-parm constructor required for deserialization
     // ReSharper disable once UnusedMember.Global

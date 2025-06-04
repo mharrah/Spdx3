@@ -11,7 +11,7 @@ namespace Spdx3.Utility;
 /// </summary>
 public class Catalog
 {
-    private long _idCounter = DateTime.Now.Ticks;    
+    private long _idCounter;    
 
     public Catalog(int startCounterAt)
     {
@@ -20,6 +20,7 @@ public class Catalog
 
     public Catalog()
     {
+        _idCounter = DateTime.Now.Ticks - (new DateTime(2025,1,1,0,0,0) ).Ticks;
     }
     
 
@@ -127,13 +128,12 @@ public class Catalog
 
         var placeHolder = prop.GetValue(itemWithProperty) as BaseModelClass;
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-        if (!Items.TryGetValue(placeHolder.SpdxId, out var value))
+        if (Items.TryGetValue(placeHolder.SpdxId, out var value))
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         {
-            throw new Spdx3Exception($"Could not find catalog item with ID {placeHolder.SpdxId}");
+            prop.SetValue(itemWithProperty, value);
         }
 
-        prop.SetValue(itemWithProperty, value);
     }
 
     /// <summary>

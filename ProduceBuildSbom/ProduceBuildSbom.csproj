@@ -5,13 +5,17 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.0.0</Version>
-        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
+    
     <ItemGroup>
-          <PackageReference Include="Spdx3" Version="0.9.11" />
-          <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+      <!--PackageReference Include="Spdx3" Version="0.9.11" /-->
+      <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    </ItemGroup>
+
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Spdx3\Spdx3.csproj" />
     </ItemGroup>
 
 </Project>

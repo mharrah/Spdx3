@@ -28,7 +28,7 @@
     {
       "spdxId": "urn:nanoid:iPyS3tVAW0IZ27Hacu490",
       "type": "Bundle",
-      "context": "Illustraative Purposes",
+      "context": "Illustrative Purposes",
       "creationInfo": "urn:local:b0",
       "element": "urn:nanoid:IlKqCNai4QL1GHlweY1H8",
       "name": "Fan Information",
@@ -65,6 +65,24 @@
       "suppliedBy": "urn:nanoid:m_6pT9znU7RsQcYBOYC19",
       "verifiedUsing": "urn:local:b2",
       "software_primaryPurpose": "application"
+    },
+    {
+      "completeness": "complete",
+      "from": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
+      "relationshipType": "hasDeclaredLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:local:b0",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:436000"
+    },
+    {
+      "completeness": "complete",
+      "from": "urn:nanoid:7EyxhDgviWzNqDYJoG1Fq",
+      "relationshipType": "hasConcludedLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:local:b0",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:436001"
     },
     {
       "spdxId": "urn:nanoid:IlKqCNai4QL1GHlweY1H8",

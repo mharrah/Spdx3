@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Exampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProduceSourceSbom", "ProduceSourceSbom\ProduceSourceSbom.csproj", "{4B8F4D4F-69FF-4F79-BF7F-C5FB99ED7D82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProduceBuildSbom", "ProduceBuildSbom\ProduceBuildSbom.csproj", "{6837086A-12BD-4347-B7C2-7E56AB8263C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{4B8F4D4F-69FF-4F79-BF7F-C5FB99ED7D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B8F4D4F-69FF-4F79-BF7F-C5FB99ED7D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B8F4D4F-69FF-4F79-BF7F-C5FB99ED7D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6837086A-12BD-4347-B7C2-7E56AB8263C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6837086A-12BD-4347-B7C2-7E56AB8263C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6837086A-12BD-4347-B7C2-7E56AB8263C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6837086A-12BD-4347-B7C2-7E56AB8263C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
