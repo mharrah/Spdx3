@@ -300,7 +300,7 @@ var assemblies = [
       { "name": "Spdx3.Serialization.SpdxWrapperConverter<T>", "rp": "Spdx3_SpdxWrapperConverter_1.html", "cl": 157, "ucl": 12, "cal": 169, "tl": 464, "cb": 123, "tb": 151, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.SpdxWrapperConverterFactory", "rp": "Spdx3_SpdxWrapperConverterFactory.html", "cl": 8, "ucl": 0, "cal": 8, "tl": 28, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Serialization.Writer", "rp": "Spdx3_Writer.html", "cl": 20, "ucl": 0, "cal": 20, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
-      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 47, "ucl": 2, "cal": 49, "tl": 195, "cb": 32, "tb": 34, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
+      { "name": "Spdx3.Utility.Catalog", "rp": "Spdx3_Catalog.html", "cl": 46, "ucl": 2, "cal": 48, "tl": 195, "cb": 32, "tb": 34, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.IncompleteObjectFactory", "rp": "Spdx3_IncompleteObjectFactory.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 17, "cb": 1, "tb": 2, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
       { "name": "Spdx3.Utility.Naming", "rp": "Spdx3_Naming.html", "cl": 33, "ucl": 1, "cal": 34, "tl": 66, "cb": 27, "tb": 28, "cm": 0, "fcm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "mfch": [], "hc": [], "metrics": { } },
     ]},

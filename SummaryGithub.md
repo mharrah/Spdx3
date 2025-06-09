@@ -3,16 +3,16 @@
 
 |||
 |:---|:---|
-| Generated on: | 06/04/2025 - 00:39:43 |
-| Coverage date: | 06/04/2025 - 00:39:42 |
+| Generated on: | 06/09/2025 - 00:37:36 |
+| Coverage date: | 06/09/2025 - 00:37:35 |
 | Parser: | Cobertura |
 | Assemblies: | 1 |
 | Classes: | 90 |
 | Files: | 90 |
-| **Line coverage:** | 99.3% (11376 of 11447) |
-| Covered lines: | 11376 |
+| **Line coverage:** | 99.3% (11375 of 11446) |
+| Covered lines: | 11375 |
 | Uncovered lines: | 71 |
-| Coverable lines: | 11447 |
+| Coverable lines: | 11446 |
 | Total lines: | 14939 |
 | **Branch coverage:** | 86.4% (432 of 500) |
 | Covered branches: | 432 |
@@ -114,7 +114,7 @@
 |Spdx3.Serialization.SpdxWrapperConverter`1|92.8%|81.4%|
 |Spdx3.Serialization.SpdxWrapperConverterFactory|100%||
 |Spdx3.Serialization.Writer|100%||
-|Spdx3.Utility.Catalog|95.9%|94.1%|
+|Spdx3.Utility.Catalog|95.8%|94.1%|
 |Spdx3.Utility.IncompleteObjectFactory|100%|50%|
 |Spdx3.Utility.Naming|97%|96.4%|
 
