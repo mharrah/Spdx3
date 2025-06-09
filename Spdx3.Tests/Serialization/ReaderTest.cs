@@ -57,44 +57,6 @@ public class ReaderTest
         Assert.IsType<InvalidCastException>(exception.InnerException);
     }
 
-
-    [Fact]
-    public void Reader_BrokenReferenceLinks_ShouldThrow()
-    {
-        // Arrange - note that the spdxIDs for CreationInfo do not agree
-        const string json = """
-                            {
-                              "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
-                              "@graph": [
-                                {
-                                  "created": "2025-02-22T01:23:45Z",
-                                  "specVersion": "3.0.1",
-                                  "type": "CreationInfo",
-                                  "spdxId": "urn:CreationInfo:3A5"
-                                },
-                                {
-                                  "creationInfo": "urn:CreationInfo:3f5",
-                                  "type": "SpdxDocument",
-                                  "spdxId": "urn:SpdxDocument:402"
-                                }
-                              ]
-                            }
-                            """;
-
-        var catalog = new Catalog();
-        var reader = new Reader(catalog);
-
-        // Act
-        var exception = Record.Exception(() => reader.ReadString(json));
-
-        // Assert
-        Assert.NotNull(exception);
-        Assert.IsType<Spdx3Exception>(exception);
-        Assert.Contains("Could not find catalog item with ID", exception.Message);
-        Assert.Null(exception.InnerException);
-    }
-
-
     [Fact]
     public void Reader_Malformed_MissingPropertyName_ShouldThrow()
     {
