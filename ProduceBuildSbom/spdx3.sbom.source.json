@@ -1,0 +1,202 @@
+{
+  "@context": "https://spdx.org/rdf/3.0.1/spdx-context.jsonld",
+  "@graph": [
+    {
+      "created": "2025-06-04T01:35:13Z",
+      "createdUsing": ["urn:Tool:78ef49c15c22"],
+      "specVersion": "3.0.1",
+      "type": "CreationInfo",
+      "spdxId": "urn:CreationInfo:78ef49c15c15"
+    },
+    {
+      "creationInfo": "urn:CreationInfo:78ef49c15c15",
+      "description": "Demonstration project in the SPDX3 source repository that enhances the source SBOM to produce a build SBOM during the build phase.",
+      "name": "ProduceBuildSbom",
+      "type": "Tool",
+      "spdxId": "urn:Tool:78ef49c15c22"
+    },
+    {
+      "created": "2025-06-04T01:34:47Z",
+      "createdBy": ["urn:Person:8dda2e676f29b17"],
+      "createdUsing": ["urn:Tool:8dda2e676f29b0a"],
+      "specVersion": "3.0.1",
+      "type": "CreationInfo",
+      "spdxId": "urn:CreationInfo:8dda2e676f29afd"
+    },
+    {
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "description": "Demonstration project in the SPDX3 source repository",
+      "name": "ProduceSourceSbom",
+      "type": "Tool",
+      "spdxId": "urn:Tool:8dda2e676f29b0a"
+    },
+    {
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "externalIdentifier": ["urn:ExternalIdentifier:8dda2e676f29b24"],
+      "name": "Matt Harrah",
+      "type": "Person",
+      "spdxId": "urn:Person:8dda2e676f29b17"
+    },
+    {
+      "externalIdentifierType": "email",
+      "identifier": "github@mharrah.simplelogin.com",
+      "type": "ExternalIdentifier",
+      "spdxId": "urn:ExternalIdentifier:8dda2e676f29b24"
+    },
+    {
+      "software_packageVersion": "0.9.2-preview",
+      "software_downloadLocation": "https://github.com/mharrah/spdx3.git",
+      "software_packageUrl": "pkg:nuget/Spdx3@0.9.2-preview",
+      "software_homePage": "https://github.com/mharrah/spdx3",
+      "originatedBy": ["urn:Person:8dda2e676f29b17"],
+      "suppliedBy": "urn:Person:8dda2e676f29b17",
+      "supportLevel": ["noSupport"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "name": "Spdx3",
+      "type": "software_Package",
+      "spdxId": "urn:Package:8dda2e676f29b31"
+    },
+    {
+      "completeness": "complete",
+      "from": "urn:Package:8dda2e676f29b31",
+      "relationshipType": "hasDeclaredLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29b3e"
+    },
+    {
+      "completeness": "complete",
+      "from": "urn:Package:8dda2e676f29b31",
+      "relationshipType": "hasConcludedLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29b4b"
+    },
+    {
+      "rootElement": ["urn:Package:8dda2e676f29b31"],
+      "element": [
+        "urn:Package:8dda2e676f29b31",
+        "urn:Package:8dda2e676f29b65",
+        "urn:Package:8dda2e676f29b8c"
+      ],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "name": "Spdx3",
+      "type": "software_Sbom",
+      "spdxId": "urn:Sbom:8dda2e676f29b58"
+    },
+    {
+      "software_packageVersion": "0.9.11",
+      "software_downloadLocation": "https://api.nuget.org/v3-flatcontainer/spdx3/0.9.11/spdx3.0.9.11.nupkg",
+      "software_homePage": "https://github.com/mharrah/Spdx3",
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "description": "A NuGet library to represent Spdx3 data as an object graph, and to serialize/deserialize the data as JSON-LD files. Lets you write code to read, manipulate, create, and write SPDX 3.0.1 compliant Software Bills of Materials from C# 8.0 and later code.",
+      "name": "Spdx3",
+      "type": "software_Package",
+      "spdxId": "urn:Package:8dda2e676f29b65"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b65",
+      "relationshipType": "hasDeclaredLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29b72"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b65",
+      "relationshipType": "hasConcludedLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29b7f"
+    },
+    {
+      "software_packageVersion": "2.0.0-beta4.22272.1",
+      "software_downloadLocation": "https://api.nuget.org/v3-flatcontainer/system.commandline/2.0.0-beta4.22272.1/system.commandline.2.0.0-beta4.22272.1.nupkg",
+      "software_homePage": "https://github.com/dotnet/command-line-api",
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "description": "This package includes a powerful command line parser and other tools for building command line applications, including:\n    \n    * Shell-agnostic support for command line completions\n    * Method invocation and an extensible middleware pipeline\n    * Constructor- and property-based model binding for complex types\n    * Test and debug support",
+      "name": "System.CommandLine",
+      "type": "software_Package",
+      "spdxId": "urn:Package:8dda2e676f29b8c"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b8c",
+      "relationshipType": "hasDeclaredLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29b99"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b8c",
+      "relationshipType": "hasConcludedLicense",
+      "to": ["http://spdx.org/licenses/MIT"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29ba6"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b31",
+      "relationshipType": "dependsOn",
+      "to": ["urn:Package:8dda2e676f29b65"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29bb3"
+    },
+    {
+      "from": "urn:Package:8dda2e676f29b31",
+      "relationshipType": "dependsOn",
+      "to": ["urn:Package:8dda2e676f29b8c"],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "type": "Relationship",
+      "spdxId": "urn:Relationship:8dda2e676f29bc0"
+    },
+    {
+      "dataLicense": "http://spdx.org/licenses/MIT",
+      "rootElement": ["urn:Sbom:8dda2e676f29b58", "urn:Sbom:78ef49c15c3c"],
+      "element": [
+        "urn:Sbom:8dda2e676f29b58",
+        "urn:Tool:78ef49c15c22",
+        "urn:Tool:8dda2e676f29b0a",
+        "urn:Person:8dda2e676f29b17",
+        "urn:Package:8dda2e676f29b31",
+        "urn:Relationship:8dda2e676f29b3e",
+        "urn:Relationship:8dda2e676f29b4b",
+        "urn:Sbom:8dda2e676f29b58",
+        "urn:Package:8dda2e676f29b65",
+        "urn:Relationship:8dda2e676f29b72",
+        "urn:Relationship:8dda2e676f29b7f",
+        "urn:Package:8dda2e676f29b8c",
+        "urn:Relationship:8dda2e676f29b99",
+        "urn:Relationship:8dda2e676f29ba6",
+        "urn:Relationship:8dda2e676f29bb3",
+        "urn:Relationship:8dda2e676f29bc0",
+        "urn:SpdxDocument:8dda2e676f29bcd",
+        "urn:Sbom:78ef49c15c3c"
+      ],
+      "creationInfo": "urn:CreationInfo:8dda2e676f29afd",
+      "name": "Spdx3",
+      "type": "SpdxDocument",
+      "spdxId": "urn:SpdxDocument:8dda2e676f29bcd"
+    },
+    {
+      "build_buildEndTime": "2025-06-04T01:35:13Z",
+      "build_buildId": "543212345",
+      "build_buildType": "https://github.com/mharrah/Spdx3/actions/runs/543212345",
+      "creationInfo": "urn:CreationInfo:78ef49c15c15",
+      "type": "build_Build",
+      "spdxId": "urn:Build:78ef49c15c2f"
+    },
+    {
+      "software_sbomType": ["build"],
+      "rootElement": ["urn:Build:78ef49c15c2f"],
+      "element": ["urn:Build:78ef49c15c2f"],
+      "creationInfo": "urn:CreationInfo:78ef49c15c15",
+      "type": "software_Sbom",
+      "spdxId": "urn:Sbom:78ef49c15c3c"
+    }
+  ]
+}
