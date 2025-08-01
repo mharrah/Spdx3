@@ -54,7 +54,19 @@ jobs:
 
       - name: Run tests
         run: dotnet test -c Release --no-build --no-restore --logger="junit;LogFileName=${{ github.workspace }}/dotnet-test-result.xml" --collect:"XPlat Code Coverage" --results-directory= ./coverage  /p:Version=${{ steps.version.outputs.version }}
-          
+
+      - name: Create Source SBOM
+        run: dotnet run --project ProduceSourceSbom --verbose=true -l=false --projectPath=./ProduceBuildSbom/ProduceBuildSbom.csproj --outputDir=. --fileName spdx3.sbom.source.json
+
+      - name: Create Build SBOM
+        run: dotnet run --project ProduceBuildSbom --verbose=true -l=false --sourceSbomPath=./spdx3.sbom.source.json --outputDir=. --fileName spdx3.sbom.build.json
+
+      - name: Save generated SBOMs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SBOMs
+          path: ./spdx3.sbom.*.json
+      
       - name: Generate coverage report
         run: dotnet reportgenerator -reports:coverage/*/coverage.cobertura.xml -targetdir:./coverage -reporttypes:MarkdownSummaryGithub,Html
 
@@ -98,4 +110,4 @@ jobs:
       - name: Publish to NuGet.org
         if: startsWith(github.ref, 'refs/heads/main')
         run: dotnet nuget push **\*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}}
-        
+

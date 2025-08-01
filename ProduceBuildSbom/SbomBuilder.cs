@@ -71,5 +71,10 @@ public class SbomBuilder
         
         var writer = new Writer(Catalog);
         writer.WriteFileName(Path.Join(Program.OutputDir, Program.FileName));
+        
+        if (Program.Verbose)
+        {
+            Console.WriteLine($"Wrote to {Path.Join(Program.OutputDir, Program.FileName)}.");
+        }
     }
 }
