@@ -150,6 +150,14 @@ public class Example3WriteSpdxFile
     }
 }
 ```
+# Further Examples
+Within the solution file, there are two sibling projects to the Spdx3 project:
+- [ProduceSourceSbom](../ProduceSourceSbom)
+  - Uses Spdx3 to produce a Source SBOM for the Spdx3 project itself, including dependencies derived by examining the .csproj file.
+  - This example code is executed during the CI/CD workflow in GitHub Actions and produces the file [spdx3.sbom.source.json](../ProduceSourceSbom/spdx3.sbom.source.json)
+- [ProduceBuildSbom](../ProduceBuildSbom)
+  - Uses Spdx3 to produce a Build SBOM to augment the Source SBOM, with build information as the Spdx3 project is built.
+  - This example code is executed during the CI/CD workflow in GitHub Actions and produces the file [spdx3.sbom.source.json](../ProduceBuildSbom/spdx3.sbom.build.json)
 
 # Contributing
 

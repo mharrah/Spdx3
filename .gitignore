@@ -10,3 +10,6 @@ riderModule.iml
 coverage/
 **/foo.*
 .vscode/
+
+spdx3.sbom.source.json
+spdx3.sbom.build.json
