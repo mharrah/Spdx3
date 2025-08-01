@@ -252,8 +252,8 @@ public class SbomBuilder
             HomePage = new Uri("https://github.com/mharrah/spdx3"),
             CopyrightText = "(c) Copyright 2025 Matthew R Harrah",
             Name = "Spdx3",
-            PackageUrl = new Uri("pkg:nuget/Spdx3@0.9.2-preview"),
-            PackageVersion = "0.9.2-preview",
+            PackageUrl = new Uri("pkg:nuget/Spdx3@1.0.0"),
+            PackageVersion = "1.0.0",
             SuppliedBy = author
         };
         spdx3.OriginatedBy.Add(author);
