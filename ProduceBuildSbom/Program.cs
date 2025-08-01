@@ -17,23 +17,16 @@ internal class Program
     {
 
         var rootCommand = new RootCommand("Produce Source Sbom for SPDX3");
-        CommandLineOptions.All.ForEach(o => rootCommand.AddOption(o));
+        CommandLineOptions.All.ForEach(o => rootCommand.Options.Add(o));
         rootCommand.TreatUnmatchedTokensAsErrors = true;
-        
-        rootCommand.SetHandler((outputDir, fileName, sourceSbomPath, verbose, liteDomainComplianceMandatory) =>
-            {
-                Verbose = verbose;
-                SourceSbomPath = sourceSbomPath;
-                OutputDir = outputDir;
-                FileName = fileName;
-                LiteDomainComplianceMandatory = liteDomainComplianceMandatory;
-            }, CommandLineOptions.OutputDir, CommandLineOptions.FileName,
-            CommandLineOptions.SourceSbomPath, CommandLineOptions.Verbose,
-            CommandLineOptions.LiteDomainComplianceMandatory);
 
-        var invoke = rootCommand.Invoke(args);
-        if (invoke != 0) return invoke;
-        
+        ParseResult parseResult = rootCommand.Parse(args);
+        Verbose = parseResult.GetValue(CommandLineOptions.Verbose);
+        SourceSbomPath = parseResult.GetValue(CommandLineOptions.SourceSbomPath);
+        OutputDir = parseResult.GetValue(CommandLineOptions.OutputDir);
+        FileName = parseResult.GetValue(CommandLineOptions.FileName);
+        LiteDomainComplianceMandatory = parseResult.GetValue(CommandLineOptions.LiteDomainComplianceMandatory);
+
         var sbomBuilder = new SbomBuilder();
         sbomBuilder.EnrichSpdxDocumentWithBuildSbom();
 
