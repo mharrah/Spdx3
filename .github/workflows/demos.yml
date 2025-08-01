@@ -6,6 +6,7 @@ on:
       - issue-33
     paths:
       - demos.yml
+  workflow_dispatch:
 
 jobs:
   build:
